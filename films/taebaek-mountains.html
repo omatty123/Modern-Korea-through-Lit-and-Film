@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film Deep Dive: The Taebaek Mountains (태백산맥) | Korean History through Film</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #e8edf2;
+      --ink-light: #b0bec5;
+      --ink-faint: #78909c;
+      --paper: #0d1210;
+      --paper-warm: #111a15;
+      --surface: rgba(255,255,255,0.04);
+      --accent: #37474f;
+      --accent-light: #546e7a;
+      --gold: #a67c00;
+      --border: rgba(255,255,255,0.1);
+      --shadow: rgba(0,0,0,0.3);
+      --frost: #90a4ae;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    a { color: var(--frost); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* BREADCRUMB NAV */
+    nav {
+      background: #070a08;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+    nav a {
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    nav .sep { color: rgba(255,255,255,0.25); margin: 0 0.4rem; font-size: 0.75rem; }
+    nav .current { color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(160deg, #0d1a14 0%, #1b2e23 40%, #37474f 80%, #111a15 100%);
+      padding: 4rem 2rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 70% 20%, rgba(144,164,174,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(55,71,79,0.15) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-korean {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 4rem;
+      font-weight: 600;
+      color: rgba(144,164,174,0.25);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.6rem;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.75rem;
+    }
+    .hero-meta strong { color: rgba(255,255,255,0.8); }
+
+    /* MAIN LAYOUT */
+    .content-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+    }
+
+    /* MAIN COLUMN */
+    .main h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--frost);
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+    }
+    .main h2:first-child { margin-top: 0; }
+
+    .main h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .main p {
+      margin-bottom: 1.25rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .main p a { border-bottom: 1px solid rgba(144,164,174,0.3); }
+    .main p a:hover { border-bottom-color: var(--frost); text-decoration: none; }
+
+    /* DOC CARDS */
+    .doc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .doc-card.blue { border-left: 4px solid var(--accent-light); }
+    .doc-card.gold { border-left: 4px solid var(--gold); }
+    .doc-card.frost { border-left: 4px solid var(--frost); }
+
+    .doc-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--frost);
+      margin-bottom: 0.5rem;
+    }
+    .doc-card.gold h4 { color: var(--gold); }
+
+    .doc-card p {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .doc-card p:last-child { margin-bottom: 0; }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      background: linear-gradient(135deg, rgba(55,71,79,0.15) 0%, rgba(55,71,79,0.05) 100%);
+      border-left: 4px solid var(--frost);
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.7;
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-style: normal;
+      color: var(--ink-faint);
+    }
+
+    /* TIMELINE */
+    .timeline {
+      list-style: none;
+      position: relative;
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(144,164,174,0.2);
+    }
+    .timeline li {
+      position: relative;
+      padding: 0.75rem 0 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+    }
+    .timeline li:last-child { border-bottom: none; }
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: -1.85rem;
+      top: 1.1rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      border: 2px solid var(--paper);
+    }
+    .timeline li strong { color: var(--frost); }
+    .timeline li em { color: var(--ink-faint); }
+
+    /* FILMOGRAPHY TIMELINE */
+    .filmography {
+      list-style: none;
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(166,124,0,0.3);
+    }
+    .filmography li {
+      position: relative;
+      padding: 0.5rem 0 0.5rem 1.25rem;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .filmography li::before {
+      content: '';
+      position: absolute;
+      left: -1.85rem;
+      top: 0.85rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(166,124,0,0.4);
+      border: 2px solid var(--paper);
+    }
+    .filmography li.highlight::before {
+      background: var(--gold);
+      width: 10px;
+      height: 10px;
+      left: -1.9rem;
+      box-shadow: 0 0 8px rgba(166,124,0,0.5);
+    }
+    .filmography li strong { color: var(--gold); }
+
+    /* SIDEBAR */
+    .sidebar { align-self: start; position: sticky; top: 4rem; }
+
+    .sidebar-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .sidebar-box h3 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-box ul { list-style: none; font-size: 0.85rem; }
+    .sidebar-box li {
+      padding: 0.4rem 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.75);
+    }
+    .sidebar-box li:last-child { border-bottom: none; }
+    .sidebar-box li strong { color: var(--frost); font-weight: 600; }
+
+    .sidebar-box ol {
+      padding-left: 1.25rem;
+      font-size: 0.85rem;
+    }
+    .sidebar-box ol li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+    .sidebar-box ol li:last-child { border-bottom: none; }
+
+    .sidebar-box .source-link {
+      display: block;
+      padding: 0.35rem 0;
+      font-size: 0.8rem;
+      color: var(--frost);
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+    }
+    .sidebar-box .source-link:last-child { border-bottom: none; }
+    .sidebar-box .source-link:hover { color: #fff; }
+
+    /* FOOTER */
+    footer {
+      background: #070a08;
+      padding: 2rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+    footer a { color: var(--gold); }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .two-col { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .hero-korean { font-size: 2.5rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .content-wrap { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Breadcrumb -->
+<nav>
+  <a href="../index.html">&larr; Course Index</a>
+  <span class="sep">/</span>
+  <span class="current">The Taebaek Mountains Deep Dive</span>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Film Deep Dive &middot; Korean War</div>
+    <div class="hero-korean">태백산맥</div>
+    <h1>The Taebaek Mountains</h1>
+    <div class="hero-meta">
+      Directed by <strong>Im Kwon-taek</strong> (임권택) &middot; 1994 &middot; 168 min<br>
+      Starring Ahn Sung-ki, Kim Myung-gon, Kim Kap-soo &middot; Produced by Taehung Pictures
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="content-wrap">
+  <div class="two-col">
+
+    <!-- LEFT: Main Column -->
+    <div class="main">
+
+      <h2>Historical Context: Korea's Forgotten Civil War</h2>
+
+      <p>The Taebaek Mountains opens up what may be the most suppressed chapter of modern Korean history: the period between liberation from Japan in 1945 and the outbreak of the Korean War in 1950. These five years saw Korea's deep internal conflicts, dormant under colonial rule, erupt into open violence. The question of who would control the peninsula was not only a Cold War proxy struggle between Washington and Moscow. It was also a domestic reckoning over land, class, collaboration, and political legitimacy. (<a href="https://www.britannica.com/event/Korean-War" target="_blank">Britannica</a>)</p>
+
+      <div class="doc-card blue">
+        <h4>The Yeosu-Suncheon Uprising (October 1948)</h4>
+        <p>On October 19, 1948, soldiers of the 14th Regiment in Yeosu refused orders to deploy to Jeju Island, where the government was suppressing a leftist rebellion. The mutineers seized the local arsenal and were soon joined by thousands of civilian sympathizers in Yeosu, Suncheon, and surrounding towns. The rebels briefly established control over eastern South Cholla Province and attempted to create a "Korean people's republic." Government forces recaptured the region by October 27, killing between 2,976 and 3,392 people. In the aftermath, South Korea passed the National Security Law (December 1948), which outlawed "anti-state" organizations and enabled the mass arrest of suspected leftists. (<a href="https://www.britannica.com/event/Yeosu-Suncheon-Rebellion" target="_blank">Britannica</a>)</p>
+      </div>
+
+      <p>The film is set in the town of Beolgyo in South Cholla Province, adjacent to Yeosu and Suncheon. This geography is not incidental. South Cholla was the epicenter of leftist resistance in the late 1940s, a region where communist sympathizers, labor organizers, and impoverished tenant farmers shared a common grievance against the landed elites who had prospered under Japanese rule and now aligned with the American-backed Syngman Rhee government.</p>
+
+      <div class="doc-card gold">
+        <h4>The Bodo League Massacre (Summer 1950)</h4>
+        <p>In 1949, the South Korean government created the "National Guidance Alliance" (Bodo League), enrolling some 300,000 people suspected of communist sympathies into a supposed re-education program. When North Korea invaded on June 25, 1950, President Syngman Rhee ordered the execution of Bodo League members. Beginning June 28, South Korean security forces carried out mass killings across the country without trials or legal proceedings. Estimates of the death toll range from 100,000 to 200,000. The massacre remained officially suppressed for half a century. (<a href="https://history-maps.com/story/History-of-South-Korea/event/Bodo-League-Massacre" target="_blank">History Maps</a>)</p>
+      </div>
+
+      <p>The Korean War (1950-1953) killed at least 2.5 million people and left the peninsula permanently divided along the 38th parallel. But as the film makes clear, the killing did not begin in June 1950. It began years earlier, in villages like Beolgyo, where neighbors turned against each other along ideological lines that mapped onto older class divisions. (<a href="https://www.britannica.com/event/Korean-War" target="_blank">Britannica</a>)</p>
+
+      <h2>The Novel</h2>
+
+      <p>The film adapts Jo Jeong-rae's epic ten-volume novel <em>Taebaek Sanmaek</em> (태백산맥), published between 1986 and 1989. Jo (born August 17, 1943) was an unknown high school teacher when he began serializing the novel in the literary magazine <em>Contemporary Literature</em> in 1983. The completed work sold over 10 million copies in South Korea, making it one of the best-selling Korean novels of the twentieth century. (<a href="https://en.wikipedia.org/wiki/Jo_Jung-rae" target="_blank">Wikipedia</a>)</p>
+
+      <p>The novel examines the five years between Korea's liberation from Japanese colonial rule (1945) and the outbreak of the Korean War (1950). Jo traces the deep structural contradictions embedded in Korean society, including class conflict between landlords and tenant farmers, the unresolved legacy of colonial collaboration, and the way Cold War ideology amplified these domestic tensions into lethal violence. (<a href="https://library.ltikorea.or.kr/translatedbooks/783" target="_blank">LTI Korea</a>)</p>
+
+      <div class="doc-card frost">
+        <h4>A Controversial Bestseller</h4>
+        <p>The novel provoked intense controversy. Right-wing groups accused it of being a "red novel" that glorified communist partisans. Conservative critics filed complaints under the National Security Law, the same Cold War-era legislation depicted in the story itself. Despite (or perhaps because of) the controversy, the novel became a cultural phenomenon, described by Korean literary critics as the "best controversial work of the 1980s" and a landmark in the country's reckoning with its suppressed modern history. (<a href="https://en.namu.wiki/w/%ED%83%9C%EB%B0%B1%EC%82%B0%EB%A7%A5(%EC%98%81%ED%99%94)" target="_blank">NamuWiki</a>)</p>
+      </div>
+
+      <h2>Ideological Division: A Village Torn Apart</h2>
+
+      <p>The film's central achievement is its refusal to reduce the Korean conflict to a simple narrative of good versus evil. It follows multiple characters in Beolgyo who represent distinct positions within the ideological spectrum, and it treats each with a degree of sympathy that was unprecedented in South Korean cinema at the time.</p>
+
+      <h3>The Three Perspectives</h3>
+
+      <ul class="timeline">
+        <li><strong>Kim Bum-woo (Ahn Sung-ki):</strong> A nationalist intellectual who refuses to align with either the communists or the anticommunist right. He represents the humanist center, a position the film suggests is morally admirable but politically impossible in a society demanding absolute loyalty.</li>
+        <li><strong>Yeom Sang-jin (Kim Myung-gon):</strong> An ardent communist who serves as chairman of the county party committee in Boseong-gun. He believes the revolution will liberate Korea's peasant class from centuries of exploitation by landlords and Japanese collaborators.</li>
+        <li><strong>Yeom Sang-goo (Kim Kap-soo):</strong> Sang-jin's brother and a hard-line anticommunist police inspector at the Beolgyo Police Station. He pursues leftist sympathizers with the same fanaticism that his brother brings to the revolution.</li>
+      </ul>
+
+      <p>The fact that the communist and the anticommunist are brothers is the film's most important structural choice. It collapses the distance between the two sides, showing that the ideological divide ran through families, not just between enemy nations. The Korean War was, at its root, a civil war. The superpowers armed and encouraged it, but the killing was intimate. (<a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=19940021" target="_blank">Korean Film Council</a>)</p>
+
+      <div class="pull-quote">
+        "The main theme of this film is not the fight of ideologies, but humanism itself, which I consider one of the most important things in human beings."
+        <cite>Im Kwon-taek, on The Taebaek Mountains (<a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=19940021" target="_blank">Korean Film Council</a>)</cite>
+      </div>
+
+      <h2>Partisan Warfare in the Mountains</h2>
+
+      <p>The Taebaek and Jiri mountain ranges served as strongholds for communist guerrillas throughout the late 1940s and early 1950s. After the failed Yeosu-Suncheon uprising, surviving rebels retreated into the mountains and waged a partisan campaign against government forces. Following the North Korean army's retreat from the south in late 1950, more than 10,000 KPA remnants and civilian partisans took refuge in the Jiri Mountains (Jirisan), the second-highest peak in South Korea. (<a href="https://en.wikipedia.org/wiki/Communist_partisans_in_the_Korean_War" target="_blank">Wikipedia</a>)</p>
+
+      <p>The South Korean military deployed two full divisions to suppress the guerrillas between October 1950 and May 1951. The final campaign, Operation Rat Killer, destroyed the organized insurgency in Jirisan, though scattered guerrilla activity continued until 1955, two years after the armistice. The counterinsurgency operations were brutal on both sides: partisans attacked villages suspected of aiding the government, and government forces massacred civilians suspected of sheltering guerrillas. (<a href="https://history.army.mil/books/korea/20-2-1/sn37.htm" target="_blank">U.S. Army Center of Military History</a>)</p>
+
+      <div class="doc-card blue">
+        <h4>Geography of Guerrilla War</h4>
+        <p>Korea's extensive mountain ranges offered natural cover and concealment. Dense forests, narrow valleys, and limited road access made it extremely difficult for conventional forces to locate and destroy guerrilla units. The Taebaek range runs along Korea's eastern spine, while the Sobaek range (including Jirisan) extends across the south. These mountains became synonymous with the partisan struggle. For villagers in towns like Beolgyo, the mountains were not distant: the guerrillas came down from them at night, and the army swept through during the day. Civilians were caught in between. (<a href="https://legionpath.com/guerrilla-warfare-tactics-in-korea/" target="_blank">Legion Path</a>)</p>
+      </div>
+
+      <h2>Director: Im Kwon-taek</h2>
+
+      <p>Im Kwon-taek (born May 2, 1936, in Jansung, South Cholla Province) is widely regarded as the father of Korean cinema. Over a career spanning more than five decades, he directed approximately 102 films, an output unmatched in Korean film history. He dropped out of middle school after his father's death and entered the film industry as a production assistant. (<a href="https://www.britannica.com/biography/Im-Kwon-Taek" target="_blank">Britannica</a>)</p>
+
+      <p>His early career consisted of commercial genre pictures, sometimes eight per year, designed to meet government quotas for domestic production. The artistic turning point came with <em>Jokbo</em> (Genealogy, 1978), a historical drama about Japanese occupation-era identity politics. From the 1981 film <em>Mandala</em> onward, Im's work was recognized as art cinema, shown regularly at international festivals. (<a href="https://www.britannica.com/biography/Im-Kwon-Taek" target="_blank">Britannica</a>)</p>
+
+      <h3>Selected Filmography</h3>
+
+      <ul class="filmography">
+        <li><strong>1978:</strong> Genealogy (족보). Identity under Japanese colonial rule. Im's artistic awakening.</li>
+        <li><strong>1981:</strong> Mandala (만다라). Two Buddhist monks on divergent spiritual paths. Career-defining shift to art cinema.</li>
+        <li><strong>1993:</strong> Sopyonje (서편제). A pansori singer's family saga. Became the first Korean film to sell over one million tickets in Seoul.</li>
+        <li class="highlight"><strong>1994:</strong> The Taebaek Mountains (태백산맥). Korean War epic. 45th Berlin International Film Festival competition. Blue Dragon Award for Best Film.</li>
+        <li><strong>2000:</strong> Chunhyang (춘향뎐). Classic Korean love story told through pansori performance. Screened at Cannes.</li>
+        <li><strong>2002:</strong> Painted Fire (취화선). Biography of 19th-century painter Jang Seung-up. Won Best Director at Cannes, the first Korean to receive this honor.</li>
+      </ul>
+
+      <p>Im received the Akira Kurosawa Award at the San Francisco International Film Festival (1998) and the French Legion of Honour (2007). His consistent focus on Korean cultural identity, traditional arts, and suppressed history has made him the defining figure of Korean national cinema. (<a href="https://www.britannica.com/biography/Im-Kwon-Taek" target="_blank">Britannica</a>)</p>
+
+      <h2>Film Analysis: Humanism Against Ideology</h2>
+
+      <p>The Taebaek Mountains is not a war film in the conventional sense. There are battle sequences, but the film's core interest lies in the moral destruction of a community. Beolgyo is occupied and reoccupied, its leadership shifting from communists to rightist security forces and back again. With each change, a new round of executions, denunciations, and score-settling follows. The film shows that both sides used terror as a tool of political control, and that ordinary villagers had no safe position to occupy.</p>
+
+      <p>Im Kwon-taek's approach to this material was deliberately balanced at a time when South Korean law (the National Security Law, still in force) criminalized sympathetic portrayals of communism. By centering Ahn Sung-ki's character, the moderate intellectual Kim Bum-woo, the film argues that the true victims of ideological warfare are those who refuse to choose a side. But it also shows that neutrality is a privilege the situation does not permit. Bum-woo's refusal to commit does not save him or anyone else.</p>
+
+      <div class="doc-card gold">
+        <h4>Reception and Controversy</h4>
+        <p>The film won Best Film at both the Blue Dragon Awards and the Chunsa Film Festival in 1994, and competed at the 45th Berlin International Film Festival in 1995. Kim Kap-soo won Best Supporting Actor at the Daejong Film Awards. Despite these accolades, right-wing groups staged protests at theaters on opening day, attempting to block screenings. The film's willingness to portray communist characters as human beings, rather than as ideological monsters, was enough to provoke outrage in some quarters. (<a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=19940021" target="_blank">Korean Film Council</a>, <a href="https://en.namu.wiki/w/%ED%83%9C%EB%B0%B1%EC%82%B0%EB%A7%A5(%EC%98%81%ED%99%94)" target="_blank">NamuWiki</a>)</p>
+      </div>
+
+      <p>The film's lasting significance lies in its insistence that the Korean War cannot be understood as a simple story of North Korean aggression. The violence in Beolgyo begins before the war. It grows from land disputes, class resentment, colonial-era collaboration, and the failure of liberation to deliver justice. The superpowers (the United States and the Soviet Union) set the stage, but the killing was done by Koreans against Koreans, often by people who had known each other their entire lives.</p>
+
+      <h2>Course Connections</h2>
+
+      <p>The Taebaek Mountains speaks directly to several core themes of this course. First, it presents the Korean War as fundamentally a civil war, not merely a Cold War proxy conflict. Historian Bruce Cumings has argued that the war's origins lie in the "bitter contest for power between progressive and conservative forces" that began immediately after liberation in 1945 and escalated through events like the Yeosu-Suncheon uprising. The film dramatizes this argument at the village level. (<a href="https://www.globalasia.org/v5no4/book/contested-history-re-examining-the-korean-war_john-nilsson-wright" target="_blank">Global Asia</a>)</p>
+
+      <p>Second, the film exposes the human cost of ideological absolutism. Both the communist partisans and the anticommunist security forces operate according to the same logic: anyone who is not with us is against us. The villagers of Beolgyo are ground up between these two positions. Their suffering is not collateral damage. It is the point. Ideological purity requires the elimination of ambiguity, and ordinary people are the ones who embody ambiguity.</p>
+
+      <p>Third, the film raises the question of historical memory. For decades after the Korean War, South Korean law prohibited sympathetic depictions of the left. The novel and film broke this silence. The fact that right-wing groups protested the film's release in 1994, nearly half a century after the events it depicts, demonstrates how raw these wounds remained. Historical reckoning in South Korea is not a completed process. It is ongoing and contested.</p>
+
+    </div>
+
+    <!-- RIGHT: Sidebar -->
+    <div class="sidebar">
+
+      <div class="sidebar-box">
+        <h3>Quick Facts</h3>
+        <ul>
+          <li><strong>Korean Title:</strong> 태백산맥 (Taebaek Sanmaek)</li>
+          <li><strong>Director:</strong> Im Kwon-taek (임권택)</li>
+          <li><strong>Year:</strong> 1994</li>
+          <li><strong>Runtime:</strong> 168 minutes</li>
+          <li><strong>Lead:</strong> Ahn Sung-ki as Kim Bum-woo</li>
+          <li><strong>Supporting:</strong> Kim Myung-gon as Yeom Sang-jin</li>
+          <li><strong>Supporting:</strong> Kim Kap-soo as Yeom Sang-goo</li>
+          <li><strong>Production:</strong> Taehung Pictures</li>
+          <li><strong>Based on:</strong> Jo Jeong-rae's 10-volume novel (1986-1989)</li>
+          <li><strong>Setting:</strong> Beolgyo, South Cholla Province (1948-1950)</li>
+          <li><strong>Festival:</strong> 45th Berlin International Film Festival (Competition)</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Key Historical Events (1945-1953)</h3>
+        <ul>
+          <li><strong>Aug 1945:</strong> Liberation from Japan. Soviet and U.S. forces divide Korea at the 38th parallel.</li>
+          <li><strong>Aug 1948:</strong> Republic of Korea (South) established under Syngman Rhee.</li>
+          <li><strong>Sep 1948:</strong> DPRK (North) established under Kim Il-sung.</li>
+          <li><strong>Oct 1948:</strong> Yeosu-Suncheon uprising. Left-wing soldiers and civilians rebel against Rhee government.</li>
+          <li><strong>Dec 1948:</strong> National Security Law enacted, criminalizing leftist activity.</li>
+          <li><strong>1949:</strong> Bodo League created. 300,000 suspected leftists enrolled in "re-education."</li>
+          <li><strong>Jun 1950:</strong> North Korea invades. Bodo League members executed en masse.</li>
+          <li><strong>1950-51:</strong> Communist partisans retreat to Taebaek and Jiri mountains.</li>
+          <li><strong>Jul 1953:</strong> Armistice signed. Korea remains divided.</li>
+          <li><strong>1955:</strong> Last guerrilla resistance in Jirisan suppressed.</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Key Terms</h3>
+        <ul>
+          <li><strong>Ppalgaengi (빨갱이):</strong> Derogatory term for communists or suspected leftist sympathizers, used as a label to justify persecution.</li>
+          <li><strong>National Security Law:</strong> Enacted 1948, still in force. Criminalizes praise or support for North Korea or anti-state organizations.</li>
+          <li><strong>Bodo League (보도연맹):</strong> Government "re-education" program used to register and later execute suspected communists.</li>
+          <li><strong>Partisan (빨치산):</strong> Communist guerrillas who operated from mountain bases in southern Korea.</li>
+          <li><strong>Chinilpa (친일파):</strong> Pro-Japanese collaborators. Many retained power under the U.S.-backed government after 1945.</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Discussion Questions</h3>
+        <ol>
+          <li>The two brothers, Yeom Sang-jin and Yeom Sang-goo, fight on opposite sides. What does the film gain by making the ideological divide a family conflict rather than one between strangers?</li>
+          <li>Kim Bum-woo tries to remain neutral. Does the film present neutrality as a viable moral position, or as a form of self-deception?</li>
+          <li>Bruce Cumings argues the Korean War was a civil war with roots in the 1930s. How does the film support or complicate this reading?</li>
+          <li>Right-wing groups protested the film's release in 1994. What does this tell us about the limits of historical reckoning in South Korea?</li>
+          <li>Compare the film's treatment of ideological violence with how your own country narrates its civil conflicts. What is permitted and what remains suppressed?</li>
+        </ol>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Further Reading and Sources</h3>
+        <a class="source-link" href="https://www.britannica.com/biography/Im-Kwon-Taek" target="_blank">Britannica: Im Kwon-taek</a>
+        <a class="source-link" href="https://www.britannica.com/event/Korean-War" target="_blank">Britannica: Korean War</a>
+        <a class="source-link" href="https://www.britannica.com/event/Yeosu-Suncheon-Rebellion" target="_blank">Britannica: Yeosu-Suncheon Rebellion</a>
+        <a class="source-link" href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=19940021" target="_blank">Korean Film Council: The Taebaek Mountains</a>
+        <a class="source-link" href="https://en.wikipedia.org/wiki/Communist_partisans_in_the_Korean_War" target="_blank">Wikipedia: Communist Partisans in the Korean War</a>
+        <a class="source-link" href="https://history.army.mil/books/korea/20-2-1/sn37.htm" target="_blank">U.S. Army: Guerrilla Warfare Behind the Front</a>
+        <a class="source-link" href="https://library.ltikorea.or.kr/translatedbooks/783" target="_blank">LTI Korea: Taebaek Mountains Novel</a>
+        <a class="source-link" href="https://www.globalasia.org/v5no4/book/contested-history-re-examining-the-korean-war_john-nilsson-wright" target="_blank">Global Asia: Contested History</a>
+        <a class="source-link" href="https://www.imdb.com/title/tt0111348/" target="_blank">IMDB: The Taebaek Mountains</a>
+        <a class="source-link" href="https://letterboxd.com/film/the-taebaek-mountains/" target="_blank">Letterboxd: The Taebaek Mountains</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div>Korean History through Literature and Film &middot; Spring 2026<br>Lawrence University</div>
+    <div><a href="../index.html">&larr; Back to Course Index</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

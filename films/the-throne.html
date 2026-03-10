@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Throne (2015) | Korean History through Film</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #faf9f7;
+            --paper-warm: #f5f3ef;
+            --surface: #fff;
+            --accent: #4a148c;
+            --accent-light: #6a1b9a;
+            --gold: #a67c00;
+            --border: #e0dcd5;
+            --shadow: rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            font-size: 0.78rem;
+            color: var(--ink-faint);
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #1a0a2e 0%, #4a148c 40%, #6a1b9a 100%);
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .course-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero .korean-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.65);
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hero-meta .tag {
+            background: rgba(255,255,255,0.12);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2px;
+            font-size: 0.7rem;
+            letter-spacing: 0.04em;
+        }
+
+        /* MAIN GRID */
+        .main-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 860px) {
+            .main-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MAIN CONTENT */
+        .main-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .main-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .main-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .main-content p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--ink-light);
+        }
+
+        .main-content a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .main-content a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* DOC CARDS */
+        .doc-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 3px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+
+        .doc-card.gold { border-left-color: var(--gold); }
+        .doc-card.purple { border-left-color: var(--accent); }
+        .doc-card.dark { border-left-color: #333; }
+
+        .doc-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+
+        .doc-card p, .doc-card li {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            line-height: 1.65;
+        }
+
+        .doc-card ul {
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .doc-card li { margin-bottom: 0.3rem; }
+
+        /* PULL QUOTE */
+        .pull-quote {
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            background: var(--paper-warm);
+            border-radius: 0 3px 3px 0;
+        }
+
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.6;
+            margin-bottom: 0.3rem;
+        }
+
+        .pull-quote .attribution {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-style: normal;
+            color: var(--ink-faint);
+        }
+
+        /* SIDEBAR */
+        .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        .sidebar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.25rem;
+        }
+
+        .sidebar-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .sidebar-card.gold-border h3 { border-bottom-color: var(--gold); }
+
+        .fact-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+        }
+
+        .fact-row:last-child { border-bottom: none; }
+
+        .fact-label {
+            font-weight: 600;
+            color: var(--ink);
+            flex-shrink: 0;
+            margin-right: 0.5rem;
+        }
+
+        .fact-value {
+            color: var(--ink-light);
+            text-align: right;
+        }
+
+        .term-item {
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .term-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+        .term-item .term {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        .term-item .term .kr {
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 400;
+            color: var(--ink-faint);
+            font-size: 0.8rem;
+        }
+
+        .term-item .definition {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            margin-top: 0.2rem;
+            line-height: 1.55;
+        }
+
+        .figure-item {
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .figure-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+        .figure-item .figure-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--ink);
+        }
+
+        .figure-item .figure-name .kr {
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 400;
+            color: var(--ink-faint);
+            font-size: 0.8rem;
+        }
+
+        .figure-item .figure-desc {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            margin-top: 0.2rem;
+            line-height: 1.55;
+        }
+
+        .award-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .award-list li {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            padding: 0.35rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+        }
+
+        .award-list li:last-child { border-bottom: none; }
+
+        .award-list .award-icon {
+            color: var(--gold);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .discussion-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: discussion;
+        }
+
+        .discussion-list li {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.55;
+            counter-increment: discussion;
+        }
+
+        .discussion-list li::before {
+            content: counter(discussion) ".";
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 0.4rem;
+        }
+
+        .discussion-list li:last-child { border-bottom: none; }
+
+        .reading-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reading-list li {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.5;
+        }
+
+        .reading-list li:last-child { border-bottom: none; }
+
+        .reading-list a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .reading-list a:hover { text-decoration: underline; }
+
+        /* SOURCE TAG */
+        .source-tag {
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            display: inline;
+        }
+
+        .source-tag a {
+            color: var(--ink-faint);
+            text-decoration: underline;
+            text-decoration-style: dotted;
+        }
+
+        .source-tag a:hover { color: var(--accent); }
+
+        /* FOOTER */
+        footer {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+        }
+
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+    <a href="../index.html">&larr; Back to Korean History through Film</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="course-label">Deep Dive</div>
+        <h1>The Throne</h1>
+        <div class="korean-title">사도</div>
+        <div class="hero-meta">
+            <span>Lee Joon-ik (이준익)</span>
+            <span>2015</span>
+            <span>125 min</span>
+            <span class="tag">Historical Drama</span>
+            <span class="tag">Joseon Dynasty</span>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN GRID -->
+<div class="main-wrap">
+
+    <!-- LEFT: MAIN CONTENT -->
+    <article class="main-content">
+
+        <h2>Historical Context: The Tragedy of Crown Prince Sado</h2>
+
+        <p>
+            On a sweltering day in the intercalary fifth month of 1762, King Yeongjo of Joseon ordered his
+            27-year-old son, Crown Prince Sado, to climb into a wooden rice chest (뒤주, <em>dwiju</em>).
+            The chest measured roughly 1.3 meters square. For eight days, Sado pounded on the walls and
+            screamed for release. On the eighth night, his cries fell silent. He died of dehydration and
+            heat exposure, locked in a grain container on the orders of his own father.
+            <span class="source-tag">(<a href="https://www.newworldencyclopedia.org/entry/Yeongjo_of_Joseon">New World Encyclopedia</a>)</span>
+        </p>
+
+        <p>
+            This event is one of the most studied episodes in Korean history, and it is the central subject
+            of Lee Joon-ik's 2015 film. The incident was not a sudden eruption of royal rage. It was the
+            culmination of decades of tension between a reformist king and a troubled heir, set against a
+            court system in which factional politics turned every personal failure into a political crisis.
+            <span class="source-tag">(<a href="https://www.britannica.com/biography/Yeongjo">Britannica</a>)</span>
+        </p>
+
+        <h3>The Father: King Yeongjo (1694-1776)</h3>
+
+        <p>
+            Yeongjo was the 21st monarch of the Joseon dynasty and its longest-reigning king, ruling for
+            52 years from 1724 to 1776. He was the second son of King Sukjong and a concubine of low birth,
+            a fact that shadowed his legitimacy throughout his reign. Yeongjo was a deeply Confucian ruler,
+            said to have possessed a greater knowledge of the classics than his own officials. He implemented
+            significant reforms: halving the military service tax, rationalizing state revenue accounting,
+            and upgrading the social status of children born to commoner families.
+            <span class="source-tag">(<a href="https://www.britannica.com/biography/Yeongjo">Britannica</a> /
+            <a href="https://www.newworldencyclopedia.org/entry/Yeongjo_of_Joseon">New World Encyclopedia</a>)</span>
+        </p>
+
+        <p>
+            His defining political project was <em>t'angp'yŏng</em> (蕩平, "grand harmony"), a deliberate
+            policy of balancing rival factions at court. After inheriting a government torn apart by decades
+            of factional purges under his predecessors, Yeongjo pursued calculated pardons, strategic
+            ministerial reshuffles, and Confucian exhortations against partisan loyalty. The policy had
+            real limitations, but it represented a serious attempt to subordinate factional interest to
+            royal authority.
+            <span class="source-tag">(<a href="https://www.darksideofseoul.com/yeongjos-quest-for-balance-ending-factional-fury-fall-of-joseon-15/">Dark Side of Seoul</a>)</span>
+        </p>
+
+        <h3>The Son: Crown Prince Sado (1735-1762)</h3>
+
+        <p>
+            Sado was born on February 13, 1735, as the second son of King Yeongjo. His older half-brother,
+            Crown Prince Hyojang, had already died, making Sado the sole heir apparent from an early age.
+            The weight of succession fell on him before he could walk. According to Lady Hyegyeong's memoirs,
+            the young prince showed early promise but grew increasingly troubled as he matured. His father's
+            exacting standards and frequent rebukes created a dynamic of fear and resentment.
+            <span class="source-tag">(<a href="https://uknowkorea.com/joseon-dynasty-history-crown-prince-sado/">Korea History Insights</a>)</span>
+        </p>
+
+        <div class="doc-card gold">
+            <h4>A Question of Diagnosis</h4>
+            <p>
+                Modern historians and psychologists have debated the nature of Sado's condition. Lady Hyegyeong's
+                memoirs describe violent episodes, including attacks on palace servants and members of his own
+                household. Some scholars interpret these accounts as evidence of severe mental illness, possibly
+                triggered by the relentless pressure of his father's expectations and the toxic environment of
+                court factionalism. Others emphasize the political dimensions: Sado was aligned with the Soron
+                faction, while Yeongjo leaned toward the Noron, and the prince's "madness" may have been
+                amplified or even manufactured by courtiers who wanted him removed from the succession.
+                The film takes a nuanced approach, presenting Sado as both genuinely troubled and politically
+                destroyed.
+                <span class="source-tag">(<a href="https://www.cambridge.org/core/books/abs/past-forward/shocking-execution/DCCAA6BD59AB8A309821AA6A4618916D">Cambridge University Press</a>)</span>
+            </p>
+        </div>
+
+        <h3>The Method of Execution</h3>
+
+        <p>
+            Yeongjo could not simply execute his son. Under Joseon law, a royal body could not be defiled
+            by the executioner's blade. More critically, if Sado were formally condemned as a traitor, the
+            principle of communal punishment (연좌제, <em>yŏnjwaje</em>) would extend to his wife and his
+            son, the young Prince Jeongjo, who was the dynasty's only remaining direct male heir. The rice
+            chest was a legal workaround: Sado would die, but not by execution, preserving the succession.
+            Yeongjo posthumously granted his son the title "Prince Sado" (思悼世子), meaning "Prince of
+            Sorrow" or "Prince Thought of with Grief."
+            <span class="source-tag">(<a href="https://www.madmonarchs.nl/madmonarchs/sado/sado_bio.htm">Mad Monarchs</a>)</span>
+        </p>
+
+        <h2>Joseon Court Politics: Noron vs. Soron</h2>
+
+        <p>
+            The Sado tragedy cannot be understood apart from the factional system that defined Joseon
+            political life. By the 18th century, the court was dominated by two rival blocs that had
+            emerged from a split in the Westerner (서인, <em>Sŏin</em>) faction during the late 17th
+            century. The Noron (老論, "Old Doctrine") followed the intellectual lineage of Song Si-yŏl,
+            while the Soron (少論, "Young Doctrine") followed Yun Chŭng. These were not mere debating
+            societies. Control of a faction meant control of key ministerial posts, examination results,
+            and the allocation of land and tax privileges.
+            <span class="source-tag">(<a href="https://en.wikipedia.org/wiki/Political_factions_during_the_Joseon_dynasty">Wikipedia: Political factions of Joseon</a>)</span>
+        </p>
+
+        <div class="doc-card purple">
+            <h4>Factional Violence Before Yeongjo</h4>
+            <p>
+                Under King Sukjong (r. 1674-1720), factional conflict reached murderous intensity. Sukjong
+                pursued a strategy of rapid reversals (환국, <em>hwanguk</em>), elevating one faction to
+                power and then abruptly replacing it with the other. Each reversal brought purges, exiles,
+                and executions. The Noron-Soron slaughter of 1721-22 under King Gyeongjong left the court
+                fractured beyond easy repair. When Prince Yeoning ascended as King Yeongjo in 1724, he
+                inherited a government in which political affiliation was literally a matter of life and death.
+                <span class="source-tag">(<a href="https://www.darksideofseoul.com/yeongjos-quest-for-balance-ending-factional-fury-fall-of-joseon-15/">Dark Side of Seoul</a>)</span>
+            </p>
+        </div>
+
+        <p>
+            Sado's tragedy was entangled with this factional system. The Noron faction, which held dominant
+            influence at court during Yeongjo's reign, had reason to fear a crown prince who might shift
+            the balance of power upon succession. The accusations against Sado were channeled through
+            courtiers with factional loyalties. Whether his behavior was genuinely dangerous or politically
+            convenient (or both) remains one of the central questions of Korean historiography, and the
+            film leaves this tension deliberately unresolved.
+        </p>
+
+        <h2>Lady Hyegyeong's Memoirs: The Hanjungnok</h2>
+
+        <p>
+            The primary historical source for the Sado tragedy is the <em>Hanjungnok</em> (한중록,
+            "Records Written in Silence"), a set of four autobiographical memoirs composed by Lady
+            Hyegyeong (혜경궁 홍씨), Sado's wife, between 1795 and 1805. This is an extraordinary
+            document: a first-person account by a woman of the inner court, written in Korean hangul
+            rather than the literary Chinese used by male scholars. JaHyun Kim Haboush's annotated
+            English translation, published by the University of California Press, received the Korean
+            Literature Translation Award and remains the standard scholarly edition.
+            <span class="source-tag">(<a href="https://www.ucpress.edu/books/the-memoirs-of-lady-hyegyong/paper">UC Press</a>)</span>
+        </p>
+
+        <div class="doc-card dark">
+            <h4>Four Memoirs, Four Purposes</h4>
+            <ul>
+                <li><strong>Memoir of 1795:</strong> Addressed to her nephew. Defends her natal family (the Pungsan Hong) and her own conduct before and after Sado's death.</li>
+                <li><strong>Memoir of 1801:</strong> Written in protest after the execution of her brother on false charges of Catholic conversion. Takes the form of a memorial petition.</li>
+                <li><strong>Memoir of 1802:</strong> A narrative of the life and reign of her son, King Jeongjo, addressed to her grandson King Sunjo.</li>
+                <li><strong>Memoir of 1805:</strong> The most detailed account of Sado's decline and death, written when Lady Hyegyeong was in her seventies.</li>
+            </ul>
+            <p style="margin-top: 0.5rem;">
+                Each memoir served a distinct political function. Lady Hyegyeong was not simply recording
+                memories. She was intervening in ongoing factional disputes from a position of constrained
+                but real political influence.
+                <span class="source-tag">(<a href="https://www.cambridge.org/core/journals/journal-of-asian-studies/article/memoirs-of-lady-hyegyong-the-autobiographical-writings-of-a-crown-princess-of-eighteenthcentury-korea-translated-and-with-an-introduction-and-annotation-by-haboushjahyun-kim-berkeley-university-of-california-press-1996-372-pp/E132F8B5536CE55B8E6F0545019C981B">Journal of Asian Studies review</a>)</span>
+            </p>
+        </div>
+
+        <p>
+            The film draws heavily on the Hanjungnok, using Lady Hyegyeong (played by Moon Geun-young)
+            as a witness figure caught between loyalty to her husband and survival for her son. The
+            memoirs' emotional texture, combining grief, political calculation, and self-defense, gives
+            the film its structural backbone.
+        </p>
+
+        <h2>Director Profile: Lee Joon-ik</h2>
+
+        <p>
+            Lee Joon-ik (born September 21, 1959) is one of South Korea's most accomplished directors of
+            historical cinema. He entered the film industry not as a director but as a poster designer and
+            marketer, eventually founding the Cineworld production company in the early 1990s. His
+            directorial debut, Kid Cop (1993), was a family comedy. His breakthrough came a decade later
+            with Once Upon a Time in a Battlefield (2003), which demonstrated his signature ability to mix
+            humor with historical gravity.
+            <span class="source-tag">(<a href="https://peoplepill.com/i/lee-joon-ik">PeoplePill</a> /
+            <a href="https://www.imdb.com/name/nm1045937/">IMDb</a>)</span>
+        </p>
+
+        <div class="doc-card gold">
+            <h4>Key Filmography</h4>
+            <ul>
+                <li><strong>King and the Clown</strong> (왕의 남자, 2005). A tale of two street performers entangled with the court of the tyrant Yeonsangun. Attracted 12.3 million viewers, making it one of the highest-grossing Korean films at the time. Its success proved that Korean audiences would turn out in massive numbers for serious historical drama.</li>
+                <li><strong>Once Upon a Time in a Battlefield</strong> (황산벌, 2003). A comedic retelling of the 660 CE battle between Baekje and Silla, blending slapstick with genuine historical detail.</li>
+                <li><strong>The Throne</strong> (사도, 2015). The Sado tragedy. 6.2 million admissions. South Korea's entry for the 88th Academy Awards.</li>
+                <li><strong>Dongju: The Portrait of a Poet</strong> (동주, 2016). A black-and-white film about the poet Yun Dong-ju, who wrote in Korean under Japanese colonial rule and died in a Japanese prison in 1945.</li>
+                <li><strong>The Book of Fish</strong> (자산어보, 2021). Set during the reign of King Sunjo, follows the exiled scholar Jeong Yak-jeon and a young fisherman on Heuksan Island.</li>
+            </ul>
+            <p style="margin-top: 0.5rem;">
+                <span class="source-tag">(<a href="https://www.nbcnews.com/news/asian-america/director-lee-joon-ik-showcases-korean-history-philosophy-through-film-n601311">NBC News</a> /
+                <a href="https://www.imdb.com/name/nm1045937/">IMDb</a>)</span>
+            </p>
+        </div>
+
+        <p>
+            Lee's body of work returns consistently to Korean history, but his approach is neither
+            hagiographic nor cynical. He treats historical figures as complex human beings operating
+            within systems of power that constrain their choices. In The Throne, this means refusing to
+            cast Yeongjo as a simple villain or Sado as a simple victim. Both are trapped by the Confucian
+            order they serve and by the factional machinery that surrounds them.
+        </p>
+
+        <h2>Film Analysis: Performances and Structure</h2>
+
+        <h3>Song Kang-ho as King Yeongjo</h3>
+
+        <p>
+            Song Kang-ho (born January 17, 1967) is widely regarded as the most important actor in Korean
+            cinema. His collaborations with Bong Joon-ho (Memories of Murder, The Host, Snowpiercer,
+            Parasite) established him as an actor of extraordinary range. In 2020, The New York Times named
+            him one of the greatest actors of the 21st century. In 2022, he became the first Korean actor
+            to win Best Actor at the Cannes Film Festival for his performance in Broker.
+            <span class="source-tag">(<a href="https://artsandculture.google.com/story/actor-song-kang-ho-korean-film-archive/twUxg5yxeBQA8A?hl=en">Google Arts &amp; Culture</a>)</span>
+        </p>
+
+        <p>
+            As Yeongjo, Song delivers a performance of controlled devastation. His raspy voice and
+            commanding presence convey a king who believes absolutely in the system he upholds, even as
+            that system demands the death of his own son. Variety's Justin Chang described him as cutting
+            "an anguished figure, boldly spurning the audience's sympathy while somehow earning it anyway."
+            Song plays Yeongjo not as a monster but as a man crushed by the weight of duty, a Confucian
+            ruler who has internalized the principle that the state supersedes the family, even when the
+            cost is unbearable.
+            <span class="source-tag">(<a href="https://variety.com/2015/film/festivals/the-throne-review-lee-joon-ik-1201607256/">Variety</a>)</span>
+        </p>
+
+        <h3>Yoo Ah-in as Crown Prince Sado</h3>
+
+        <p>
+            Yoo Ah-in (born Uhm Hong-sik, October 6, 1986) was 28 years old when he took on the role
+            of Sado, and it proved to be a career-defining performance. The year 2015 was dubbed the
+            "Ah-in Era" (아인시대) by Korean entertainment media, as Yoo also starred in the blockbuster
+            Veteran and the television series Six Flying Dragons in the same year.
+            <span class="source-tag">(<a href="https://www.imdb.com/name/nm2584860/">IMDb</a>)</span>
+        </p>
+
+        <p>
+            Yoo's portrayal of Sado traces a devastating arc. He is introduced as a soft-hearted,
+            eager-to-please young man desperate for his father's approval. Over the course of the film,
+            he transforms into a figure of complete wretchedness and despair. Reviewers noted his ability
+            to shift seamlessly from a heartbroken young adult to a man in the grip of violent breakdown,
+            and finally to a person clawing at the inside of his wooden prison. The physical commitment
+            of the performance, particularly in the rice chest sequences, was widely praised as one of
+            the most powerful pieces of screen acting in recent Korean cinema.
+            <span class="source-tag">(<a href="https://yooahinsikseekland.wordpress.com/2015/10/14/review-the-throne-yoo-ah-in-undergoes-astonishing-onscreen-transformation/">SikSeekLand</a>)</span>
+        </p>
+
+        <div class="pull-quote">
+            <p>"I am the son of Prince Sado."</p>
+            <div class="attribution">King Jeongjo, upon ascending the throne in 1776, publicly claiming the father whose name had been erased from official records</div>
+        </div>
+
+        <h2>Critical Reception and Box Office</h2>
+
+        <p>
+            The Throne opened in South Korea on September 16, 2015, across 1,210 screens distributed by
+            Showbox. In its first five days, it recorded 1.81 million admissions and grossed $12.3 million.
+            By the end of its theatrical run, the film accumulated 6,247,638 admissions and grossed
+            approximately $33.2 million domestically, securing fifth place among the highest-grossing
+            South Korean films of 2015.
+            <span class="source-tag">(<a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=20148846">Korean Film Council (KOFIC)</a>)</span>
+        </p>
+
+        <p>
+            The film earned strong critical notices both domestically and internationally. It won Best Film,
+            Best Screenplay, and Best Music at the 35th Korean Association of Film Critics Awards, and
+            received the Grand Prize (Daesang) at the 52nd Baeksang Arts Awards in 2016. It was selected
+            as South Korea's entry for the Best Foreign Language Film at the 88th Academy Awards, though
+            it did not advance to the final nomination. It also received a Special Jury Prize at India's
+            International Film Festival.
+            <span class="source-tag">(<a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=20148846">KOFIC</a> /
+            <a href="https://letterboxd.com/film/the-throne/">Letterboxd</a>)</span>
+        </p>
+
+        <h3>Connection to Course Themes</h3>
+
+        <p>
+            The Throne engages directly with several core questions of this course. First, it dramatizes
+            the tension between filial piety (효, <em>hyo</em>) and political necessity. Confucian ethics
+            demand absolute loyalty from son to father. But what happens when the father is also the king,
+            and the son is also a political liability? The film shows that Confucian order, taken to its
+            logical extreme, can require a father to kill his own child in the name of the very family
+            system that is supposed to protect him.
+        </p>
+
+        <p>
+            Second, the film exposes the machinery of factional politics. The courtiers who denounce Sado
+            are not acting out of concern for the state. They are maneuvering for post-succession advantage.
+            The Joseon factional system, which began as a competition among Neo-Confucian intellectual
+            lineages, had by the 18th century become a zero-sum struggle for survival.
+        </p>
+
+        <div class="doc-card gold">
+            <h4>Confucian Order as Tragedy</h4>
+            <p>
+                Lee Joon-ik's achievement is to present the Confucian system not as an abstract philosophy
+                but as a lived structure of power. Yeongjo does not kill his son because he is cruel. He
+                kills his son because the system he serves leaves him no alternative that preserves both the
+                dynasty and the succession. The rice chest is not an instrument of personal vengeance. It is
+                a bureaucratic solution to an impossible political problem. That is what makes it so horrifying.
+                The Throne asks its audience to consider whether a system that demands this outcome can truly
+                be called orderly, or whether it is simply violence dressed in the language of virtue.
+            </p>
+        </div>
+
+        <p>
+            Third, the legacy of Prince Sado ripples forward through Korean history. His son, King Jeongjo,
+            ascended the throne in 1776 and spent his reign attempting to rehabilitate his father's name.
+            Jeongjo built the fortress of Hwaseong in Suwon partly to honor Sado, relocating his father's
+            tomb nearby. The question of how a society remembers its political victims, and whether
+            rehabilitation is possible within the same system that produced the injustice, remains relevant
+            in Korean political culture.
+        </p>
+
+    </article>
+
+    <!-- RIGHT: SIDEBAR -->
+    <aside class="sidebar">
+
+        <!-- QUICK FACTS -->
+        <div class="sidebar-card gold-border">
+            <h3>Quick Facts</h3>
+            <div class="fact-row">
+                <span class="fact-label">Director</span>
+                <span class="fact-value">Lee Joon-ik</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Year</span>
+                <span class="fact-value">2015</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Runtime</span>
+                <span class="fact-value">125 minutes</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Language</span>
+                <span class="fact-value">Korean</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Admissions</span>
+                <span class="fact-value">6.25 million</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Domestic Gross</span>
+                <span class="fact-value">~$33.2 million</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Production</span>
+                <span class="fact-value">Tiger Pictures</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Distribution</span>
+                <span class="fact-value">Showbox</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Cinematographer</span>
+                <span class="fact-value">Kim Tae-kyeong</span>
+            </div>
+        </div>
+
+        <!-- KEY HISTORICAL FIGURES -->
+        <div class="sidebar-card">
+            <h3>Key Historical Figures</h3>
+            <div class="figure-item">
+                <div class="figure-name">King Yeongjo <span class="kr">영조</span></div>
+                <div class="figure-desc">21st king of Joseon (r. 1724-1776). Reformist monarch who pursued factional balance through the <em>t'angp'yŏng</em> policy. Ordered Sado's death in 1762. Played by Song Kang-ho.</div>
+            </div>
+            <div class="figure-item">
+                <div class="figure-name">Crown Prince Sado <span class="kr">사도세자</span></div>
+                <div class="figure-desc">Heir apparent (1735-1762). Second son of Yeongjo, died confined in a rice chest at age 27. Posthumously titled "Prince of Sorrow." Played by Yoo Ah-in.</div>
+            </div>
+            <div class="figure-item">
+                <div class="figure-name">Lady Hyegyeong <span class="kr">혜경궁 홍씨</span></div>
+                <div class="figure-desc">Crown Princess, wife of Sado. Author of the <em>Hanjungnok</em> memoirs (1795-1805), the primary historical source for the Sado tragedy. Played by Moon Geun-young.</div>
+            </div>
+            <div class="figure-item">
+                <div class="figure-name">King Jeongjo <span class="kr">정조</span></div>
+                <div class="figure-desc">Son of Sado, 22nd king of Joseon (r. 1776-1800). Spent his reign rehabilitating his father's memory. Built Hwaseong Fortress in Suwon.</div>
+            </div>
+        </div>
+
+        <!-- KEY TERMS -->
+        <div class="sidebar-card">
+            <h3>Key Terms</h3>
+            <div class="term-item">
+                <div class="term">Dwiju <span class="kr">뒤주</span></div>
+                <div class="definition">Wooden rice chest used for grain storage. The instrument of Sado's death, roughly 1.3 meters square. Chosen because it killed without defiling the royal body.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">T'angp'yŏng <span class="kr">탕평</span></div>
+                <div class="definition">"Grand harmony." Yeongjo's policy of balancing rival court factions to concentrate power in the throne rather than any single political bloc.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Noron / Soron <span class="kr">노론 / 소론</span></div>
+                <div class="definition">"Old Doctrine" and "Young Doctrine." The two dominant factions of 18th-century Joseon politics, split from the Westerner party over philosophical and political disputes.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Hanjungnok <span class="kr">한중록</span></div>
+                <div class="definition">"Records Written in Silence." Lady Hyegyeong's four memoirs (1795-1805), the key primary source for the Sado incident. Written in hangul, not literary Chinese.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Hyo <span class="kr">효</span></div>
+                <div class="definition">Filial piety. The foundational Confucian virtue of devotion and obedience to one's parents. Central to the film's moral conflict.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Yŏnjwaje <span class="kr">연좌제</span></div>
+                <div class="definition">Communal punishment. Joseon legal principle by which a traitor's family could be executed or exiled. The reason Yeongjo could not formally execute Sado.</div>
+            </div>
+        </div>
+
+        <!-- AWARDS -->
+        <div class="sidebar-card gold-border">
+            <h3>Awards and Honors</h3>
+            <ul class="award-list">
+                <li><span class="award-icon">*</span> Grand Prize (Daesang), 52nd Baeksang Arts Awards, 2016</li>
+                <li><span class="award-icon">*</span> Best Film, 35th Korean Association of Film Critics Awards</li>
+                <li><span class="award-icon">*</span> Best Screenplay, Korean Association of Film Critics Awards</li>
+                <li><span class="award-icon">*</span> Best Music, Korean Association of Film Critics Awards</li>
+                <li><span class="award-icon">*</span> Special Jury Prize, International Film Festival of India</li>
+                <li><span class="award-icon">*</span> South Korea's entry, 88th Academy Awards (Best Foreign Language Film)</li>
+            </ul>
+        </div>
+
+        <!-- DISCUSSION QUESTIONS -->
+        <div class="sidebar-card">
+            <h3>Discussion Questions</h3>
+            <ol class="discussion-list">
+                <li>Yeongjo is presented as both loving father and merciless king. How does the film argue that these two roles are irreconcilable within the Confucian political system?</li>
+                <li>The rice chest is simultaneously an instrument of murder and a legal technicality designed to protect Sado's family. What does this tell us about how violence is legitimized through bureaucratic procedure?</li>
+                <li>How does the film use its non-linear structure (cutting between Sado's childhood and the eight days of confinement) to complicate the question of guilt and innocence?</li>
+                <li>Lady Hyegyeong's memoirs are a political document as much as a personal one. How does the film handle the problem of a primary source written by someone with a clear agenda?</li>
+                <li>Compare the Noron/Soron factional system to other forms of political partisanship. What makes Joseon factionalism distinctive, and what about it feels universal?</li>
+                <li>King Jeongjo spent his reign rehabilitating Sado's name. Can a political system repair injustices it has produced, or does rehabilitation always require breaking from the system that caused the harm?</li>
+            </ol>
+        </div>
+
+        <!-- FURTHER READING -->
+        <div class="sidebar-card">
+            <h3>Further Reading</h3>
+            <ul class="reading-list">
+                <li><a href="https://www.ucpress.edu/books/the-memoirs-of-lady-hyegyong/paper">The Memoirs of Lady Hyegyong</a>, trans. JaHyun Kim Haboush, UC Press</li>
+                <li><a href="https://www.britannica.com/biography/Yeongjo">Yeongjo</a>, Britannica biography</li>
+                <li><a href="https://www.newworldencyclopedia.org/entry/Yeongjo_of_Joseon">Yeongjo of Joseon</a>, New World Encyclopedia</li>
+                <li><a href="https://variety.com/2015/film/festivals/the-throne-review-lee-joon-ik-1201607256/">Film Review: The Throne</a>, Variety (Justin Chang)</li>
+                <li><a href="https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=20148846">The Throne</a>, Korean Film Council (KOFIC)</li>
+                <li><a href="https://www.nbcnews.com/news/asian-america/director-lee-joon-ik-showcases-korean-history-philosophy-through-film-n601311">Director Lee Joon-ik Showcases Korean History Through Film</a>, NBC News</li>
+                <li><a href="https://www.hollywoodreporter.com/movies/movie-reviews/throne-sado-film-review-823808/">The Throne: Film Review</a>, The Hollywood Reporter</li>
+                <li><a href="https://www.cambridge.org/core/books/abs/past-forward/shocking-execution/DCCAA6BD59AB8A309821AA6A4618916D">A Shocking Execution</a>, Cambridge University Press (Past Forward)</li>
+            </ul>
+        </div>
+
+    </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>Korean History through Film | Deep Dive: The Throne (사도, 2015)</p>
+    <p style="margin-top: 0.25rem;">All sources linked inline. Page last updated March 2026.</p>
+</footer>
+
+</body>
+</html>

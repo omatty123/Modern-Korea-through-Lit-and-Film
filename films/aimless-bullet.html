@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film Deep Dive: Aimless Bullet (오발탄) | Korean History through Film</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #e0e0e0;
+      --ink-light: #9e9e9e;
+      --ink-faint: #757575;
+      --paper: #0a0a0a;
+      --paper-warm: #121212;
+      --surface: rgba(255,255,255,0.04);
+      --accent: #212121;
+      --accent-light: #424242;
+      --gold: #a67c00;
+      --border: rgba(255,255,255,0.1);
+      --shadow: rgba(0,0,0,0.4);
+      --frost: #bdbdbd;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    a { color: var(--frost); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* BREADCRUMB NAV */
+    nav {
+      background: #050505;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+    nav a {
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    nav .sep { color: rgba(255,255,255,0.25); margin: 0 0.4rem; font-size: 0.75rem; }
+    nav .current { color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(160deg, #000000 0%, #1a1a1a 40%, #2a2a2a 70%, #0d0d0d 100%);
+      padding: 4rem 2rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 70% 20%, rgba(166,124,0,0.06) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-korean {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 4rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.15);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.6rem;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.75rem;
+    }
+    .hero-meta strong { color: rgba(255,255,255,0.8); }
+
+    /* MAIN LAYOUT */
+    .content-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+    }
+
+    /* MAIN COLUMN */
+    .main h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--frost);
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent-light);
+    }
+    .main h2:first-child { margin-top: 0; }
+
+    .main h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .main p {
+      margin-bottom: 1.25rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .main p a { border-bottom: 1px solid rgba(189,189,189,0.3); }
+    .main p a:hover { border-bottom-color: var(--frost); text-decoration: none; }
+
+    /* DOC CARDS */
+    .doc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .doc-card.dark { border-left: 4px solid var(--accent-light); }
+    .doc-card.gold { border-left: 4px solid var(--gold); }
+    .doc-card.silver { border-left: 4px solid var(--frost); }
+
+    .doc-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--frost);
+      margin-bottom: 0.5rem;
+    }
+    .doc-card.gold h4 { color: var(--gold); }
+
+    .doc-card p {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .doc-card p:last-child { margin-bottom: 0; }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      background: linear-gradient(135deg, rgba(66,66,66,0.15) 0%, rgba(33,33,33,0.1) 100%);
+      border-left: 4px solid var(--gold);
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.7;
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-style: normal;
+      color: var(--ink-faint);
+    }
+
+    /* TIMELINE */
+    .timeline {
+      list-style: none;
+      position: relative;
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(166,124,0,0.3);
+    }
+    .timeline li {
+      position: relative;
+      padding: 0.75rem 0 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+    }
+    .timeline li:last-child { border-bottom: none; }
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: -1.85rem;
+      top: 1.1rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(166,124,0,0.4);
+      border: 2px solid var(--paper);
+    }
+    .timeline li.highlight::before {
+      background: var(--gold);
+      box-shadow: 0 0 8px rgba(166,124,0,0.5);
+    }
+    .timeline li strong { color: var(--gold); }
+    .timeline li em { color: var(--ink-faint); }
+
+    /* SIDEBAR */
+    .sidebar { align-self: start; position: sticky; top: 4rem; }
+
+    .sidebar-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .sidebar-box h3 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-box ul { list-style: none; font-size: 0.85rem; }
+    .sidebar-box li {
+      padding: 0.4rem 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.75);
+    }
+    .sidebar-box li:last-child { border-bottom: none; }
+    .sidebar-box li strong { color: var(--frost); font-weight: 600; }
+
+    .sidebar-box ol {
+      padding-left: 1.25rem;
+      font-size: 0.85rem;
+    }
+    .sidebar-box ol li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+    .sidebar-box ol li:last-child { border-bottom: none; }
+
+    .sidebar-box .source-link {
+      display: block;
+      padding: 0.35rem 0;
+      font-size: 0.8rem;
+      color: var(--frost);
+      border-bottom: 1px dotted rgba(255,255,255,0.06);
+    }
+    .sidebar-box .source-link:last-child { border-bottom: none; }
+    .sidebar-box .source-link:hover { color: #fff; }
+
+    /* FOOTER */
+    footer {
+      background: #050505;
+      padding: 2rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+    footer a { color: var(--gold); }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .two-col { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .hero-korean { font-size: 2.5rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .content-wrap { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Breadcrumb -->
+<nav>
+  <a href="../index.html">&larr; Course Index</a>
+  <span class="sep">/</span>
+  <span class="current">Aimless Bullet Deep Dive</span>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Film Deep Dive</div>
+    <div class="hero-korean">오발탄</div>
+    <h1>Aimless Bullet</h1>
+    <div class="hero-meta">
+      Directed by <strong>Yu Hyun-mok</strong> (유현목) &middot; 1961 &middot; 108 min<br>
+      Starring Ch'oe Mu-ryong, Kim Chin-gyu, Mun Chong-suk
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="content-wrap">
+  <div class="two-col">
+
+    <!-- LEFT: Main Column -->
+    <div class="main">
+
+      <h2>Historical Context: Post-War Korea</h2>
+
+      <p>The Korean War (1950-1953) left South Korea shattered. An estimated three million Koreans died, and the peninsula's infrastructure was obliterated. Seoul changed hands four times during the conflict and lay in ruins by the armistice. The country that emerged was one of the poorest in the world, dependent on American aid and governed by the increasingly autocratic Syngman Rhee. Millions of refugees, many from the North, crowded into improvised settlements with no resources, no prospects, and no end to their suffering in sight. (<a href="https://guides.loc.gov/south-korean-democratization-movement/april-19-revolution" target="_blank">Library of Congress</a>)</p>
+
+      <div class="doc-card dark">
+        <h4>Haebangchon: Liberation Village</h4>
+        <p>The film is set in Haebangchon ("Liberation Village"), a hillside settlement on the slopes of Namsan Mountain in central Seoul. Originally named for Koreans who settled there after liberation from Japanese colonial rule in 1945, the neighborhood swelled with refugees from the North after the Korean War. Settlers built shanties from scavenged materials: tin, wood scraps, and fragments of concrete. The streets were muddy alleys covered with wooden planks. For the displaced families who lived there, including many who had fled south from Pyongyang and Hwanghae Province, the name "Liberation Village" carried a bitter irony. They had been liberated from nothing. (<a href="https://www.koreatimes.co.kr/southkorea/globalcommunity/20230625/haebangchon-contains-layers-of-history" target="_blank">Korea Times</a>)</p>
+      </div>
+
+      <p>This is the world Yu Hyun-mok filmed on location in 1960. Aimless Bullet does not recreate post-war poverty on a studio set. It shows the real streets, the real buildings, the real faces of a capital city still reeling from catastrophe nearly a decade after the fighting stopped. The film captures a society where the war's physical destruction has hardened into permanent economic and psychological damage.</p>
+
+      <div class="doc-card gold">
+        <h4>The April Revolution (April 19, 1960)</h4>
+        <p>Aimless Bullet was produced in the brief democratic opening that followed the April Revolution. On April 19, 1960, some 30,000 students marched through Seoul to protest Syngman Rhee's rigged elections. By midday, over 100,000 citizens had joined them. Police opened fire, killing 186 people over two weeks of unrest. Rhee resigned on April 26 and fled to exile in Hawaii. The Second Republic that replaced him was chaotic but briefly free, and filmmakers seized the opening. Yu Hyun-mok made Aimless Bullet during this window, producing a film of startling social criticism that would have been impossible under Rhee. (<a href="https://www.monash.edu/arts/languages-literatures-cultures-linguistics/korean-studies-research-hub/research/on-this-day-in-korean-history/7-4.19-the-april-revolution" target="_blank">Monash University</a>)</p>
+      </div>
+
+      <h2>The Source Story</h2>
+
+      <p>The film is based on the short story "A Stray Bullet" (오발탄) by Yi Pom-son (이범선, 1920-1981), first published in 1959. Yi's story is widely regarded as one of the finest works of post-war Korean fiction. It follows an accountant named Song Ch'olho and his family as they disintegrate under the pressures of poverty, displacement, and psychological trauma in the years following the Korean War. (<a href="https://library.ltikorea.or.kr/node/17336" target="_blank">LTI Korea Digital Library</a>)</p>
+
+      <p>Yi Pom-son drew from direct observation. Like his characters, he had experienced the war and its aftermath firsthand. His prose is spare and relentless, piling detail upon detail of economic desperation without offering any escape or redemption. The story's title refers to a bullet fired without aim, a metaphor for lives that have lost all direction and purpose. The English translation by Marshall R. Pihl appears in several anthologies of Korean literature, including <em>The Drizzle and Other Korean Short Stories</em>. (<a href="https://koreanliterature.wordpress.com/2011/08/12/yi-bomson-%E2%80%9Can-aimless-bullet%E2%80%9D-1959/" target="_blank">Korean Literature Blog</a>)</p>
+
+      <h2>Director: Yu Hyun-mok</h2>
+
+      <p>Yu Hyun-mok (유현목, July 2, 1925 - June 28, 2009) was born in Sariwon, Hwanghae Province, in what is now North Korea. He relocated to Seoul in 1939, studied Korean language at Dongguk University, and entered the film industry as an assistant director in 1946. He made his feature debut with <em>Crossroads</em> in 1956. Over the next five decades he directed more than 40 films and became one of the foundational figures of Korean cinema. (<a href="https://www.koreanfilm.org/yuhyunmok.html" target="_blank">koreanfilm.org</a>)</p>
+
+      <p>Yu is often called the pioneer of Korean cinematic realism. His films deal with social conditions, political structures, and the lives of ordinary people crushed by forces beyond their control. Italian neorealism was a major influence. Just as Vittorio De Sica used real streets and non-professional actors to expose poverty in post-war Italy, Yu used the actual neighborhoods of Seoul to document the scars of the Korean War. His commitment to social criticism repeatedly put him at odds with both commercial producers and the government. (<a href="https://www.koreanfilm.or.kr/eng/films/index/peopleView.jsp?peopleCd=10054133" target="_blank">Korean Film Council</a>)</p>
+
+      <h3>Selected Filmography</h3>
+
+      <ul class="timeline">
+        <li><strong>1956:</strong> Crossroads (십자로). Feature debut.</li>
+        <li class="highlight"><strong>1961:</strong> Aimless Bullet (오발탄). His masterpiece. Banned by the military government, later recognized as the greatest Korean film.</li>
+        <li><strong>1963:</strong> Daughters of Pharmacist Kim (김약국의 딸들).</li>
+        <li><strong>1967:</strong> Guests Who Arrived on the Last Train (막차로 온 손님들).</li>
+        <li><strong>1975:</strong> Flame (불꽃).</li>
+        <li><strong>1977:</strong> Rainy Days (장마).</li>
+      </ul>
+
+      <p>Beyond directing, Yu contributed to Korean animation by producing <em>Robot Taekwon V</em> (1976), founded experimental film groups including Cinepoem and the Korean Small-Gauge Film Club, and taught film at the university level for decades. He also served as chairman of the Korean Directors' Association and as director of the Korean Film Archive. He is remembered alongside Kim Ki-young and Shin Sang-ok as one of the three master filmmakers who debuted in the 1950s and defined South Korean cinema. (<a href="https://www.koreanfilm.org/yuhyunmok.html" target="_blank">koreanfilm.org</a>)</p>
+
+      <h2>Film Analysis</h2>
+
+      <p>Aimless Bullet follows two brothers living with their family in the slums of Haebangchon. Song Ch'olho (played by Kim Chin-gyu) is an accountant at a small company, earning barely enough to survive. He suffers from a severe toothache he cannot afford to treat, a physical manifestation of pain that the country itself refuses to address. His younger brother Yongho (Ch'oe Mu-ryong) is an unemployed veteran, restless and directionless after the war, unable to find work or meaning in a society that has no use for former soldiers. (<a href="https://www.filmlinc.org/films/aimless-bullet/" target="_blank">Film at Lincoln Center</a>)</p>
+
+      <p>Around them, the family fractures. Their mother, a refugee from the North, has lost her mind and repeats a single phrase over and over: "Let's go" (가자). She means the North. She means home. She means a place that no longer exists. Ch'olho's wife dies in childbirth. His sister turns to prostitution, servicing American soldiers to earn money the family desperately needs. The veteran brother, unable to bear his purposelessness, attempts a bank robbery. Every member of the family is destroyed by the same systemic failure: a society that survived the war physically but not morally or economically. (<a href="https://www.monash.edu/arts/languages-literatures-cultures-linguistics/korean-studies-research-hub/research/100-korean-films-to-see-before-you-die/2-aimless-bullet-1961" target="_blank">Monash University</a>)</p>
+
+      <div class="pull-quote">
+        "Let's go... let's go..."
+        <cite>The mother's repeated cry, the line that would lead to the film's banning</cite>
+      </div>
+
+      <h3>Style and Technique</h3>
+
+      <p>Yu Hyun-mok blends Italian neorealism with expressionist techniques. The on-location shooting in Seoul's slums gives the film documentary texture, but the cinematography and editing push beyond mere observation. The black-and-white photography transforms the city into a landscape of shadows and sharp contrasts, a noir geography of entrapment. Ch'olho's toothache, which throbs through the entire film, functions as both literal suffering and symbolic commentary: this is a society in constant, untreated pain. Film at Lincoln Center describes the film as "artfully blend[ing] expressionist and neorealist styles within a grimly introspective portrait of a nation left shattered by hatred and fear." (<a href="https://www.filmlinc.org/films/aimless-bullet/" target="_blank">Film at Lincoln Center</a>)</p>
+
+      <p>Rather than depicting dramatic collapse, the film shows slow erosion. Lives are quietly worn down by debt, trauma, and a social order struggling to rebuild on spiritual ruins. Its bleakness is not decorative. It functions as a diagnosis, an autopsy of post-war society performed while the patient is still alive. (<a href="https://windowsonworlds.com/2017/03/11/aimless-bullet-%EC%98%A4%EB%B0%9C%ED%83%84-aka-obaltan-yu-hyun-mok-1961/" target="_blank">Windows on Worlds</a>)</p>
+
+      <h2>Censorship and Legacy</h2>
+
+      <p>Aimless Bullet was released in April 1961, during the brief democratic opening of the Second Republic. One month later, on May 16, 1961, General Park Chung-hee led a military coup that toppled the civilian government. The new regime moved quickly to control all media. The Ministry of Public Information was established on May 20, 1961, and the Motion Picture Law followed on January 20, 1962, giving the state near-total administrative control over film production, distribution, and exhibition. (<a href="https://apjjf.org/2012/10/52/brian-yecies/3875/article" target="_blank">Asia-Pacific Journal</a>)</p>
+
+      <div class="doc-card silver">
+        <h4>The Ban</h4>
+        <p>The military government pulled Aimless Bullet from theaters in 1962. The stated reason centered on the film's relentlessly negative portrayal of South Korean society, but officials also targeted the mother's repeated line "Let's go" (가자), interpreting it as a call to go to North Korea. In a divided country where any hint of sympathy toward the North could be treated as a crime, even a delusional old woman's cry for a lost home became politically dangerous. The ban was lifted in 1963, after the film advanced to the finals of the San Francisco International Film Festival, an embarrassment the regime could not easily explain away. (<a href="https://harvardfilmarchive.org/calendar/aimless-bullet-2023-12" target="_blank">Harvard Film Archive</a>)</p>
+      </div>
+
+      <p>The film's reputation grew steadily after the ban was lifted. In 1999, Korean film critics voted Aimless Bullet the greatest Korean film ever made. The Korean Film Archive completed a painstaking restoration in 2015, spending two years removing 678 hand-lettered English subtitles that had been burned into the only surviving 35mm print. The restored version premiered at the 2017 Berlin International Film Festival. (<a href="https://www.berlinale.de/en/2017/programme/201719708.html" target="_blank">Berlinale</a>)</p>
+
+      <p>Monash University's "100 Korean Films to See Before You Die" ranks Aimless Bullet at number two, calling it "a rigorous, taboo-breaking portrayal of the nation in the microcosmic form of an impoverished family, and a sustained contemplation of post-war trauma." South Korea's dashed hopes amidst desperate conditions echoed the European experience after World War II, and Yu's debt to Italian neorealism (particularly De Sica's <em>Bicycle Thieves</em>) has been widely noted. (<a href="https://www.monash.edu/arts/languages-literatures-cultures-linguistics/korean-studies-research-hub/research/100-korean-films-to-see-before-you-die/2-aimless-bullet-1961" target="_blank">Monash University</a>)</p>
+
+      <h2>Connection to Course Themes</h2>
+
+      <p>Aimless Bullet sits at the intersection of several core themes in this course. It is a document of post-war reconstruction, or more precisely, the failure of reconstruction to reach ordinary people. It is a portrait of displaced North Korean refugees, people who crossed the 38th parallel and found not safety but a different kind of suffering. It is an artifact of censorship under dictatorship, a film that was made possible by one brief democratic moment and then suppressed by the authoritarian regime that followed.</p>
+
+      <div class="doc-card gold">
+        <h4>The Personal as Political</h4>
+        <p>Like Peppermint Candy (1999), which maps twenty years of Korean history onto one man's disintegration, Aimless Bullet uses a single family to diagnose a national condition. The difference is temporal. Peppermint Candy looks back from the vantage point of decades. Aimless Bullet was made in the middle of the crisis it depicts, with no retrospective distance and no knowledge of how the story would end. That immediacy gives it a raw, almost documentary urgency that later films cannot replicate.</p>
+      </div>
+
+      <p>The film also raises questions about what art can accomplish under political constraint. Yu Hyun-mok made Aimless Bullet during a thirteen-month window between the fall of Rhee's dictatorship and the rise of Park's. The fact that the film was banned almost immediately confirms its power: the military government understood that a truthful depiction of post-war poverty was itself a political act, an indictment of the state's failure to care for its own people.</p>
+
+    </div>
+
+    <!-- RIGHT: Sidebar -->
+    <div class="sidebar">
+
+      <div class="sidebar-box">
+        <h3>Quick Facts</h3>
+        <ul>
+          <li><strong>Korean Title:</strong> 오발탄 (Obaltan)</li>
+          <li><strong>Director:</strong> Yu Hyun-mok (유현목)</li>
+          <li><strong>Year:</strong> 1961</li>
+          <li><strong>Runtime:</strong> 108 minutes</li>
+          <li><strong>Genre:</strong> Drama, Tragedy</li>
+          <li><strong>Lead:</strong> Kim Chin-gyu as Song Ch'olho</li>
+          <li><strong>Lead:</strong> Ch'oe Mu-ryong as Yongho</li>
+          <li><strong>Supporting:</strong> Mun Chong-suk</li>
+          <li><strong>Source:</strong> "A Stray Bullet" by Yi Pom-son (1959)</li>
+          <li><strong>Format:</strong> Black and white</li>
+          <li><strong>Restored:</strong> 2015 by Korean Film Archive</li>
+          <li><strong>Ranking:</strong> Voted greatest Korean film, 1999 critics' poll</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Key Historical Context</h3>
+        <ul>
+          <li><strong>1950-53:</strong> Korean War. Three million dead. Seoul destroyed four times.</li>
+          <li><strong>1953-60:</strong> Syngman Rhee's authoritarian First Republic. Mass poverty. American aid dependency.</li>
+          <li><strong>1945-53:</strong> Haebangchon settles with refugees from the North, becoming one of Seoul's largest slum neighborhoods.</li>
+          <li><strong>Apr 1960:</strong> April Revolution. Students overthrow Rhee. Brief democratic opening (Second Republic).</li>
+          <li><strong>1961:</strong> Aimless Bullet produced and released during the Second Republic's fragile democracy.</li>
+          <li><strong>May 16, 1961:</strong> Park Chung-hee's military coup ends civilian rule. Motion Picture Law follows in January 1962.</li>
+          <li><strong>1962:</strong> Aimless Bullet banned by the military government.</li>
+          <li><strong>1963:</strong> Ban lifted after the film reaches San Francisco Film Festival finals.</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Discussion Questions</h3>
+        <ol>
+          <li>Ch'olho's toothache persists throughout the entire film. How does this physical suffering function as a metaphor for the condition of post-war Korean society?</li>
+          <li>The mother repeats "Let's go" (가자) constantly. The military government interpreted this as pro-North propaganda. What does the line actually mean within the film's emotional logic?</li>
+          <li>Compare Yu Hyun-mok's neorealist approach to the Italian films that influenced him (De Sica's Bicycle Thieves, for example). What does the Korean context add or change?</li>
+          <li>The film was made during a thirteen-month democratic window between two dictatorships. How does political context shape what art is possible?</li>
+          <li>Yongho is a veteran who cannot find work or purpose after the war. How does the film portray the state's failure toward its own soldiers?</li>
+        </ol>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Course Connections</h3>
+        <ul>
+          <li><strong>Theme:</strong> Post-war reconstruction, displacement, censorship</li>
+          <li><strong>Compare:</strong> Peppermint Candy (1999) for personal biography as national allegory</li>
+          <li><strong>Context:</strong> Korean War aftermath, division of Korea, refugee experience</li>
+          <li><strong>Political arc:</strong> Rhee dictatorship, April Revolution, Park coup</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>Further Reading and Sources</h3>
+        <a class="source-link" href="https://www.filmlinc.org/films/aimless-bullet/" target="_blank">Film at Lincoln Center: Aimless Bullet</a>
+        <a class="source-link" href="https://www.monash.edu/arts/languages-literatures-cultures-linguistics/korean-studies-research-hub/research/100-korean-films-to-see-before-you-die/2-aimless-bullet-1961" target="_blank">Monash: 100 Korean Films (#2)</a>
+        <a class="source-link" href="https://harvardfilmarchive.org/calendar/aimless-bullet-2023-12" target="_blank">Harvard Film Archive: Aimless Bullet</a>
+        <a class="source-link" href="https://www.berlinale.de/en/2017/programme/201719708.html" target="_blank">Berlinale 2017: Restored Premiere</a>
+        <a class="source-link" href="https://www.koreanfilm.org/yuhyunmok.html" target="_blank">koreanfilm.org: Yu Hyun-mok</a>
+        <a class="source-link" href="https://www.koreanfilm.or.kr/eng/films/index/peopleView.jsp?peopleCd=10054133" target="_blank">Korean Film Council: Yu Hyun-mok</a>
+        <a class="source-link" href="https://library.ltikorea.or.kr/node/17336" target="_blank">LTI Korea: A Stray Bullet</a>
+        <a class="source-link" href="https://koreanliterature.wordpress.com/2011/08/12/yi-bomson-%E2%80%9Can-aimless-bullet%E2%80%9D-1959/" target="_blank">Korean Literature Blog: Yi Pom-son</a>
+        <a class="source-link" href="https://www.koreatimes.co.kr/southkorea/globalcommunity/20230625/haebangchon-contains-layers-of-history" target="_blank">Korea Times: Haebangchon History</a>
+        <a class="source-link" href="https://apjjf.org/2012/10/52/brian-yecies/3875/article" target="_blank">Asia-Pacific Journal: Park's Film Cartel</a>
+        <a class="source-link" href="https://windowsonworlds.com/2017/03/11/aimless-bullet-%EC%98%A4%EB%B0%9C%ED%83%84-aka-obaltan-yu-hyun-mok-1961/" target="_blank">Windows on Worlds: Film Review</a>
+        <a class="source-link" href="https://guides.loc.gov/south-korean-democratization-movement/april-19-revolution" target="_blank">Library of Congress: April Revolution</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div>Korean History through Literature and Film &middot; Spring 2026<br>Lawrence University</div>
+    <div><a href="../index.html">&larr; Back to Course Index</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
