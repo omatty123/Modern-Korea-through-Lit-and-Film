@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Throne (2015) | Korean History through Film</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --ink: #1a1a1a;
@@ -23,7 +23,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: 'Outfit', -apple-system, sans-serif;
             background: var(--paper);
             color: var(--ink);
             line-height: 1.7;
@@ -87,7 +87,7 @@
         }
 
         .hero h1 {
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Newsreader', Georgia, serif;
             font-size: 2.8rem;
             font-weight: 500;
             color: #fff;
@@ -142,7 +142,7 @@
 
         /* MAIN CONTENT */
         .main-content h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Newsreader', serif;
             font-size: 1.45rem;
             font-weight: 500;
             color: var(--ink);
@@ -157,7 +157,7 @@
         }
 
         .main-content h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Newsreader', serif;
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--accent);
@@ -196,7 +196,7 @@
         .doc-card.dark { border-left-color: #333; }
 
         .doc-card h4 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Newsreader', serif;
             font-size: 0.95rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
@@ -226,7 +226,7 @@
         }
 
         .pull-quote p {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Newsreader', serif;
             font-size: 1rem;
             font-style: italic;
             color: var(--ink);
@@ -235,7 +235,7 @@
         }
 
         .pull-quote .attribution {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: 0.75rem;
             font-style: normal;
             color: var(--ink-faint);
@@ -252,7 +252,7 @@
         }
 
         .sidebar-card h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Newsreader', serif;
             font-size: 1rem;
             font-weight: 600;
             color: var(--ink);
@@ -437,6 +437,74 @@
 
         footer a { color: var(--accent); text-decoration: none; }
         footer a:hover { text-decoration: underline; }
+
+        /* FILM NAVIGATION ARROWS */
+        .film-nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .film-nav-arrow a {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            padding: 1.25rem 0.6rem;
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(8px);
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .film-nav-arrow a:hover {
+            background: var(--accent);
+            color: #fff;
+            gap: 0.5rem;
+        }
+
+        .film-nav-arrow.prev { left: 0.5rem; }
+        .film-nav-arrow.next { right: 0.5rem; }
+
+        .film-nav-arrow .arrow-icon {
+            font-size: 1.5rem;
+            line-height: 1;
+            font-weight: 300;
+        }
+
+        .film-nav-arrow .nav-title {
+            max-width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            transition: max-width 0.3s ease, opacity 0.2s ease;
+            opacity: 0;
+            font-size: 0.72rem;
+            letter-spacing: 0.01em;
+        }
+
+        .film-nav-arrow a:hover .nav-title {
+            max-width: 160px;
+            opacity: 1;
+        }
+
+        @media (max-width: 900px) {
+            .film-nav-arrow {
+                top: auto;
+                bottom: 1rem;
+                transform: none;
+            }
+            .film-nav-arrow a {
+                gap: 0.4rem;
+                padding: 0.75rem 0.75rem;
+            }
+            .film-nav-arrow .nav-title {
+                max-width: none;
+                opacity: 1;
+                font-size: 0.65rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -914,6 +982,9 @@
     <p>Korean History through Film | Deep Dive: The Throne (사도, 2015)</p>
     <p style="margin-top: 0.25rem;">All sources linked inline. Page last updated March 2026.</p>
 </footer>
+
+
+<div class="film-nav-arrow next"><a href="sopyonje.html"><span class="nav-title">Sopyonje</span><span class="arrow-icon">&#8250;</span></a></div>
 
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A State of Mind (2004) | Korean History through Film</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --ink: #1a1a1a;
@@ -23,7 +23,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: 'Outfit', -apple-system, sans-serif;
             background: var(--paper);
             color: var(--ink);
             line-height: 1.7;
@@ -72,7 +72,7 @@
             margin-bottom: 0.75rem;
         }
         .hero h1 {
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Newsreader', Georgia, serif;
             font-size: 2.6rem;
             font-weight: 500;
             color: #fff;
@@ -108,7 +108,7 @@
 
         /* SECTION HEADERS */
         .section-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Newsreader', serif;
             font-size: 1.4rem;
             font-weight: 500;
             color: var(--ink);
@@ -131,7 +131,7 @@
         .doc-card.light-border { border-left-color: var(--accent-light); }
 
         .doc-card h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Newsreader', serif;
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.6rem;
@@ -166,7 +166,7 @@
             margin-bottom: 1.25rem;
         }
         .sidebar-card h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Newsreader', serif;
             font-size: 1rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
@@ -267,7 +267,7 @@
             border-top: 1px solid var(--border);
         }
         .sources-section h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Newsreader', serif;
             font-size: 1rem;
             margin-bottom: 0.75rem;
         }
@@ -291,6 +291,74 @@
             .hero h1 { font-size: 1.8rem; }
             .main-wrap { padding: 1.5rem; }
             .hero-meta { flex-direction: column; gap: 0.5rem; }
+        }
+
+        /* FILM NAVIGATION ARROWS */
+        .film-nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .film-nav-arrow a {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            padding: 1.25rem 0.6rem;
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(8px);
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .film-nav-arrow a:hover {
+            background: var(--accent);
+            color: #fff;
+            gap: 0.5rem;
+        }
+
+        .film-nav-arrow.prev { left: 0.5rem; }
+        .film-nav-arrow.next { right: 0.5rem; }
+
+        .film-nav-arrow .arrow-icon {
+            font-size: 1.5rem;
+            line-height: 1;
+            font-weight: 300;
+        }
+
+        .film-nav-arrow .nav-title {
+            max-width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            transition: max-width 0.3s ease, opacity 0.2s ease;
+            opacity: 0;
+            font-size: 0.72rem;
+            letter-spacing: 0.01em;
+        }
+
+        .film-nav-arrow a:hover .nav-title {
+            max-width: 160px;
+            opacity: 1;
+        }
+
+        @media (max-width: 900px) {
+            .film-nav-arrow {
+                top: auto;
+                bottom: 1rem;
+                transform: none;
+            }
+            .film-nav-arrow a {
+                gap: 0.4rem;
+                padding: 0.75rem 0.75rem;
+            }
+            .film-nav-arrow .nav-title {
+                max-width: none;
+                opacity: 1;
+                font-size: 0.65rem;
+            }
         }
     </style>
 </head>
@@ -563,6 +631,9 @@
         <div><a href="../index.html">Film Index</a></div>
     </div>
 </footer>
+
+
+<div class="film-nav-arrow prev"><a href="parasite.html"><span class="arrow-icon">&#8249;</span><span class="nav-title">Parasite</span></a></div>
 
 </body>
 </html>
