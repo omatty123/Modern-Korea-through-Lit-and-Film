@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Flower Girl (1972) | Korean History through Film</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #faf9f7;
+            --paper-warm: #f5f3ef;
+            --surface: #fff;
+            --accent: #b71c1c;
+            --accent-light: #c62828;
+            --gold: #a67c00;
+            --border: #e0dcd5;
+            --shadow: rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            font-size: 0.78rem;
+            color: var(--ink-faint);
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #4a0000 0%, #b71c1c 40%, #c62828 100%);
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .course-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero .korean-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.65);
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hero-meta .tag {
+            background: rgba(255,255,255,0.12);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2px;
+            font-size: 0.7rem;
+            letter-spacing: 0.04em;
+        }
+
+        /* MAIN GRID */
+        .main-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 860px) {
+            .main-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MAIN CONTENT */
+        .main-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .main-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .main-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .main-content p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--ink-light);
+        }
+
+        .main-content a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .main-content a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* DOC CARDS */
+        .doc-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 3px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+
+        .doc-card.gold { border-left-color: var(--gold); }
+        .doc-card.red { border-left-color: var(--accent); }
+        .doc-card.dark { border-left-color: #333; }
+
+        .doc-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+
+        .doc-card p, .doc-card li {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            line-height: 1.65;
+        }
+
+        .doc-card ul {
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .doc-card li { margin-bottom: 0.3rem; }
+
+        /* PULL QUOTE */
+        .pull-quote {
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            background: var(--paper-warm);
+            border-radius: 0 3px 3px 0;
+        }
+
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.6;
+            margin-bottom: 0.3rem;
+        }
+
+        .pull-quote .attribution {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-style: normal;
+            color: var(--ink-faint);
+        }
+
+        /* SIDEBAR */
+        .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        .sidebar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.25rem;
+        }
+
+        .sidebar-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .sidebar-card.gold-border h3 { border-bottom-color: var(--gold); }
+
+        .fact-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+        }
+
+        .fact-row:last-child { border-bottom: none; }
+
+        .fact-label {
+            font-weight: 600;
+            color: var(--ink);
+            flex-shrink: 0;
+            margin-right: 0.5rem;
+        }
+
+        .fact-value {
+            color: var(--ink-light);
+            text-align: right;
+        }
+
+        .term-item {
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .term-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+        .term-item .term {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        .term-item .term .kr {
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 400;
+            color: var(--ink-faint);
+            font-size: 0.8rem;
+        }
+
+        .term-item .definition {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            margin-top: 0.2rem;
+            line-height: 1.55;
+        }
+
+        .opera-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .opera-list li {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            padding: 0.45rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.55;
+        }
+
+        .opera-list li:last-child { border-bottom: none; }
+
+        .opera-list .opera-title {
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .discussion-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: discussion;
+        }
+
+        .discussion-list li {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.55;
+            counter-increment: discussion;
+        }
+
+        .discussion-list li::before {
+            content: counter(discussion) ".";
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 0.4rem;
+        }
+
+        .discussion-list li:last-child { border-bottom: none; }
+
+        .reading-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reading-list li {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.5;
+        }
+
+        .reading-list li:last-child { border-bottom: none; }
+
+        .reading-list a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .reading-list a:hover { text-decoration: underline; }
+
+        /* SOURCE TAG */
+        .source-tag {
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            display: inline;
+        }
+
+        .source-tag a {
+            color: var(--ink-faint);
+            text-decoration: underline;
+            text-decoration-style: dotted;
+        }
+
+        .source-tag a:hover { color: var(--accent); }
+
+        /* FOOTER */
+        footer {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+        }
+
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb">
+    <a href="../index.html">&larr; Back to Korean History through Film</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="course-label">Deep Dive</div>
+        <h1>The Flower Girl</h1>
+        <div class="korean-title">꽃파는 처녀</div>
+        <div class="hero-meta">
+            <span>Dir. Choe Ik-gyu (최익규) / Scr. Pak Hak (박학)</span>
+            <span>1972</span>
+            <span>Color</span>
+            <span class="tag">Revolutionary Drama</span>
+            <span class="tag">DPRK Cinema</span>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN GRID -->
+<div class="main-wrap">
+
+    <!-- LEFT: MAIN CONTENT -->
+    <article class="main-content">
+
+        <h2>Historical Context: Colonial Suffering and Revolutionary Art</h2>
+
+        <p>
+            The Flower Girl draws on an experience that was devastatingly real for millions of
+            Koreans: life under Japanese colonial rule (1910-1945). Forced labor, land seizure,
+            cultural suppression, and everyday violence defined the colonial period. The landlord
+            class (often collaborating with Japanese authorities) extracted wealth from peasant
+            families who had no legal recourse. The film's depiction of Kkotpun's suffering is
+            not invented. It is a composite of what Korean families actually endured.
+        </p>
+
+        <p>
+            This matters because Western analysis of DPRK cinema tends to start and stop at
+            "propaganda," as if labeling the work settles the question. It does not. The colonial
+            wound was real. The poverty was real. The resistance was real. What makes The Flower
+            Girl worth studying is not whether it serves the state (all national cinemas do, in
+            different ways) but how it transforms lived historical experience into a narrative
+            form that resonated across borders, from Pyongyang to Beijing to Prague.
+        </p>
+
+        <p>
+            The DPRK developed a distinctive film tradition grounded in Kim Il-sung's 1966
+            directive: "Our art should develop in a revolutionary way, reflecting the Socialist
+            content with the national form." This was not simply an order to make propaganda.
+            It was an insistence on cultural sovereignty, that Korean art should be neither
+            Soviet imitation nor Western borrowing, but something rooted in Korean experience.
+            The Korean Art Film Studio, founded in 1947 outside Pyongyang, became the center of
+            this effort, eventually employing roughly 1,800 workers and producing up to 80 films
+            per year at its peak.
+            <span class="source-tag">(<a href="https://en.wikipedia.org/wiki/Cinema_of_North_Korea">Cinema of North Korea, Wikipedia</a>)</span>
+        </p>
+
+        <div class="doc-card gold">
+            <h4>Seed Theory and Juche Aesthetics</h4>
+            <p>
+                In 1973, one year after The Flower Girl's release, Kim Jong-il published
+                <em>On the Art of the Cinema</em>, which codified DPRK filmmaking philosophy
+                through the "seed theory" (종자론, <em>chongjaron</em>). Every work of art,
+                Kim argued, must grow from a single ideological "seed," the core experience
+                or truth that organizes all its elements. This is often reduced to "propaganda
+                manual" in Western commentary. But the seed theory also reflects a serious (if
+                restrictive) aesthetic position: that art must be unified around a central
+                vision rather than assembled from competing impulses.
+                <span class="source-tag">(<a href="https://en.wikipedia.org/wiki/On_the_Art_of_the_Cinema">On the Art of the Cinema, Wikipedia</a>)</span>
+            </p>
+        </div>
+
+        <h2>Revolutionary Opera Origins</h2>
+
+        <p>
+            The Flower Girl began its life not as a film but as a stage play. According to DPRK
+            official history, Kim Il-sung wrote the original script in the late 1920s while he was
+            a student in Jilin, Manchuria. He reportedly staged the play in the Samsong school hall
+            on the 13th anniversary of the October Revolution (November 1930). The story circulated
+            among anti-Japanese guerrilla fighters during the 1930s as a piece of revolutionary
+            agitprop, though independent verification of these claims is impossible.
+            <span class="source-tag">(<a href="https://www.cultureready.org/blog/flower-girl-most-well-known-north-korean-opera-and-film">CultureReady</a>)</span>
+        </p>
+
+        <p>
+            After decades in dormancy, the work was revived in the early 1970s under Kim Jong-il's
+            supervision as part of a broader campaign to create a canon of revolutionary operas. The
+            first of these, <em>Sea of Blood</em> (피바다), premiered at the Pyongyang Grand Theatre
+            in July 1971. The Flower Girl followed as the second of what would become the "Five Great
+            Revolutionary Operas." The opera premiered on November 30, 1972, in Pyongyang.
+            <span class="source-tag">(<a href="https://en.wikipedia.org/wiki/Korean_revolutionary_opera">Korean revolutionary opera, Wikipedia</a>)</span>
+        </p>
+
+        <div class="doc-card dark">
+            <h4>Authorship and Legitimacy</h4>
+            <p>
+                The attribution of The Flower Girl to Kim Il-sung serves a specific political function.
+                By tracing the work to the 1930s guerrilla period, the regime connects its cultural
+                achievements directly to the anti-Japanese resistance, the founding myth of the DPRK.
+                Chinese critics have questioned whether Kim Il-sung was the sole author, suggesting
+                that other North Korean writers may have contributed. But the authorship claim is less
+                about literary credit than about political genealogy. It places the Kim family at the
+                origin point of Korean revolutionary culture itself.
+                <span class="source-tag">(<a href="https://en.wikipedia.org/wiki/The_Flower_Girl">The Flower Girl, Wikipedia</a>)</span>
+            </p>
+        </div>
+
+        <h2>The Film</h2>
+
+        <h3>Plot</h3>
+
+        <p>
+            The story is set in the 1930s under Japanese colonial occupation. Kkotpun (꽃분), a young
+            woman, sells flowers on the street to support her ailing mother and her younger sister
+            Sunhui, who was blinded by the landlord's wife throwing lye in her face. The landlord
+            killed Kkotpun's father. Her brother, a resistance fighter, has been imprisoned by the
+            Japanese. The family's suffering is total: economic exploitation, physical violence,
+            and the crushing weight of colonial authority.
+            <span class="source-tag">(<a href="https://www.imdb.com/title/tt0168937/">IMDb</a>)</span>
+        </p>
+
+        <p>
+            Kkotpun endures her degradation with patience, selling flowers and caring for her family.
+            The narrative arc bends toward liberation when her brother escapes from prison and returns
+            as a revolutionary guerrilla. The film ends with the family joining the anti-Japanese
+            resistance, transforming from passive victims into active participants in their own
+            liberation. This trajectory, from suffering under oppression to awakening through
+            revolutionary consciousness, is the fundamental narrative template of all DPRK
+            revolutionary art.
+            <span class="source-tag">(<a href="https://www.cinemaescapist.com/2015/02/review-the-flower-girl-north-korea-1972/">Cinema Escapist</a>)</span>
+        </p>
+
+        <h3>Production and Cast</h3>
+
+        <p>
+            The film was directed by Choe Ik-gyu with a screenplay by Pak Hak. It was produced by
+            the Paekdu-san Group and shot in color. The lead role of Kkotpun was performed by Hong
+            Yong-hee (홍영희), whose portrayal made her the most famous actress in North Korean
+            history. She was later depicted on the DPRK's one-won banknote in her role as the flower
+            girl, an honor she held until the currency was made obsolete by hyperinflation in 2009.
+            A statue at the Pyongyang Film Studio depicts Kim Il-sung standing among the film's cast
+            and crew.
+            <span class="source-tag">(<a href="https://www.cinemaescapist.com/2015/02/review-the-flower-girl-north-korea-1972/">Cinema Escapist</a> /
+            <a href="https://en.wikipedia.org/wiki/The_Flower_Girl">Wikipedia</a>)</span>
+        </p>
+
+        <div class="pull-quote">
+            <p>"North Korea's Gone with the Wind."</p>
+            <div class="attribution">James Bell, British Film Institute, describing The Flower Girl</div>
+        </div>
+
+        <h3>International Reception</h3>
+
+        <p>
+            The Flower Girl was the first North Korean film to win an international award, receiving
+            a special prize and special medal at the 18th Karlovy Vary International Film Festival in
+            Czechoslovakia in 1972. It remained the only DPRK film to achieve international
+            recognition until the 1980s. The film screened widely in Eastern Bloc countries and
+            throughout Asia.
+            <span class="source-tag">(<a href="https://en.wikipedia.org/wiki/The_Flower_Girl">The Flower Girl, Wikipedia</a>)</span>
+        </p>
+
+        <p>
+            Its most extraordinary reception came in China. Introduced to Chinese cinemas on September
+            9, 1972, during the final years of the Cultural Revolution, the film became a sensation.
+            Its themes of proletarian suffering and revolutionary awakening resonated with Chinese
+            audiences starved of new cultural material (most Chinese films and operas had been banned).
+            Demand was so high that some theaters adopted 24-hour screening cycles. Nobel Prize
+            laureate Mo Yan later described seeing the film in 1973 as "an event that I've never
+            forgotten and that remains tied to today's political and social life."
+            <span class="source-tag">(<a href="https://www.cinemaescapist.com/2015/02/review-the-flower-girl-north-korea-1972/">Cinema Escapist</a> /
+            <a href="https://en.wikipedia.org/wiki/The_Flower_Girl">Wikipedia</a>)</span>
+        </p>
+
+        <h2>DPRK Cinema in Context</h2>
+
+        <p>
+            The Flower Girl emerged from a film tradition that took cinema seriously as a national
+            art form. The DPRK invested heavily in film production from the state's founding,
+            treating it not as commercial entertainment but as cultural infrastructure, comparable
+            to how other nations fund national theaters, opera companies, or public broadcasting.
+            The Korean Art Film Studio's million-square-meter campus reflects this commitment.
+            <span class="source-tag">(<a href="https://en.wikipedia.org/wiki/Cinema_of_North_Korea">Cinema of North Korea, Wikipedia</a>)</span>
+        </p>
+
+        <p>
+            DPRK cinema explores recurring themes rooted in Korean historical experience:
+            resistance to foreign occupation, the Korean War, socialist construction, and daily
+            life. Anti-Japanese occupation films draw on the same colonial trauma that The Flower
+            Girl depicts. War films reflect a conflict that killed millions and remains technically
+            unresolved. Domestic dramas explore social ideals. What unites them is the juche
+            principle of cultural self-reliance: Korean stories told in Korean forms.
+            <span class="source-tag">(<a href="https://en.wikipedia.org/wiki/Cinema_of_North_Korea">Cinema of North Korea, Wikipedia</a>)</span>
+        </p>
+
+        <div class="doc-card red">
+            <h4>The Korean Art Film Studio</h4>
+            <p>
+                The DPRK's main production facility, the Korean Art Film Studio, sits outside
+                Pyongyang on a campus exceeding one million square meters. Founded in 1947, it is
+                run by the Ministry of Culture and employs approximately 1,800 people. The studio
+                contains elaborate sets designed to replicate colonial-era Korea, Manchuria in the
+                1930s, imperial Japan, and a generic "Western country." Visitors to the studio are
+                shown the statue of Kim Il-sung among the cast of The Flower Girl, reinforcing the
+                film's status as the industry's founding achievement.
+                <span class="source-tag">(<a href="https://koryogroup.com/blog/north-korea-guide-korean-art-film-studio">Koryo Tours</a> /
+                <a href="https://en.wikipedia.org/wiki/Korean_Art_Film_Studio">Wikipedia</a>)</span>
+            </p>
+        </div>
+
+        <h2>Critical Analysis: Art, Ideology, and Historical Experience</h2>
+
+        <p>
+            The Flower Girl challenges a binary that Western film criticism takes for granted:
+            the idea that "propaganda" and "art" are opposites, that a work is either one or the
+            other. This framework says more about Western assumptions than about the film.
+        </p>
+
+        <p>
+            The film's emotional power is real. Chinese audiences during the Cultural Revolution
+            did not weep in theaters because they were ordered to. The story of a young woman
+            crushed by colonial exploitation and class violence resonates because those experiences
+            were real for millions of Koreans under Japanese rule. When Kkotpun sells flowers to
+            feed her family while her brother rots in a Japanese prison, she is depicting something
+            that happened, not something invented for ideological convenience.
+        </p>
+
+        <p>
+            The harder question is not "is it propaganda?" (a lazy label that forecloses analysis)
+            but rather: how does the film channel genuine historical suffering toward a specific
+            political conclusion? The colonial wound is real. The narrative resolution, that
+            liberation comes specifically through revolutionary organization, is an interpretive
+            choice. Every national cinema makes similar choices. Hollywood's WWII films channel
+            real sacrifice toward American exceptionalism. South Korea's developmental-era cinema
+            was shaped by state censorship. The DPRK's approach is more explicit, but the
+            relationship between state and screen is a universal question, not a North Korean
+            peculiarity.
+        </p>
+
+        <div class="doc-card gold">
+            <h4>Connection to Course Themes</h4>
+            <ul>
+                <li><strong>States construct national stories.</strong> The Flower Girl shows how a
+                regime can take a real historical experience (colonial oppression) and reshape it
+                into a founding myth that serves present-day power. The suffering is real. The
+                conclusion (that only the Kim family can deliver liberation) is the ideological
+                addition.</li>
+                <li><strong>Colonial resistance as legitimation.</strong> Both Koreas use the
+                anti-Japanese resistance as a source of political legitimacy. The DPRK's version
+                centers the Kim family as the sole architects of liberation, erasing the contributions
+                of other resistance movements (nationalist, communist, religious).</li>
+                <li><strong>The propaganda-art spectrum.</strong> All national cinemas serve
+                ideological functions. Hollywood's World War II films were propaganda. South Korea's
+                developmental-era cinema was shaped by state censorship. The DPRK simply makes the
+                relationship between state and screen explicit rather than disguising it through
+                market mechanisms.</li>
+                <li><strong>Cultural export as soft power.</strong> The Flower Girl's success in China
+                and the Eastern Bloc demonstrates that even a heavily ideological film can travel
+                across borders when its emotional core connects with audiences' own experiences of
+                suffering and aspiration.</li>
+            </ul>
+        </div>
+
+        <p>
+            The opera version of The Flower Girl has been performed over 1,400 times in North Korea
+            and in more than 40 countries, including France, Italy, Germany, Algeria, and Japan. As
+            of 2008, it remained one of the most-performed works in the DPRK's cultural repertoire.
+            The film and the opera together form a single cultural monument: the origin story that
+            North Korea tells about itself.
+            <span class="source-tag">(<a href="https://www.cultureready.org/blog/flower-girl-most-well-known-north-korean-opera-and-film">CultureReady</a>)</span>
+        </p>
+
+    </article>
+
+    <!-- RIGHT: SIDEBAR -->
+    <aside class="sidebar">
+
+        <!-- QUICK FACTS -->
+        <div class="sidebar-card gold-border">
+            <h3>Quick Facts</h3>
+            <div class="fact-row">
+                <span class="fact-label">Director</span>
+                <span class="fact-value">Choe Ik-gyu (최익규)</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Screenplay</span>
+                <span class="fact-value">Pak Hak (박학)</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Year</span>
+                <span class="fact-value">1972</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Country</span>
+                <span class="fact-value">DPRK (North Korea)</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Language</span>
+                <span class="fact-value">Korean</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Format</span>
+                <span class="fact-value">Color</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Lead Actress</span>
+                <span class="fact-value">Hong Yong-hee (홍영희)</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Production</span>
+                <span class="fact-value">Paekdu-san Group</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Award</span>
+                <span class="fact-value">Special Prize, Karlovy Vary 1972</span>
+            </div>
+            <div class="fact-row">
+                <span class="fact-label">Opera Performances</span>
+                <span class="fact-value">1,400+ (as of 2008)</span>
+            </div>
+        </div>
+
+        <!-- KEY CONCEPTS -->
+        <div class="sidebar-card">
+            <h3>Key Concepts</h3>
+            <div class="term-item">
+                <div class="term">Juche Art <span class="kr">주체예술</span></div>
+                <div class="definition">Art governed by the juche (self-reliance) ideology. Kim Il-sung's 1966 directive demanded art that reflects "socialist content with the national form." All DPRK cultural production must serve the revolution while remaining distinctly Korean.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Revolutionary Opera <span class="kr">혁명가극</span></div>
+                <div class="definition">A genre of opera unique to North Korea, combining music, dance, and drama to dramatize revolutionary themes. Characterized by melodramatic style, realistic sets, dream sequences, and glorification of the Kim family and working people.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Seed Theory <span class="kr">종자론</span></div>
+                <div class="definition">From Kim Jong-il's <em>On the Art of the Cinema</em> (1973). Every work of art must be organized around a single ideological "seed," the synthesis of subject matter and propaganda message. The seed is the nucleus from which all elements of the work grow.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Socialist Realism</div>
+                <div class="definition">Soviet-originated artistic doctrine demanding that art depict reality in its "revolutionary development." The DPRK adopted and modified this into juche realism, adding Korean nationalist elements to the Soviet template.</div>
+            </div>
+            <div class="term-item">
+                <div class="term">Chollywood</div>
+                <div class="definition">Informal name for the DPRK film industry. A portmanteau of "chollima" (천리마, a mythical winged horse symbolizing rapid socialist progress) and "Hollywood."</div>
+            </div>
+        </div>
+
+        <!-- FIVE REVOLUTIONARY OPERAS -->
+        <div class="sidebar-card gold-border">
+            <h3>The Five Revolutionary Operas</h3>
+            <ul class="opera-list">
+                <li>
+                    <span class="opera-title">1. Sea of Blood</span> (피바다, 1971).
+                    The first revolutionary opera. A woman's family is destroyed by Japanese occupiers, leading her to join the communist resistance. Performed over 1,500 times.
+                </li>
+                <li>
+                    <span class="opera-title">2. The Flower Girl</span> (꽃파는 처녀, 1972).
+                    A young flower seller endures colonial oppression until her brother returns from prison as a revolutionary. Adapted into the landmark 1972 film.
+                </li>
+                <li>
+                    <span class="opera-title">3. A True Daughter of the Party</span> (당의 참된 딸, 1971).
+                    A woman demonstrates unwavering loyalty to the Party during wartime hardship.
+                </li>
+                <li>
+                    <span class="opera-title">4. Tell O' the Forest!</span> (밀림아 이야기하라, 1972).
+                    Choe Byong-hung, a revolutionary who pretends to serve the Japanese, endures the hatred of his own villagers, who find his deception too convincing.
+                </li>
+                <li>
+                    <span class="opera-title">5. The Song of Mount Kumgang</span> (금강산의 노래, 1973).
+                    The final canonical opera, completing the cycle of "immortal classics."
+                </li>
+            </ul>
+            <p style="font-size: 0.75rem; color: var(--ink-faint); margin-top: 0.5rem;">
+                <a href="https://en.wikipedia.org/wiki/Korean_revolutionary_opera" style="color: var(--ink-faint); text-decoration: underline dotted;">Korean revolutionary opera, Wikipedia</a> /
+                <a href="https://koryogroup.com/blog/a-dummy-s-guide-to-the-north-korean-revolutionary-opera" style="color: var(--ink-faint); text-decoration: underline dotted;">Koryo Tours</a>
+            </p>
+        </div>
+
+        <!-- DISCUSSION QUESTIONS -->
+        <div class="sidebar-card">
+            <h3>Discussion Questions</h3>
+            <ol class="discussion-list">
+                <li>The DPRK claims Kim Il-sung wrote The Flower Girl in the 1930s as a guerrilla fighter. Why does the regime need this origin story? What work does the authorship claim do politically?</li>
+                <li>Chinese audiences during the Cultural Revolution watched The Flower Girl on 24-hour screening loops. Were they responding to propaganda, to art, or to something else entirely? Can a work be both simultaneously?</li>
+                <li>Compare the role of cinema in the DPRK with the role of cinema in South Korea's developmental state under Park Chung-hee. Both states used film for ideological purposes. What distinguishes them?</li>
+                <li>Hong Yong-hee appeared on the DPRK's one-won banknote in her role as Kkotpun. What does it mean when a fictional character becomes a national symbol? How does this compare to national symbols in other countries?</li>
+                <li>The film depicts real historical suffering (Japanese colonial oppression) but channels it toward a specific political conclusion (loyalty to the Kim family). Is this fundamentally different from how other nations use historical trauma in their national narratives?</li>
+                <li>Kim Jong-il's "seed theory" demands that every film be organized around a single ideological kernel. What is gained and lost when art is produced under this constraint?</li>
+            </ol>
+        </div>
+
+        <!-- FURTHER READING -->
+        <div class="sidebar-card">
+            <h3>Further Reading</h3>
+            <ul class="reading-list">
+                <li><a href="https://www.cinemaescapist.com/2015/02/review-the-flower-girl-north-korea-1972/">Review: The Flower Girl (North Korea, 1972)</a>, Cinema Escapist</li>
+                <li><a href="https://www.nknews.org/2022/09/the-flower-girl-how-a-north-korean-propaganda-film-achieved-international-fame/">How a North Korean Propaganda Film Achieved International Fame</a>, NK News</li>
+                <li><a href="https://www.cultureready.org/blog/flower-girl-most-well-known-north-korean-opera-and-film">The Flower Girl: Most Well-Known North Korean Opera and Film</a>, CultureReady</li>
+                <li><a href="https://koryostudio.com/blog/the-flower-girl/">The Flower Girl</a>, Koryo Studio</li>
+                <li><a href="https://koryogroup.com/blog/a-dummy-s-guide-to-the-north-korean-revolutionary-opera">A Guide to the North Korean Revolutionary Opera</a>, Koryo Tours</li>
+                <li><a href="https://en.wikipedia.org/wiki/On_the_Art_of_the_Cinema">On the Art of the Cinema</a>, Wikipedia (Kim Jong-il's 1973 treatise)</li>
+                <li><a href="https://www.easternkicks.com/reviews/the-film-that-time-forgot-kim-jong-ils-the-flower-girl/">The Film That Time Forgot</a>, Eastern Kicks</li>
+                <li><a href="https://muse.jhu.edu/article/805288/summary">The Origins of North Korean Cinema: Art and Propaganda</a>, Project MUSE</li>
+            </ul>
+        </div>
+
+    </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>Korean History through Film | Deep Dive: The Flower Girl (1972)</p>
+    <p style="margin-top: 0.25rem;">All sources linked inline. Page last updated March 2026.</p>
+</footer>
+
+</body>
+</html>
