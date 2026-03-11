@@ -158,13 +158,23 @@
             border-radius: 6px;
             padding: 0.12in 0.18in 0.06in;
             margin-bottom: 0.18in;
-            background-image: repeating-linear-gradient(
-                transparent,
-                transparent 0.3in,
-                #d8d8d8 0.3in,
-                #d8d8d8 0.301in
-            );
-            background-position: 0 0.22in;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent calc(0.25in - 1px),
+                    #ccc calc(0.25in - 1px),
+                    #ccc 0.25in
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent calc(0.25in - 1px),
+                    #e0e0e0 calc(0.25in - 1px),
+                    #e0e0e0 0.25in
+                );
+            background-size: 0.25in 0.25in;
+            background-position: 0 0.28in;
             min-height: 1in;
         }
 
