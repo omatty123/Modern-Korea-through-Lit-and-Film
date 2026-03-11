@@ -3,1139 +3,630 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Film &amp; Story Workbook | Korean History through Film</title>
+    <title>Film Workbook | Korean History through Film</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Film &amp; Story Workbook">
-    <meta property="og:description" content="Standardized note-taking workbook for Korean History through Film. All 13 films and paired literary readings in one place.">
-    <meta property="og:image" content="https://media.themoviedb.org/t/p/w1280/kxwRQyOIHJZ0xy4Ob2IEWRrNbZw.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Film Workbook">
+    <meta property="og:description" content="Student film workbook for Korean History through Film, Spring 2026.">
+    <meta property="og:image" content="https://media.themoviedb.org/t/p/w1280/hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Newsreader:ital,wght@0,400;0,600;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --ink: #1a1a1a;
-            --ink-light: #4a4a4a;
-            --ink-faint: #888;
-            --paper: #faf9f7;
-            --paper-warm: #f5f3ef;
-            --surface: #fff;
-            --accent: #8b2232;
-            --accent-light: #a83244;
-            --gold: #a67c00;
-            --border: #e0dcd5;
-            --shadow: rgba(0,0,0,0.06);
-            --film-color: #8b2232;
-            --story-color: #2e5a4c;
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Outfit', -apple-system, sans-serif;
-            background: var(--paper);
-            color: var(--ink);
+            background: #fff;
+            color: #1a1a1a;
             line-height: 1.6;
         }
 
-        /* BREADCRUMB */
-        .breadcrumb {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            font-size: 0.78rem;
-            color: var(--ink-faint);
-        }
-        .breadcrumb a { color: var(--accent); text-decoration: none; }
-        .breadcrumb a:hover { text-decoration: underline; }
+        a { color: #1a1a1a; }
 
-        /* HEADER */
-        .wb-header {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0.5rem 2rem 2rem;
+        /* COVER */
+        .cover {
+            min-height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 3rem 2.5rem;
+            border-bottom: 1px solid #e0e0e0;
         }
 
-        .wb-header h1 {
+        .cover .back {
+            position: absolute;
+            top: 1.25rem;
+            left: 2.5rem;
+            font-size: 0.75rem;
+            color: #888;
+            text-decoration: none;
+        }
+
+        .cover .back:hover { color: #1a1a1a; }
+
+        .cover h1 {
             font-family: 'Newsreader', Georgia, serif;
-            font-size: 2.2rem;
-            font-weight: 500;
-            color: var(--ink);
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
             margin-bottom: 0.25rem;
         }
 
-        .wb-header .subtitle {
-            font-size: 0.85rem;
-            color: var(--ink-faint);
-            max-width: 600px;
-            margin-bottom: 1.25rem;
+        .cover .course {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 2rem;
         }
 
-        .wb-header .student-field {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 0.5rem 1rem;
-            font-size: 0.85rem;
-            max-width: 400px;
-            border: 1px solid var(--border);
-            padding: 1rem 1.25rem;
-            border-radius: 4px;
-            background: var(--surface);
-        }
-
-        .wb-header .student-field label {
-            font-weight: 600;
-            color: var(--ink-light);
-        }
-
-        .wb-header .student-field .field-line {
-            border-bottom: 1px solid var(--border);
-            min-width: 200px;
-        }
-
-        /* WEEK SECTIONS */
-        .week-section {
-            max-width: 900px;
-            margin: 0 auto 2.5rem;
-            padding: 0 2rem;
-        }
-
-        .week-header {
+        .cover .name-line {
             display: flex;
             align-items: baseline;
-            gap: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--ink);
-            margin-bottom: 1.25rem;
-        }
-
-        .week-header h2 {
-            font-family: 'Newsreader', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-        }
-
-        .week-header .week-theme {
-            font-size: 0.8rem;
-            color: var(--ink-faint);
-        }
-
-        .week-header .week-dates {
-            font-size: 0.72rem;
-            color: var(--ink-faint);
-            margin-left: auto;
-        }
-
-        /* ENTRY BLOCKS (film or story) */
-        .entry {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            margin-bottom: 1.25rem;
-            overflow: hidden;
-        }
-
-        .entry-header {
-            display: flex;
-            align-items: center;
             gap: 0.75rem;
-            padding: 0.75rem 1.25rem;
-            border-bottom: 1px solid var(--border);
-            background: var(--paper-warm);
-        }
-
-        .entry-type {
-            font-size: 0.6rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            padding: 0.15rem 0.5rem;
-            border-radius: 2px;
-            color: #fff;
-            flex-shrink: 0;
-        }
-
-        .entry-type.film { background: var(--film-color); }
-        .entry-type.story { background: var(--story-color); }
-        .entry-type.reading { background: #37474f; }
-
-        .entry-title {
-            font-family: 'Newsreader', serif;
-            font-size: 1.05rem;
-            font-weight: 500;
-        }
-
-        .entry-title .kr {
-            font-family: 'Noto Serif KR', serif;
             font-size: 0.85rem;
-            color: var(--ink-faint);
-            margin-left: 0.4rem;
+            color: #888;
         }
 
-        .entry-meta {
+        .cover .name-line .line {
+            flex: 1;
+            max-width: 300px;
+            border-bottom: 1px solid #ccc;
+            height: 1px;
+        }
+
+        /* FILM PAGE */
+        .film-page {
+            page-break-before: always;
+        }
+
+        .film-page:first-of-type {
+            page-break-before: auto;
+        }
+
+        .film-hero {
+            height: 220px;
+            background-size: cover;
+            background-position: center 30%;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem 2.5rem;
+        }
+
+        .film-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 30%, rgba(0,0,0,0.7));
+        }
+
+        .film-hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .film-hero h2 {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .film-hero .kr {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
+            margin-left: 0.5rem;
+        }
+
+        .film-hero .meta {
             font-size: 0.72rem;
-            color: var(--ink-faint);
-            margin-left: auto;
+            color: rgba(255,255,255,0.6);
+            text-align: right;
             white-space: nowrap;
+            line-height: 1.5;
         }
 
-        .entry-body {
-            padding: 1rem 1.25rem;
+        /* NOTE AREA */
+        .notes {
+            padding: 1.5rem 2.5rem 3rem;
+            max-width: 100%;
         }
 
-        /* NOTE FIELDS */
-        .note-group {
-            margin-bottom: 1rem;
+        .note-block {
+            margin-bottom: 1.75rem;
         }
 
-        .note-group:last-child { margin-bottom: 0; }
+        .note-block:last-child { margin-bottom: 0; }
 
         .note-label {
-            font-size: 0.72rem;
+            font-size: 0.68rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--ink-faint);
-            margin-bottom: 0.35rem;
+            letter-spacing: 0.1em;
+            color: #999;
+            margin-bottom: 0.4rem;
         }
 
-        .note-lines {
-            min-height: 4.5rem;
-            border: 1px solid var(--border);
-            border-radius: 3px;
-            padding: 0.5rem 0.75rem;
-            background: #fff;
+        .lines {
+            min-height: 5.5rem;
+            border-bottom: 1px solid #e8e8e8;
             background-image: repeating-linear-gradient(
-                transparent, transparent 1.55rem, var(--border) 1.55rem, var(--border) 1.56rem
+                transparent, transparent 1.7rem, #f0f0f0 1.7rem, #f0f0f0 1.71rem
             );
-            line-height: 1.56rem;
+            line-height: 1.71rem;
         }
 
-        .note-lines.short { min-height: 3rem; }
-        .note-lines.tall { min-height: 7rem; }
+        .lines.xl {
+            min-height: 9rem;
+        }
 
-        .note-grid {
+        .lines.xxl {
+            min-height: 13rem;
+        }
+
+        .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
+            gap: 2rem;
         }
 
-        /* GUIDING PROMPTS */
-        .prompt-list {
-            list-style: none;
-            padding: 0;
-            margin: 0.25rem 0 0.5rem;
-            font-size: 0.75rem;
-            color: var(--ink-light);
+        /* REFLECTION PAGE */
+        .reflection {
+            page-break-before: always;
+            padding: 3rem 2.5rem;
+            border-top: 1px solid #e0e0e0;
         }
 
-        .prompt-list li {
-            padding: 0.15rem 0;
-            padding-left: 1rem;
-            position: relative;
+        .reflection h2 {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
         }
 
-        .prompt-list li::before {
-            content: "?";
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-            font-weight: 700;
-        }
-
-        /* DIVIDER */
-        .section-divider {
-            max-width: 900px;
-            margin: 0 auto 2.5rem;
-            padding: 0 2rem;
-            text-align: left;
-        }
-
-        .section-divider hr {
-            border: none;
-            border-top: 1px solid var(--border);
-        }
-
-        /* PRINT STYLES */
+        /* PRINT */
         @media print {
-            body { background: #fff; font-size: 10pt; }
-            .breadcrumb { display: none; }
-            .week-section { page-break-inside: avoid; margin-bottom: 1rem; }
-            .entry { page-break-inside: avoid; }
-            .note-lines { min-height: 3rem; border-color: #ccc; }
-            .note-lines.tall { min-height: 5rem; }
+            body { font-size: 9.5pt; }
+            .cover { min-height: auto; padding: 2rem; page-break-after: always; }
+            .cover .back { display: none; }
+            .film-hero { height: 160px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .notes { padding: 1rem 2rem 2rem; }
+            .lines { min-height: 4rem; }
+            .lines.xl { min-height: 7rem; }
+            .lines.xxl { min-height: 10rem; }
         }
 
-        @media (max-width: 768px) {
-            .wb-header { padding: 0.5rem 1.25rem 1.5rem; }
-            .wb-header h1 { font-size: 1.6rem; }
-            .week-section { padding: 0 1.25rem; }
-            .breadcrumb { padding: 1rem 1.25rem; }
-            .note-grid { grid-template-columns: 1fr; }
-            .week-header { flex-wrap: wrap; }
-            .week-header .week-dates { margin-left: 0; }
-            .entry-meta { display: none; }
+        @media (max-width: 640px) {
+            .cover { padding: 2rem 1.5rem; }
+            .cover h1 { font-size: 2rem; }
+            .film-hero { height: 180px; padding: 1.25rem 1.5rem; }
+            .film-hero h2 { font-size: 1.4rem; }
+            .notes { padding: 1.25rem 1.5rem 2rem; }
+            .two-col { grid-template-columns: 1fr; gap: 1.25rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="breadcrumb">
-    <a href="index.html">&larr; Course Dashboard</a> &nbsp;/&nbsp; Film &amp; Story Workbook
+<!-- COVER -->
+<div class="cover" style="position: relative;">
+    <a href="index.html" class="back">&larr; Dashboard</a>
+    <h1>Film Workbook</h1>
+    <div class="course">Korean History through Film &middot; Spring 2026</div>
+    <div class="name-line">Name <span class="line"></span></div>
 </div>
 
-<div class="wb-header">
-    <h1>Film &amp; Story Workbook</h1>
-    <p class="subtitle">Standardized notes for all films and literary readings. Use the same analytical framework each week to build comparative insight across the course.</p>
-    <div class="student-field">
-        <label>Name</label><div class="field-line"></div>
-        <label>Section</label><div class="field-line"></div>
-    </div>
-</div>
-
-<!-- ===== WEEK 1 ===== -->
-<div class="week-section">
-    <div class="week-header">
-        <h2>Week 1</h2>
-        <span class="week-theme">Foundation, Frameworks, Joseon Ends</span>
-        <span class="week-dates">3/30 &ndash; 4/3</span>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type film">Film</span>
-            <span class="entry-title">The Throne <span class="kr">사도</span></span>
-            <span class="entry-meta">Lee Joon-ik, 2015, 125 min</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Historical period &amp; events depicted</div>
-                <div class="note-lines short"></div>
-            </div>
-            <div class="note-grid">
-                <div class="note-group">
-                    <div class="note-label">Key characters / historical figures</div>
-                    <div class="note-lines"></div>
-                </div>
-                <div class="note-group">
-                    <div class="note-label">Central conflict</div>
-                    <div class="note-lines"></div>
-                </div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">How does the film interpret this history?</div>
-                <ul class="prompt-list">
-                    <li>Whose perspective is centered? Whose is missing?</li>
-                    <li>What argument does the film make about this period?</li>
-                    <li>What cinematic choices (framing, music, color) reinforce that argument?</li>
-                </ul>
-                <div class="note-lines tall"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Connection to readings</div>
-                <div class="note-lines"></div>
-            </div>
+<!-- 1. THE THRONE -->
+<div class="film-page">
+    <div class="film-hero" style="background-image: url('https://media.themoviedb.org/t/p/w1280/j8qDbfN7EwQsOpfEw96R3lbJyE1.jpg');">
+        <div class="film-hero-content">
+            <h2>The Throne <span class="kr">사도</span></h2>
+            <div class="meta">Lee Joon-ik, 2015<br>Week 1</div>
         </div>
     </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type story">Story</span>
-            <span class="entry-title">Lady Hyegyeong's Memoirs (Hanjungnok) <span class="kr">한중록</span></span>
-        </div>
-        <div class="entry-body">
-            <div class="note-grid">
-                <div class="note-group">
-                    <div class="note-label">Author / genre / date</div>
-                    <div class="note-lines short"></div>
-                </div>
-                <div class="note-group">
-                    <div class="note-label">Historical context of writing</div>
-                    <div class="note-lines short"></div>
-                </div>
+    <div class="notes">
+        <div class="two-col">
+            <div class="note-block">
+                <div class="note-label">Historical period</div>
+                <div class="lines"></div>
             </div>
-            <div class="note-group">
-                <div class="note-label">What does this text reveal that the film cannot?</div>
-                <div class="note-lines"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Key passages or moments</div>
-                <div class="note-lines"></div>
+            <div class="note-block">
+                <div class="note-label">Key figures</div>
+                <div class="lines"></div>
             </div>
         </div>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type reading">Reading</span>
-            <span class="entry-title">Cumings, Ch. 1</span>
+        <div class="note-block">
+            <div class="note-label">What argument does this film make about the past?</div>
+            <div class="lines xl"></div>
         </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Main argument / key claims</div>
-                <div class="note-lines"></div>
-            </div>
+        <div class="note-block">
+            <div class="note-label">Notes &amp; reflection</div>
+            <div class="lines xxl"></div>
         </div>
     </div>
 </div>
 
-<!-- ===== WEEK 2 ===== -->
-<div class="week-section">
-    <div class="week-header">
-        <h2>Week 2</h2>
-        <span class="week-theme">Colonialism Begins</span>
-        <span class="week-dates">4/6 &ndash; 4/10</span>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type film">Film</span>
-            <span class="entry-title">Sopyonje <span class="kr">서편제</span></span>
-            <span class="entry-meta">Im Kwontaek, 1993, 113 min</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Historical period &amp; events depicted</div>
-                <div class="note-lines short"></div>
-            </div>
-            <div class="note-grid">
-                <div class="note-group">
-                    <div class="note-label">Key characters / historical figures</div>
-                    <div class="note-lines"></div>
-                </div>
-                <div class="note-group">
-                    <div class="note-label">Central conflict</div>
-                    <div class="note-lines"></div>
-                </div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">How does the film interpret this history?</div>
-                <ul class="prompt-list">
-                    <li>Whose perspective is centered? Whose is missing?</li>
-                    <li>What argument does the film make about this period?</li>
-                    <li>What cinematic choices (framing, music, color) reinforce that argument?</li>
-                </ul>
-                <div class="note-lines tall"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Connection to readings</div>
-                <div class="note-lines"></div>
-            </div>
+<!-- 2. SOPYONJE -->
+<div class="film-page">
+    <div class="film-hero" style="background-image: url('https://media.themoviedb.org/t/p/w1280/5Xar1vpdb7meEo5qZRsZbbDpfOu.jpg');">
+        <div class="film-hero-content">
+            <h2>Sopyonje <span class="kr">서편제</span></h2>
+            <div class="meta">Im Kwontaek, 1993<br>Week 2</div>
         </div>
     </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type film">Film</span>
-            <span class="entry-title">Fly High, Run Far <span class="kr">개벽</span></span>
-            <span class="entry-meta">Im Kwontaek, 1991, 146 min (optional)</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Historical period &amp; events depicted</div>
-                <div class="note-lines short"></div>
+    <div class="notes">
+        <div class="two-col">
+            <div class="note-block">
+                <div class="note-label">Historical period</div>
+                <div class="lines"></div>
             </div>
-            <div class="note-grid">
-                <div class="note-group">
-                    <div class="note-label">Key characters / historical figures</div>
-                    <div class="note-lines"></div>
-                </div>
-                <div class="note-group">
-                    <div class="note-label">Central conflict</div>
-                    <div class="note-lines"></div>
-                </div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">How does the film interpret this history?</div>
-                <ul class="prompt-list">
-                    <li>Whose perspective is centered? Whose is missing?</li>
-                    <li>What argument does the film make about this period?</li>
-                    <li>What cinematic choices (framing, music, color) reinforce that argument?</li>
-                </ul>
-                <div class="note-lines tall"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Connection to readings</div>
-                <div class="note-lines"></div>
+            <div class="note-block">
+                <div class="note-label">Key figures</div>
+                <div class="lines"></div>
             </div>
         </div>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type story">Story</span>
-            <span class="entry-title">Na Hyesok, Kim Tongin, Yi Sang</span>
+        <div class="note-block">
+            <div class="note-label">What argument does this film make about the past?</div>
+            <div class="lines xl"></div>
         </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Which text(s) and what do they reveal about colonial-era Korea?</div>
-                <div class="note-lines"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Key passages or moments</div>
-                <div class="note-lines"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type reading">Reading</span>
-            <span class="entry-title">Cumings, Ch. 2-3</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Main argument / key claims</div>
-                <div class="note-lines"></div>
-            </div>
+        <div class="note-block">
+            <div class="note-label">Notes &amp; reflection</div>
+            <div class="lines xxl"></div>
         </div>
     </div>
 </div>
 
-<!-- ===== WEEK 3 ===== -->
-<div class="week-section">
-    <div class="week-header">
-        <h2>Week 3</h2>
-        <span class="week-theme">Liberation, Occupation, Civil War</span>
-        <span class="week-dates">4/13 &ndash; 4/17</span>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type film">Film</span>
-            <span class="entry-title">Taebaek Mountains <span class="kr">태백산맥</span></span>
-            <span class="entry-meta">Im Kwontaek, 1994, 164 min</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Historical period &amp; events depicted</div>
-                <div class="note-lines short"></div>
-            </div>
-            <div class="note-grid">
-                <div class="note-group">
-                    <div class="note-label">Key characters / historical figures</div>
-                    <div class="note-lines"></div>
-                </div>
-                <div class="note-group">
-                    <div class="note-label">Central conflict</div>
-                    <div class="note-lines"></div>
-                </div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">How does the film interpret this history?</div>
-                <ul class="prompt-list">
-                    <li>Whose perspective is centered? Whose is missing?</li>
-                    <li>What argument does the film make about this period?</li>
-                    <li>What cinematic choices (framing, music, color) reinforce that argument?</li>
-                </ul>
-                <div class="note-lines tall"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Connection to readings</div>
-                <div class="note-lines"></div>
-            </div>
+<!-- 3. FLY HIGH RUN FAR -->
+<div class="film-page">
+    <div class="film-hero" style="background-image: url('https://media.themoviedb.org/t/p/w1280/smxwp5BJIH4i8JeK3fb6DgY9PSJ.jpg');">
+        <div class="film-hero-content">
+            <h2>Fly High, Run Far <span class="kr">개벽</span></h2>
+            <div class="meta">Im Kwontaek, 1991<br>Week 2 (optional)</div>
         </div>
     </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type story">Story</span>
-            <span class="entry-title">Chae Mansik, Yi T'aejun</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Which text(s) and what do they reveal about the liberation/occupation period?</div>
-                <div class="note-lines"></div>
+    <div class="notes">
+        <div class="two-col">
+            <div class="note-block">
+                <div class="note-label">Historical period</div>
+                <div class="lines"></div>
             </div>
-            <div class="note-group">
-                <div class="note-label">Key passages or moments</div>
-                <div class="note-lines"></div>
+            <div class="note-block">
+                <div class="note-label">Key figures</div>
+                <div class="lines"></div>
             </div>
         </div>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type reading">Reading</span>
-            <span class="entry-title">Cumings, Ch. 4-5</span>
+        <div class="note-block">
+            <div class="note-label">What argument does this film make about the past?</div>
+            <div class="lines xl"></div>
         </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Main argument / key claims</div>
-                <div class="note-lines"></div>
-            </div>
+        <div class="note-block">
+            <div class="note-label">Notes &amp; reflection</div>
+            <div class="lines xxl"></div>
         </div>
     </div>
 </div>
 
-<!-- ===== WEEK 4 ===== -->
-<div class="week-section">
-    <div class="week-header">
-        <h2>Week 4</h2>
-        <span class="week-theme">Civil War (continued), Industrialization</span>
-        <span class="week-dates">4/20 &ndash; 4/24</span>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type film">Film</span>
-            <span class="entry-title">Aimless Bullet <span class="kr">오발탄</span></span>
-            <span class="entry-meta">Yu Hyonmok, 1961, 105 min</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Historical period &amp; events depicted</div>
-                <div class="note-lines short"></div>
-            </div>
-            <div class="note-grid">
-                <div class="note-group">
-                    <div class="note-label">Key characters / historical figures</div>
-                    <div class="note-lines"></div>
-                </div>
-                <div class="note-group">
-                    <div class="note-label">Central conflict</div>
-                    <div class="note-lines"></div>
-                </div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">How does the film interpret this history?</div>
-                <ul class="prompt-list">
-                    <li>Whose perspective is centered? Whose is missing?</li>
-                    <li>What argument does the film make about this period?</li>
-                    <li>What cinematic choices (framing, music, color) reinforce that argument?</li>
-                </ul>
-                <div class="note-lines tall"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Connection to readings</div>
-                <div class="note-lines"></div>
-            </div>
+<!-- 4. TAEBAEK MOUNTAINS -->
+<div class="film-page">
+    <div class="film-hero" style="background-image: url('https://media.themoviedb.org/t/p/w1280/2lZeVDR8ZSMSl691Beb2vV5RW5v.jpg');">
+        <div class="film-hero-content">
+            <h2>Taebaek Mountains <span class="kr">태백산맥</span></h2>
+            <div class="meta">Im Kwontaek, 1994<br>Week 3</div>
         </div>
     </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type story">Story</span>
-            <span class="entry-title">Hwang Sunwon, Park Wanso, Yi Pom-son</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Which text(s) and what do they reveal about post-war Korea?</div>
-                <div class="note-lines"></div>
+    <div class="notes">
+        <div class="two-col">
+            <div class="note-block">
+                <div class="note-label">Historical period</div>
+                <div class="lines"></div>
             </div>
-            <div class="note-group">
-                <div class="note-label">Key passages or moments</div>
-                <div class="note-lines"></div>
+            <div class="note-block">
+                <div class="note-label">Key figures</div>
+                <div class="lines"></div>
             </div>
         </div>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type reading">Reading</span>
-            <span class="entry-title">Cumings, Ch. 5-6</span>
+        <div class="note-block">
+            <div class="note-label">What argument does this film make about the past?</div>
+            <div class="lines xl"></div>
         </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Main argument / key claims</div>
-                <div class="note-lines"></div>
-            </div>
+        <div class="note-block">
+            <div class="note-label">Notes &amp; reflection</div>
+            <div class="lines xxl"></div>
         </div>
     </div>
 </div>
 
-<!-- ===== WEEK 5 ===== -->
-<div class="week-section">
-    <div class="week-header">
-        <h2>Week 5</h2>
-        <span class="week-theme">Division, Dictatorships, Democratization</span>
-        <span class="week-dates">4/27 &ndash; 5/1</span>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type film">Film</span>
-            <span class="entry-title">The Flower Girl <span class="kr">꽃파는 처녀</span></span>
-            <span class="entry-meta">Choe Ik-gyu &amp; Pak Hak, 1972, 125 min</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Historical period &amp; events depicted</div>
-                <div class="note-lines short"></div>
-            </div>
-            <div class="note-grid">
-                <div class="note-group">
-                    <div class="note-label">Key characters / historical figures</div>
-                    <div class="note-lines"></div>
-                </div>
-                <div class="note-group">
-                    <div class="note-label">Central conflict</div>
-                    <div class="note-lines"></div>
-                </div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">How does the film interpret this history?</div>
-                <ul class="prompt-list">
-                    <li>Whose perspective is centered? Whose is missing?</li>
-                    <li>What argument does the film make about this period?</li>
-                    <li>What cinematic choices (framing, music, color) reinforce that argument?</li>
-                </ul>
-                <div class="note-lines tall"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Connection to readings</div>
-                <div class="note-lines"></div>
-            </div>
+<!-- 5. AIMLESS BULLET -->
+<div class="film-page">
+    <div class="film-hero" style="background-image: url('https://media.themoviedb.org/t/p/w1280/f1d3HKb0maqs8Axluv86cHM6DMd.jpg');">
+        <div class="film-hero-content">
+            <h2>Aimless Bullet <span class="kr">오발탄</span></h2>
+            <div class="meta">Yu Hyonmok, 1961<br>Week 4</div>
         </div>
     </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type story">Story</span>
-            <span class="entry-title">Park Wanso, Kim Il-sung</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Which text(s) and what do they reveal about division-era Korea?</div>
-                <div class="note-lines"></div>
+    <div class="notes">
+        <div class="two-col">
+            <div class="note-block">
+                <div class="note-label">Historical period</div>
+                <div class="lines"></div>
             </div>
-            <div class="note-group">
-                <div class="note-label">Key passages or moments</div>
-                <div class="note-lines"></div>
+            <div class="note-block">
+                <div class="note-label">Key figures</div>
+                <div class="lines"></div>
             </div>
         </div>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type reading">Reading</span>
-            <span class="entry-title">Cumings, Ch. 6, 8</span>
+        <div class="note-block">
+            <div class="note-label">What argument does this film make about the past?</div>
+            <div class="lines xl"></div>
         </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Main argument / key claims</div>
-                <div class="note-lines"></div>
-            </div>
+        <div class="note-block">
+            <div class="note-label">Notes &amp; reflection</div>
+            <div class="lines xxl"></div>
         </div>
     </div>
 </div>
 
-<!-- ===== MIDTERM ===== -->
-<div class="section-divider"><hr></div>
-<div class="week-section" style="text-align: left; padding-bottom: 0;">
-    <div style="background: var(--paper-warm); border: 1px solid var(--border); border-radius: 4px; padding: 1rem 1.25rem; font-size: 0.85rem; color: var(--ink-light);">
-        <strong style="color: var(--accent);">Midterm: May 1</strong> &mdash; Review your notes across Weeks 1-5. What patterns emerge in how Korean cinema represents history?
-    </div>
-</div>
-<div class="section-divider"><hr></div>
-
-<!-- ===== WEEK 6 ===== -->
-<div class="week-section">
-    <div class="week-header">
-        <h2>Week 6</h2>
-        <span class="week-theme">Democratization (continued)</span>
-        <span class="week-dates">5/4 &ndash; 5/8</span>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type film">Film</span>
-            <span class="entry-title">A Single Spark <span class="kr">아름다운 청년 전태일</span></span>
-            <span class="entry-meta">Park Kwang-su, 1995, 97 min</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Historical period &amp; events depicted</div>
-                <div class="note-lines short"></div>
-            </div>
-            <div class="note-grid">
-                <div class="note-group">
-                    <div class="note-label">Key characters / historical figures</div>
-                    <div class="note-lines"></div>
-                </div>
-                <div class="note-group">
-                    <div class="note-label">Central conflict</div>
-                    <div class="note-lines"></div>
-                </div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">How does the film interpret this history?</div>
-                <ul class="prompt-list">
-                    <li>Whose perspective is centered? Whose is missing?</li>
-                    <li>What argument does the film make about this period?</li>
-                    <li>What cinematic choices (framing, music, color) reinforce that argument?</li>
-                </ul>
-                <div class="note-lines tall"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Connection to readings</div>
-                <div class="note-lines"></div>
-            </div>
+<!-- 6. THE FLOWER GIRL -->
+<div class="film-page">
+    <div class="film-hero" style="background-image: url('https://media.themoviedb.org/t/p/w1280/kQtlDwGFi4rw97s7iHFFJsrJwVV.jpg');">
+        <div class="film-hero-content">
+            <h2>The Flower Girl <span class="kr">꽃파는 처녀</span></h2>
+            <div class="meta">Choe Ik-gyu &amp; Pak Hak, 1972<br>Week 5</div>
         </div>
     </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type film">Film</span>
-            <span class="entry-title">Peppermint Candy <span class="kr">박하사탕</span></span>
-            <span class="entry-meta">Lee Chang-dong, 1999, 130 min (recommended)</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Historical period &amp; events depicted</div>
-                <div class="note-lines short"></div>
+    <div class="notes">
+        <div class="two-col">
+            <div class="note-block">
+                <div class="note-label">Historical period</div>
+                <div class="lines"></div>
             </div>
-            <div class="note-grid">
-                <div class="note-group">
-                    <div class="note-label">Key characters / historical figures</div>
-                    <div class="note-lines"></div>
-                </div>
-                <div class="note-group">
-                    <div class="note-label">Central conflict</div>
-                    <div class="note-lines"></div>
-                </div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">How does the film interpret this history?</div>
-                <ul class="prompt-list">
-                    <li>Whose perspective is centered? Whose is missing?</li>
-                    <li>What argument does the film make about this period?</li>
-                    <li>What cinematic choices (framing, music, color) reinforce that argument?</li>
-                </ul>
-                <div class="note-lines tall"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Connection to readings</div>
-                <div class="note-lines"></div>
+            <div class="note-block">
+                <div class="note-label">Key figures</div>
+                <div class="lines"></div>
             </div>
         </div>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type story">Story</span>
-            <span class="entry-title">Kim Chiha, Cho Se-hui</span>
+        <div class="note-block">
+            <div class="note-label">What argument does this film make about the past?</div>
+            <div class="lines xl"></div>
         </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Which text(s) and what do they reveal about the democratization struggle?</div>
-                <div class="note-lines"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Key passages or moments</div>
-                <div class="note-lines"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type reading">Reading</span>
-            <span class="entry-title">Cumings, Ch. 7</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Main argument / key claims</div>
-                <div class="note-lines"></div>
-            </div>
+        <div class="note-block">
+            <div class="note-label">Notes &amp; reflection</div>
+            <div class="lines xxl"></div>
         </div>
     </div>
 </div>
 
-<!-- ===== WEEK 7 ===== -->
-<div class="week-section">
-    <div class="week-header">
-        <h2>Week 7</h2>
-        <span class="week-theme">Relations with Japan, China, United States</span>
-        <span class="week-dates">5/11 &ndash; 5/15</span>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type film">Film</span>
-            <span class="entry-title">Madame Freedom <span class="kr">자유부인</span></span>
-            <span class="entry-meta">Han Hyongmo, 1956, 124 min</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Historical period &amp; events depicted</div>
-                <div class="note-lines short"></div>
-            </div>
-            <div class="note-grid">
-                <div class="note-group">
-                    <div class="note-label">Key characters / historical figures</div>
-                    <div class="note-lines"></div>
-                </div>
-                <div class="note-group">
-                    <div class="note-label">Central conflict</div>
-                    <div class="note-lines"></div>
-                </div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">How does the film interpret this history?</div>
-                <ul class="prompt-list">
-                    <li>Whose perspective is centered? Whose is missing?</li>
-                    <li>What argument does the film make about this period?</li>
-                    <li>What cinematic choices (framing, music, color) reinforce that argument?</li>
-                </ul>
-                <div class="note-lines tall"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Connection to readings</div>
-                <div class="note-lines"></div>
-            </div>
+<!-- 7. A SINGLE SPARK -->
+<div class="film-page">
+    <div class="film-hero" style="background-image: url('https://media.themoviedb.org/t/p/w1280/eQA1BRlzjNZUtz4tFdBUu7lCkUk.jpg');">
+        <div class="film-hero-content">
+            <h2>A Single Spark <span class="kr">아름다운 청년 전태일</span></h2>
+            <div class="meta">Park Kwang-su, 1995<br>Week 6</div>
         </div>
     </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type story">Story</span>
-            <span class="entry-title">Kang Kyeong-ae, Yu Miri</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Which text(s) and what do they reveal about Korea's foreign relations?</div>
-                <div class="note-lines"></div>
+    <div class="notes">
+        <div class="two-col">
+            <div class="note-block">
+                <div class="note-label">Historical period</div>
+                <div class="lines"></div>
             </div>
-            <div class="note-group">
-                <div class="note-label">Key passages or moments</div>
-                <div class="note-lines"></div>
+            <div class="note-block">
+                <div class="note-label">Key figures</div>
+                <div class="lines"></div>
             </div>
         </div>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type reading">Reading</span>
-            <span class="entry-title">Schmid, Ch. 2</span>
+        <div class="note-block">
+            <div class="note-label">What argument does this film make about the past?</div>
+            <div class="lines xl"></div>
         </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Main argument / key claims</div>
-                <div class="note-lines"></div>
-            </div>
+        <div class="note-block">
+            <div class="note-label">Notes &amp; reflection</div>
+            <div class="lines xxl"></div>
         </div>
     </div>
 </div>
 
-<!-- ===== WEEK 8 ===== -->
-<div class="week-section">
-    <div class="week-header">
-        <h2>Week 8</h2>
-        <span class="week-theme">Sex and Gender Politics</span>
-        <span class="week-dates">5/18 &ndash; 5/22</span>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type film">Film</span>
-            <span class="entry-title">Spirit's Homecoming <span class="kr">귀향</span></span>
-            <span class="entry-meta">Cho Jung-rae, 2016, 127 min</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Historical period &amp; events depicted</div>
-                <div class="note-lines short"></div>
-            </div>
-            <div class="note-grid">
-                <div class="note-group">
-                    <div class="note-label">Key characters / historical figures</div>
-                    <div class="note-lines"></div>
-                </div>
-                <div class="note-group">
-                    <div class="note-label">Central conflict</div>
-                    <div class="note-lines"></div>
-                </div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">How does the film interpret this history?</div>
-                <ul class="prompt-list">
-                    <li>Whose perspective is centered? Whose is missing?</li>
-                    <li>What argument does the film make about this period?</li>
-                    <li>What cinematic choices (framing, music, color) reinforce that argument?</li>
-                </ul>
-                <div class="note-lines tall"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Connection to readings</div>
-                <div class="note-lines"></div>
-            </div>
+<!-- 8. PEPPERMINT CANDY -->
+<div class="film-page">
+    <div class="film-hero" style="background-image: url('https://media.themoviedb.org/t/p/w1280/frgkz9c6Kzn0en6tlwpR2C3vjkC.jpg');">
+        <div class="film-hero-content">
+            <h2>Peppermint Candy <span class="kr">박하사탕</span></h2>
+            <div class="meta">Lee Chang-dong, 1999<br>Week 6 (recommended)</div>
         </div>
     </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type story">Story</span>
-            <span class="entry-title">Queer Literature Anthology</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Which text(s) and what do they reveal about gender/sexuality in Korea?</div>
-                <div class="note-lines"></div>
+    <div class="notes">
+        <div class="two-col">
+            <div class="note-block">
+                <div class="note-label">Historical period</div>
+                <div class="lines"></div>
             </div>
-            <div class="note-group">
-                <div class="note-label">Key passages or moments</div>
-                <div class="note-lines"></div>
+            <div class="note-block">
+                <div class="note-label">Key figures</div>
+                <div class="lines"></div>
             </div>
         </div>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type reading">Reading</span>
-            <span class="entry-title">"Comfort women" scholarship</span>
+        <div class="note-block">
+            <div class="note-label">What argument does this film make about the past?</div>
+            <div class="lines xl"></div>
         </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Main argument / key claims</div>
-                <div class="note-lines"></div>
-            </div>
+        <div class="note-block">
+            <div class="note-label">Notes &amp; reflection</div>
+            <div class="lines xxl"></div>
         </div>
     </div>
 </div>
 
-<!-- ===== WEEK 9 ===== -->
-<div class="week-section">
-    <div class="week-header">
-        <h2>Week 9</h2>
-        <span class="week-theme">Contemporary DPRK Fiction</span>
-        <span class="week-dates">5/25 &ndash; 5/29</span>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type film">Film</span>
-            <span class="entry-title">Loyal Citizens of Pyongyang <span class="kr">평양의 충신</span></span>
-            <span class="entry-meta">David Yun, 2018, 38 min</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Historical period &amp; events depicted</div>
-                <div class="note-lines short"></div>
-            </div>
-            <div class="note-grid">
-                <div class="note-group">
-                    <div class="note-label">Key characters / historical figures</div>
-                    <div class="note-lines"></div>
-                </div>
-                <div class="note-group">
-                    <div class="note-label">Central conflict</div>
-                    <div class="note-lines"></div>
-                </div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">How does the film interpret this history?</div>
-                <ul class="prompt-list">
-                    <li>Whose perspective is centered? Whose is missing?</li>
-                    <li>What argument does the film make about this period?</li>
-                    <li>What cinematic choices (framing, music, color) reinforce that argument?</li>
-                </ul>
-                <div class="note-lines tall"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Connection to readings</div>
-                <div class="note-lines"></div>
-            </div>
+<!-- 9. MADAME FREEDOM -->
+<div class="film-page">
+    <div class="film-hero" style="background-image: url('https://media.themoviedb.org/t/p/w1280/1iG84kJYvWZzo36Aax8rgDJCizl.jpg');">
+        <div class="film-hero-content">
+            <h2>Madame Freedom <span class="kr">자유부인</span></h2>
+            <div class="meta">Han Hyongmo, 1956<br>Week 7</div>
         </div>
     </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type film">Film</span>
-            <span class="entry-title">Parasite <span class="kr">기생충</span></span>
-            <span class="entry-meta">Bong Joon-ho, 2019, 132 min</span>
-        </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Historical period &amp; events depicted</div>
-                <div class="note-lines short"></div>
+    <div class="notes">
+        <div class="two-col">
+            <div class="note-block">
+                <div class="note-label">Historical period</div>
+                <div class="lines"></div>
             </div>
-            <div class="note-grid">
-                <div class="note-group">
-                    <div class="note-label">Key characters / historical figures</div>
-                    <div class="note-lines"></div>
-                </div>
-                <div class="note-group">
-                    <div class="note-label">Central conflict</div>
-                    <div class="note-lines"></div>
-                </div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">How does the film interpret this history?</div>
-                <ul class="prompt-list">
-                    <li>Whose perspective is centered? Whose is missing?</li>
-                    <li>What argument does the film make about this period?</li>
-                    <li>What cinematic choices (framing, music, color) reinforce that argument?</li>
-                </ul>
-                <div class="note-lines tall"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Connection to readings</div>
-                <div class="note-lines"></div>
+            <div class="note-block">
+                <div class="note-label">Key figures</div>
+                <div class="lines"></div>
             </div>
         </div>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type story">Story</span>
-            <span class="entry-title">Han Ung-bin</span>
+        <div class="note-block">
+            <div class="note-label">What argument does this film make about the past?</div>
+            <div class="lines xl"></div>
         </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Which text(s) and what do they reveal about contemporary Korea?</div>
-                <div class="note-lines"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">Key passages or moments</div>
-                <div class="note-lines"></div>
-            </div>
+        <div class="note-block">
+            <div class="note-label">Notes &amp; reflection</div>
+            <div class="lines xxl"></div>
         </div>
     </div>
 </div>
 
-<!-- ===== FINAL REFLECTION ===== -->
-<div class="section-divider"><hr></div>
-
-<div class="week-section">
-    <div class="week-header">
-        <h2>Final Reflection</h2>
-        <span class="week-theme">Week 10: Student Presentations</span>
-        <span class="week-dates">6/1 &ndash; 6/5</span>
-    </div>
-
-    <div class="entry">
-        <div class="entry-header">
-            <span class="entry-type" style="background: var(--gold);">Synthesis</span>
-            <span class="entry-title">Across All 13 Films</span>
+<!-- 10. SPIRIT'S HOMECOMING -->
+<div class="film-page">
+    <div class="film-hero" style="background-image: url('https://media.themoviedb.org/t/p/w1280/kxwRQyOIHJZ0xy4Ob2IEWRrNbZw.jpg');">
+        <div class="film-hero-content">
+            <h2>Spirit's Homecoming <span class="kr">귀향</span></h2>
+            <div class="meta">Cho Jung-rae, 2016<br>Week 8</div>
         </div>
-        <div class="entry-body">
-            <div class="note-group">
-                <div class="note-label">Which film changed your understanding of Korean history most, and why?</div>
-                <div class="note-lines tall"></div>
+    </div>
+    <div class="notes">
+        <div class="two-col">
+            <div class="note-block">
+                <div class="note-label">Historical period</div>
+                <div class="lines"></div>
             </div>
-            <div class="note-group">
-                <div class="note-label">What recurring patterns did you notice in how Korean cinema represents the past?</div>
-                <ul class="prompt-list">
-                    <li>Who gets to be the protagonist? Who is silent?</li>
-                    <li>How do films from different decades treat the same historical events?</li>
-                    <li>When do films challenge the state narrative, and when do they reinforce it?</li>
-                </ul>
-                <div class="note-lines tall"></div>
+            <div class="note-block">
+                <div class="note-label">Key figures</div>
+                <div class="lines"></div>
             </div>
-            <div class="note-group">
-                <div class="note-label">How did the literary readings deepen or complicate what the films showed?</div>
-                <div class="note-lines tall"></div>
-            </div>
-            <div class="note-group">
-                <div class="note-label">What is one question this course left you with?</div>
-                <div class="note-lines"></div>
-            </div>
+        </div>
+        <div class="note-block">
+            <div class="note-label">What argument does this film make about the past?</div>
+            <div class="lines xl"></div>
+        </div>
+        <div class="note-block">
+            <div class="note-label">Notes &amp; reflection</div>
+            <div class="lines xxl"></div>
         </div>
     </div>
 </div>
 
-<footer style="max-width: 900px; margin: 2rem auto 0; padding: 1.5rem 2rem; border-top: 1px solid var(--border); font-size: 0.72rem; color: var(--ink-faint);">
-    Film &amp; Story Workbook | Korean History through Film | Spring 2026, Lawrence University
-</footer>
+<!-- 11. LOYAL CITIZENS -->
+<div class="film-page">
+    <div class="film-hero" style="background-image: url('https://media.themoviedb.org/t/p/w1280/kbpIhVdyRs13yeEr5TliuqYjA60.jpg');">
+        <div class="film-hero-content">
+            <h2>Loyal Citizens of Pyongyang <span class="kr">평양의 충신</span></h2>
+            <div class="meta">David Yun, 2018<br>Week 9</div>
+        </div>
+    </div>
+    <div class="notes">
+        <div class="two-col">
+            <div class="note-block">
+                <div class="note-label">Historical period</div>
+                <div class="lines"></div>
+            </div>
+            <div class="note-block">
+                <div class="note-label">Key figures</div>
+                <div class="lines"></div>
+            </div>
+        </div>
+        <div class="note-block">
+            <div class="note-label">What argument does this film make about the past?</div>
+            <div class="lines xl"></div>
+        </div>
+        <div class="note-block">
+            <div class="note-label">Notes &amp; reflection</div>
+            <div class="lines xxl"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 12. PARASITE -->
+<div class="film-page">
+    <div class="film-hero" style="background-image: url('https://media.themoviedb.org/t/p/w1280/hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg');">
+        <div class="film-hero-content">
+            <h2>Parasite <span class="kr">기생충</span></h2>
+            <div class="meta">Bong Joon-ho, 2019<br>Week 9</div>
+        </div>
+    </div>
+    <div class="notes">
+        <div class="two-col">
+            <div class="note-block">
+                <div class="note-label">Historical period</div>
+                <div class="lines"></div>
+            </div>
+            <div class="note-block">
+                <div class="note-label">Key figures</div>
+                <div class="lines"></div>
+            </div>
+        </div>
+        <div class="note-block">
+            <div class="note-label">What argument does this film make about the past?</div>
+            <div class="lines xl"></div>
+        </div>
+        <div class="note-block">
+            <div class="note-label">Notes &amp; reflection</div>
+            <div class="lines xxl"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 13. A STATE OF MIND -->
+<div class="film-page">
+    <div class="film-hero" style="background-image: url('https://media.themoviedb.org/t/p/w1280/pTgNyIsv0NMgBnqglTRtVdQcw5e.jpg');">
+        <div class="film-hero-content">
+            <h2>A State of Mind <span class="kr">마음의 상태</span></h2>
+            <div class="meta">Daniel Gordon, 2004<br>Feature Film</div>
+        </div>
+    </div>
+    <div class="notes">
+        <div class="two-col">
+            <div class="note-block">
+                <div class="note-label">Historical period</div>
+                <div class="lines"></div>
+            </div>
+            <div class="note-block">
+                <div class="note-label">Key figures</div>
+                <div class="lines"></div>
+            </div>
+        </div>
+        <div class="note-block">
+            <div class="note-label">What argument does this film make about the past?</div>
+            <div class="lines xl"></div>
+        </div>
+        <div class="note-block">
+            <div class="note-label">Notes &amp; reflection</div>
+            <div class="lines xxl"></div>
+        </div>
+    </div>
+</div>
+
+<!-- FINAL REFLECTION -->
+<div class="reflection">
+    <h2>Final Reflection</h2>
+    <div class="note-block">
+        <div class="note-label">Which film changed how you understand Korean history, and why?</div>
+        <div class="lines xxl"></div>
+    </div>
+    <div class="note-block">
+        <div class="note-label">What patterns did you notice across all 13 films?</div>
+        <div class="lines xxl"></div>
+    </div>
+    <div class="note-block">
+        <div class="note-label">One question this course left you with</div>
+        <div class="lines xl"></div>
+    </div>
+</div>
 
 </body>
 </html>
