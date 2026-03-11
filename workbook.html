@@ -9,67 +9,63 @@
     <meta property="og:title" content="Film Workbook">
     <meta property="og:description" content="Student film workbook for Korean History through Film, Spring 2026.">
     <meta property="og:image" content="https://media.themoviedb.org/t/p/w1280/hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Newsreader:ital,wght@0,400;0,600;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Outfit', -apple-system, sans-serif;
             background: #fff;
-            color: #1a1a1a;
-            line-height: 1.6;
+            color: #000;
+            line-height: 1.5;
         }
 
-        a { color: #1a1a1a; }
+        a { color: #000; }
 
         /* COVER */
         .cover {
-            min-height: 40vh;
+            min-height: 35vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             padding: 3rem 2.5rem;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 2px solid #000;
         }
 
         .cover .back {
             position: absolute;
             top: 1.25rem;
             left: 2.5rem;
-            font-size: 0.75rem;
-            color: #888;
+            font-size: 0.85rem;
+            color: #666;
             text-decoration: none;
         }
-
-        .cover .back:hover { color: #1a1a1a; }
 
         .cover h1 {
             font-family: 'Newsreader', Georgia, serif;
             font-size: 2.8rem;
-            font-weight: 400;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.25rem;
+            font-weight: 700;
+            margin-bottom: 0.15rem;
         }
 
         .cover .course {
-            font-size: 0.8rem;
-            color: #888;
-            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 1.5rem;
         }
 
         .cover .name-line {
             display: flex;
             align-items: baseline;
             gap: 0.75rem;
-            font-size: 0.85rem;
-            color: #888;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         .cover .name-line .line {
             flex: 1;
-            max-width: 300px;
-            border-bottom: 1px solid #ccc;
-            height: 1px;
+            max-width: 320px;
+            border-bottom: 2px solid #000;
         }
 
         /* FILM PAGE */
@@ -77,12 +73,8 @@
             page-break-before: always;
         }
 
-        .film-page:first-of-type {
-            page-break-before: auto;
-        }
-
         .film-hero {
-            height: 220px;
+            height: 200px;
             background-size: cover;
             background-position: center 30%;
             position: relative;
@@ -95,7 +87,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(transparent 30%, rgba(0,0,0,0.7));
+            background: linear-gradient(transparent 30%, rgba(0,0,0,0.75));
         }
 
         .film-hero-content {
@@ -111,7 +103,7 @@
         .film-hero h2 {
             font-family: 'Newsreader', Georgia, serif;
             font-size: 1.8rem;
-            font-weight: 400;
+            font-weight: 600;
             color: #fff;
             line-height: 1.2;
         }
@@ -124,49 +116,53 @@
         }
 
         .film-hero .meta {
-            font-size: 0.72rem;
-            color: rgba(255,255,255,0.6);
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
             text-align: right;
             white-space: nowrap;
             line-height: 1.5;
         }
 
-        /* NOTE AREA */
+        /* PRINT HEADER (hidden on screen) */
+        .print-header {
+            display: none;
+        }
+
+        /* NOTES */
         .notes {
-            padding: 1.5rem 2.5rem 3rem;
-            max-width: 100%;
+            padding: 1.25rem 2.5rem 2rem;
         }
 
         .note-block {
-            margin-bottom: 1.75rem;
+            margin-bottom: 1.25rem;
         }
 
         .note-block:last-child { margin-bottom: 0; }
 
         .note-label {
-            font-size: 0.68rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #999;
-            margin-bottom: 0.4rem;
+            letter-spacing: 0.06em;
+            color: #000;
+            margin-bottom: 0.3rem;
         }
 
         .lines {
-            min-height: 5.5rem;
-            border-bottom: 1px solid #e8e8e8;
+            min-height: 4.5rem;
+            border-bottom: 2px solid #000;
             background-image: repeating-linear-gradient(
-                transparent, transparent 1.7rem, #f0f0f0 1.7rem, #f0f0f0 1.71rem
+                transparent, transparent 1.65rem, #ddd 1.65rem, #ddd 1.66rem
             );
-            line-height: 1.71rem;
+            line-height: 1.66rem;
+        }
+
+        .lines.lg {
+            min-height: 7rem;
         }
 
         .lines.xl {
-            min-height: 9rem;
-        }
-
-        .lines.xxl {
-            min-height: 13rem;
+            min-height: 11rem;
         }
 
         .two-col {
@@ -175,39 +171,138 @@
             gap: 2rem;
         }
 
-        /* REFLECTION PAGE */
+        /* REFLECTION */
         .reflection {
             page-break-before: always;
-            padding: 3rem 2.5rem;
-            border-top: 1px solid #e0e0e0;
+            padding: 2.5rem;
         }
 
         .reflection h2 {
             font-family: 'Newsreader', Georgia, serif;
             font-size: 1.6rem;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
         }
 
-        /* PRINT */
+        /* ============ PRINT ============ */
         @media print {
-            body { font-size: 9.5pt; }
-            .cover { min-height: auto; padding: 2rem; page-break-after: always; }
+            body {
+                font-size: 12pt;
+                color: #000;
+            }
+
+            .cover {
+                min-height: auto;
+                padding: 1.5in 0.75in 0.5in;
+                border-bottom: 3px solid #000;
+                page-break-after: always;
+            }
+
             .cover .back { display: none; }
-            .film-hero { height: 160px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .notes { padding: 1rem 2rem 2rem; }
-            .lines { min-height: 4rem; }
-            .lines.xl { min-height: 7rem; }
-            .lines.xxl { min-height: 10rem; }
+
+            .cover h1 { font-size: 28pt; font-weight: 700; }
+            .cover .course { font-size: 12pt; color: #000; }
+            .cover .name-line { font-size: 13pt; }
+            .cover .name-line .line { border-bottom: 2px solid #000; }
+
+            /* HIDE screen hero, SHOW print header */
+            .film-hero { display: none !important; }
+
+            .print-header {
+                display: block;
+                padding: 0.4in 0.75in 0.15in;
+                border-bottom: 3px solid #000;
+            }
+
+            .print-header h2 {
+                font-family: 'Newsreader', Georgia, serif;
+                font-size: 22pt;
+                font-weight: 700;
+                color: #000;
+                line-height: 1.2;
+            }
+
+            .print-header .kr {
+                font-family: 'Noto Serif KR', serif;
+                font-size: 13pt;
+                color: #000;
+                margin-left: 0.3em;
+            }
+
+            .print-header .meta {
+                font-size: 11pt;
+                color: #000;
+                margin-top: 0.1in;
+                font-weight: 500;
+            }
+
+            /* NOTES */
+            .notes {
+                padding: 0.2in 0.75in 0.3in;
+            }
+
+            .note-label {
+                font-size: 11pt;
+                font-weight: 700;
+                color: #000;
+                margin-bottom: 0.05in;
+            }
+
+            .lines {
+                border-bottom: 2px solid #000;
+                background-image: repeating-linear-gradient(
+                    transparent, transparent 0.32in, #000 0.32in, #000 0.321in
+                );
+                line-height: 0.32in;
+            }
+
+            .lines {
+                min-height: 0.7in;
+            }
+
+            .lines.lg {
+                min-height: 1.1in;
+            }
+
+            .lines.xl {
+                min-height: 1.8in;
+            }
+
+            .note-block {
+                margin-bottom: 0.15in;
+            }
+
+            .two-col {
+                gap: 0.4in;
+            }
+
+            .film-page {
+                page-break-before: always;
+                page-break-inside: avoid;
+            }
+
+            /* REFLECTION */
+            .reflection {
+                padding: 0.5in 0.75in;
+            }
+
+            .reflection h2 {
+                font-size: 20pt;
+                border-bottom: 3px solid #000;
+            }
+
+            .reflection .lines.xl {
+                min-height: 1.5in;
+            }
         }
 
         @media (max-width: 640px) {
             .cover { padding: 2rem 1.5rem; }
-            .cover h1 { font-size: 2rem; }
             .film-hero { height: 180px; padding: 1.25rem 1.5rem; }
-            .film-hero h2 { font-size: 1.4rem; }
             .notes { padding: 1.25rem 1.5rem 2rem; }
-            .two-col { grid-template-columns: 1fr; gap: 1.25rem; }
+            .two-col { grid-template-columns: 1fr; gap: 1rem; }
         }
     </style>
 </head>
@@ -229,24 +324,28 @@
             <div class="meta">Lee Joon-ik, 2015<br>Week 1</div>
         </div>
     </div>
+    <div class="print-header">
+        <h2>The Throne <span class="kr">사도</span></h2>
+        <div class="meta">Lee Joon-ik, 2015 &middot; Week 1</div>
+    </div>
     <div class="notes">
         <div class="two-col">
             <div class="note-block">
-                <div class="note-label">Historical period</div>
+                <div class="note-label">Historical Period</div>
                 <div class="lines"></div>
             </div>
             <div class="note-block">
-                <div class="note-label">Key figures</div>
+                <div class="note-label">Key Figures</div>
                 <div class="lines"></div>
             </div>
         </div>
         <div class="note-block">
             <div class="note-label">What argument does this film make about the past?</div>
-            <div class="lines xl"></div>
+            <div class="lines lg"></div>
         </div>
         <div class="note-block">
-            <div class="note-label">Notes &amp; reflection</div>
-            <div class="lines xxl"></div>
+            <div class="note-label">Notes &amp; Reflection</div>
+            <div class="lines xl"></div>
         </div>
     </div>
 </div>
@@ -259,24 +358,28 @@
             <div class="meta">Im Kwontaek, 1993<br>Week 2</div>
         </div>
     </div>
+    <div class="print-header">
+        <h2>Sopyonje <span class="kr">서편제</span></h2>
+        <div class="meta">Im Kwontaek, 1993 &middot; Week 2</div>
+    </div>
     <div class="notes">
         <div class="two-col">
             <div class="note-block">
-                <div class="note-label">Historical period</div>
+                <div class="note-label">Historical Period</div>
                 <div class="lines"></div>
             </div>
             <div class="note-block">
-                <div class="note-label">Key figures</div>
+                <div class="note-label">Key Figures</div>
                 <div class="lines"></div>
             </div>
         </div>
         <div class="note-block">
             <div class="note-label">What argument does this film make about the past?</div>
-            <div class="lines xl"></div>
+            <div class="lines lg"></div>
         </div>
         <div class="note-block">
-            <div class="note-label">Notes &amp; reflection</div>
-            <div class="lines xxl"></div>
+            <div class="note-label">Notes &amp; Reflection</div>
+            <div class="lines xl"></div>
         </div>
     </div>
 </div>
@@ -289,24 +392,28 @@
             <div class="meta">Im Kwontaek, 1991<br>Week 2 (optional)</div>
         </div>
     </div>
+    <div class="print-header">
+        <h2>Fly High, Run Far <span class="kr">개벽</span></h2>
+        <div class="meta">Im Kwontaek, 1991 &middot; Week 2 (optional)</div>
+    </div>
     <div class="notes">
         <div class="two-col">
             <div class="note-block">
-                <div class="note-label">Historical period</div>
+                <div class="note-label">Historical Period</div>
                 <div class="lines"></div>
             </div>
             <div class="note-block">
-                <div class="note-label">Key figures</div>
+                <div class="note-label">Key Figures</div>
                 <div class="lines"></div>
             </div>
         </div>
         <div class="note-block">
             <div class="note-label">What argument does this film make about the past?</div>
-            <div class="lines xl"></div>
+            <div class="lines lg"></div>
         </div>
         <div class="note-block">
-            <div class="note-label">Notes &amp; reflection</div>
-            <div class="lines xxl"></div>
+            <div class="note-label">Notes &amp; Reflection</div>
+            <div class="lines xl"></div>
         </div>
     </div>
 </div>
@@ -319,24 +426,28 @@
             <div class="meta">Im Kwontaek, 1994<br>Week 3</div>
         </div>
     </div>
+    <div class="print-header">
+        <h2>Taebaek Mountains <span class="kr">태백산맥</span></h2>
+        <div class="meta">Im Kwontaek, 1994 &middot; Week 3</div>
+    </div>
     <div class="notes">
         <div class="two-col">
             <div class="note-block">
-                <div class="note-label">Historical period</div>
+                <div class="note-label">Historical Period</div>
                 <div class="lines"></div>
             </div>
             <div class="note-block">
-                <div class="note-label">Key figures</div>
+                <div class="note-label">Key Figures</div>
                 <div class="lines"></div>
             </div>
         </div>
         <div class="note-block">
             <div class="note-label">What argument does this film make about the past?</div>
-            <div class="lines xl"></div>
+            <div class="lines lg"></div>
         </div>
         <div class="note-block">
-            <div class="note-label">Notes &amp; reflection</div>
-            <div class="lines xxl"></div>
+            <div class="note-label">Notes &amp; Reflection</div>
+            <div class="lines xl"></div>
         </div>
     </div>
 </div>
@@ -349,24 +460,28 @@
             <div class="meta">Yu Hyonmok, 1961<br>Week 4</div>
         </div>
     </div>
+    <div class="print-header">
+        <h2>Aimless Bullet <span class="kr">오발탄</span></h2>
+        <div class="meta">Yu Hyonmok, 1961 &middot; Week 4</div>
+    </div>
     <div class="notes">
         <div class="two-col">
             <div class="note-block">
-                <div class="note-label">Historical period</div>
+                <div class="note-label">Historical Period</div>
                 <div class="lines"></div>
             </div>
             <div class="note-block">
-                <div class="note-label">Key figures</div>
+                <div class="note-label">Key Figures</div>
                 <div class="lines"></div>
             </div>
         </div>
         <div class="note-block">
             <div class="note-label">What argument does this film make about the past?</div>
-            <div class="lines xl"></div>
+            <div class="lines lg"></div>
         </div>
         <div class="note-block">
-            <div class="note-label">Notes &amp; reflection</div>
-            <div class="lines xxl"></div>
+            <div class="note-label">Notes &amp; Reflection</div>
+            <div class="lines xl"></div>
         </div>
     </div>
 </div>
@@ -379,24 +494,28 @@
             <div class="meta">Choe Ik-gyu &amp; Pak Hak, 1972<br>Week 5</div>
         </div>
     </div>
+    <div class="print-header">
+        <h2>The Flower Girl <span class="kr">꽃파는 처녀</span></h2>
+        <div class="meta">Choe Ik-gyu &amp; Pak Hak, 1972 &middot; Week 5</div>
+    </div>
     <div class="notes">
         <div class="two-col">
             <div class="note-block">
-                <div class="note-label">Historical period</div>
+                <div class="note-label">Historical Period</div>
                 <div class="lines"></div>
             </div>
             <div class="note-block">
-                <div class="note-label">Key figures</div>
+                <div class="note-label">Key Figures</div>
                 <div class="lines"></div>
             </div>
         </div>
         <div class="note-block">
             <div class="note-label">What argument does this film make about the past?</div>
-            <div class="lines xl"></div>
+            <div class="lines lg"></div>
         </div>
         <div class="note-block">
-            <div class="note-label">Notes &amp; reflection</div>
-            <div class="lines xxl"></div>
+            <div class="note-label">Notes &amp; Reflection</div>
+            <div class="lines xl"></div>
         </div>
     </div>
 </div>
@@ -409,24 +528,28 @@
             <div class="meta">Park Kwang-su, 1995<br>Week 6</div>
         </div>
     </div>
+    <div class="print-header">
+        <h2>A Single Spark <span class="kr">아름다운 청년 전태일</span></h2>
+        <div class="meta">Park Kwang-su, 1995 &middot; Week 6</div>
+    </div>
     <div class="notes">
         <div class="two-col">
             <div class="note-block">
-                <div class="note-label">Historical period</div>
+                <div class="note-label">Historical Period</div>
                 <div class="lines"></div>
             </div>
             <div class="note-block">
-                <div class="note-label">Key figures</div>
+                <div class="note-label">Key Figures</div>
                 <div class="lines"></div>
             </div>
         </div>
         <div class="note-block">
             <div class="note-label">What argument does this film make about the past?</div>
-            <div class="lines xl"></div>
+            <div class="lines lg"></div>
         </div>
         <div class="note-block">
-            <div class="note-label">Notes &amp; reflection</div>
-            <div class="lines xxl"></div>
+            <div class="note-label">Notes &amp; Reflection</div>
+            <div class="lines xl"></div>
         </div>
     </div>
 </div>
@@ -439,24 +562,28 @@
             <div class="meta">Lee Chang-dong, 1999<br>Week 6 (recommended)</div>
         </div>
     </div>
+    <div class="print-header">
+        <h2>Peppermint Candy <span class="kr">박하사탕</span></h2>
+        <div class="meta">Lee Chang-dong, 1999 &middot; Week 6 (recommended)</div>
+    </div>
     <div class="notes">
         <div class="two-col">
             <div class="note-block">
-                <div class="note-label">Historical period</div>
+                <div class="note-label">Historical Period</div>
                 <div class="lines"></div>
             </div>
             <div class="note-block">
-                <div class="note-label">Key figures</div>
+                <div class="note-label">Key Figures</div>
                 <div class="lines"></div>
             </div>
         </div>
         <div class="note-block">
             <div class="note-label">What argument does this film make about the past?</div>
-            <div class="lines xl"></div>
+            <div class="lines lg"></div>
         </div>
         <div class="note-block">
-            <div class="note-label">Notes &amp; reflection</div>
-            <div class="lines xxl"></div>
+            <div class="note-label">Notes &amp; Reflection</div>
+            <div class="lines xl"></div>
         </div>
     </div>
 </div>
@@ -469,24 +596,28 @@
             <div class="meta">Han Hyongmo, 1956<br>Week 7</div>
         </div>
     </div>
+    <div class="print-header">
+        <h2>Madame Freedom <span class="kr">자유부인</span></h2>
+        <div class="meta">Han Hyongmo, 1956 &middot; Week 7</div>
+    </div>
     <div class="notes">
         <div class="two-col">
             <div class="note-block">
-                <div class="note-label">Historical period</div>
+                <div class="note-label">Historical Period</div>
                 <div class="lines"></div>
             </div>
             <div class="note-block">
-                <div class="note-label">Key figures</div>
+                <div class="note-label">Key Figures</div>
                 <div class="lines"></div>
             </div>
         </div>
         <div class="note-block">
             <div class="note-label">What argument does this film make about the past?</div>
-            <div class="lines xl"></div>
+            <div class="lines lg"></div>
         </div>
         <div class="note-block">
-            <div class="note-label">Notes &amp; reflection</div>
-            <div class="lines xxl"></div>
+            <div class="note-label">Notes &amp; Reflection</div>
+            <div class="lines xl"></div>
         </div>
     </div>
 </div>
@@ -499,24 +630,28 @@
             <div class="meta">Cho Jung-rae, 2016<br>Week 8</div>
         </div>
     </div>
+    <div class="print-header">
+        <h2>Spirit's Homecoming <span class="kr">귀향</span></h2>
+        <div class="meta">Cho Jung-rae, 2016 &middot; Week 8</div>
+    </div>
     <div class="notes">
         <div class="two-col">
             <div class="note-block">
-                <div class="note-label">Historical period</div>
+                <div class="note-label">Historical Period</div>
                 <div class="lines"></div>
             </div>
             <div class="note-block">
-                <div class="note-label">Key figures</div>
+                <div class="note-label">Key Figures</div>
                 <div class="lines"></div>
             </div>
         </div>
         <div class="note-block">
             <div class="note-label">What argument does this film make about the past?</div>
-            <div class="lines xl"></div>
+            <div class="lines lg"></div>
         </div>
         <div class="note-block">
-            <div class="note-label">Notes &amp; reflection</div>
-            <div class="lines xxl"></div>
+            <div class="note-label">Notes &amp; Reflection</div>
+            <div class="lines xl"></div>
         </div>
     </div>
 </div>
@@ -529,24 +664,28 @@
             <div class="meta">David Yun, 2018<br>Week 9</div>
         </div>
     </div>
+    <div class="print-header">
+        <h2>Loyal Citizens of Pyongyang <span class="kr">평양의 충신</span></h2>
+        <div class="meta">David Yun, 2018 &middot; Week 9</div>
+    </div>
     <div class="notes">
         <div class="two-col">
             <div class="note-block">
-                <div class="note-label">Historical period</div>
+                <div class="note-label">Historical Period</div>
                 <div class="lines"></div>
             </div>
             <div class="note-block">
-                <div class="note-label">Key figures</div>
+                <div class="note-label">Key Figures</div>
                 <div class="lines"></div>
             </div>
         </div>
         <div class="note-block">
             <div class="note-label">What argument does this film make about the past?</div>
-            <div class="lines xl"></div>
+            <div class="lines lg"></div>
         </div>
         <div class="note-block">
-            <div class="note-label">Notes &amp; reflection</div>
-            <div class="lines xxl"></div>
+            <div class="note-label">Notes &amp; Reflection</div>
+            <div class="lines xl"></div>
         </div>
     </div>
 </div>
@@ -559,24 +698,28 @@
             <div class="meta">Bong Joon-ho, 2019<br>Week 9</div>
         </div>
     </div>
+    <div class="print-header">
+        <h2>Parasite <span class="kr">기생충</span></h2>
+        <div class="meta">Bong Joon-ho, 2019 &middot; Week 9</div>
+    </div>
     <div class="notes">
         <div class="two-col">
             <div class="note-block">
-                <div class="note-label">Historical period</div>
+                <div class="note-label">Historical Period</div>
                 <div class="lines"></div>
             </div>
             <div class="note-block">
-                <div class="note-label">Key figures</div>
+                <div class="note-label">Key Figures</div>
                 <div class="lines"></div>
             </div>
         </div>
         <div class="note-block">
             <div class="note-label">What argument does this film make about the past?</div>
-            <div class="lines xl"></div>
+            <div class="lines lg"></div>
         </div>
         <div class="note-block">
-            <div class="note-label">Notes &amp; reflection</div>
-            <div class="lines xxl"></div>
+            <div class="note-label">Notes &amp; Reflection</div>
+            <div class="lines xl"></div>
         </div>
     </div>
 </div>
@@ -589,24 +732,28 @@
             <div class="meta">Daniel Gordon, 2004<br>Feature Film</div>
         </div>
     </div>
+    <div class="print-header">
+        <h2>A State of Mind <span class="kr">마음의 상태</span></h2>
+        <div class="meta">Daniel Gordon, 2004 &middot; Feature Film</div>
+    </div>
     <div class="notes">
         <div class="two-col">
             <div class="note-block">
-                <div class="note-label">Historical period</div>
+                <div class="note-label">Historical Period</div>
                 <div class="lines"></div>
             </div>
             <div class="note-block">
-                <div class="note-label">Key figures</div>
+                <div class="note-label">Key Figures</div>
                 <div class="lines"></div>
             </div>
         </div>
         <div class="note-block">
             <div class="note-label">What argument does this film make about the past?</div>
-            <div class="lines xl"></div>
+            <div class="lines lg"></div>
         </div>
         <div class="note-block">
-            <div class="note-label">Notes &amp; reflection</div>
-            <div class="lines xxl"></div>
+            <div class="note-label">Notes &amp; Reflection</div>
+            <div class="lines xl"></div>
         </div>
     </div>
 </div>
@@ -616,15 +763,15 @@
     <h2>Final Reflection</h2>
     <div class="note-block">
         <div class="note-label">Which film changed how you understand Korean history, and why?</div>
-        <div class="lines xxl"></div>
+        <div class="lines xl"></div>
     </div>
     <div class="note-block">
         <div class="note-label">What patterns did you notice across all 13 films?</div>
-        <div class="lines xxl"></div>
+        <div class="lines xl"></div>
     </div>
     <div class="note-block">
         <div class="note-label">One question this course left you with</div>
-        <div class="lines xl"></div>
+        <div class="lines lg"></div>
     </div>
 </div>
 
