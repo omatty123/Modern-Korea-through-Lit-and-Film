@@ -11,182 +11,235 @@
     <style>
         @page {
             size: letter;
-            margin: 0.6in 0.7in;
+            margin: 0.5in;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Times New Roman', Times, serif;
-            color: #000;
-            background: #888;
+            font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+            color: #222;
+            background: #777;
             line-height: 1.4;
-            font-size: 13pt;
+            font-size: 12pt;
         }
 
         .page {
             width: 8.5in;
-            min-height: 11in;
-            margin: 0.3in auto;
-            padding: 0.6in 0.7in;
+            height: 11in;
+            margin: 0.25in auto;
+            padding: 0.5in;
             background: #fff;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.35);
             page-break-after: always;
             position: relative;
+            overflow: hidden;
         }
 
-        .page:last-child {
-            page-break-after: auto;
-        }
-
-        /* COVER PAGE */
-        .cover-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
-            min-height: 9in;
-        }
-
-        .cover-content h1 {
-            font-size: 30pt;
-            font-weight: bold;
-            margin-bottom: 0.05in;
-            line-height: 1.15;
-        }
-
-        .cover-content .course-info {
-            font-size: 14pt;
-            margin-bottom: 0.4in;
-            line-height: 1.5;
-        }
-
-        .cover-content .name-block {
-            margin-top: 0.6in;
-            font-size: 14pt;
-        }
-
-        .cover-content .name-block .underline {
-            display: inline-block;
-            width: 3.5in;
-            border-bottom: 2px solid #000;
-            margin-left: 0.15in;
-        }
-
-        .cover-content .toc {
-            margin-top: 0.6in;
-            list-style: none;
-            font-size: 12pt;
-            line-height: 2;
-            columns: 2;
-            column-gap: 0.5in;
-        }
-
-        .cover-content .toc li {
-            break-inside: avoid;
-        }
-
-        .cover-content .toc .week {
-            font-weight: bold;
-            margin-right: 0.15in;
-        }
-
-        /* FILM WORKSHEET */
-        .film-title {
-            font-size: 22pt;
-            font-weight: bold;
-            border-bottom: 3px solid #000;
-            padding-bottom: 0.08in;
-            margin-bottom: 0.06in;
-            line-height: 1.2;
-        }
-
-        .film-meta {
-            font-size: 11pt;
-            margin-bottom: 0.25in;
-        }
-
-        .section-label {
-            font-size: 12pt;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 0.05in;
-            margin-top: 0.2in;
-        }
-
-        .ruled {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .ruled td {
-            border-bottom: 1px solid #000;
-            height: 0.36in;
-            padding: 0;
-            vertical-align: bottom;
-        }
-
-        .two-up {
-            display: flex;
-            gap: 0.5in;
-        }
-
-        .two-up > div {
-            flex: 1;
-        }
-
-        .footer-line {
-            position: absolute;
-            bottom: 0.5in;
-            left: 0.7in;
-            right: 0.7in;
-            font-size: 8pt;
-            color: #666;
-            border-top: 1px solid #ccc;
-            padding-top: 0.05in;
-            display: flex;
-            justify-content: space-between;
-        }
+        .page:last-child { page-break-after: auto; }
 
         /* SCREEN NAV */
         .screen-nav {
             width: 8.5in;
-            margin: 0.15in auto;
+            margin: 0.12in auto;
             font-family: -apple-system, sans-serif;
-            font-size: 10pt;
+            font-size: 9pt;
         }
-
-        .screen-nav a {
-            color: #ccc;
-            text-decoration: none;
-        }
-
+        .screen-nav a { color: #bbb; text-decoration: none; }
         .screen-nav a:hover { color: #fff; }
 
+        /* COVER */
+        .cover-inner {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .cover-inner h1 {
+            font-size: 32pt;
+            font-weight: bold;
+            margin-bottom: 0.06in;
+            line-height: 1.1;
+        }
+
+        .cover-inner .course-info {
+            font-size: 13pt;
+            color: #444;
+            margin-bottom: 0.5in;
+            line-height: 1.6;
+        }
+
+        .cover-inner .name-block {
+            font-size: 13pt;
+            margin-bottom: 0.5in;
+        }
+
+        .cover-inner .name-block .uline {
+            display: inline-block;
+            width: 3.5in;
+            border-bottom: 1.5px solid #444;
+            margin-left: 0.1in;
+        }
+
+        .cover-inner .toc {
+            list-style: none;
+            font-size: 11pt;
+            line-height: 2;
+            columns: 2;
+            column-gap: 0.4in;
+            color: #333;
+        }
+
+        .cover-inner .toc .wk {
+            display: inline-block;
+            width: 0.55in;
+            font-weight: bold;
+            color: #666;
+            font-size: 9pt;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* FILM IMAGE STRIP */
+        .film-strip {
+            width: calc(100% + 1in);
+            margin: -0.5in -0.5in 0 -0.5in;
+            height: 1.6in;
+            background-size: cover;
+            background-position: center 30%;
+            position: relative;
+        }
+
+        .film-strip::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0.6in;
+            background: linear-gradient(transparent, rgba(255,255,255,0.95));
+        }
+
+        /* FILM HEADER */
+        .film-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            border-bottom: 2px solid #222;
+            padding-bottom: 0.06in;
+            margin-top: 0.15in;
+            margin-bottom: 0.2in;
+        }
+
+        .film-header h2 {
+            font-size: 20pt;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+
+        .film-header .kor {
+            font-size: 12pt;
+            font-weight: normal;
+            color: #666;
+            margin-left: 0.12in;
+        }
+
+        .film-header .meta {
+            font-size: 9.5pt;
+            color: #555;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        /* NOTE BOXES */
+        .note-box {
+            border: 1.5px solid #bbb;
+            border-radius: 6px;
+            padding: 0.12in 0.18in 0.06in;
+            margin-bottom: 0.18in;
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 0.3in,
+                #d8d8d8 0.3in,
+                #d8d8d8 0.301in
+            );
+            background-position: 0 0.22in;
+            min-height: 1in;
+        }
+
+        .note-box.medium { min-height: 1.4in; }
+        .note-box.large { min-height: 2.6in; }
+
+        .note-box .box-label {
+            font-size: 8.5pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #777;
+            background: #fff;
+            display: inline-block;
+            padding-right: 0.08in;
+            margin-bottom: 0.02in;
+        }
+
+        .side-by-side {
+            display: flex;
+            gap: 0.2in;
+        }
+
+        .side-by-side > div { flex: 1; }
+
+        /* PAGE FOOTER */
+        .pg-foot {
+            position: absolute;
+            bottom: 0.35in;
+            left: 0.5in;
+            right: 0.5in;
+            font-size: 7.5pt;
+            color: #aaa;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* PRINT */
         @media print {
             body { background: #fff; }
             .page {
                 margin: 0;
                 box-shadow: none;
-                min-height: auto;
+                height: auto;
+                min-height: 0;
             }
             .screen-nav { display: none; }
-            .footer-line { color: #999; border-top-color: #ddd; }
+            .film-strip {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .note-box {
+                border-color: #999;
+            }
         }
 
         @media (max-width: 9in) {
             body { background: #fff; }
             .page {
                 width: 100%;
-                min-height: auto;
+                height: auto;
                 margin: 0;
-                padding: 0.4in;
+                padding: 0.35in;
                 box-shadow: none;
-                border-bottom: 2px solid #000;
+                border-bottom: 1px solid #ccc;
             }
-            .screen-nav { width: 100%; padding: 0.2in 0.4in; }
-            .cover-content { min-height: auto; }
-            .footer-line { display: none; }
+            .film-strip {
+                width: calc(100% + 0.7in);
+                margin: -0.35in -0.35in 0 -0.35in;
+                height: 1.4in;
+            }
+            .screen-nav { width: 100%; padding: 0.15in 0.35in; }
+            .cover-inner { height: auto; min-height: 0; padding: 0.5in 0; }
+            .side-by-side { flex-direction: column; gap: 0.15in; }
+            .pg-foot { display: none; }
         }
     </style>
 </head>
@@ -196,305 +249,238 @@
 
 <!-- COVER -->
 <div class="page">
-    <div class="cover-content">
+    <div class="cover-inner">
         <h1>Film Workbook</h1>
         <div class="course-info">
             Korean History through Literature and Film<br>
             HIST 498 / EAST 418 / FILM 419<br>
             Spring 2026
         </div>
-        <div class="name-block">
-            Name: <span class="underline"></span>
-        </div>
+        <div class="name-block">Name: <span class="uline"></span></div>
         <ul class="toc">
-            <li><span class="week">Wk 1</span> The Throne</li>
-            <li><span class="week">Wk 2</span> Sopyonje</li>
-            <li><span class="week">Wk 2</span> Fly High, Run Far</li>
-            <li><span class="week">Wk 3</span> Taebaek Mountains</li>
-            <li><span class="week">Wk 4</span> Aimless Bullet</li>
-            <li><span class="week">Wk 5</span> The Flower Girl</li>
-            <li><span class="week">Wk 6</span> A Single Spark</li>
-            <li><span class="week">Wk 6</span> Peppermint Candy</li>
-            <li><span class="week">Wk 7</span> Madame Freedom</li>
-            <li><span class="week">Wk 8</span> Spirit's Homecoming</li>
-            <li><span class="week">Wk 9</span> Loyal Citizens</li>
-            <li><span class="week">Wk 9</span> Parasite</li>
-            <li><span class="week">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> A State of Mind</li>
+            <li><span class="wk">Wk 1</span> The Throne</li>
+            <li><span class="wk">Wk 2</span> Sopyonje</li>
+            <li><span class="wk">Wk 2</span> Fly High, Run Far</li>
+            <li><span class="wk">Wk 3</span> Taebaek Mountains</li>
+            <li><span class="wk">Wk 4</span> Aimless Bullet</li>
+            <li><span class="wk">Wk 5</span> The Flower Girl</li>
+            <li><span class="wk">Wk 6</span> A Single Spark</li>
+            <li><span class="wk">Wk 6</span> Peppermint Candy</li>
+            <li><span class="wk">Wk 7</span> Madame Freedom</li>
+            <li><span class="wk">Wk 8</span> Spirit's Homecoming</li>
+            <li><span class="wk">Wk 9</span> Loyal Citizens</li>
+            <li><span class="wk">Wk 9</span> Parasite</li>
+            <li><span class="wk">&nbsp;</span> A State of Mind</li>
         </ul>
     </div>
 </div>
 
-<!-- 1 -->
+<!-- 1 THE THRONE -->
 <div class="page">
-    <div class="film-title">The Throne <span style="font-size:14pt; font-weight:normal;">(사도)</span></div>
-    <div class="film-meta">Lee Joon-ik, 2015 &bull; 125 min &bull; Week 1</div>
-    <div class="two-up">
-        <div>
-            <div class="section-label">Historical Period</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
-        <div>
-            <div class="section-label">Key Figures</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
+    <div class="film-strip" style="background-image: url('https://media.themoviedb.org/t/p/w1280/j8qDbfN7EwQsOpfEw96R3lbJyE1.jpg');"></div>
+    <div class="film-header">
+        <h2>The Throne <span class="kor">사도</span></h2>
+        <div class="meta">Lee Joon-ik, 2015 &bull; Week 1</div>
     </div>
-    <div class="section-label">What argument does this film make about the past?</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="section-label">Notes &amp; Reflection</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="footer-line"><span>Korean History through Film</span><span>1 / 13</span></div>
+    <div class="side-by-side">
+        <div><div class="note-box"><span class="box-label">Historical Period</span></div></div>
+        <div><div class="note-box"><span class="box-label">Key Figures</span></div></div>
+    </div>
+    <div class="note-box medium"><span class="box-label">What argument does this film make about the past?</span></div>
+    <div class="note-box large"><span class="box-label">Notes &amp; Reflection</span></div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>1 / 13</span></div>
 </div>
 
-<!-- 2 -->
+<!-- 2 SOPYONJE -->
 <div class="page">
-    <div class="film-title">Sopyonje <span style="font-size:14pt; font-weight:normal;">(서편제)</span></div>
-    <div class="film-meta">Im Kwontaek, 1993 &bull; 113 min &bull; Week 2</div>
-    <div class="two-up">
-        <div>
-            <div class="section-label">Historical Period</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
-        <div>
-            <div class="section-label">Key Figures</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
+    <div class="film-strip" style="background-image: url('https://media.themoviedb.org/t/p/w1280/5Xar1vpdb7meEo5qZRsZbbDpfOu.jpg');"></div>
+    <div class="film-header">
+        <h2>Sopyonje <span class="kor">서편제</span></h2>
+        <div class="meta">Im Kwontaek, 1993 &bull; Week 2</div>
     </div>
-    <div class="section-label">What argument does this film make about the past?</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="section-label">Notes &amp; Reflection</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="footer-line"><span>Korean History through Film</span><span>2 / 13</span></div>
+    <div class="side-by-side">
+        <div><div class="note-box"><span class="box-label">Historical Period</span></div></div>
+        <div><div class="note-box"><span class="box-label">Key Figures</span></div></div>
+    </div>
+    <div class="note-box medium"><span class="box-label">What argument does this film make about the past?</span></div>
+    <div class="note-box large"><span class="box-label">Notes &amp; Reflection</span></div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>2 / 13</span></div>
 </div>
 
-<!-- 3 -->
+<!-- 3 FLY HIGH RUN FAR -->
 <div class="page">
-    <div class="film-title">Fly High, Run Far <span style="font-size:14pt; font-weight:normal;">(개벽)</span></div>
-    <div class="film-meta">Im Kwontaek, 1991 &bull; 146 min &bull; Week 2 (optional)</div>
-    <div class="two-up">
-        <div>
-            <div class="section-label">Historical Period</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
-        <div>
-            <div class="section-label">Key Figures</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
+    <div class="film-strip" style="background-image: url('https://media.themoviedb.org/t/p/w1280/smxwp5BJIH4i8JeK3fb6DgY9PSJ.jpg');"></div>
+    <div class="film-header">
+        <h2>Fly High, Run Far <span class="kor">개벽</span></h2>
+        <div class="meta">Im Kwontaek, 1991 &bull; Week 2 (opt.)</div>
     </div>
-    <div class="section-label">What argument does this film make about the past?</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="section-label">Notes &amp; Reflection</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="footer-line"><span>Korean History through Film</span><span>3 / 13</span></div>
+    <div class="side-by-side">
+        <div><div class="note-box"><span class="box-label">Historical Period</span></div></div>
+        <div><div class="note-box"><span class="box-label">Key Figures</span></div></div>
+    </div>
+    <div class="note-box medium"><span class="box-label">What argument does this film make about the past?</span></div>
+    <div class="note-box large"><span class="box-label">Notes &amp; Reflection</span></div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>3 / 13</span></div>
 </div>
 
-<!-- 4 -->
+<!-- 4 TAEBAEK MOUNTAINS -->
 <div class="page">
-    <div class="film-title">Taebaek Mountains <span style="font-size:14pt; font-weight:normal;">(태백산맥)</span></div>
-    <div class="film-meta">Im Kwontaek, 1994 &bull; 164 min &bull; Week 3</div>
-    <div class="two-up">
-        <div>
-            <div class="section-label">Historical Period</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
-        <div>
-            <div class="section-label">Key Figures</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
+    <div class="film-strip" style="background-image: url('https://media.themoviedb.org/t/p/w1280/2lZeVDR8ZSMSl691Beb2vV5RW5v.jpg');"></div>
+    <div class="film-header">
+        <h2>Taebaek Mountains <span class="kor">태백산맥</span></h2>
+        <div class="meta">Im Kwontaek, 1994 &bull; Week 3</div>
     </div>
-    <div class="section-label">What argument does this film make about the past?</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="section-label">Notes &amp; Reflection</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="footer-line"><span>Korean History through Film</span><span>4 / 13</span></div>
+    <div class="side-by-side">
+        <div><div class="note-box"><span class="box-label">Historical Period</span></div></div>
+        <div><div class="note-box"><span class="box-label">Key Figures</span></div></div>
+    </div>
+    <div class="note-box medium"><span class="box-label">What argument does this film make about the past?</span></div>
+    <div class="note-box large"><span class="box-label">Notes &amp; Reflection</span></div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>4 / 13</span></div>
 </div>
 
-<!-- 5 -->
+<!-- 5 AIMLESS BULLET -->
 <div class="page">
-    <div class="film-title">Aimless Bullet <span style="font-size:14pt; font-weight:normal;">(오발탄)</span></div>
-    <div class="film-meta">Yu Hyonmok, 1961 &bull; 105 min &bull; Week 4</div>
-    <div class="two-up">
-        <div>
-            <div class="section-label">Historical Period</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
-        <div>
-            <div class="section-label">Key Figures</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
+    <div class="film-strip" style="background-image: url('https://media.themoviedb.org/t/p/w1280/f1d3HKb0maqs8Axluv86cHM6DMd.jpg');"></div>
+    <div class="film-header">
+        <h2>Aimless Bullet <span class="kor">오발탄</span></h2>
+        <div class="meta">Yu Hyonmok, 1961 &bull; Week 4</div>
     </div>
-    <div class="section-label">What argument does this film make about the past?</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="section-label">Notes &amp; Reflection</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="footer-line"><span>Korean History through Film</span><span>5 / 13</span></div>
+    <div class="side-by-side">
+        <div><div class="note-box"><span class="box-label">Historical Period</span></div></div>
+        <div><div class="note-box"><span class="box-label">Key Figures</span></div></div>
+    </div>
+    <div class="note-box medium"><span class="box-label">What argument does this film make about the past?</span></div>
+    <div class="note-box large"><span class="box-label">Notes &amp; Reflection</span></div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>5 / 13</span></div>
 </div>
 
-<!-- 6 -->
+<!-- 6 THE FLOWER GIRL -->
 <div class="page">
-    <div class="film-title">The Flower Girl <span style="font-size:14pt; font-weight:normal;">(꽃파는 처녀)</span></div>
-    <div class="film-meta">Choe Ik-gyu &amp; Pak Hak, 1972 &bull; 125 min &bull; Week 5</div>
-    <div class="two-up">
-        <div>
-            <div class="section-label">Historical Period</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
-        <div>
-            <div class="section-label">Key Figures</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
+    <div class="film-strip" style="background-image: url('https://media.themoviedb.org/t/p/w1280/kQtlDwGFi4rw97s7iHFFJsrJwVV.jpg');"></div>
+    <div class="film-header">
+        <h2>The Flower Girl <span class="kor">꽃파는 처녀</span></h2>
+        <div class="meta">Choe Ik-gyu &amp; Pak Hak, 1972 &bull; Wk 5</div>
     </div>
-    <div class="section-label">What argument does this film make about the past?</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="section-label">Notes &amp; Reflection</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="footer-line"><span>Korean History through Film</span><span>6 / 13</span></div>
+    <div class="side-by-side">
+        <div><div class="note-box"><span class="box-label">Historical Period</span></div></div>
+        <div><div class="note-box"><span class="box-label">Key Figures</span></div></div>
+    </div>
+    <div class="note-box medium"><span class="box-label">What argument does this film make about the past?</span></div>
+    <div class="note-box large"><span class="box-label">Notes &amp; Reflection</span></div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>6 / 13</span></div>
 </div>
 
-<!-- 7 -->
+<!-- 7 A SINGLE SPARK -->
 <div class="page">
-    <div class="film-title">A Single Spark <span style="font-size:14pt; font-weight:normal;">(아름다운 청년 전태일)</span></div>
-    <div class="film-meta">Park Kwang-su, 1995 &bull; 97 min &bull; Week 6</div>
-    <div class="two-up">
-        <div>
-            <div class="section-label">Historical Period</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
-        <div>
-            <div class="section-label">Key Figures</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
+    <div class="film-strip" style="background-image: url('https://media.themoviedb.org/t/p/w1280/eQA1BRlzjNZUtz4tFdBUu7lCkUk.jpg');"></div>
+    <div class="film-header">
+        <h2>A Single Spark <span class="kor">아름다운 청년 전태일</span></h2>
+        <div class="meta">Park Kwang-su, 1995 &bull; Week 6</div>
     </div>
-    <div class="section-label">What argument does this film make about the past?</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="section-label">Notes &amp; Reflection</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="footer-line"><span>Korean History through Film</span><span>7 / 13</span></div>
+    <div class="side-by-side">
+        <div><div class="note-box"><span class="box-label">Historical Period</span></div></div>
+        <div><div class="note-box"><span class="box-label">Key Figures</span></div></div>
+    </div>
+    <div class="note-box medium"><span class="box-label">What argument does this film make about the past?</span></div>
+    <div class="note-box large"><span class="box-label">Notes &amp; Reflection</span></div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>7 / 13</span></div>
 </div>
 
-<!-- 8 -->
+<!-- 8 PEPPERMINT CANDY -->
 <div class="page">
-    <div class="film-title">Peppermint Candy <span style="font-size:14pt; font-weight:normal;">(박하사탕)</span></div>
-    <div class="film-meta">Lee Chang-dong, 1999 &bull; 130 min &bull; Week 6 (recommended)</div>
-    <div class="two-up">
-        <div>
-            <div class="section-label">Historical Period</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
-        <div>
-            <div class="section-label">Key Figures</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
+    <div class="film-strip" style="background-image: url('https://media.themoviedb.org/t/p/w1280/frgkz9c6Kzn0en6tlwpR2C3vjkC.jpg');"></div>
+    <div class="film-header">
+        <h2>Peppermint Candy <span class="kor">박하사탕</span></h2>
+        <div class="meta">Lee Chang-dong, 1999 &bull; Week 6 (rec.)</div>
     </div>
-    <div class="section-label">What argument does this film make about the past?</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="section-label">Notes &amp; Reflection</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="footer-line"><span>Korean History through Film</span><span>8 / 13</span></div>
+    <div class="side-by-side">
+        <div><div class="note-box"><span class="box-label">Historical Period</span></div></div>
+        <div><div class="note-box"><span class="box-label">Key Figures</span></div></div>
+    </div>
+    <div class="note-box medium"><span class="box-label">What argument does this film make about the past?</span></div>
+    <div class="note-box large"><span class="box-label">Notes &amp; Reflection</span></div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>8 / 13</span></div>
 </div>
 
-<!-- 9 -->
+<!-- 9 MADAME FREEDOM -->
 <div class="page">
-    <div class="film-title">Madame Freedom <span style="font-size:14pt; font-weight:normal;">(자유부인)</span></div>
-    <div class="film-meta">Han Hyongmo, 1956 &bull; 124 min &bull; Week 7</div>
-    <div class="two-up">
-        <div>
-            <div class="section-label">Historical Period</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
-        <div>
-            <div class="section-label">Key Figures</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
+    <div class="film-strip" style="background-image: url('https://media.themoviedb.org/t/p/w1280/1iG84kJYvWZzo36Aax8rgDJCizl.jpg');"></div>
+    <div class="film-header">
+        <h2>Madame Freedom <span class="kor">자유부인</span></h2>
+        <div class="meta">Han Hyongmo, 1956 &bull; Week 7</div>
     </div>
-    <div class="section-label">What argument does this film make about the past?</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="section-label">Notes &amp; Reflection</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="footer-line"><span>Korean History through Film</span><span>9 / 13</span></div>
+    <div class="side-by-side">
+        <div><div class="note-box"><span class="box-label">Historical Period</span></div></div>
+        <div><div class="note-box"><span class="box-label">Key Figures</span></div></div>
+    </div>
+    <div class="note-box medium"><span class="box-label">What argument does this film make about the past?</span></div>
+    <div class="note-box large"><span class="box-label">Notes &amp; Reflection</span></div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>9 / 13</span></div>
 </div>
 
-<!-- 10 -->
+<!-- 10 SPIRIT'S HOMECOMING -->
 <div class="page">
-    <div class="film-title">Spirit's Homecoming <span style="font-size:14pt; font-weight:normal;">(귀향)</span></div>
-    <div class="film-meta">Cho Jung-rae, 2016 &bull; 127 min &bull; Week 8</div>
-    <div class="two-up">
-        <div>
-            <div class="section-label">Historical Period</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
-        <div>
-            <div class="section-label">Key Figures</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
+    <div class="film-strip" style="background-image: url('https://media.themoviedb.org/t/p/w1280/kxwRQyOIHJZ0xy4Ob2IEWRrNbZw.jpg');"></div>
+    <div class="film-header">
+        <h2>Spirit's Homecoming <span class="kor">귀향</span></h2>
+        <div class="meta">Cho Jung-rae, 2016 &bull; Week 8</div>
     </div>
-    <div class="section-label">What argument does this film make about the past?</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="section-label">Notes &amp; Reflection</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="footer-line"><span>Korean History through Film</span><span>10 / 13</span></div>
+    <div class="side-by-side">
+        <div><div class="note-box"><span class="box-label">Historical Period</span></div></div>
+        <div><div class="note-box"><span class="box-label">Key Figures</span></div></div>
+    </div>
+    <div class="note-box medium"><span class="box-label">What argument does this film make about the past?</span></div>
+    <div class="note-box large"><span class="box-label">Notes &amp; Reflection</span></div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>10 / 13</span></div>
 </div>
 
-<!-- 11 -->
+<!-- 11 LOYAL CITIZENS -->
 <div class="page">
-    <div class="film-title">Loyal Citizens of Pyongyang <span style="font-size:14pt; font-weight:normal;">(평양의 충신)</span></div>
-    <div class="film-meta">David Yun, 2018 &bull; 38 min &bull; Week 9</div>
-    <div class="two-up">
-        <div>
-            <div class="section-label">Historical Period</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
-        <div>
-            <div class="section-label">Key Figures</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
+    <div class="film-strip" style="background-image: url('https://media.themoviedb.org/t/p/w1280/kbpIhVdyRs13yeEr5TliuqYjA60.jpg');"></div>
+    <div class="film-header">
+        <h2>Loyal Citizens of Pyongyang <span class="kor">평양의 충신</span></h2>
+        <div class="meta">David Yun, 2018 &bull; Week 9</div>
     </div>
-    <div class="section-label">What argument does this film make about the past?</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="section-label">Notes &amp; Reflection</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="footer-line"><span>Korean History through Film</span><span>11 / 13</span></div>
+    <div class="side-by-side">
+        <div><div class="note-box"><span class="box-label">Historical Period</span></div></div>
+        <div><div class="note-box"><span class="box-label">Key Figures</span></div></div>
+    </div>
+    <div class="note-box medium"><span class="box-label">What argument does this film make about the past?</span></div>
+    <div class="note-box large"><span class="box-label">Notes &amp; Reflection</span></div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>11 / 13</span></div>
 </div>
 
-<!-- 12 -->
+<!-- 12 PARASITE -->
 <div class="page">
-    <div class="film-title">Parasite <span style="font-size:14pt; font-weight:normal;">(기생충)</span></div>
-    <div class="film-meta">Bong Joon-ho, 2019 &bull; 132 min &bull; Week 9</div>
-    <div class="two-up">
-        <div>
-            <div class="section-label">Historical Period</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
-        <div>
-            <div class="section-label">Key Figures</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
+    <div class="film-strip" style="background-image: url('https://media.themoviedb.org/t/p/w1280/hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg');"></div>
+    <div class="film-header">
+        <h2>Parasite <span class="kor">기생충</span></h2>
+        <div class="meta">Bong Joon-ho, 2019 &bull; Week 9</div>
     </div>
-    <div class="section-label">What argument does this film make about the past?</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="section-label">Notes &amp; Reflection</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="footer-line"><span>Korean History through Film</span><span>12 / 13</span></div>
+    <div class="side-by-side">
+        <div><div class="note-box"><span class="box-label">Historical Period</span></div></div>
+        <div><div class="note-box"><span class="box-label">Key Figures</span></div></div>
+    </div>
+    <div class="note-box medium"><span class="box-label">What argument does this film make about the past?</span></div>
+    <div class="note-box large"><span class="box-label">Notes &amp; Reflection</span></div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>12 / 13</span></div>
 </div>
 
-<!-- 13 -->
+<!-- 13 A STATE OF MIND -->
 <div class="page">
-    <div class="film-title">A State of Mind <span style="font-size:14pt; font-weight:normal;">(마음의 상태)</span></div>
-    <div class="film-meta">Daniel Gordon, 2004 &bull; 93 min &bull; Feature Film</div>
-    <div class="two-up">
-        <div>
-            <div class="section-label">Historical Period</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
-        <div>
-            <div class="section-label">Key Figures</div>
-            <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-        </div>
+    <div class="film-strip" style="background-image: url('https://media.themoviedb.org/t/p/w1280/pTgNyIsv0NMgBnqglTRtVdQcw5e.jpg');"></div>
+    <div class="film-header">
+        <h2>A State of Mind <span class="kor">마음의 상태</span></h2>
+        <div class="meta">Daniel Gordon, 2004 &bull; Feature Film</div>
     </div>
-    <div class="section-label">What argument does this film make about the past?</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="section-label">Notes &amp; Reflection</div>
-    <table class="ruled"><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>
-    <div class="footer-line"><span>Korean History through Film</span><span>13 / 13</span></div>
+    <div class="side-by-side">
+        <div><div class="note-box"><span class="box-label">Historical Period</span></div></div>
+        <div><div class="note-box"><span class="box-label">Key Figures</span></div></div>
+    </div>
+    <div class="note-box medium"><span class="box-label">What argument does this film make about the past?</span></div>
+    <div class="note-box large"><span class="box-label">Notes &amp; Reflection</span></div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>13 / 13</span></div>
 </div>
 
 </body>
