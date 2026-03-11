@@ -56,11 +56,12 @@
         .mosaic {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 1.82in;
+            grid-template-rows: repeat(4, 1fr);
             gap: 4px;
-            flex: 1;
+            height: 8.6in;
             border-radius: 4px;
             overflow: hidden;
+            margin-top: 0.1in;
         }
         .mosaic .poster {
             background-size: cover;
@@ -69,8 +70,8 @@
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
-        .mosaic .poster.center-span {
-            grid-column: 2 / 4;
+        .mosaic .poster.span2 {
+            grid-column: span 2;
         }
 
         .cover-bottom {
@@ -199,7 +200,7 @@
             .film-strip { width: calc(100% + 0.6in); margin: -0.3in -0.3in 0 -0.3in; height: 1.2in; }
             .screen-nav { width: 100%; padding: 0.1in 0.3in; }
             .cover-inner { height: auto; padding: 0.2in 0; }
-            .mosaic { grid-auto-rows: 1.2in; }
+            .mosaic { height: auto; grid-template-rows: repeat(4, 120px); }
             .row3 { grid-template-columns: 1fr; }
             .row2 { grid-template-columns: 1fr; }
             .pg-foot { display: none; }
@@ -216,19 +217,23 @@
         <h1 class="cover-title">Film Workbook</h1>
         <div class="cover-subtitle">Korean History through Literature and Film</div>
         <div class="mosaic">
+            <!-- Row 1: Throne, Sopyonje, [Fly High span 2] -->
             <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/fxucCjHL566llnZC3TfWTdReHee.jpg')"></div>
             <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/tCejyq7oz1WudC8hJqauHlBCAFN.jpg')"></div>
-            <div class="poster" style="background-image:url('https://lh3.googleusercontent.com/ci/AL18g_SFbmqkiRpeyGGiYCBdJfc1h6yWusFkTB2uXluwJxh6mqIY1oAGeFTmx-U-flZhvAzeVjdUIkQ')"></div>
+            <div class="poster span2" style="background-image:url('https://lh3.googleusercontent.com/ci/AL18g_SFbmqkiRpeyGGiYCBdJfc1h6yWusFkTB2uXluwJxh6mqIY1oAGeFTmx-U-flZhvAzeVjdUIkQ')"></div>
+            <!-- Row 2: Taebaek, Aimless, Flower Girl, Single Spark -->
             <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/cSJFHWGhPuG3fuiH5p3oUkyPUUz.jpg')"></div>
             <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/4O53U5HYkdw4HN6mpJmvxqfPi7U.jpg')"></div>
             <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/bbf6SgMgUxixi3zJnKpBChWEqCa.jpg')"></div>
             <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/53iMgx4wbvSb5hfRD2kevq682zd.jpg')"></div>
-            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/jPP0gFDgdXRa1YgP8Cn8arzOHI3.jpg')"></div>
+            <!-- Row 3: [Peppermint span 2], Madame, Spirit's -->
+            <div class="poster span2" style="background-image:url('https://media.themoviedb.org/t/p/w500/jPP0gFDgdXRa1YgP8Cn8arzOHI3.jpg')"></div>
             <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/mknsbMQFN78jVNC021fTSuEw1Rj.jpg')"></div>
             <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/yO8Z1Sl1iyhMZq01k7walZvWIBe.jpg')"></div>
+            <!-- Row 4: Loyal, Parasite, [State of Mind span 2] -->
             <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/9sQTVDXCzFxWarg0tuEHMb1XDM0.jpg')"></div>
             <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg')"></div>
-            <div class="poster center-span" style="background-image:url('https://media.themoviedb.org/t/p/w500/qjwH61zraSRtQAe5K9tXdKiiPsu.jpg')"></div>
+            <div class="poster span2" style="background-image:url('https://media.themoviedb.org/t/p/w500/qjwH61zraSRtQAe5K9tXdKiiPsu.jpg')"></div>
         </div>
         <div class="cover-bottom">
             <div class="course-codes">HIST 498 / EAST 418 / FILM 419 &bull; Spring 2026</div>
