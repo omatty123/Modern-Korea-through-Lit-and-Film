@@ -329,6 +329,56 @@
         .status-dot.coming { background: var(--gold); }
         .status-dot.none { background: #ccc; }
 
+        /* FILM ACCESS BANNER */
+        .film-access {
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            border: 1px solid rgba(166,124,0,0.3);
+            border-radius: 6px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .film-access-text {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .film-access-text strong {
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .film-access-text .note {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 0.25rem;
+        }
+
+        .film-access-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gold);
+            color: #1a1a2e;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.65rem 1.25rem;
+            border-radius: 4px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .film-access-btn:hover {
+            background: #c99400;
+        }
+
         @media (max-width: 768px) {
             header { padding: 2rem 1.5rem; }
             header h1 { font-size: 1.8rem; }
@@ -336,6 +386,7 @@
             .film-grid { grid-template-columns: 1fr; }
             .week-row { grid-template-columns: 1fr; }
             .header-meta { flex-direction: column; gap: 0.5rem; }
+            .film-access { flex-direction: column; text-align: left; }
         }
     </style>
 </head>
@@ -355,6 +406,18 @@
 </header>
 
 <div class="main-wrap">
+
+    <!-- FILM ACCESS BANNER -->
+    <div class="film-access">
+        <div class="film-access-text">
+            <strong>Course Film Library</strong><br>
+            All 13 films are available for streaming and download. Lawrence login required.
+            <div class="note">OneDrive shared folder. Use your @lawrence.edu credentials.</div>
+        </div>
+        <a href="https://lawrenceu-my.sharepoint.com/:f:/g/personal/wegehaum_lawrence_edu/IgDS8Ypq2bMgRo0ih85FVElEAR9BnVjH4PhlO--xLrYaGAA?e=Q5dMk1" class="film-access-btn" target="_blank">
+            &#9654; Watch Films
+        </a>
+    </div>
 
     <!-- FILM DEEP DIVES -->
     <section>
