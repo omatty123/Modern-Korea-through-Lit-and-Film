@@ -47,21 +47,54 @@
         .cover-inner {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             height: 100%;
         }
-        .cover-inner h1 { font-size: 32pt; font-weight: bold; margin-bottom: 0.06in; }
-        .cover-inner .course-info { font-size: 13pt; color: #444; margin-bottom: 0.5in; line-height: 1.6; }
-        .cover-inner .name-block { font-size: 13pt; margin-bottom: 0.5in; }
-        .cover-inner .name-block .uline { display: inline-block; width: 3.5in; border-bottom: 1.5px solid #444; margin-left: 0.1in; }
-        .cover-inner .toc { list-style: none; font-size: 11pt; line-height: 2; columns: 2; column-gap: 0.4in; color: #333; }
-        .cover-inner .toc .wk { display: inline-block; width: 0.55in; font-weight: bold; color: #666; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.04em; }
+        .cover-title { font-size: 30pt; font-weight: bold; margin: 0.1in 0 0.04in; }
+        .cover-subtitle { font-size: 11pt; color: #555; margin-bottom: 0.15in; }
+
+        /* POSTER MOSAIC */
+        .mosaic {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 1.82in;
+            gap: 4px;
+            flex: 1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .mosaic .poster {
+            background-size: cover;
+            background-position: center 20%;
+            border-radius: 2px;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .mosaic .poster.center-span {
+            grid-column: 2 / 4;
+        }
+
+        .cover-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 0.15in;
+            padding-top: 0.1in;
+            border-top: 1.5px solid #222;
+        }
+        .cover-bottom .course-codes { font-size: 9pt; color: #555; }
+        .cover-bottom .name-block { font-size: 11pt; }
+        .cover-bottom .name-block .uline {
+            display: inline-block;
+            width: 2.8in;
+            border-bottom: 1.5px solid #444;
+            margin-left: 0.1in;
+        }
 
         /* FILM STRIP */
         .film-strip {
             width: calc(100% + 0.8in);
             margin: -0.4in -0.4in 0 -0.4in;
-            height: 1.35in;
+            height: 1.25in;
             background-size: cover;
             background-position: center 30%;
             position: relative;
@@ -81,9 +114,9 @@
             justify-content: space-between;
             border-bottom: 2px solid #222;
             padding-bottom: 0.04in;
-            margin: 0.1in 0 0.12in;
+            margin: 0.08in 0 0.1in;
         }
-        .film-header h2 { font-size: 18pt; font-weight: bold; line-height: 1.1; }
+        .film-header h2 { font-size: 17pt; font-weight: bold; line-height: 1.1; }
         .film-header .kor { font-size: 11pt; font-weight: normal; color: #666; margin-left: 0.1in; }
         .film-header .meta { font-size: 9pt; color: #555; white-space: nowrap; }
 
@@ -92,7 +125,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 0.08in 0.1in 0.04in;
-            margin-bottom: 0.1in;
+            margin-bottom: 0.08in;
             background-image:
                 repeating-linear-gradient(
                     0deg,
@@ -124,21 +157,20 @@
         }
 
         /* SIZE VARIANTS */
-        .box.sm { min-height: 0.85in; }
-        .box.md { min-height: 1.15in; }
-        .box.lg { min-height: 1.55in; }
+        .box.sm { min-height: 1.45in; }
+        .box.md { min-height: 2.35in; }
 
         /* GRID LAYOUTS */
         .row3 {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 0.1in;
+            gap: 0.08in;
         }
 
         .row2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.1in;
+            gap: 0.08in;
         }
 
         .pg-foot {
@@ -158,6 +190,7 @@
             .screen-nav { display: none; }
             .film-strip { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             .box { border-color: #bbb; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .mosaic .poster { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
 
         @media (max-width: 9in) {
@@ -165,7 +198,8 @@
             .page { width: 100%; height: auto; margin: 0; padding: 0.3in; box-shadow: none; border-bottom: 1px solid #ccc; }
             .film-strip { width: calc(100% + 0.6in); margin: -0.3in -0.3in 0 -0.3in; height: 1.2in; }
             .screen-nav { width: 100%; padding: 0.1in 0.3in; }
-            .cover-inner { height: auto; padding: 0.4in 0; }
+            .cover-inner { height: auto; padding: 0.2in 0; }
+            .mosaic { grid-auto-rows: 1.2in; }
             .row3 { grid-template-columns: 1fr; }
             .row2 { grid-template-columns: 1fr; }
             .pg-foot { display: none; }
@@ -179,28 +213,27 @@
 <!-- COVER -->
 <div class="page">
     <div class="cover-inner">
-        <h1>Film Workbook</h1>
-        <div class="course-info">
-            Korean History through Literature and Film<br>
-            HIST 498 / EAST 418 / FILM 419<br>
-            Spring 2026
+        <h1 class="cover-title">Film Workbook</h1>
+        <div class="cover-subtitle">Korean History through Literature and Film</div>
+        <div class="mosaic">
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/fxucCjHL566llnZC3TfWTdReHee.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/tCejyq7oz1WudC8hJqauHlBCAFN.jpg')"></div>
+            <div class="poster" style="background-image:url('https://lh3.googleusercontent.com/ci/AL18g_SFbmqkiRpeyGGiYCBdJfc1h6yWusFkTB2uXluwJxh6mqIY1oAGeFTmx-U-flZhvAzeVjdUIkQ')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/cSJFHWGhPuG3fuiH5p3oUkyPUUz.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/4O53U5HYkdw4HN6mpJmvxqfPi7U.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/bbf6SgMgUxixi3zJnKpBChWEqCa.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/53iMgx4wbvSb5hfRD2kevq682zd.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/jPP0gFDgdXRa1YgP8Cn8arzOHI3.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/mknsbMQFN78jVNC021fTSuEw1Rj.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/yO8Z1Sl1iyhMZq01k7walZvWIBe.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/9sQTVDXCzFxWarg0tuEHMb1XDM0.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg')"></div>
+            <div class="poster center-span" style="background-image:url('https://media.themoviedb.org/t/p/w500/qjwH61zraSRtQAe5K9tXdKiiPsu.jpg')"></div>
         </div>
-        <div class="name-block">Name: <span class="uline"></span></div>
-        <ul class="toc">
-            <li><span class="wk">Wk 1</span> The Throne</li>
-            <li><span class="wk">Wk 2</span> Sopyonje</li>
-            <li><span class="wk">Wk 2</span> Fly High, Run Far</li>
-            <li><span class="wk">Wk 3</span> Taebaek Mountains</li>
-            <li><span class="wk">Wk 4</span> Aimless Bullet</li>
-            <li><span class="wk">Wk 5</span> The Flower Girl</li>
-            <li><span class="wk">Wk 6</span> A Single Spark</li>
-            <li><span class="wk">Wk 6</span> Peppermint Candy</li>
-            <li><span class="wk">Wk 7</span> Madame Freedom</li>
-            <li><span class="wk">Wk 8</span> Spirit's Homecoming</li>
-            <li><span class="wk">Wk 9</span> Loyal Citizens</li>
-            <li><span class="wk">Wk 9</span> Parasite</li>
-            <li><span class="wk">&nbsp;</span> A State of Mind</li>
-        </ul>
+        <div class="cover-bottom">
+            <div class="course-codes">HIST 498 / EAST 418 / FILM 419 &bull; Spring 2026</div>
+            <div class="name-block">Name: <span class="uline"></span></div>
+        </div>
     </div>
 </div>
 
@@ -217,7 +250,10 @@
         <div class="box md"><span class="lbl">Key Images</span></div>
         <div class="box md"><span class="lbl">Key Moments</span></div>
     </div>
-    <div class="box lg"><span class="lbl">Your Questions</span></div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
     <div class="pg-foot"><span>Korean History through Film</span><span>1 / 13</span></div>
 </div>
 
@@ -234,7 +270,10 @@
         <div class="box md"><span class="lbl">Key Images</span></div>
         <div class="box md"><span class="lbl">Key Moments</span></div>
     </div>
-    <div class="box lg"><span class="lbl">Your Questions</span></div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
     <div class="pg-foot"><span>Korean History through Film</span><span>2 / 13</span></div>
 </div>
 
@@ -251,7 +290,10 @@
         <div class="box md"><span class="lbl">Key Images</span></div>
         <div class="box md"><span class="lbl">Key Moments</span></div>
     </div>
-    <div class="box lg"><span class="lbl">Your Questions</span></div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
     <div class="pg-foot"><span>Korean History through Film</span><span>3 / 13</span></div>
 </div>
 
@@ -268,7 +310,10 @@
         <div class="box md"><span class="lbl">Key Images</span></div>
         <div class="box md"><span class="lbl">Key Moments</span></div>
     </div>
-    <div class="box lg"><span class="lbl">Your Questions</span></div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
     <div class="pg-foot"><span>Korean History through Film</span><span>4 / 13</span></div>
 </div>
 
@@ -285,7 +330,10 @@
         <div class="box md"><span class="lbl">Key Images</span></div>
         <div class="box md"><span class="lbl">Key Moments</span></div>
     </div>
-    <div class="box lg"><span class="lbl">Your Questions</span></div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
     <div class="pg-foot"><span>Korean History through Film</span><span>5 / 13</span></div>
 </div>
 
@@ -302,7 +350,10 @@
         <div class="box md"><span class="lbl">Key Images</span></div>
         <div class="box md"><span class="lbl">Key Moments</span></div>
     </div>
-    <div class="box lg"><span class="lbl">Your Questions</span></div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
     <div class="pg-foot"><span>Korean History through Film</span><span>6 / 13</span></div>
 </div>
 
@@ -319,7 +370,10 @@
         <div class="box md"><span class="lbl">Key Images</span></div>
         <div class="box md"><span class="lbl">Key Moments</span></div>
     </div>
-    <div class="box lg"><span class="lbl">Your Questions</span></div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
     <div class="pg-foot"><span>Korean History through Film</span><span>7 / 13</span></div>
 </div>
 
@@ -336,7 +390,10 @@
         <div class="box md"><span class="lbl">Key Images</span></div>
         <div class="box md"><span class="lbl">Key Moments</span></div>
     </div>
-    <div class="box lg"><span class="lbl">Your Questions</span></div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
     <div class="pg-foot"><span>Korean History through Film</span><span>8 / 13</span></div>
 </div>
 
@@ -353,7 +410,10 @@
         <div class="box md"><span class="lbl">Key Images</span></div>
         <div class="box md"><span class="lbl">Key Moments</span></div>
     </div>
-    <div class="box lg"><span class="lbl">Your Questions</span></div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
     <div class="pg-foot"><span>Korean History through Film</span><span>9 / 13</span></div>
 </div>
 
@@ -370,7 +430,10 @@
         <div class="box md"><span class="lbl">Key Images</span></div>
         <div class="box md"><span class="lbl">Key Moments</span></div>
     </div>
-    <div class="box lg"><span class="lbl">Your Questions</span></div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
     <div class="pg-foot"><span>Korean History through Film</span><span>10 / 13</span></div>
 </div>
 
@@ -387,7 +450,10 @@
         <div class="box md"><span class="lbl">Key Images</span></div>
         <div class="box md"><span class="lbl">Key Moments</span></div>
     </div>
-    <div class="box lg"><span class="lbl">Your Questions</span></div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
     <div class="pg-foot"><span>Korean History through Film</span><span>11 / 13</span></div>
 </div>
 
@@ -404,7 +470,10 @@
         <div class="box md"><span class="lbl">Key Images</span></div>
         <div class="box md"><span class="lbl">Key Moments</span></div>
     </div>
-    <div class="box lg"><span class="lbl">Your Questions</span></div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
     <div class="pg-foot"><span>Korean History through Film</span><span>12 / 13</span></div>
 </div>
 
@@ -421,7 +490,10 @@
         <div class="box md"><span class="lbl">Key Images</span></div>
         <div class="box md"><span class="lbl">Key Moments</span></div>
     </div>
-    <div class="box lg"><span class="lbl">Your Questions</span></div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
     <div class="pg-foot"><span>Korean History through Film</span><span>13 / 13</span></div>
 </div>
 
