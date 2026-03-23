@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>자각 Awakening — Kim Iryeop | Korean History through Literature and Film</title>
+<title>자각 Awakening — Kim Wŏn-ju | Korean History through Literature and Film</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <meta property="og:type" content="article">
-<meta property="og:title" content="자각 (Awakening) — Kim Iryeop, 1926">
+<meta property="og:title" content="자각 (Awakening) — Kim Wŏn-ju (Iryŏp), 1926">
 <meta property="og:description" content="Bilingual Korean-English reading. A young wife's awakening to selfhood after her husband's betrayal. Dong-A Ilbo serial, June 1926.">
 <meta property="og:url" content="https://omatty123.github.io/korean-film-dashboard/readings/awakening.html">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
@@ -59,7 +59,7 @@
 
   /* HEADER */
   .page-header {
-    max-width: 960px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 64px 24px 40px;
     border-bottom: 1px solid var(--border);
@@ -113,110 +113,177 @@
 
   /* MAIN */
   .main-content {
-    max-width: 960px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px 120px;
   }
 
-  /* INSTALLMENT */
-  .installment {
+  /* TWO-COLUMN LAYOUT */
+  .bilingual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
     margin-top: 48px;
   }
 
-  .installment-number {
-    font-size: 14px;
-    font-weight: 600;
+  .col-label {
+    font-size: 11px;
     letter-spacing: 3px;
+    text-transform: uppercase;
     color: var(--ink-faint);
-    margin-bottom: 24px;
+    font-weight: 600;
+    margin-bottom: 32px;
     padding-bottom: 8px;
     border-bottom: 1px solid var(--border-light);
-    display: inline-block;
   }
 
-  /* BILINGUAL PAIR */
-  .pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px 32px;
-    margin-bottom: 24px;
-    align-items: start;
-  }
-
-  .ko {
+  /* KOREAN COLUMN */
+  .ko-col {
     font-family: 'Noto Serif KR', serif;
     font-weight: 300;
     font-size: 16px;
     line-height: 2;
-    text-align: justify;
     color: var(--ink);
   }
 
-  .en {
+  .ko-col .installment {
+    margin-bottom: 48px;
+  }
+
+  .ko-col .inst-num {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--ink-faint);
+    margin-bottom: 20px;
+  }
+
+  .ko-col p {
+    margin-bottom: 16px;
+    text-align: justify;
+    text-indent: 1em;
+  }
+
+  .ko-col p.first {
+    text-indent: 0;
+  }
+
+  .ko-col .letter-block {
+    margin: 24px 0;
+    padding-left: 20px;
+    border-left: 2px solid var(--border);
+    font-style: italic;
+  }
+
+  .ko-col .letter-block p {
+    text-indent: 0;
+  }
+
+  .ko-col .signature {
+    text-align: right;
+    font-weight: 400;
+    color: var(--ink-light);
+    margin-top: 16px;
+  }
+
+  .ko-col .divider {
+    text-align: center;
+    color: var(--border);
+    margin: 40px 0;
+    font-size: 20px;
+    letter-spacing: 12px;
+  }
+
+  .ko-col .ending {
+    text-align: right;
+    font-weight: 400;
+    color: var(--ink-faint);
+    font-size: 14px;
+  }
+
+  /* ENGLISH COLUMN */
+  .en-col {
     font-family: 'Newsreader', Georgia, serif;
     font-size: 15.5px;
     line-height: 1.75;
     color: var(--ink-light);
   }
 
-  /* LETTER / BLOCKQUOTE */
-  .pair.letter {
-    background: var(--paper-warm);
-    border-left: 3px solid var(--border);
-    padding: 20px 24px;
-    border-radius: 0 4px 4px 0;
+  .en-col .installment {
+    margin-bottom: 48px;
   }
 
-  .pair.letter .ko {
+  .en-col .inst-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--ink-faint);
+    margin-bottom: 20px;
+  }
+
+  .en-col p {
+    margin-bottom: 14px;
+    text-indent: 1.5em;
+  }
+
+  .en-col p.first {
+    text-indent: 0;
+  }
+
+  .en-col .letter-block {
+    margin: 24px 0;
+    padding-left: 20px;
+    border-left: 2px solid var(--border);
     font-style: italic;
   }
 
-  .pair.letter .en {
-    font-style: italic;
+  .en-col .letter-block p {
+    text-indent: 0;
   }
 
-  .signature {
+  .en-col .signature {
     text-align: right;
-    font-weight: 400;
     color: var(--ink-light);
-    margin-top: 8px;
+    margin-top: 16px;
   }
 
-  /* DIVIDER */
-  .divider {
+  .en-col .divider {
     text-align: center;
     color: var(--border);
-    margin: 48px 0 0;
+    margin: 40px 0;
     font-size: 20px;
     letter-spacing: 12px;
   }
 
-  /* COLUMN LABELS */
-  .col-labels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px 32px;
-    margin-bottom: 16px;
-    margin-top: 32px;
-  }
-  .col-labels span {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+  .en-col .ending {
+    font-size: 13px;
     color: var(--ink-faint);
-    font-weight: 600;
+    font-style: italic;
+    margin-top: 24px;
+    text-indent: 0;
   }
 
-  .ending {
-    text-align: right;
-    font-weight: 400;
+  /* NOTE BANNER */
+  .structure-note {
+    background: var(--paper-warm);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-top: 40px;
+    font-size: 13px;
     color: var(--ink-faint);
-    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .structure-note strong {
+    color: var(--ink-light);
+    font-weight: 500;
   }
 
   /* FOOTER */
   footer {
-    max-width: 960px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 32px 24px;
     border-top: 1px solid var(--border);
@@ -237,20 +304,14 @@
     .page-header { padding: 40px 20px 32px; }
     .page-header h1 { font-size: 32px; }
     .main-content { padding: 0 20px 80px; }
-
-    .pair, .col-labels {
+    .bilingual {
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 0;
     }
-
-    .en {
-      padding-left: 16px;
-      border-left: 2px solid var(--border-light);
-      font-size: 14.5px;
-    }
-
-    .col-labels span:last-child {
-      display: none;
+    .en-col {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
     }
   }
 </style>
@@ -266,425 +327,372 @@
 <div class="page-header">
   <div class="genre">小說 · Reading</div>
   <h1>自覺</h1>
-  <div class="en-title">Awakening</div>
+  <div class="en-title">Awakening (1926)</div>
   <div class="author">金一葉</div>
-  <div class="author-en">Kim Iryeop (1896-1971)</div>
-  <div class="publication">동아일보 연재 · June 1926</div>
+  <div class="author-en">Kim Wŏn-ju (Iryŏp), 1896-1971</div>
+  <div class="publication">동아일보 연재, June 19-26, 1926</div>
 </div>
 
 <div class="main-content">
 
-<!-- ━━━━━━━━━━━━━━━━ 一 ━━━━━━━━━━━━━━━━ -->
-<section class="installment">
-<div class="installment-number">一</div>
-
-<div class="col-labels">
-  <span>한국어 원문</span>
-  <span>English</span>
+<div class="structure-note">
+  <strong>Note on structure:</strong> The Korean original (left) preserves the newspaper serialization order (一-七). The English translation (right) follows its own section numbering [1]-[7], which reorders some passages into a more chronological sequence. Both are presented complete and unaltered.
+  <br><strong>Note on orthography:</strong> The Korean text preserves pre-1933 spelling conventions.
+  <br><strong>English translation:</strong> From <em>Questioning Minds: Short Stories by Modern Korean Women Writers</em>, ed. Yung-Hee Kim (University of Hawai'i Press, 2009).
 </div>
 
-<div class="pair">
-  <div class="ko">하두 의외이고도 허망한 일이라서 차라리 입을 다물려고 하였지만…… 동무가 구지 물으시니 사실대로 적어볼가 하나이다. 그가 처음 일본을 떠나는 때는 재작년 이맘때이었는데 날짜까지도 늦처지지 아니합니다.</div>
-  <div class="en">The matter was so unexpected and so absurd that I tried to simply keep my mouth shut... but since you press me, friend, I will write it down just as it happened. It was around this time two years ago that he first left for Japan, and the exact date has not slipped from my memory.</div>
-</div>
+<div class="bilingual">
 
-<div class="pair">
-  <div class="ko">입학 준비인가 한다고 개학 일자보다 몇달 앞서서 일본으로 들어가려든 일이 그의 아버지 생신을 지나서 떠나라다가 그가 또 감기에 걸리고 하여서 십이월 그믐께가 되여서야 떠나게 되였나이다.</div>
-  <div class="en">He was supposed to go several months before the term began, saying he needed to prepare for enrollment, but he was to wait until after his father's birthday, and then he caught a cold, so it was not until the end of December that he finally left.</div>
-</div>
+<!-- ==================== KOREAN COLUMN ==================== -->
+<div class="ko-col">
+<div class="col-label">한국어 원문</div>
 
-<div class="pair">
-  <div class="ko">떠나기 전날 밤은 그의 친구들이 송별회를 하느니 어쩌느니 하노라고 그는 새로 두시나 되여서 먹지도 못하는 술을 다 마셨는지 얼굴이 벌개서 얼적은 웃음을 띠우고 들어와서는 "왜 잇때까지 안 자우? 밤이 퍽 늦것는데……" 하고는 모자와 두루막이만 벗던지고는 혼자 리속으로 그냥 들어갔나이다.</div>
-  <div class="en">The night before his departure, his friends were carrying on about a farewell party, and he came home past two in the morning having drunk all the liquor he couldn't even hold, his face flushed red, wearing a sheepish smile: "Why are you still up? It's terribly late..." Then he tossed off his hat and overcoat and went straight under the covers by himself.</div>
-</div>
+<div class="installment">
+<div class="inst-num">一</div>
 
-<div class="pair">
-  <div class="ko">자리에 누운 그는 붉은 내 눈을 쳐다보더니 자기도 처연한 빛을 띠우며 "인제 웃벗고 어서 이리 드러누" 하며 그는 누운 채로 손을 내밀어 내 저고리 고름을 끌더이다.</div>
-  <div class="en">Lying down, he looked up at my reddened eyes, and a mournful look came over his own face. "Come now, take off your jacket and lie down here," he said, reaching out from where he lay to tug at the ties of my jeogori.</div>
-</div>
+<p class="first">하두 의외이고도 허망한 일이라서 차라리 입을 다물려고 하였지만…… 동무가 구지 물으시니 사실대로 적어볼가 하나이다. 그가 처음 일본을 떠나는 때는 재작년 이맘때이었는데 날짜까지도 늦처지지 아니합니다.</p>
 
-<div class="pair">
-  <div class="ko">그때가 벌서 삼년이나 지났나이다. 나는 오는 봄에는 졸업이라 합니다. 독한 결심을 가지고 하는 공부라 성적은 매우 조흔 편입니다. 이제는 늣날 남편 시집살이보다 시들해서 언제건 인가하게 생각됩니다.</div>
-  <div class="en">That was already three years ago. They say I will graduate this coming spring. I study with fierce determination, so my marks are quite good. By now, the old days of serving a husband and his family feel so stale that it all seems like something from a distant past.</div>
-</div>
+<p>입학 준비인가 한다고 개학 일자보다 몇달 앞서서 일본으로 들어가려든 일이 그의 아버지 생신을 지나서 떠나라다가 그가 또 감기에 걸리고 하여서 십이월 그믐께가 되여서야 떠나게 되였나이다.</p>
 
-<div class="pair">
-  <div class="ko">그러나 어린것의 소식을 들을 때마다 가슴이 뭉클하오이다. 지금 네 살인데 총명하고 잘생긴 아이 해로 말도 썩 잘한다 합니다.</div>
-  <div class="en">But whenever I hear news of the little one, my heart clenches. The child is four now, bright and handsome, and they say it already speaks quite well.</div>
-</div>
+<p>떠나기 전날 밤은 그의 친구들이 송별회를 하느니 어쩌느니 하노라고 그는 새로 두시나 되여서 먹지도 못하는 술을 다 마셨는지 얼굴이 벌개서 얼적은 웃음을 띠우고 들어와서는 "왜 잇때까지 안 자우? 밤이 퍽 늦것는데……" 하고는 모자와 두루막이만 벗던지고는 혼자 리속으로 그냥 들어갔나이다.</p>
 
-<div class="pair">
-  <div class="ko">엇던 때는 몸시 도어린것이 보고 싶허서 그집 문간에라도 몰내가서 그것의 얼굴이라도 잠간 보고올가 생각할 때도 잇지만은 스스로 억제합니다. 보고싶다고 한번 만나면 두번 만나고 싶고, 두번 만나면 자조 만나고 싶고, 자조 만나면 아주 곁헤다고 떠나지 않게 되기를 바랄 것이니, 그렇게만 되면 아희 아버지와 또 인연이 맺어지군 인연이 맺어진다면 내 자존심과 인격은 여지없이 깨여질 것입니다.</div>
-  <div class="en">There are times when I desperately want to see the child and think of secretly going to the gate of that house, just to catch a glimpse of its face. But I restrain myself. If I meet the child once, I will want to meet twice; if twice, then often; and if often, I will wish to stay by its side forever. And if that happens, I will be bound again to the child's father, and if that bond is remade, my self-respect and dignity will be shattered beyond repair.</div>
-</div>
+<p>자리에 누운 그는 붉은 내 눈을 쳐다보더니 자기도 처연한 빛을 띠우며 "인제 웃벗고 어서 이리 드러누" 하며 그는 누운 채로 손을 내밀어 내 저고리 고름을 끌더이다.</p>
 
-<div class="pair">
-  <div class="ko">나는 자식의 사랑으로 인하야 내 전생활을 희생할 수는 절대로 업나이다. 자식의 생활과 나의 생활을 한데 석거처고 헤매일 수는 업나이다. 물론 남의 부모가 되여 자식을 기르고 교육식여서 한개 완전한 사람을 만드는 것이 당연한 직무겠지요. 그러나 부모의 한사람인 아희의 아버지가 아희의 양육을 넉넉히 할 수 있음도 불구하고 여지없는 모욕을 당하면서 자식 때문에 할 수는 업나이다.</div>
-  <div class="en">I absolutely cannot sacrifice my entire life for the love of a child. I cannot tangle the child's life and my own together and wander lost. Of course it is a duty to raise children, educate them, and make them into whole persons. But when the child's father is perfectly capable of providing for it, I cannot endure relentless humiliation just for the child's sake.</div>
-</div>
+<p>그때가 벌서 삼년이나 지났나이다. 나는 오는 봄에는 졸업이라 합니다. 독한 결심을 가지고 하는 공부라 성적은 매우 조흔 편입니다. 이제는 늣날 남편 시집살이보다 시들해서 언제건 인가하게 생각됩니다.</p>
 
-<div class="pair">
-  <div class="ko">그러니까 아해가 자라서 어미라고 차즈면 만나고 아니 차즈면 그만일 것입니다.</div>
-  <div class="en">So when the child grows up, if it comes looking for its mother, I will meet it. And if it does not come looking, then that will be that.</div>
-</div>
+<p>그러나 어린것의 소식을 들을 때마다 가슴이 뭉클하오이다. 지금 네 살인데 총명하고 잘생긴 아이 해로 말도 썩 잘한다 합니다.</p>
 
-</section>
+<p>엇던 때는 몸시 도어린것이 보고 싶허서 그집 문간에라도 몰내가서 그것의 얼굴이라도 잠간 보고올가 생각할 때도 잇지만은 스스로 억제합니다. 보고싶다고 한번 만나면 두번 만나고 싶고, 두번 만나면 자조 만나고 싶고, 자조 만나면 아주 곁헤다고 떠나지 않게 되기를 바랄 것이니, 그렇게만 되면 아희 아버지와 또 인연이 맺어지군 인연이 맺어진다면 내 자존심과 인격은 여지없이 깨여질 것입니다.</p>
+
+<p>나는 자식의 사랑으로 인하야 내 전생활을 희생할 수는 절대로 업나이다. 자식의 생활과 나의 생활을 한데 석거처고 헤매일 수는 업나이다. 물론 남의 부모가 되여 자식을 기르고 교육식여서 한개 완전한 사람을 만드는 것이 당연한 직무겠지요. 그러나 부모의 한사람인 아희의 아버지가 아희의 양육을 넉넉히 할 수 있음도 불구하고 여지없는 모욕을 당하면서 자식 때문에 할 수는 업나이다.</p>
+
+<p>그러니까 아해가 자라서 어미라고 차즈면 만나고 아니 차즈면 그만일 것입니다.</p>
+</div>
 
 <div class="divider">· · ·</div>
 
-<!-- ━━━━━━━━━━━━━━━━ 二 ━━━━━━━━━━━━━━━━ -->
-<section class="installment">
-<div class="installment-number">二</div>
+<div class="installment">
+<div class="inst-num">二</div>
 
-<div class="pair">
-  <div class="ko">눈은 부실부실 떨어져 쏠면 또 깔리고 또 깔리고 하여서 사람의 발자죽을 메이는데 그는 자기와 대일 친하다고 늘 말하든 K라는 이와 함께 골로로 깔나는 길에 새로 발자죽을 내이며 터벅터벅 걸어가는데 그를 몹시 따르는 집에서 기르는 개가 작고 그의 뒤를 따라가더이다.</div>
-  <div class="en">Snow was falling in soft flurries, and as fast as it was swept it piled up again and again, burying people's footprints. He was walking alongside the one called K, whom he always said was his closest friend, treading new prints along the evenly blanketed road, trudging along, while the household dog, deeply attached to him, kept following behind.</div>
+<p class="first">눈은 부실부실 떨어져 쏠면 또 깔리고 또 깔리고 하여서 사람의 발자죽을 메이는데 그는 자기와 대일 친하다고 늘 말하든 K라는 이와 함께 골로로 깔나는 길에 새로 발자죽을 내이며 터벅터벅 걸어가는데 그를 몹시 따르는 집에서 기르는 개가 작고 그의 뒤를 따라가더이다.</p>
+
+<p>그는 친구와 무슨 이야기를 그리하는지 개가 따라가는 줄 모르고 돌아보지도 않고 그냥 가고만 있더이다. 시누이가 개를 작고 부르면 개는 휙끈 돌아보고는 따라가고 따라가고 하더이다. 나중에는 그가 동명을 던져 개를 쫓더이다. 나는 쫓겨서 타달거리며 돌아오는 개가 얼마나 불상한지 개를 깨안고 실컷 울고 싶헛나이다. 그리고 그가 집들만 혼듬으로 업서진 뒤에 나는 답답하고 무거운 가슴을 안고 그래도 시어머니가 찾지나 않나하고 빨리 집으로 돌아왔나이다. 텅 비인 듯 집안은 왜 그렇게 구중중하게 늘어놓앗는지 모르겟으나 일이 손에 걸리지 않는고로 방에 들어가서 열빠진 사람 모양으로 우둑하니 앉엇는데 "이 애 어디 갓니? 집안이 이렇게 지저분한데 치일 줄 모르고……" 하는 째여지는 듯한 시어머니 소리에 소스라쳐 놀라서 얼는 이러나 아가서 치우는 것처럼 하고는 다시 방으로 들어가서는 다시 그를 생각하기 시작하였나이다.</p>
+
+<p>겨울이 되어 문을 닫고 잇게 된 것이 엇더케 다행한지 몰랏나이다. 일을 하는지 잠을 자는지 드려다보는 이도 업시 암만이라도 멀거니 앉어서 그를 생각할 수가 잇는 까닭이엇나이다. 결혼 당초부터 그가 졸업하고 나와 사회적으로 지위를 얻고 경제적으로 완전히 독립되여 아름다운 새가덤을 이룰 그때까지를 쭉 그리여 보앗나이다.</p>
+
+<p>그리고는 다시 나의 령은 지금의 그를 따라 차를 타고 배를 타고 물을 건너느고 산을 넘어가는 것이엇나이다.</p>
+
+<p>엇재든지 먹지도 말고 일도 하지 말고 움직이지도 말고 꼭 그대로 앉어서 그를 따라가는 령(靈)에게 장해가 되지 안었으면 하지만 말성부리는 시어머니가 있고 내가 밥지어 바처야 먹는 다른 식구가 만하서 가만히 앉어 잇을 수가 업는 것이 성가시엇나이다. 령을 떠나보면 육신이 기계적으로 하는 일이 엇지 번번히 될 리가 잇습니까. 시부모 옷을 제때 못 지어 놓고 반찬을 간맞게 못하여 날마다 몇차례식 시어머니께 야단맞고 그릇 깨트려 시어머니를 뒷개천에 버리기 같은 일이 만햇나이다. 다만 그를 생각하는 것이 그때 나의 생활의 전체엇나이다. 자나깨나 앉으나 서나 그의 생각뿐이엇나이다.</p>
 </div>
-
-<div class="pair">
-  <div class="ko">그는 친구와 무슨 이야기를 그리하는지 개가 따라가는 줄 모르고 돌아보지도 않고 그냥 가고만 있더이다. 시누이가 개를 작고 부르면 개는 휙끈 돌아보고는 따라가고 따라가고 하더이다. 나중에는 그가 동명을 던져 개를 쫓더이다. 나는 쫓겨서 타달거리며 돌아오는 개가 얼마나 불상한지 개를 깨안고 실컷 울고 싶헛나이다. 그리고 그가 집들만 혼듬으로 업서진 뒤에 나는 답답하고 무거운 가슴을 안고 그래도 시어머니가 찾지나 않나하고 빨리 집으로 돌아왔나이다. 텅 비인 듯 집안은 왜 그렇게 구중중하게 늘어놓앗는지 모르겟으나 일이 손에 걸리지 않는고로 방에 들어가서 열빠진 사람 모양으로 우둑하니 앉엇는데 "이 애 어디 갓니? 집안이 이렇게 지저분한데 치일 줄 모르고……" 하는 째여지는 듯한 시어머니 소리에 소스라쳐 놀라서 얼는 이러나 아가서 치우는 것처럼 하고는 다시 방으로 들어가서는 다시 그를 생각하기 시작하였나이다.</div>
-  <div class="en">He was so absorbed in conversation that he didn't notice the dog and never looked back. My sister-in-law kept calling the dog, and the dog would glance back but then follow again and again. Finally he threw a stone to chase it away. When the poor dog came scampering back, driven off, I wanted to embrace it and weep my heart out. After he vanished around the corner, I carried my heavy, stifled heart and hurried home, worried my mother-in-law might be looking for me. The house felt hollow and oppressively still, and since nothing could hold my attention, I sat in my room blankly, like someone drained of all sense. Then came the piercing voice of my mother-in-law: "Girl! Where have you been? The house is filthy and you can't even clean..." Startled, I jumped up and pretended to tidy, then crept back to my room and began thinking of him again.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">겨울이 되어 문을 닫고 잇게 된 것이 엇더케 다행한지 몰랏나이다. 일을 하는지 잠을 자는지 드려다보는 이도 업시 암만이라도 멀거니 앉어서 그를 생각할 수가 잇는 까닭이엇나이다. 결혼 당초부터 그가 졸업하고 나와 사회적으로 지위를 얻고 경제적으로 완전히 독립되여 아름다운 새가덤을 이룰 그때까지를 쭉 그리여 보앗나이다.</div>
-  <div class="en">How fortunate that winter came and the doors were shut. With no one to look in on whether I was working or sleeping, I could sit as long as I liked and think of him. From the very start of our marriage I traced the future: he would graduate and return, gain social standing, become fully independent, and we would build a beautiful new home together.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그리고는 다시 나의 령은 지금의 그를 따라 차를 타고 배를 타고 물을 건너느고 산을 넘어가는 것이엇나이다.</div>
-  <div class="en">And then my spirit would follow him, boarding trains and ships, crossing waters and climbing over mountains.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">엇재든지 먹지도 말고 일도 하지 말고 움직이지도 말고 꼭 그대로 앉어서 그를 따라가는 령(靈)에게 장해가 되지 안었으면 하지만 말성부리는 시어머니가 있고 내가 밥지어 바처야 먹는 다른 식구가 만하서 가만히 앉어 잇을 수가 업는 것이 성가시엇나이다. 령을 떠나보면 육신이 기계적으로 하는 일이 엇지 번번히 될 리가 잇습니까. 시부모 옷을 제때 못 지어 놓고 반찬을 간맞게 못하여 날마다 몇차례식 시어머니께 야단맞고 그릇 깨트려 시어머니를 뒷개천에 버리기 같은 일이 만햇나이다. 다만 그를 생각하는 것이 그때 나의 생활의 전체엇나이다. 자나깨나 앉으나 서나 그의 생각뿐이엇나이다.</div>
-  <div class="en">I wished I could stop eating, stop working, stop moving, and sit perfectly still so as not to disturb the spirit that followed him. But there was a quarrelsome mother-in-law, and many family members who would not eat unless I cooked and served them, and it was maddening that I could not simply sit still. When the spirit departed and the body mechanically did its work, how could things ever go right? I couldn't sew the in-laws' clothes on time, couldn't season the dishes properly, got scolded several times a day, broke dishes so often it was as if I were throwing my mother-in-law into the ditch. The only thing in my life then was thinking of him. Waking or sleeping, sitting or standing, nothing but thoughts of him.</div>
-</div>
-
-</section>
 
 <div class="divider">· · ·</div>
 
-<!-- ━━━━━━━━━━━━━━━━ 三 ━━━━━━━━━━━━━━━━ -->
-<section class="installment">
-<div class="installment-number">三</div>
+<div class="installment">
+<div class="inst-num">三</div>
 
-<div class="pair">
-  <div class="ko">그의 조화하든 음식을 만들 때나 수천리 타국인 일본과 조선이엇지 그 후가 똑같을 수가 잇사오리기만은 것을 의일가치 여도 그가 객지에서 추워할 것이니 녀름 예비가 와도 그가 학교 가기 고생되겟다는 걱정이엇나이다. 그의 친구가 차저올 때는 더욱 애처로울 즈록 그가 그리워 나이다. 옷그릇을 뒤지다가라도 그의 옷이 보이면 반가워서 한번 더 쓰다듬어 보앗나이다. 그리고 일본 류학이라는 말만 들어도 무심치가 안코 일본 갓다 온 사람이라면 공연히 반가워서 문틈으로라도 한번 더 내다보아지엇나이다. 그리고 시부모가 그에게 돈을 붓처주엇나, 그의 요구하엿다는 것을 보내주엇나 하는 일을 애가 써우도록 알고 싶헛나이다.</div>
-  <div class="en">Whether making the dishes he loved... though Japan and Korea were thousands of li apart and life could hardly be the same, I worried he would be cold abroad, and even when summer rains came I worried about his hardship getting to school. When his friends visited, the more wretched I felt, the more I missed him. If I came upon his clothes in the wardrobe, I was so glad I stroked them once more. At the mere mention of "studying in Japan" I could not stay indifferent, and if someone had been to Japan, I felt an inexplicable gladness and peered through the crack in the door. And I was desperate to know: had his parents sent him money? Had they sent what he asked for?</div>
+<p class="first">그의 조화하든 음식을 만들 때나 수천리 타국인 일본과 조선이엇지 그 후가 똑같을 수가 잇사오리기만은 것을 의일가치 여도 그가 객지에서 추워할 것이니 녀름 예비가 와도 그가 학교 가기 고생되겟다는 걱정이엇나이다. 그의 친구가 차저올 때는 더욱 애처로울 즈록 그가 그리워 나이다. 옷그릇을 뒤지다가라도 그의 옷이 보이면 반가워서 한번 더 쓰다듬어 보앗나이다. 그리고 일본 류학이라는 말만 들어도 무심치가 안코 일본 갓다 온 사람이라면 공연히 반가워서 문틈으로라도 한번 더 내다보아지엇나이다. 그리고 시부모가 그에게 돈을 붓처주엇나, 그의 요구하엿다는 것을 보내주엇나 하는 일을 애가 써우도록 알고 싶헛나이다.</p>
+
+<p>그를 생각하기에 밤을 새우다가 새벽에 겨우 잠이 들었다가 시어머니 부르는 소리에 일어나서는 연자질하는 나귀가치 시어머니 잭망의 채측과는 살이 칼을 맞으며 또 종일 일을 하지 않으면 안이 되였나이다. 그러나 겉으로 나마 함껏 복종하고 참고 일을 하며 몸이 아무리 피곤하고 괴로워도 한번 누워 보지도 안켓만은 시어머니 부르는 소리에 대답만 더뎍 하여도 서방 업시 지내는 띄세라고 야단야단을 하며 "시테것들은 서방계집이 밤낮부터 안젓서야 되는 줄 알드라. 우리네들은 젊엇슬때 남편이 벼슬살니 시골을 가든지 자근집을 얻어 몇십년을 나가살든지 시부모 곱게 섬기고 시집사리 잘하였다"는 말을 저 소리 또 나오느 하도록 늘 하였나이다.</p>
+
+<p>시집사리라는 이야기를 엇지 다하겟나잇가. 좁쌀 한섬을 산을 노아도 못다 계산하겟나이다.</p>
+
+<p>아 동무여, 정신은 사랑 그리우기에 초조하고 육신은 부림을 받기에 고되고 마음은 시어머니에게 쫄들리게 되는 그때 나의 고통이 과연 엇더하였나잇가. 본래 살이 만치 못하든 나는 그만 서리 맞은 국화닙가치 시들어젓나이다.</p>
+
+<p>그러나 그것 흣한 고통 중에도 단번에 즐거움을 주고 활기를 주는 것은 그에게서 오는 편지였나이다. 부모시하 사람이라 직접 하지도 못하고 누이동생 일흠 쓴 인봉함 속에 편지를 너허 보내엿나이다. 빈정거리는 듯한 웃음을 띠우고 "난 언니 조와할 것 가져왓지" 하며 까부는 시누이에게서 편지를 받아서는 붓그러워서 바느질고 리허엄하다 그냥 노아 두엇나이다.</p>
+
+<p>시누는 악의가 섞인 롱담을 몇마디 하더가는 그만 나가 버리며 나는 곧 편지를 뜯엇나이다.</p>
+
+<p>그는 문학을 조와하고 재조가 잇고도 편지도 별로 정답고 재미잇고 고맙게 써보내엇나이다. 그리고 자상하게도 자기 지내는 일동 일정과 자기가 가는 곳의 경치가 트인 것을 하나도 빼지 않고 적어보내엇나이다. 그때 내 생각에는 세상에는 그와 가치 다정하고 편지 잘 쓰는 이는 업을 것 갓햇나이다.</p>
+
+<p>그리고 그때 그의 편지 중에도 대일 내게 힘을 주고 용기를 내는 것은 간금 이러한 의미의 편지를 보내임이엇나이다.</p>
+
+<p>그리하여 아래희 작만 하여야 할 것은 물론이고 일본은 온돌이 업서 치웁다는 말을 듯고 뜨뜻하게 할 것은 그는 필요치 안다는 것까지 다 장만하였나이다. 그리고 조선 음식을 여러가지 만들어서 새지 않는 그릇에 너어 그의 집에 너어 노왓나이다.</p>
+
+<p>짐을 다 내여 실니고 그의 아버지 그의 친구모다 나섯는데 나는 나갈 수도 업고 혼자 내방 모퉁이에 서 울고 잇는데 그가 "엠, 나 저 버린 것은데!……" 하며 퉁퉁 방문 암호로 오더이다. 나는 얼는 눈물을 거두고 "엠, 늦젓수?" 하니까 그는 싱그레 웃으며 "니 저버리긴 무엇을 너 저버려. 당신 한번 더 보려고 드러왓지. 자 한번 악수나 합시다. 그리고 나 업는 동안에도 내 맘하나만 믿고 모든 것을 참아주……" 하며 내 손을 얼잇게 흔들고는 다시 나가더이다.</p>
+
+<p>사람들 없는 사이에 나는 뒷문으로 빠저나가서 니웃집 담모퉁이에 숨어서 그가 가는 뒷모양이라도 한번 더 바라보려 하였나이다.</p>
 </div>
-
-<div class="pair">
-  <div class="ko">그를 생각하기에 밤을 새우다가 새벽에 겨우 잠이 들었다가 시어머니 부르는 소리에 일어나서는 연자질하는 나귀가치 시어머니 잭망의 채측과는 살이 칼을 맞으며 또 종일 일을 하지 않으면 안이 되였나이다. 그러나 겉으로 나마 함껏 복종하고 참고 일을 하며 몸이 아무리 피곤하고 괴로워도 한번 누워 보지도 안켓만은 시어머니 부르는 소리에 대답만 더뎍 하여도 서방 업시 지내는 띄세라고 야단야단을 하며 "시테것들은 서방계집이 밤낮부터 안젓서야 되는 줄 알드라. 우리네들은 젊엇슬때 남편이 벼슬살니 시골을 가든지 자근집을 얻어 몇십년을 나가살든지 시부모 곱게 섬기고 시집사리 잘하였다"는 말을 저 소리 또 나오느 하도록 늘 하였나이다.</div>
-  <div class="en">I would stay up all night thinking of him, finally fall asleep at dawn, then rise at my mother-in-law's call and, like a donkey at the millstone, endure the lash of her nagging and toil all day. Though outwardly I obeyed, enduring and working, never lying down no matter how exhausted, if I was even slow to answer she would raise a storm about me "putting on airs because my husband is away." She would repeat, until you could mouth the words yourself: "These young wives think they should just sit around. In our day, whether our husbands went off on government service or took a second house and lived away for decades, we served our in-laws gracefully and kept house properly."</div>
-</div>
-
-<div class="pair">
-  <div class="ko">시집사리라는 이야기를 엇지 다하겟나잇가. 좁쌀 한섬을 산을 노아도 못다 계산하겟나이다.</div>
-  <div class="en">How can I possibly tell the whole story of life under in-laws? You could count the grains in a bushel of millet and still not finish the accounting.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">아 동무여, 정신은 사랑 그리우기에 초조하고 육신은 부림을 받기에 고되고 마음은 시어머니에게 쫄들리게 되는 그때 나의 고통이 과연 엇더하였나잇가. 본래 살이 만치 못하든 나는 그만 서리 맞은 국화닙가치 시들어젓나이다.</div>
-  <div class="en">Oh friend, my mind anxious with longing, my body worked like an animal, my spirit crushed under my mother-in-law. Can you imagine what my suffering was truly like? Never stout to begin with, I withered away like a chrysanthemum leaf struck by frost.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그러나 그것 흣한 고통 중에도 단번에 즐거움을 주고 활기를 주는 것은 그에게서 오는 편지였나이다. 부모시하 사람이라 직접 하지도 못하고 누이동생 일흠 쓴 인봉함 속에 편지를 너허 보내엿나이다. 빈정거리는 듯한 웃음을 띠우고 "난 언니 조와할 것 가져왓지" 하며 까부는 시누이에게서 편지를 받아서는 붓그러워서 바느질고 리허엄하다 그냥 노아 두엇나이다.</div>
-  <div class="en">But even amid such suffering, the one thing that instantly gave me joy was his letters. Being under the in-laws' watch, he couldn't address them to me directly, so he slipped letters inside envelopes bearing his sister's name. With a sly grin, "I've brought something big sister will like!" the sister-in-law would hand me the letter. Too embarrassed, I would set it by my sewing basket and pretend to be busy.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">시누는 악의가 섞인 롱담을 몇마디 하더가는 그만 나가 버리며 나는 곧 편지를 뜯엇나이다.</div>
-  <div class="en">The sister-in-law would toss off a few barbs laced with malice, then leave, and I would immediately tear open the letter.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그는 문학을 조와하고 재조가 잇고도 편지도 별로 정답고 재미잇고 고맙게 써보내엇나이다. 그리고 자상하게도 자기 지내는 일동 일정과 자기가 가는 곳의 경치가 트인 것을 하나도 빼지 않고 적어보내엇나이다. 그때 내 생각에는 세상에는 그와 가치 다정하고 편지 잘 쓰는 이는 업을 것 갓햇나이다.</div>
-  <div class="en">He loved literature and had a gift for it, so his letters were wonderfully warm, entertaining, and touching. He wrote in detail about his daily schedule and every scenic place he visited, leaving nothing out. I thought there could be no one in the world as affectionate and gifted a letter-writer as he.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그리고 그때 그의 편지 중에도 대일 내게 힘을 주고 용기를 내는 것은 간금 이러한 의미의 편지를 보내임이엇나이다.</div>
-  <div class="en">Among his letters, the ones that gave me the most strength and courage were when he occasionally wrote words to this effect:</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그리하여 아래희 작만 하여야 할 것은 물론이고 일본은 온돌이 업서 치웁다는 말을 듯고 뜨뜻하게 할 것은 그는 필요치 안다는 것까지 다 장만하였나이다. 그리고 조선 음식을 여러가지 만들어서 새지 않는 그릇에 너어 그의 집에 너어 노왓나이다.</div>
-  <div class="en">And so I prepared everything that needed preparing. When I heard Japan had no ondol heating and was cold, I even prepared warm things he said he didn't need. I made all kinds of Korean food, packed them in leak-proof containers, and stored them in his luggage.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">짐을 다 내여 실니고 그의 아버지 그의 친구모다 나섯는데 나는 나갈 수도 업고 혼자 내방 모퉁이에 서 울고 잇는데 그가 "엠, 나 저 버린 것은데!……" 하며 퉁퉁 방문 암호로 오더이다. 나는 얼는 눈물을 거두고 "엠, 늦젓수?" 하니까 그는 싱그레 웃으며 "니 저버리긴 무엇을 너 저버려. 당신 한번 더 보려고 드러왓지. 자 한번 악수나 합시다. 그리고 나 업는 동안에도 내 맘하나만 믿고 모든 것을 참아주……" 하며 내 손을 얼잇게 흔들고는 다시 나가더이다.</div>
-  <div class="en">After the bags were loaded and his father and friends had gone out, I could not leave and stood crying in the corner of my room. He came thumping to my door: "Hey, I've forgotten something!..." I quickly wiped my tears: "What? Are you late?" He smiled softly: "Forgotten something? I came back to see you one more time. Come, let's shake hands. And while I'm away, just trust this one heart of mine and endure everything..." He shook my hand firmly and went out again.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">사람들 없는 사이에 나는 뒷문으로 빠저나가서 니웃집 담모퉁이에 숨어서 그가 가는 뒷모양이라도 한번 더 바라보려 하였나이다.</div>
-  <div class="en">While no one was about, I slipped out the back door and hid at the corner of the neighbor's wall, hoping to catch one last look at his retreating figure.</div>
-</div>
-
-</section>
 
 <div class="divider">· · ·</div>
 
-<!-- ━━━━━━━━━━━━━━━━ 四 ━━━━━━━━━━━━━━━━ -->
-<section class="installment">
-<div class="installment-number">四</div>
+<div class="installment">
+<div class="inst-num">四</div>
 
-<div class="pair letter">
-  <div class="ko">"나의 사랑하는 안해여, 아무리 해와 동정이 없는 나의 부모형제를 섬기기에 뼈골이 빠지도록 애쓰는 당신에게 과연 무엇이라 말을 하리잇가. 미안하다 할가요, 고맙다 할가요. 그저 할말은 당신을 위하야 쉬지 않고 배홈니다. 당신을 위하야 꾸준히 수양하고 있습니다 할 뿐입니다. 그러나 그리운 안해여, 웃지 마소서. 당신이 정말 보고 싶흘 때는 공부를 며칠만 쉬이고라도…… 하고 생각하는 때가 한두번이 아니엇나이다. 엇잿든 나도 당신보다 못지않게 희생적 정신을 가진 것만 알아주소서. 그리고 당신의 편지가 지금 나의 적막한 생활의 생명수임을 늣지 말소서!"</div>
-  <div class="en">"My beloved wife: what can I possibly say to you, who labor until your very bones ache serving my parents and siblings, who show you neither love nor sympathy? Shall I say I'm sorry? Shall I say thank you? All I can say is: for your sake, I study without rest; for your sake, I steadily cultivate myself. That is all. But, darling wife, do not laugh. There have been more than a few times when I missed you so terribly I thought of putting my studies aside for just a few days... In any case, please know that my spirit of sacrifice is no less than yours. And never forget that your letters are the water of life sustaining my lonely existence!"</div>
+<div class="letter-block">
+<p>"나의 사랑하는 안해여, 아무리 해와 동정이 없는 나의 부모형제를 섬기기에 뼈골이 빠지도록 애쓰는 당신에게 과연 무엇이라 말을 하리잇가. 미안하다 할가요, 고맙다 할가요. 그저 할말은 당신을 위하야 쉬지 않고 배홈니다. 당신을 위하야 꾸준히 수양하고 있습니다 할 뿐입니다. 그러나 그리운 안해여, 웃지 마소서. 당신이 정말 보고 싶흘 때는 공부를 며칠만 쉬이고라도…… 하고 생각하는 때가 한두번이 아니엇나이다. 엇잿든 나도 당신보다 못지않게 희생적 정신을 가진 것만 알아주소서. 그리고 당신의 편지가 지금 나의 적막한 생활의 생명수임을 늣지 말소서!"</p>
 </div>
 
-<div class="pair">
-  <div class="ko">참말 그때는 한주일에 세번이나 네번 오는 그의 편지만 아니면 목을 메여서라도 강물에 빠져서라도 죽엇을는지 몰랏나이다.</div>
-  <div class="en">Truly, if not for his letters that came three or four times a week, I might have hanged myself, or thrown myself into a river.</div>
+<p>참말 그때는 한주일에 세번이나 네번 오는 그의 편지만 아니면 목을 메여서라도 강물에 빠져서라도 죽엇을는지 몰랏나이다.</p>
+
+<p>그의 편지가 올 날 안이 오면 그날은 자연 역개가 촉느러지고 공연히 맥이 탁 풀려서 견딜 수 업스리만치 되였섯나이다.</p>
+
+<p>엇재든 그가 업는 그때는 그에게서 편지가 오고 안이 오는 것으로 나에게는 희망과 낙망과 반가움과 섭섭함을 덩하여지였나이다.</p>
+
+<p>그리고 녀름이 되면 잘 몬동안이지만 그가 귀국하야 우리 두사람에게는 더할 수 없이 달고 즐거운 밤과 낮이 되였섯나이다.</p>
+
+<p>그대와의 혼인은 전연 부모의 의사로만 성립된 것으로 내게는 책임이 없으며 지금까지 부부관계를 계속해온 것은 인습에 매이고 인정에 끌리였든 것이니 미안하지만 나를 생각지 말고 그대의 전정을 스스로 결정하라는 것이였나이다.</p>
+
+<p>그리고 니어서 이러한 소문을 들었나이다. 그가 일본 류학하는 자기보다도 나히만 혼엿던 른처녀와 련애를 한다는데 그가 그처녀 앞에서는 자기에게 일본만의 안해가 잇지만 애정이 본래부터 생기지 않아서 변명하다가 그처녀를 보고 비로소 사랑이라는 것을 알았노라고 속살거린다 하더이다. 그리고 그녀자는 구식녀자인 나는 덥혀놓고 무식하고 곧나고 속업는 녀자로 아는 모양이 하더이다.</p>
+
+<p>분로와 원한이 압흘서지마는 입을 악물고 정신을 채리였나이다. 이미 세상을 알고 인심을 헤아린 이상한 시라도 머웃거리고 잇을 수가 없다고 단연히 한술 더뜨는 답장을 쓰기로 하였나이다.</p>
+
+<div class="letter-block">
+<p>주신 편지의 의미는 잘 알앗나이다. 먼저 그러한 편지 주심이 얼마나 다행한지 모르겟나이다. 녀자의 몸이라 그래도 환경을 벗어나지 못해서 리상에 맞는 남편과 억지로 지내면서도 날달은 고생을 격지 않으면 아니 되는 자신의 불행을 언제나 한탄하고 잇었나이다.</p>
+
+<p>아희는 남녀 간낫는대로 돌려 보내겠나이다. 나는 아희를 다리고는 전정을 개척하는데 거리끼는 일이 만을가 함외다. 그러나 아희의 행복을 누구보다도 더 일간절이 바라는 사람이 이 세상에 또 하나 잇음을 아희에게 늘 주소서. 이만.</p>
+
+<p class="signature">六月十八日 任淳實</p>
 </div>
 
-<div class="pair">
-  <div class="ko">그의 편지가 올 날 안이 오면 그날은 자연 역개가 촉느러지고 공연히 맥이 탁 풀려서 견딜 수 업스리만치 되였섯나이다.</div>
-  <div class="en">On days his letter was due and did not come, my shoulders would droop, and I felt so inexplicably deflated I could hardly bear it.</div>
-</div>
+<p>그를 위하여 곱게곱게 지어두었던 조선옷을 지어 넘기면 시원하고 편하다고 슬슬 만져보는 것이나 그를 위하여 아꼇고 간직하여 두었던 과자나 과일을 그가 고맙게 맛잇게 먹는 것을 보는 것도 적은 깃븜은 아니엇나이다.</p>
 
-<div class="pair">
-  <div class="ko">엇재든 그가 업는 그때는 그에게서 편지가 오고 안이 오는 것으로 나에게는 희망과 낙망과 반가움과 섭섭함을 덩하여지였나이다.</div>
-  <div class="en">During his absence, the coming or not coming of his letters was what gave me hope and despair, joy and sorrow.</div>
-</div>
+<p>그와 앉어 놀든 곳이거니 하고 혼자 왓나가 보고 한숨쉬는 뒤겟숲 나무 밋헤를 두리서서 만히 울 나가서 정다운 이야기로 밤시간을 보낼 때도 잇엇나이다. 그때엔 선물로 그가 가져다준 시어머니도 시누도 모르는 비밀의 귀중품은 몇가지씩 내장농 속에 감추어지엿나이다.</p>
 
-<div class="pair">
-  <div class="ko">그리고 녀름이 되면 잘 몬동안이지만 그가 귀국하야 우리 두사람에게는 더할 수 없이 달고 즐거운 밤과 낮이 되였섯나이다.</div>
-  <div class="en">When summer came, though only briefly, he would return, and for the two of us those were days and nights of incomparable sweetness.</div>
-</div>
+<p>그때도 그의 친구 중에도 구식녀자라고 무단이 본처를 리혼한다는 말을 가끔 들엇지만은 공연히 그러네는 업겟지, 무슨 까닭이 잇는지 누가 알아…… 하고 속으로 생각할 뿐이엇나이다.</p>
 
-<div class="pair">
-  <div class="ko">그대와의 혼인은 전연 부모의 의사로만 성립된 것으로 내게는 책임이 없으며 지금까지 부부관계를 계속해온 것은 인습에 매이고 인정에 끌리였든 것이니 미안하지만 나를 생각지 말고 그대의 전정을 스스로 결정하라는 것이였나이다.</div>
-  <div class="en">His letter said, roughly, that our marriage had been formed entirely by our parents' will and he bore no responsibility; that he had continued the relationship only because he was bound by convention and pulled by sentiment; and, regretfully, that I should not think of him but decide my own future for myself.</div>
-</div>
+<p>엇재든 그는 춘하가 바뀌는 변절의 귀변은 잇을지언정 그의 마음이야 엇더하였나이다. 그러니 내가 그를 추막하는 일 같흔 일은 더구나 업섯을 것이엇나이다. 그러나 그는 혼자서 이런 말을 하였나이다.</p>
 
-<div class="pair">
-  <div class="ko">그리고 니어서 이러한 소문을 들었나이다. 그가 일본 류학하는 자기보다도 나히만 혼엿던 른처녀와 련애를 한다는데 그가 그처녀 앞에서는 자기에게 일본만의 안해가 잇지만 애정이 본래부터 생기지 않아서 변명하다가 그처녀를 보고 비로소 사랑이라는 것을 알았노라고 속살거린다 하더이다. 그리고 그녀자는 구식녀자인 나는 덥혀놓고 무식하고 곧나고 속업는 녀자로 아는 모양이 하더이다.</div>
-  <div class="en">Then I heard these rumors: he was in love with an unmarried woman studying in Japan; before her he made excuses that he had a wife in name only, that he had never felt affection, and that upon meeting this woman he finally understood love. And it seemed she assumed I, the "traditional wife," was simply ignorant, plain, and empty-headed.</div>
+<p>자기 친구 중에는 녀학생을 부러워하지 않는이가 업는 모양이나 자기는 허영심이 많고 아는것도 업시 건방지고 고생을 견디지 못하는 녀학생들에게 결코 마음이 쏠리지 않는다고 하며, 자기 안해인 나는 신식학교는 아니 다녔드래도 녀학생만 못지 않게 하는것이 잇고 리해가 잇다고 하며 더할 수 없이 나를 만족해하고 내게만 단순한 정을 주는 듯 하였나이다.</p>
 </div>
-
-<div class="pair">
-  <div class="ko">분로와 원한이 압흘서지마는 입을 악물고 정신을 채리였나이다. 이미 세상을 알고 인심을 헤아린 이상한 시라도 머웃거리고 잇을 수가 없다고 단연히 한술 더뜨는 답장을 쓰기로 하였나이다.</div>
-  <div class="en">Though rage and resentment surged up in me, I clenched my teeth and gathered my wits. Having come to know the world and fathom the human heart, I could not waver a moment longer. I resolved to write a reply that would outdo his.</div>
-</div>
-
-<div class="pair letter">
-  <div class="ko">주신 편지의 의미는 잘 알앗나이다. 먼저 그러한 편지 주심이 얼마나 다행한지 모르겟나이다. 녀자의 몸이라 그래도 환경을 벗어나지 못해서 리상에 맞는 남편과 억지로 지내면서도 날달은 고생을 격지 않으면 아니 되는 자신의 불행을 언제나 한탄하고 잇었나이다.<br><br>아희는 남녀 간낫는대로 돌려 보내겠나이다. 나는 아희를 다리고는 전정을 개척하는데 거리끼는 일이 만을가 함외다. 그러나 아희의 행복을 누구보다도 더 일간절이 바라는 사람이 이 세상에 또 하나 잇음을 아희에게 늘 주소서. 이만.<br><br><span class="signature">六月十八日 任淳實</span></div>
-  <div class="en">I understand your letter well. How fortunate that you wrote first. Being a woman, I was unable to break free of my circumstances, and while enduring life forced upon me with a husband who did not match my ideals, I have always lamented having to suffer hardships beyond what others know.<br><br>I will send the child back as soon as it is born, boy or girl. I fear that keeping the child would hinder me in forging my own future. But please always tell the child that there is one other person in this world who wishes for its happiness more fervently than anyone. That is all.<br><br><span class="signature">June 18th. Im Sunsil.</span></div>
-</div>
-
-<div class="pair">
-  <div class="ko">그를 위하여 곱게곱게 지어두었던 조선옷을 지어 넘기면 시원하고 편하다고 슬슬 만져보는 것이나 그를 위하여 아꼇고 간직하여 두었던 과자나 과일을 그가 고맙게 맛잇게 먹는 것을 보는 것도 적은 깃븜은 아니엇나이다.</div>
-  <div class="en">Handing over the Korean clothes I had carefully sewn and watching him stroke them, saying how comfortable they were; or seeing him eat with pleasure the sweets and fruit I had treasured. These were not small joys.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그와 앉어 놀든 곳이거니 하고 혼자 왓나가 보고 한숨쉬는 뒤겟숲 나무 밋헤를 두리서서 만히 울 나가서 정다운 이야기로 밤시간을 보낼 때도 잇엇나이다. 그때엔 선물로 그가 가져다준 시어머니도 시누도 모르는 비밀의 귀중품은 몇가지씩 내장농 속에 감추어지엿나이다.</div>
-  <div class="en">I would visit alone the places where we had sat together, and sigh, standing under the trees behind the house where I had often wept. Sometimes we spent evening hours in tender conversation. In those days, the secret gifts he brought, unknown to mother-in-law and sister-in-law, were hidden in my wardrobe chest.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그때도 그의 친구 중에도 구식녀자라고 무단이 본처를 리혼한다는 말을 가끔 들엇지만은 공연히 그러네는 업겟지, 무슨 까닭이 잇는지 누가 알아…… 하고 속으로 생각할 뿐이엇나이다.</div>
-  <div class="en">Even then, I sometimes heard of his friends divorcing their "old-fashioned" first wives, but I merely thought, "Surely that wouldn't happen without cause; who knows the real reason..." and left it at that.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">엇재든 그는 춘하가 바뀌는 변절의 귀변은 잇을지언정 그의 마음이야 엇더하였나이다. 그러니 내가 그를 추막하는 일 같흔 일은 더구나 업섯을 것이엇나이다. 그러나 그는 혼자서 이런 말을 하였나이다.</div>
-  <div class="en">Though there might be the inconstancy that comes with changing seasons, surely his heart was steadfast. The thought of doubting him never entered my mind. And he himself would say:</div>
-</div>
-
-<div class="pair">
-  <div class="ko">자기 친구 중에는 녀학생을 부러워하지 않는이가 업는 모양이나 자기는 허영심이 많고 아는것도 업시 건방지고 고생을 견디지 못하는 녀학생들에게 결코 마음이 쏠리지 않는다고 하며, 자기 안해인 나는 신식학교는 아니 다녔드래도 녀학생만 못지 않게 하는것이 잇고 리해가 잇다고 하며 더할 수 없이 나를 만족해하고 내게만 단순한 정을 주는 듯 하였나이다.</div>
-  <div class="en">Among his friends, it seemed, none could help envying the "new women" students. But he was never drawn to those female students, full of vanity, pretentious despite knowing nothing, unable to endure hardship. He said that I, his wife, though I had not attended modern schools, had qualities and understanding no less than any of them. He seemed utterly satisfied with me and gave his undivided affection to me alone.</div>
-</div>
-
-</section>
 
 <div class="divider">· · ·</div>
 
-<!-- ━━━━━━━━━━━━━━━━ 五 ━━━━━━━━━━━━━━━━ -->
-<section class="installment">
-<div class="installment-number">五</div>
+<div class="installment">
+<div class="inst-num">五</div>
 
-<div class="pair">
-  <div class="ko">동무여 오래동안 편지를 끊었나이다. 지금은 내 심리와 생활이 아주 일변하였나이다. 지금 생각하에서는 전에 적은 말이 그 가치 장황이 늘어놓을 가치 조차 없는 것이었나이다. 그러나 요령을 알게 하기 위하여 전예 말을 계속합니다.</div>
-  <div class="en">Friend, I have not written in a long time. My mind and my life have completely changed. Looking back, what I wrote before was not even worth setting down at such length. But to help you understand the whole picture, I continue from where I left off.</div>
+<p class="first">동무여 오래동안 편지를 끊었나이다. 지금은 내 심리와 생활이 아주 일변하였나이다. 지금 생각하에서는 전에 적은 말이 그 가치 장황이 늘어놓을 가치 조차 없는 것이었나이다. 그러나 요령을 알게 하기 위하여 전예 말을 계속합니다.</p>
+
+<p>그때 내게는 불행이 거듭하느라고 임신(妊娠) 팔개월이나 되였나이다. 몸은 무겁고 괴로워서 그 전에 참고 견디어 가든 시집살이의 모든 고통이 더욱 절실이 느껴져서 짜증만 드러드러나서 부억 모퉁이에서 머리를 혼자 잡아 뜯으며 애쓸때도 많고 남다지는 밤에 홀로 누어서 사족이 쑤시는 몸을 비틀며 늣겨울이도 여러번 하던 때였나이다. 더구나 약하게 몸시 무엇이 먹고 싶을 때에 그 통도 눈물을 흘니며 견디어가든 때였나이다. 그러면서도 남편과 가치 살게 될 때는…… 하고 유일의 희망을 두었나이다. 그런데 엇전셈인지 그에게서는 여러달을 두고 편지조차 끊어졌나이다. 별별 생각을 다 하면서도 그래도 오늘이나 내일이나 하고 하루가치 기다리고만 잇엇나이다.</p>
+
+<p>그렇게 기다리든 편지는 오기는 왓나이다. 그러나 그 편지 내용은 그 전과는 전연 반대의 사연이엇나이다. 말하자면 절연장(絕緣狀)이엇나이다.</p>
+
+<p>가뜩이나 신경이 예민하고 몸이 극도로 약하여젓든 내가 과연 얼마나 놀나고 슬퍼하였으리잇가. 그때 기절하지 안은것이 이상하였나이다.</p>
+
+<p>그 편지의 의미는 대개 이러하였나이다.</p>
+
+<p>나는 참 든 울음이 다시 터져서 그만 그에게 업드러지며 흑흑 늣기엇나이다.</p>
+
+<p>그는 밥종이 나서 "왜 이리우, 남 조흔 공부하러 가는데…… 그리고 내가 집에 잇서야 당신에게 무슨 도움이 되겟소. 마음으로 암만 동정한대야 무슨 소용이오. 내가 어서 공부를 맞치고 도라와야 내가 번 돈으로 당신을 먹이고 입히고 할 터이고 그리고 또 이 복잡하고 귀찬고 부자유한 이 가뎡에서 당신을 구원해 낼 수도 잇지 안소. 그러니 한삼사년만 눈 딱 감고 참아주구려. 자 어서 이리 드러누어요." 하고 힘잇게 나를 끄안더이다.</p>
+
+<p>그날 저녁은 우리 별의 설음보다도 뼈속까지 늣겨지는 그의 따듯한 정이 더욱 나에게 못 치라야 곳 칠수없는 눈물을 쏟아내였나이다. 엇재든 그날 저녁은 우리 별의 애처로움과 사랑의 속살거림과 희망의 이야기로 꼬박 밤을 새이고 말앗나이다.</p>
+
+<p>그 이튿날 아츰에는 마지막으로 좀 더 가치 누웟자는 그의 붓잡음도 뿌리치고 일즉이 일어나서 일본가면 조선음식은 구경 못하게 될것을 생각하고 정성껏 아츰을 채리여 시간이 늦을가 하여 급급히 상을 내여보냈나이다.</p>
+
+<p>마음껏 먹고 저 하고 차려간 존반상이 별로 업서진 것 이업시 나왓슬 때 픽 섭섭하였으나 시간이 밧바서 그랫나보다 하고 말앗나이다.</p>
+
+<p>그이 떠나 보낼 준비는 부모의 허락을 받기 전부터 내가 혼자서 하고 있었나이다. 객지에난 몸으로 야싼 것이 많을 것을 생각하고 내힘으로 내 정성으로 밑출 일은 무엇이나 다 하려하였나이다.</p>
 </div>
-
-<div class="pair">
-  <div class="ko">그때 내게는 불행이 거듭하느라고 임신(妊娠) 팔개월이나 되였나이다. 몸은 무겁고 괴로워서 그 전에 참고 견디어 가든 시집살이의 모든 고통이 더욱 절실이 느껴져서 짜증만 드러드러나서 부억 모퉁이에서 머리를 혼자 잡아 뜯으며 애쓸때도 많고 남다지는 밤에 홀로 누어서 사족이 쑤시는 몸을 비틀며 늣겨울이도 여러번 하던 때였나이다. 더구나 약하게 몸시 무엇이 먹고 싶을 때에 그 통도 눈물을 흘니며 견디어가든 때였나이다. 그러면서도 남편과 가치 살게 될 때는…… 하고 유일의 희망을 두었나이다. 그런데 엇전셈인지 그에게서는 여러달을 두고 편지조차 끊어졌나이다. 별별 생각을 다 하면서도 그래도 오늘이나 내일이나 하고 하루가치 기다리고만 잇엇나이다.</div>
-  <div class="en">Misfortune was piling upon misfortune, and I was eight months pregnant. My body heavy and wretched, all the suffering of life under the in-laws pressed on me with even greater force. Nothing but irritation rose in me: many times I tore at my own hair alone in a corner of the kitchen, and at night I lay alone with aching limbs, writhing, weeping. When, weakened as I was, I desperately craved something to eat, I bore even that through tears. Yet I clung to the one hope: when I finally live with my husband... But for some reason his letters had stopped for months. Though every kind of thought crossed my mind, I waited day by day: today, or perhaps tomorrow.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그렇게 기다리든 편지는 오기는 왓나이다. 그러나 그 편지 내용은 그 전과는 전연 반대의 사연이엇나이다. 말하자면 절연장(絕緣狀)이엇나이다.</div>
-  <div class="en">The letter I had waited for so long did arrive. But its contents were the exact opposite of everything before. In a word, it was a letter of severance.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">가뜩이나 신경이 예민하고 몸이 극도로 약하여젓든 내가 과연 얼마나 놀나고 슬퍼하였으리잇가. 그때 기절하지 안은것이 이상하였나이다.</div>
-  <div class="en">Can you imagine how shocked and grief-stricken I was, already with nerves on edge and a body weakened to the extreme? It was a wonder I did not faint.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그 편지의 의미는 대개 이러하였나이다.</div>
-  <div class="en">The meaning of that letter was roughly this:</div>
-</div>
-
-<div class="pair">
-  <div class="ko">나는 참 든 울음이 다시 터져서 그만 그에게 업드러지며 흑흑 늣기엇나이다.</div>
-  <div class="en">My tears, long held back, burst forth again, and I collapsed against him, sobbing.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그는 밥종이 나서 "왜 이리우, 남 조흔 공부하러 가는데…… 그리고 내가 집에 잇서야 당신에게 무슨 도움이 되겟소. 마음으로 암만 동정한대야 무슨 소용이오. 내가 어서 공부를 맞치고 도라와야 내가 번 돈으로 당신을 먹이고 입히고 할 터이고 그리고 또 이 복잡하고 귀찬고 부자유한 이 가뎡에서 당신을 구원해 낼 수도 잇지 안소. 그러니 한삼사년만 눈 딱 감고 참아주구려. 자 어서 이리 드러누어요." 하고 힘잇게 나를 끄안더이다.</div>
-  <div class="en">He grew impatient: "What's all this? I'm going off to study, which is a good thing... And what help am I to you here? No matter how much I sympathize, what good does it do? I need to finish my studies and come back so I can feed and clothe you with my own earnings, and rescue you from this complicated, tiresome household. So just close your eyes and endure three or four more years. Come now, lie down." And he held me tightly.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그날 저녁은 우리 별의 설음보다도 뼈속까지 늣겨지는 그의 따듯한 정이 더욱 나에게 못 치라야 곳 칠수없는 눈물을 쏟아내였나이다. 엇재든 그날 저녁은 우리 별의 애처로움과 사랑의 속살거림과 희망의 이야기로 꼬박 밤을 새이고 말앗나이다.</div>
-  <div class="en">That evening, even more than the sorrow of parting, it was the warmth of his affection, felt to the marrow, that drew from me tears I could not hold back. That evening was spent in the pathos of separation, whispered love, and talk of hopes, and we stayed up the whole night through.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그 이튿날 아츰에는 마지막으로 좀 더 가치 누웟자는 그의 붓잡음도 뿌리치고 일즉이 일어나서 일본가면 조선음식은 구경 못하게 될것을 생각하고 정성껏 아츰을 채리여 시간이 늦을가 하여 급급히 상을 내여보냈나이다.</div>
-  <div class="en">The next morning, I shook off his clinging plea to lie together a little longer and rose early, thinking he would not taste Korean food in Japan, and prepared breakfast with all my heart, rushing to get the table out in time.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">마음껏 먹고 저 하고 차려간 존반상이 별로 업서진 것 이업시 나왓슬 때 픽 섭섭하였으나 시간이 밧바서 그랫나보다 하고 말앗나이다.</div>
-  <div class="en">When the tray I had so lovingly prepared came back barely touched, I felt a pang, but told myself it must have been because he was pressed for time.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그이 떠나 보낼 준비는 부모의 허락을 받기 전부터 내가 혼자서 하고 있었나이다. 객지에난 몸으로 야싼 것이 많을 것을 생각하고 내힘으로 내 정성으로 밑출 일은 무엇이나 다 하려하였나이다.</div>
-  <div class="en">I had been preparing for his departure on my own, even before his parents gave permission. Knowing he would lack for many things abroad, I was determined to provide everything I could with my own hands and devotion.</div>
-</div>
-
-</section>
 
 <div class="divider">· · ·</div>
 
-<!-- ━━━━━━━━━━━━━━━━ 六 ━━━━━━━━━━━━━━━━ -->
-<section class="installment">
-<div class="installment-number">六</div>
+<div class="installment">
+<div class="inst-num">六</div>
 
-<div class="pair">
-  <div class="ko">곳나의 행장을 수습하여 가지고 떠나려하였으나 의리보다도 인정보다도 체면을 존중익이는 시부모의 엄절한 만류, 행장은 그대로 두고 몸만 억지로 떠나 친정으로 왔나이다.</div>
-  <div class="en">I packed my things and tried to leave, but my parents-in-law, who valued propriety above loyalty or feeling, sternly refused. I left my belongings behind and, by sheer will, departed with nothing but myself and came to my parents' home.</div>
+<p class="first">곳나의 행장을 수습하여 가지고 떠나려하였으나 의리보다도 인정보다도 체면을 존중익이는 시부모의 엄절한 만류, 행장은 그대로 두고 몸만 억지로 떠나 친정으로 왔나이다.</p>
+
+<p>동무여 나의 이러케 한 일을 듣고 내가 남편을 길히 사랑하지 안엇는것이 아닐가 하고 의심하리이다만은 내 속이 야모리 쓰리드랑도 자기 인격을 더럽히면서 치근치근하게 사랑을 받으려 애쓰기는 결코 실음이엇나이다.</p>
+
+<p>친정에서는 큰 변이나 난 것처럼 야단이 있엇지만 나는 종용하고 침착하게 전후사실 자세자세 설명하였나이다. 그리고 해산이나 한 후에는 공부나 할 결심이라 하였나이다.</p>
+
+<p>아버지는 그래도 옛날 례의와 도덕을 느려노코 귀밑머리 맞춘 남편을 떠난 녀자는 이미 버린 녀자라고 준절이 타이르더이다.</p>
+
+<p>그러나 이미 결심이 잇는 나는 귀로만 들을 뿐이었나이다.</p>
+
+<p>더구나 어머니는 나만 고루구식이면서도 완고하지 않고 적이 리해가 잇서서 아버지에 "계자식이 많기를 한가 계집애라는 하나 잇는것을 공부도 안식이고 자기 가기고 가르침내 하다가 그랑 시집을 보내여 오늘이 모양을 만들어노코도 지금도 공부를 안식일나느냐"고 야단야단을 쳐서 겨우 나는 학교에를 다니게 되였나이다.</p>
+
+<p>그래서 친척들 가운데도 품행이 방정하다고 칭찬 받고 나는 내 동무들의 부러움의 대상(對相) 이 되였섯나이다.</p>
+
+<p>그러니 나 자신이 야 남편을 얼마나 만족하여 하고 고마워하였겠나잇가…… 그래서 나를 그만큼 사랑하는 보람이 잇게 하라고 원망스러운 시집식구를 정성껏 위하고 섬기고 또 그의 말 한마디라도 알아듣도록 되여볼가 하고 학교에서 배운다는 책들을 사다놓고 틈틈이 열심으로 배웟나이다.</p>
+
+<p>그때는 시집사리이고 생은 무덤이건 그러면서도 그래도 그렇게 희망만 곱긴장된 세월이 이번은 계속되였섯나이다.</p>
+
+<p>그러나 엇지듯하였으리잇가. 한달이 하루가치, 일년이 한달가치 세월이 어서 지나서 그가 졸업하고 금의환향할 깃븐 때를 손을 꼽아 기다렸나이다. 그러나 기다리든 졸업의 시일은 오기도 전에 그때 내게는 사형선고 같은 놀나운 리별이 왓나이다.</p>
+
+<p>십년 공든 탑이 하루아침에 문허진다는 셈으로 내가 참고한지 족칠년동안 싸아논 적공은 하루아츰에 그만 산산이 부서지고 말앗나이다.</p>
+
+<p>나를 끈에 맨 돌멩인줄 아느냐, 오라면 오고 가라면 가게…… 백계집을 하다가도 십년을 박대하다가도 손길 한번 붓잡으면 혜헤 웃어버리는 속업는 녀자로 아느냐.</p>
+
+<p>죽어도 이집 귀신이 된다고 욕하고 때리는 무정한 남편을 비싯비싯 따라다니는 비루한 녀자인줄 아느냐. 열번 죽어도 구치한 꼴을 보지 안는 성질을 알면서 다시 갈좁 바라느냐, 그대가 생각이 업지 안은가 하다고………</p>
+
+<p>그 후에는 내게 즉접 무슨 말을 건네지는 못하고 혼자서 열광을 한다고 하는 소문을 들엇나이다. 아모리나 그것은 문데될 것이 업나이다.</p>
+
+<p>이왕 사람이 아닌 로예의 생활에서 버서낫으니 인제는 한개 완전한 사람이 되여갑 잇고 뜻잇는 생활을 하여야겠나이다. 그리고 사람으로 알아주는 사람을 차즈려나이다. <span class="ending">(굿)</span></p>
 </div>
-
-<div class="pair">
-  <div class="ko">동무여 나의 이러케 한 일을 듣고 내가 남편을 길히 사랑하지 안엇는것이 아닐가 하고 의심하리이다만은 내 속이 야모리 쓰리드랑도 자기 인격을 더럽히면서 치근치근하게 사랑을 받으려 애쓰기는 결코 실음이엇나이다.</div>
-  <div class="en">Friend, hearing this, you may wonder whether I ever truly loved my husband. But no matter how my insides burned, I absolutely refused to debase my own dignity and cling to a man for love in that pathetic, grasping way.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">친정에서는 큰 변이나 난 것처럼 야단이 있엇지만 나는 종용하고 침착하게 전후사실 자세자세 설명하였나이다. 그리고 해산이나 한 후에는 공부나 할 결심이라 하였나이다.</div>
-  <div class="en">At my parents' home there was an uproar, as though some great calamity had struck, but I calmly explained the facts from beginning to end. I declared that after giving birth, I intended to study.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">아버지는 그래도 옛날 례의와 도덕을 느려노코 귀밑머리 맞춘 남편을 떠난 녀자는 이미 버린 녀자라고 준절이 타이르더이다.</div>
-  <div class="en">My father, still holding to the old proprieties, sternly lectured that a woman who leaves the husband she wed in youth is already a discarded woman.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그러나 이미 결심이 잇는 나는 귀로만 들을 뿐이었나이다.</div>
-  <div class="en">But my mind was made up, and I merely listened.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">더구나 어머니는 나만 고루구식이면서도 완고하지 않고 적이 리해가 잇서서 아버지에 "계자식이 많기를 한가 계집애라는 하나 잇는것을 공부도 안식이고 자기 가기고 가르침내 하다가 그랑 시집을 보내여 오늘이 모양을 만들어노코도 지금도 공부를 안식일나느냐"고 야단야단을 쳐서 겨우 나는 학교에를 다니게 되였나이다.</div>
-  <div class="en">My mother, though old-fashioned herself, was not rigid and had some understanding. She rounded on my father: "You wanted sons and got only this one daughter, yet you didn't educate her, kept her and taught her yourself, then married her off just like that. After making this mess, you still won't let her study?" And so, finally, I was allowed to attend school.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그래서 친척들 가운데도 품행이 방정하다고 칭찬 받고 나는 내 동무들의 부러움의 대상(對相) 이 되였섯나이다.</div>
-  <div class="en">I was even praised among my relatives for my upright conduct and became the object of my friends' envy.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그러니 나 자신이 야 남편을 얼마나 만족하여 하고 고마워하였겠나잇가…… 그래서 나를 그만큼 사랑하는 보람이 잇게 하라고 원망스러운 시집식구를 정성껏 위하고 섬기고 또 그의 말 한마디라도 알아듣도록 되여볼가 하고 학교에서 배운다는 책들을 사다놓고 틈틈이 열심으로 배웟나이다.</div>
-  <div class="en">So imagine how grateful I felt toward my husband... Wanting to make his love worthwhile, I devotedly served the in-laws I resented, and to understand even one word of his learning, I bought school textbooks and studied them diligently in every spare moment.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그때는 시집사리이고 생은 무덤이건 그러면서도 그래도 그렇게 희망만 곱긴장된 세월이 이번은 계속되였섯나이다.</div>
-  <div class="en">Those years, though life under the in-laws was a living burial, were sustained by hope, taut with anticipation.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그러나 엇지듯하였으리잇가. 한달이 하루가치, 일년이 한달가치 세월이 어서 지나서 그가 졸업하고 금의환향할 깃븐 때를 손을 꼽아 기다렸나이다. 그러나 기다리든 졸업의 시일은 오기도 전에 그때 내게는 사형선고 같은 놀나운 리별이 왓나이다.</div>
-  <div class="en">But how could I have foreseen it? A month felt like a day, a year like a month, as I counted the days for him to graduate and return home in glory. But before that day came, what arrived was a shock like a death sentence.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">십년 공든 탑이 하루아침에 문허진다는 셈으로 내가 참고한지 족칠년동안 싸아논 적공은 하루아츰에 그만 산산이 부서지고 말앗나이다.</div>
-  <div class="en">As they say, a tower ten years in the building can crumble in a single morning. The merit I had painstakingly accumulated over nearly seven years was shattered to pieces in one day.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">나를 끈에 맨 돌멩인줄 아느냐, 오라면 오고 가라면 가게…… 백계집을 하다가도 십년을 박대하다가도 손길 한번 붓잡으면 혜헤 웃어버리는 속업는 녀자로 아느냐.</div>
-  <div class="en">"Do you think I am a stone tied to a string, that comes when called and goes when told? Do you think I am a spineless woman who, though you kept a hundred mistresses and mistreated me for ten years, would giggle the moment you took my hand?</div>
-</div>
-
-<div class="pair">
-  <div class="ko">죽어도 이집 귀신이 된다고 욕하고 때리는 무정한 남편을 비싯비싯 따라다니는 비루한 녀자인줄 아느냐. 열번 죽어도 구치한 꼴을 보지 안는 성질을 알면서 다시 갈좁 바라느냐, 그대가 생각이 업지 안은가 하다고………</div>
-  <div class="en">Do you think I am a wretched creature who trails after a heartless husband who curses and strikes her? You know my nature: I would die ten deaths before suffering such disgrace. And yet you expect me to come back? Have you no sense at all?"</div>
-</div>
-
-<div class="pair">
-  <div class="ko">그 후에는 내게 즉접 무슨 말을 건네지는 못하고 혼자서 열광을 한다고 하는 소문을 들엇나이다. 아모리나 그것은 문데될 것이 업나이다.</div>
-  <div class="en">Afterward, I heard he did not dare approach me directly but was raving to himself. Be that as it may, it is of no consequence.</div>
-</div>
-
-<div class="pair">
-  <div class="ko">이왕 사람이 아닌 로예의 생활에서 버서낫으니 인제는 한개 완전한 사람이 되여갑 잇고 뜻잇는 생활을 하여야겠나이다. 그리고 사람으로 알아주는 사람을 차즈려나이다. <span class="ending">(굿)</span></div>
-  <div class="en">Now that I have escaped a life of slavery, not humanity, I must become a whole person and live a life of meaning. And I will seek out those who recognize me as one. <span class="ending">(End)</span></div>
-</div>
-
-</section>
 
 <div class="divider">· · ·</div>
 
-<!-- ━━━━━━━━━━━━━━━━ 七 ━━━━━━━━━━━━━━━━ -->
-<section class="installment">
-<div class="installment-number">七</div>
+<div class="installment">
+<div class="inst-num">七</div>
 
-<div class="pair">
-  <div class="ko">나의 자존심을 위하여 인격을 위하여 단연한 행동을 취하기는 하였건만 몇해를 두고 절귀를 따라 때를 따라 남모르게 고민을 무던히도 하고 잇엇나이다. 내 글을 읽고 동무도 짐작하였으리이다만은 처음 그때 동무에게 편지할 때에도 정직하게 말하면 그에게 대한 미련이 업다고는 하지 못할 때였나이다. 그래서 그와 정답게 재미잇게 지내든 이야기를 중요한 부분은 늘어놓앗나이다. 그러나 그것이 언제 살어버린 꿈같이 생각될 지금에 와서는 동무에게 다시 편지 쓸 흥미가 업서서 오래동안 소식을 못햇나이다.</div>
-  <div class="en">Though I took decisive action for the sake of my self-respect and dignity, for years afterward I suffered silently, season by season. As you will have gathered from my writing, friend, even when I first wrote to you, I could not honestly say I had no lingering attachment to him. That is why I went on about the times we spent happily together. But now that all of it feels like a vanished dream, I have had no desire to write again, and so I have been long silent.</div>
+<p class="first">나의 자존심을 위하여 인격을 위하여 단연한 행동을 취하기는 하였건만 몇해를 두고 절귀를 따라 때를 따라 남모르게 고민을 무던히도 하고 잇엇나이다. 내 글을 읽고 동무도 짐작하였으리이다만은 처음 그때 동무에게 편지할 때에도 정직하게 말하면 그에게 대한 미련이 업다고는 하지 못할 때였나이다. 그래서 그와 정답게 재미잇게 지내든 이야기를 중요한 부분은 늘어놓앗나이다. 그러나 그것이 언제 살어버린 꿈같이 생각될 지금에 와서는 동무에게 다시 편지 쓸 흥미가 업서서 오래동안 소식을 못햇나이다.</p>
+
+<p>엇재든 지금 생각하니 내가 리상하는 이성은 그이와 같은 이는 아니엇나이다. 남성다웁지 못하고 주대가 업고 녀자를 사랑하기는 하지만 인격적으로 대하지 아니하고 이왕 상대한 안해를 둔 이상 절대로 정조를 지켜하여야겠다는 자각이 업는 그이엇나이다.</p>
+
+<p>내가 처음에 그를 사랑한 것은 이성이라고는 도모지 접촉해보지 못하다가 부모의 명령으로 눈감고 시집을 가서 친절하게 구는 이성을 대하니 자연 정다워진 데 지나지 않은 것이엇나이다.</p>
+
+<p>그가 처음 내게 나온 후에도 사과편지를 보내고 다시 오라고 몇번 하였지만 작년 가을부터는 사람을 보내고 자기가 몇번 오고 하여서 복연을 간청합니다. 그때마다 나는 온연히 대절하고 조케 거절을 하였나이다. 그러나 또다시 편지로 몇번인지 같은 말을 써보냇더이다. 답장도 하기 실혀서 내버려 두엇다가 하두 성가시거든 이러한 의미의 편지를 하였나이다.</p>
 </div>
 
-<div class="pair">
-  <div class="ko">엇재든 지금 생각하니 내가 리상하는 이성은 그이와 같은 이는 아니엇나이다. 남성다웁지 못하고 주대가 업고 녀자를 사랑하기는 하지만 인격적으로 대하지 아니하고 이왕 상대한 안해를 둔 이상 절대로 정조를 지켜하여야겠다는 자각이 업는 그이엇나이다.</div>
-  <div class="en">The man I idealized is nothing like him. He lacked manliness, had no backbone, and though he loved women, he did not treat them as persons of dignity. Having taken a wife, he had no self-awareness that he must keep faith absolutely. That was the kind of man he was.</div>
+</div>
+<!-- end ko-col -->
+
+<!-- ==================== ENGLISH COLUMN ==================== -->
+<div class="en-col">
+<div class="col-label">English Translation</div>
+
+<div class="installment">
+<div class="inst-num">[1]</div>
+
+<p class="first">What happened to me was so unexpected and unbelievable that I thought it best to keep it to myself. But, my friend, since you keep asking me about it, I am going to jot it down just as it happened.</p>
+
+<p>It was around this time two years ago that my husband left for Japan for the first time. I can remember the date clearly. At first he had planned to go a few months earlier in order to prepare for his studies before the school year began. But his plan was delayed, first because of his father's birthday and then because of a cold. So it was toward the end of December that he was finally set to leave.</p>
+
+<p>The night before his departure, he spent time at the farewell party thrown by his friends and came home around two o'clock in the morning. His face was all flushed, apparently from drinking wine, although he was never a drinker. An awkward smile on his face, he came into the room and said, "It's so late and you're still up?" Then, only throwing off his hat and overcoat, he slipped into the bedding I had spread out for him.</p>
+
+<p>When he looked up at my teary eyes from his bed, he too became sad. "Now, hurry and get undressed, and come lie down beside me," he said. Then, from his bed, he stretched out his hands toward me and untied the strings of my blouse.</p>
+
+<p>I burst into uncontrollable tears again and threw myself onto him, sobbing.</p>
+
+<p>Sitting up halfway, he said, "What's the matter? Shouldn't you be happy for me that I'm going away to study? Besides, it won't do you any good if I stick around here at home. No matter how much I feel for you in my heart, it comes to no good. Don't you see it's best for me to finish my studies as fast as I can and return home to support you with the money I earn, freeing you from this complicated, irritating, and confining household? So just close your eyes to everything and be patient with me for three or four years. Now, come lie down here." And he held me tightly.</p>
+
+<p>That night, it was the warmth of his deep affection—not the sorrow of parting—that kept me crying uncontrollably. We ended up staying awake all night, talking about the sadness of separation, about our love and our hopes.</p>
+
+<p>I rose early in the morning, tearing myself away when he tried to keep me in bed a little longer and for the last time. Knowing he would miss Korean food once he went off to Japan, I put my whole heart into fixing his breakfast and hurriedly brought it to him so he wouldn't be late.</p>
+
+<p>I was disappointed to see that the breakfast table I had prepared for his full enjoyment was sent back, its dishes hardly touched, but I simply thought he was in too much of a hurry.</p>
+
+<p>I had been preparing for his departure myself, even before his parents had given him permission to leave. I tried my best to do everything I could for him, since I knew he would need a number of things while away from home. I had heard that the rooms in Japan didn't have heated floors like those in Korea, so besides preparing the usual essentials, I took every care to get things ready that would keep him warm—even those he thought unnecessary. I also prepared a variety of Korean foods, packed them in leakproof containers, and put them in his luggage.</p>
+
+<p>After all his luggage had been carried out and loaded, his father and all his friends lined up outside. As I was not supposed to go out and join them, I was standing in the corner of my room weeping when I heard him stamp toward my room, saying, "I forgot something." Quickly wiping away my tears, I stammered, "What . . . is it?"</p>
+
+<p>He smiled, "Nothing, of course, you silly! I came back in to see you once more. Now let's shake hands. And while I am gone, please take heart. Just trust me." He shook my hand firmly and went out.</p>
+
+<p>With no one around to notice, I slipped out through the back gate and, standing hidden at the corner of the wall of the house behind ours, tried to catch sight of him once more as he went away.</p>
 </div>
 
-<div class="pair">
-  <div class="ko">내가 처음에 그를 사랑한 것은 이성이라고는 도모지 접촉해보지 못하다가 부모의 명령으로 눈감고 시집을 가서 친절하게 구는 이성을 대하니 자연 정다워진 데 지나지 않은 것이엇나이다.</div>
-  <div class="en">My initial love for him was nothing more than the natural warmth that grew from finding myself, for the first time, before a man who treated me kindly, sent into marriage by my parents' command with eyes closed, never having known the opposite sex.</div>
+<div class="divider">· · ·</div>
+
+<div class="installment">
+<div class="inst-num">[2]</div>
+
+<p class="first">The steady snowfall covered the roads, filling in footprints and making repeated sweepings useless. My husband plodded on his way with K, his closest friend, leaving new footprints on the smooth snowy road. Our family dog, which was so fond of him, trailed behind. So preoccupied was my husband as he talked with his friend that he didn't notice the dog following him and went away without even looking back. Not heeding my sister-in-law's repeated summons, the dog just glanced back at her and then kept following my husband. Finally, my husband hurled a stone at it and chased it away. I felt so sorry for the dog as it came tottering back, shooed away by its master, that I wanted to hug it and weep from my heart. After my husband disappeared into the spaces between the many houses, I hurried back home, for fear my mother-in-law would be looking for me, all the while feeling choked and heavy at heart. Although the empty house was in total disarray, I did not feel like doing anything. I went into my room and sat there vacantly, as if bereft of my senses, when I heard my mother-in-law's yell, "You! Where have you been? Don't you even know how to tidy up this mess all over the house?" Startled back to my senses, I sprang to my feet and went through the motions of putting things in order; then I returned to my room, only to lose myself in thoughts of my husband.</p>
+
+<p>I felt very fortunate that it was winter, because I could close the door and, with no one peeking in to see whether I was working or sleeping, could sit idly and give full reign to thoughts of my husband. I drew a picture of my life all the way from our early days of marriage to the time when he would graduate, establish himself socially, and gain full economic independence so that I could make a beautiful new home. Then, returning to the present, my soul would follow him aboard trains and ships, crossing waters and climbing mountains.</p>
+
+<p>As I lay listless, without desire to eat, work, or even move around, I hoped my soul could continue to travel along with my husband, unimpeded by obstacles. But to my chagrin, I was unable to remain free of interruption because my mother-in-law constantly stirred things up, and I had also to fix meals for many other family members.</p>
+
+<p>As you know, once your soul wanders off, your body cannot carry on its work properly. My mother-in-law scolded me several times a day for not sewing my parents-in-law's clothes in time or for not seasoning side dishes tastily. On occasions when I broke dishes, I secretly dumped them into the stream to keep my mother-in-law from finding the broken pieces. In those days, my husband was the center of my life. Whether I was awake or asleep, working or resting, my mind was filled with nothing but thoughts of him.</p>
 </div>
 
-<div class="pair">
-  <div class="ko">그가 처음 내게 나온 후에도 사과편지를 보내고 다시 오라고 몇번 하였지만 작년 가을부터는 사람을 보내고 자기가 몇번 오고 하여서 복연을 간청합니다. 그때마다 나는 온연히 대절하고 조케 거절을 하였나이다. 그러나 또다시 편지로 몇번인지 같은 말을 써보냇더이다. 답장도 하기 실혀서 내버려 두엇다가 하두 성가시거든 이러한 의미의 편지를 하였나이다.</div>
-  <div class="en">Even after I first left him, he sent apologies and asked me to return. Since last autumn he has sent people and come himself to plead for reconciliation. Each time I received him courteously and declined. Yet again and again he wrote the same plea. I did not want to reply, but it became such a nuisance that I finally wrote a letter to this effect:</div>
+<div class="divider">· · ·</div>
+
+<div class="installment">
+<div class="inst-num">[3]</div>
+
+<p class="first">When I happened to cook my husband's favorite dishes, anxious thoughts about him rose up. When it grew cold in winter, I worried about his suffering from the cold in a foreign country. When it rained in summer, I wondered whether he would have trouble getting to school, even though I knew very well that the weather hundreds of miles away in distant Japan could never be the same as it was at home. His friends' visits to our home unbearably deepened my yearning for him. Whenever I came upon his clothes while putting the chest of drawers in order, it would make me happy to stroke them over and over. My ears would perk up at the sound of the words "studying in Japan," and for no reason I would get excited about any visitor who had been to Japan, trying to peep at the person through a small opening in the door. And I was anxious to find out whether my husband's parents had sent money to him and answered his other requests.</p>
+
+<p>I used to stay up all night thinking of him and finally fall asleep around dawn, only to be awakened by my mother-in-law. I was put to work all day long like a donkey working a millstone, whipped by my mother-in-law's scolding and stabbed by her scowls. Outwardly I did all I could to obey her and plugged away. No matter how physically draining and painful the chores were to me, I never once lay down to take a rest. But if I was just a little slow in answering her call, my mother-in-law would kick up a fuss, lashing out at me by saying that I had become spoiled in my husband's absence. I became fed up with her saying, "Young things these days think that a husband and wife have to tag along all the time. When we were young, we faithfully served our in-laws and kept house well, even if our husbands had gone far away to the countryside on official duty and even if they left home to live with their concubines for scores of years."</p>
+
+<p>Ah, my friend! How can I tell you all the miserable stories about my married life in my in-laws' home? A whole bagful of millet wouldn't be enough to count them. You won't be able to imagine my sufferings at the time—what with my heart restless from longing for my husband, and my body worn out from work, and my spirit racked by my mother-in-law. My body, frail enough to begin with, withered like a chrysanthemum leaf nipped by frost.</p>
+
+<p>Yet my husband's letters gave me fresh joy and energy amidst such pain. Since I was living with his parents, he couldn't send his letters directly to me, and he used to put them in envelopes addressed to his younger sister. She used to hand the letter to me with a sneer on her face, snickering, "I've brought something you'll like." I would receive the letter from her and, out of embarrassment, set it unopened beside my sewing basket until she left after a few moments of heartless banter. Then I would immediately tear the letter open.</p>
+
+<p>My husband loved literature and was a talented writer, so his letters were always endearing, interesting, and gracious. He recorded every detail of his daily routine and described the places he had visited, leaving nothing out. At the time, I thought no one in this world could be as affectionate and skilled in writing as he was. His letters, like the one below, gave me the greatest strength and courage at that time.</p>
 </div>
 
-</section>
+<div class="divider">· · ·</div>
+
+<div class="installment">
+<div class="inst-num">[4]</div>
+
+<div class="letter-block">
+<p>"My dear wife! What can I possibly say to you, who work your fingers to the bone serving my parents and siblings, who have no understanding or sympathy for you? Should I say I'm sorry, or should I say I'm grateful? All I can say is that it's for your sake that I keep studying and cultivating my mind. My beloved wife! Please don't laugh at me, but when I really miss you, I often think I should stop studying just for a few days and . . . You should understand that, if in nothing else, I can at least match you in self-sacrifice. And I'd like you to remember that your letters are living water in my dreary life."</p>
+</div>
+
+<p>At that time, were it not for his letters three or four times a week, I might have either strangled myself or thrown myself into the river. If his letter failed to arrive on the expected day, I would naturally become very dejected. So during my husband's absence, my feelings of hope or despair, happiness or sadness, depended on his letters.</p>
+
+<p>In the summer he used to return home, and although his stay was short, those days and nights were our sweetest and happiest. When I had him put on the Korean clothes I had sewn with all my heart, he stroked them gently, saying they felt cool and comfortable on him. It was no small joy for me, too, to watch him appreciate and enjoy the cookies and fruits I had saved for him.</p>
+
+<p>During such summer vacations, there were times when we stood together under the zelkova tree in the backyard or climbed up on it to talk through the night about our love—the tree on which I used to climb alone to heave such yearning sighs for our good olden days together. The fine gifts my husband brought me from Japan were hidden away one by one in my chest of drawers, kept secret from my mother-in-law and sister-in-law.</p>
+
+<p>Even at that time, I heard now and then how some of his friends had divorced their wives without warning, rejecting them as old-fashioned. But I said to myself, "There must be good reason for it. Who knows what may have gone wrong between husband and wife?"</p>
+
+<p>In any case, I never doubted that, even if the whole world were shattered by acts of betrayal, my husband would remain faithful, and I never tried to pry into his life. He told me how all his friends seemed to have eyes for girl students, but added emphatically that he had never felt any attraction toward such girls, as they were vain, conceited, empty-headed, and impatient. He also said that even though I had not received a modern education, I had as much intelligence and understanding as those girls. And he seemed perfectly satisfied with me, as if I were the sole object of his love. So my relatives praised him for his good behavior, and I became the envy of my friends.</p>
+
+<p>Can you imagine how happy I was with my husband and how grateful I felt toward him? In order to become worthy of his love, I looked after and served my unappreciative in-laws to my utmost. That wasn't all. I bought school textbooks and studied them diligently at every spare minute in order to understand my husband just a little better. Although I endured quite a lot at my in-laws' home, for two years I managed to cope, full of hope even while under enormous strain.</p>
+
+<p>Who, however, could have foreseen such a turnabout? I had been impatient for the joy of my husband's glorious return home after graduation, wishing a month would pass as quickly as a day, and a year as quickly as a month. Yet even before his long-awaited graduation day arrived, a piece of shocking news was passed on to me like a death sentence. As the saying goes, "Even a tower built over ten years crumbles in one morning"; my hard work over six, seven years of marriage was shattered to pieces overnight.</p>
+</div>
+
+<div class="divider">· · ·</div>
+
+<div class="installment">
+<div class="inst-num">[5]</div>
+
+<p class="first">My friend! I haven't written you for a long time. My life and way of thinking have completely changed now. Looking back, I find my story written down for you earlier totally unworthy of such long and tedious elaboration. But I'll go on and wrap it up.</p>
+
+<p>Compounding my misery, I was eight months pregnant at that time. I felt heavy and painful, all the more sensitive to my long suffering at the hands of my in-laws. I got very irritable and often struggled to calm myself while standing in a kitchen corner, tearing at my hair. While all others were fast asleep, I spent many a night alone in my bed, weeping bitterly and writhing in pain that stung every joint in my body. Moreover, I had to smother in silent tears the agony of my intense cravings for certain foods. Yet I held on to that single hope of eventual reunion with my husband.</p>
+
+<p>For some reason, however, he didn't write to me for several months. All sorts of thoughts crossed my mind, but I waited every day in the belief that his letter would arrive in a day or two. The much-awaited letter did arrive in the end. But it was the exact opposite of what his letters used to say. It was a notice of divorce, so to speak.</p>
+
+<p>Who could possibly measure the shock and grief I felt, especially at a time when I was a nervous wreck inside and out? It seems incredible that I didn't pass out at that very moment.</p>
+
+<p>The letter ran roughly as follows: As his parents had coerced him into marrying me, he was not responsible for our marriage; he had stayed married to me up to that point, pressured by social conventions and moved by pity for me; he'd appreciate it if I decided the future course of my life by myself, leaving him out of it.</p>
+
+<p>Soon I heard rumors he was carrying on with an older spinster, a student in Japan, sweet-talking her, telling her I was a wife in name only, that he had anguished from the beginning over his inability to love me, and that after meeting her he had finally come to know what real love was. I also heard that the woman regarded me as an ignorant, stupid, and insensible wife just because I hadn't received a modern education.</p>
+
+<p>Indignation and resentment engulfed me, but I clenched my teeth and pulled myself together. Once I was awakened to the ways of the world and understood the fickleness of the human heart, I knew I couldn't waste even a minute in hesitation. I hit upon a scheme of writing a letter to him that would outwit his:</p>
+
+<div class="letter-block">
+<p>I clearly understand the meaning of your letter. I'm glad that you beat me to it. I have long grieved at the misfortune of my extraordinary suffering caused by a miserable married life with you, who are not my ideal type of a husband. Yet being a woman, I couldn't release myself from this wretched bond. I will send you the child upon its birth, regardless of whether it is a boy or a girl, as I believe the responsibility of raising the child would hamper my effort to make my own way through life. But please remind the child that there is another person who wishes its happiness more than anyone else in this world. Good-bye.</p>
+<p class="signature">Yours, Im Sunsil, June 18th.</p>
+</div>
+</div>
+
+<div class="divider">· · ·</div>
+
+<div class="installment">
+<div class="inst-num">[6]</div>
+
+<p class="first">At first, I intended to take the time to pack for travel and leave my husband's house. Ironically, the persistent persuasion on the part of my in-laws—who valued keeping up appearances more than moral principles or kindness—that they'd keep me drove me to leave their house without preparations and to return immediately to my parents' home.</p>
+
+<p>My friend! When you hear about this action on my part, you may wonder whether I really loved my husband. But the fact of the matter is that, no matter how much pain I felt in my heart, I could never bring myself to beg him for love and humiliate myself. Of course, my parents made a great fuss about me as if some major disaster had happened, but I explained everything to them in detail, quietly and coolly recounting what had happened. I also told them I had made up my mind to go to school after giving birth. My father gave me a long lecture on the old rules of propriety and morality and tried to drive into me the stern message that a woman who left her marriage was totally ruined and without future. But to me, who was so determined, his words meant little. Besides, my mother, although aged and old-fashioned, was rather accommodating and even possessed a measure of understanding. She soundly told my father off: "Even though she is our only child, you refused to send her to school and, while claiming to give her an education yourself, ended up giving her away in marriage without a second thought. Are you still against her going to school?"</p>
+
+<p>Thanks to my mother, I managed to go to school. That was already three years ago. I will be graduating this coming spring. My dogged perseverance helped me get high marks. Now, I make little of my ex-husband or my life in my former in-laws' home, which seems as unreal as a dream. However, whenever I hear about my child, I get a lump in my throat. He is now four years old, and I hear that he is bright, good-looking, and quick at words. Sometimes I miss him so much that I feel like sneaking up to the gate of my ex-husband's house to steal a quick look at him, but I control myself. I guess the human heart is such that if I were to see my child once, I would want to see him again, and then more and more often, until I would want to have him with me for good. Then I would have to reestablish connections with the child's father, which would completely destroy my self-respect and character. I can never sacrifice my whole life for the love of my child. I cannot allow myself to get mixed up with my child's life and be thrown into confusion. Of course, parents are expected to raise and educate their children to become fine human beings. But as long as the child's other parent—his father—can bring him up well, I don't want to subject myself to indignity by undertaking the task of raising him just because he is my child. Therefore, when the child grows up and seeks his mother, I will see him, but if he does not, so be it.</p>
+</div>
+
+<div class="divider">· · ·</div>
+
+<div class="installment">
+<div class="inst-num">[7]</div>
+
+<p class="first">Although my decisions were correct in that they were made to protect my pride and personal honor, secretly I have been in deep agony for the past few years through seasonal changes and events. My friend, I trust that you've already grasped my meaning by reading my letter. To be frank, when I first wrote you, I still had lingering feelings for my husband. That's why I spun out such a meandering story about my warm and happy times with him. But once I'd come to regard them as some fleeting dream, I couldn't work up any interest to write you again and so have kept silent for quite some time.</p>
+
+<p>Anyway, as I now look back, my ex-husband wasn't the ideal man for me. He was weak and spineless. Although he liked women, he did not treat them with respect, and he had no understanding of the fidelity required of a man married to a respectable woman, no matter what. The love I had for him was at first merely fondness for a man who treated me nicely—a natural feeling of a woman who hadn't had much contact with the opposite sex and had married blindly on her parents' order.</p>
+
+<p>Soon after I left him, he sent me a letter of apology, pleading with me to come back. Last fall, however, he sent messengers, and then he himself called on me a few times to beg for reconciliation. Each time I treated him nicely and then turned him down with good grace. Thereafter he kept sending me letters with the same message—I don't remember how many times—but I left them unanswered, as I didn't even feel like writing back to him. He pestered me so much that finally I wrote to him something like, "Do you think that I'm like an idiotic and frivolous plaything that comes and goes at your beck and call? Do you think I am a half-witted woman who melts into smiles every time her husband fondles her hands, even after he's run around with a lot of women and mistreated her for many years? I am no such slavish woman that abjectly submits to her heartless husband's abuse and beating, single-mindedly sticking it out till death. I think it's foolish for you to expect me to return to you, who know full well that I hate indignity more than dying ten times over."</p>
+
+<p>Thereafter he couldn't directly send me messages, and I heard rumors that he was very much in distress. In any event, his problem is none of my concern.</p>
+
+<p>Now that I have escaped from a life of cruel slavery, I have the choice to be a full human being, leading a worthy and meaningful life. And I am going to look for a person who will take me as such.</p>
+
+<p class="ending">First published in Tonga ilbo (Tonga daily), June 19-26, 1926</p>
+</div>
 
 </div>
+<!-- end en-col -->
+
+</div>
+<!-- end bilingual -->
+
+</div>
+<!-- end main-content -->
 
 <footer>
-  <p><strong>Kim Iryeop</strong> (김일엽, 1896-1971) was a pioneering Korean feminist writer, poet, and essayist who later became a prominent Buddhist nun. She was among the first generation of Korean women to receive modern education and one of the founders of the literary magazine <em>Sin Yoja</em> (New Woman) in 1920.</p>
-  <p><strong>Publication:</strong> Serialized in the Dong-A Ilbo (동아일보), June 1926, in seven installments.</p>
-  <p><strong>Note on orthography:</strong> The Korean text preserves pre-1933 spelling conventions (한글 맞춤법 통일안 이전 표기). Spacing and characters reflect the original publication.</p>
-  <p><strong>Note on structure:</strong> The narrative is non-linear. Part 一 is set in the present; Parts 二 through 四 flash back to married life and the husband's departure for Japan; Part 五 reveals the severance letter alongside earlier memories; Part 六 recounts the narrator's departure from the marital home; Part 七 is a reflective coda on self-awakening.</p>
+  <p><strong>Kim Wŏn-ju (Iryŏp)</strong> (김일엽, 1896-1971) was born in Dŏktongni, South P'yŏngan Province. A pioneering feminist writer and poet, she co-founded Korea's first feminist journal <em>Sinyŏja</em> (New Woman) in 1920. After her literary career peaked in 1926, she turned to Buddhism, entering Sudŏk Temple in 1933 and living as a nun until her death in 1971.</p>
+  <p><strong>English translation</strong> from <em>Questioning Minds: Short Stories by Modern Korean Women Writers</em>, ed. Yung-Hee Kim (University of Hawai'i Press, 2009).</p>
+  <p><strong>Note on orthography:</strong> The Korean text preserves pre-1933 spelling conventions (한글 맞춤법 통일안 이전 표기).</p>
+  <p><strong>Note on structure:</strong> The Korean original follows the newspaper serialization order (一-七). The English translation reorders some passages into a more chronological sequence ([1]-[7]). Both are presented complete and unaltered.</p>
 </footer>
 
 </body>
