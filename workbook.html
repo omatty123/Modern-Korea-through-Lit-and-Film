@@ -57,7 +57,7 @@
         .mosaic {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(3, 1.1in);
+            grid-template-rows: repeat(2, 1.1in);
             gap: 2px;
             width: 5.5in;
             margin: 0.3in auto;
@@ -70,14 +70,12 @@
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
-        .mosaic .poster.span2 {
-            grid-column: span 2;
-        }
 
         .cover-inner .name-block { font-size: 13pt; margin-bottom: 0.35in; }
         .cover-inner .name-block .uline { display: inline-block; width: 3.5in; border-bottom: 1.5px solid #444; margin-left: 0.1in; }
         .cover-inner .toc { list-style: none; font-size: 11pt; line-height: 2; columns: 2; column-gap: 0.4in; color: #333; }
         .cover-inner .toc .wk { display: inline-block; width: 0.55in; font-weight: bold; color: #666; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.04em; }
+        .cover-inner .toc .opt { display: inline-block; width: 0.55in; font-weight: bold; color: #aaa; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.04em; }
 
         /* FILM STRIP */
         .film-strip {
@@ -146,10 +144,33 @@
         }
 
         /* SIZE VARIANTS */
-        .box.lg { min-height: 1.3in; }
-        .box.sm { min-height: 1.2in; }
-        .box.md { min-height: 1.4in; }
-        .box.xl { min-height: 2.2in; }
+        .box.lg { min-height: 1.3in; flex-shrink: 0; }
+        .box.sm { min-height: 1.2in; flex-shrink: 0; }
+        .box.md { min-height: 1.4in; flex-shrink: 0; }
+        .box.xl { min-height: 2.2in; flex-shrink: 0; }
+        .box.fill { flex: 1 1 auto; min-height: 0.8in; }
+
+        /* PAGE BODY — flex column so Notes fills remaining space */
+        .page { display: flex; flex-direction: column; }
+        .film-strip { flex-shrink: 0; }
+        .film-header { flex-shrink: 0; }
+        .row2, .row3 { flex-shrink: 0; }
+        .page-body {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            padding-bottom: 0.35in;
+        }
+
+        /* THESIS QUESTION */
+        .thesis-q {
+            font-size: 8pt;
+            font-style: italic;
+            color: #aaa;
+            margin-top: 0.06in;
+            line-height: 1.3;
+        }
 
         /* GRID LAYOUTS */
         .row3 {
@@ -190,7 +211,7 @@
             .film-strip { width: calc(100% + 0.6in); margin: -0.3in -0.3in 0 -0.3in; height: 1.2in; }
             .screen-nav { width: 100%; padding: 0.1in 0.3in; }
             .cover-inner { height: auto; padding: 0.2in 0; }
-            .mosaic { width: 100%; grid-template-rows: repeat(3, 80px); }
+            .mosaic { width: 100%; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 80px); }
             .row3 { grid-template-columns: 1fr; }
             .row2 { grid-template-columns: 1fr; }
             .pg-foot { display: none; }
@@ -207,35 +228,32 @@
         <h1 class="cover-title">Film Workbook</h1>
         <div class="cover-subtitle">Korean History through Literature and Film<br>HIST 498 / EAST 418 / FILM 419 &bull; Spring 2026</div>
         <div class="mosaic">
-            <div class="poster span2" style="background-image:url('https://media.themoviedb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg')"></div>
-            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/fxucCjHL566llnZC3TfWTdReHee.jpg')"></div>
-            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/tCejyq7oz1WudC8hJqauHlBCAFN.jpg')"></div>
-            <div class="poster" style="background-image:url('https://lh3.googleusercontent.com/ci/AL18g_SFbmqkiRpeyGGiYCBdJfc1h6yWusFkTB2uXluwJxh6mqIY1oAGeFTmx-U-flZhvAzeVjdUIkQ')"></div>
-            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/cSJFHWGhPuG3fuiH5p3oUkyPUUz.jpg')"></div>
-            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/4O53U5HYkdw4HN6mpJmvxqfPi7U.jpg')"></div>
-            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/bbf6SgMgUxixi3zJnKpBChWEqCa.jpg')"></div>
-            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/53iMgx4wbvSb5hfRD2kevq682zd.jpg')"></div>
-            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/jPP0gFDgdXRa1YgP8Cn8arzOHI3.jpg')"></div>
-            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/mknsbMQFN78jVNC021fTSuEw1Rj.jpg')"></div>
-            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/yO8Z1Sl1iyhMZq01k7walZvWIBe.jpg')"></div>
-            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w500/9sQTVDXCzFxWarg0tuEHMb1XDM0.jpg')"></div>
-            <div class="poster span2" style="background-image:url('https://media.themoviedb.org/t/p/w500/qjwH61zraSRtQAe5K9tXdKiiPsu.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w1280/j8qDbfN7EwQsOpfEw96R3lbJyE1.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w1280/5Xar1vpdb7meEo5qZRsZbbDpfOu.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w1280/2lZeVDR8ZSMSl691Beb2vV5RW5v.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w1280/f1d3HKb0maqs8Axluv86cHM6DMd.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w1280/kQtlDwGFi4rw97s7iHFFJsrJwVV.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w1280/eQA1BRlzjNZUtz4tFdBUu7lCkUk.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w1280/1iG84kJYvWZzo36Aax8rgDJCizl.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w1280/kxwRQyOIHJZ0xy4Ob2IEWRrNbZw.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w1280/kbpIhVdyRs13yeEr5TliuqYjA60.jpg')"></div>
+            <div class="poster" style="background-image:url('https://media.themoviedb.org/t/p/w1280/hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg')"></div>
         </div>
         <div class="name-block">Name: <span class="uline"></span></div>
         <ul class="toc">
             <li><span class="wk">Wk 1</span> The Throne</li>
             <li><span class="wk">Wk 2</span> Sopyonje</li>
-            <li><span class="wk">Wk 2</span> Fly High, Run Far</li>
             <li><span class="wk">Wk 3</span> Taebaek Mountains</li>
             <li><span class="wk">Wk 4</span> Aimless Bullet</li>
             <li><span class="wk">Wk 5</span> The Flower Girl</li>
             <li><span class="wk">Wk 6</span> A Single Spark</li>
-            <li><span class="wk">Wk 6</span> Peppermint Candy</li>
             <li><span class="wk">Wk 7</span> Madame Freedom</li>
             <li><span class="wk">Wk 8</span> Spirit's Homecoming</li>
-            <li><span class="wk">Wk 9</span> Loyal Citizens</li>
+            <li><span class="wk">Wk 9</span> Loyal Citizens of Pyongyang</li>
             <li><span class="wk">Wk 9</span> Parasite</li>
-            <li><span class="wk">&nbsp;</span> A State of Mind</li>
+            <li><span class="opt">Opt.</span> A Dwarf Launches a Little Ball</li>
+            <li><span class="opt">Opt.</span> Peppermint Candy</li>
+            <li><span class="opt">Opt.</span> Take Care of My Cat</li>
         </ul>
     </div>
 </div>
@@ -243,6 +261,7 @@
 <!-- 1 -->
 <div class="page">
     <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/j8qDbfN7EwQsOpfEw96R3lbJyE1.jpg')"></div>
+    <div class="page-body">
     <div class="film-header"><h2>The Throne <span class="kor">사도</span></h2><div class="meta">Lee Joon-ik, 2015 &bull; Week 1</div></div>
     <div class="box lg"><span class="lbl">Main Characters</span></div>
     <div class="row2">
@@ -257,13 +276,16 @@
         <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
         <div class="box md"><span class="lbl">Your Questions</span></div>
     </div>
-    <div class="box xl"><span class="lbl">Notes</span></div>
-    <div class="pg-foot"><span>Korean History through Film</span><span>1 / 13</span></div>
+    <div class="box md"><span class="lbl">Thesis</span><p class="thesis-q">What is the thesis of this film?</p></div>
+    <div class="box fill"><span class="lbl">Notes</span></div>
+    </div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>1 / 10</span></div>
 </div>
 
 <!-- 2 -->
 <div class="page">
     <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/5Xar1vpdb7meEo5qZRsZbbDpfOu.jpg')"></div>
+    <div class="page-body">
     <div class="film-header"><h2>Sopyonje <span class="kor">서편제</span></h2><div class="meta">Im Kwontaek, 1993 &bull; Week 2</div></div>
     <div class="box lg"><span class="lbl">Main Characters</span></div>
     <div class="row2">
@@ -278,34 +300,16 @@
         <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
         <div class="box md"><span class="lbl">Your Questions</span></div>
     </div>
-    <div class="box xl"><span class="lbl">Notes</span></div>
-    <div class="pg-foot"><span>Korean History through Film</span><span>2 / 13</span></div>
+    <div class="box md"><span class="lbl">Thesis</span><p class="thesis-q">What is the thesis of this film?</p></div>
+    <div class="box fill"><span class="lbl">Notes</span></div>
+    </div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>2 / 10</span></div>
 </div>
 
 <!-- 3 -->
 <div class="page">
-    <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/smxwp5BJIH4i8JeK3fb6DgY9PSJ.jpg')"></div>
-    <div class="film-header"><h2>Fly High, Run Far <span class="kor">개벽</span></h2><div class="meta">Im Kwontaek, 1991 &bull; Week 2 (opt.)</div></div>
-    <div class="box lg"><span class="lbl">Main Characters</span></div>
-    <div class="row2">
-        <div class="box sm"><span class="lbl">Setting</span></div>
-        <div class="box sm"><span class="lbl">Themes</span></div>
-    </div>
-    <div class="row2">
-        <div class="box md"><span class="lbl">Key Images</span></div>
-        <div class="box md"><span class="lbl">Key Moments</span></div>
-    </div>
-    <div class="row2">
-        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
-        <div class="box md"><span class="lbl">Your Questions</span></div>
-    </div>
-    <div class="box xl"><span class="lbl">Notes</span></div>
-    <div class="pg-foot"><span>Korean History through Film</span><span>3 / 13</span></div>
-</div>
-
-<!-- 4 -->
-<div class="page">
     <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/2lZeVDR8ZSMSl691Beb2vV5RW5v.jpg')"></div>
+    <div class="page-body">
     <div class="film-header"><h2>Taebaek Mountains <span class="kor">태백산맥</span></h2><div class="meta">Im Kwontaek, 1994 &bull; Week 3</div></div>
     <div class="box lg"><span class="lbl">Main Characters</span></div>
     <div class="row2">
@@ -320,13 +324,16 @@
         <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
         <div class="box md"><span class="lbl">Your Questions</span></div>
     </div>
-    <div class="box xl"><span class="lbl">Notes</span></div>
-    <div class="pg-foot"><span>Korean History through Film</span><span>4 / 13</span></div>
+    <div class="box md"><span class="lbl">Thesis</span><p class="thesis-q">What is the thesis of this film?</p></div>
+    <div class="box fill"><span class="lbl">Notes</span></div>
+    </div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>3 / 10</span></div>
 </div>
 
-<!-- 5 -->
+<!-- 4 -->
 <div class="page">
     <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/f1d3HKb0maqs8Axluv86cHM6DMd.jpg')"></div>
+    <div class="page-body">
     <div class="film-header"><h2>Aimless Bullet <span class="kor">오발탄</span></h2><div class="meta">Yu Hyonmok, 1961 &bull; Week 4</div></div>
     <div class="box lg"><span class="lbl">Main Characters</span></div>
     <div class="row2">
@@ -341,14 +348,17 @@
         <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
         <div class="box md"><span class="lbl">Your Questions</span></div>
     </div>
-    <div class="box xl"><span class="lbl">Notes</span></div>
-    <div class="pg-foot"><span>Korean History through Film</span><span>5 / 13</span></div>
+    <div class="box md"><span class="lbl">Thesis</span><p class="thesis-q">What is the thesis of this film?</p></div>
+    <div class="box fill"><span class="lbl">Notes</span></div>
+    </div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>4 / 10</span></div>
 </div>
 
-<!-- 6 -->
+<!-- 5 -->
 <div class="page">
     <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/kQtlDwGFi4rw97s7iHFFJsrJwVV.jpg')"></div>
-    <div class="film-header"><h2>The Flower Girl <span class="kor">꽃파는 처녀</span></h2><div class="meta">Choe Ik-gyu &amp; Pak Hak, 1972 &bull; Wk 5</div></div>
+    <div class="page-body">
+    <div class="film-header"><h2>The Flower Girl <span class="kor">꽃파는 처녀</span></h2><div class="meta">Choe Ik-gyu &amp; Pak Hak, 1972 &bull; Week 5</div></div>
     <div class="box lg"><span class="lbl">Main Characters</span></div>
     <div class="row2">
         <div class="box sm"><span class="lbl">Setting</span></div>
@@ -362,13 +372,16 @@
         <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
         <div class="box md"><span class="lbl">Your Questions</span></div>
     </div>
-    <div class="box xl"><span class="lbl">Notes</span></div>
-    <div class="pg-foot"><span>Korean History through Film</span><span>6 / 13</span></div>
+    <div class="box md"><span class="lbl">Thesis</span><p class="thesis-q">What is the thesis of this film?</p></div>
+    <div class="box fill"><span class="lbl">Notes</span></div>
+    </div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>5 / 10</span></div>
 </div>
 
-<!-- 7 -->
+<!-- 6 -->
 <div class="page">
     <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/eQA1BRlzjNZUtz4tFdBUu7lCkUk.jpg')"></div>
+    <div class="page-body">
     <div class="film-header"><h2>A Single Spark <span class="kor">아름다운 청년 전태일</span></h2><div class="meta">Park Kwang-su, 1995 &bull; Week 6</div></div>
     <div class="box lg"><span class="lbl">Main Characters</span></div>
     <div class="row2">
@@ -383,34 +396,16 @@
         <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
         <div class="box md"><span class="lbl">Your Questions</span></div>
     </div>
-    <div class="box xl"><span class="lbl">Notes</span></div>
-    <div class="pg-foot"><span>Korean History through Film</span><span>7 / 13</span></div>
+    <div class="box md"><span class="lbl">Thesis</span><p class="thesis-q">What is the thesis of this film?</p></div>
+    <div class="box fill"><span class="lbl">Notes</span></div>
+    </div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>6 / 10</span></div>
 </div>
 
-<!-- 8 -->
-<div class="page">
-    <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/frgkz9c6Kzn0en6tlwpR2C3vjkC.jpg')"></div>
-    <div class="film-header"><h2>Peppermint Candy <span class="kor">박하사탕</span></h2><div class="meta">Lee Chang-dong, 1999 &bull; Week 6 (rec.)</div></div>
-    <div class="box lg"><span class="lbl">Main Characters</span></div>
-    <div class="row2">
-        <div class="box sm"><span class="lbl">Setting</span></div>
-        <div class="box sm"><span class="lbl">Themes</span></div>
-    </div>
-    <div class="row2">
-        <div class="box md"><span class="lbl">Key Images</span></div>
-        <div class="box md"><span class="lbl">Key Moments</span></div>
-    </div>
-    <div class="row2">
-        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
-        <div class="box md"><span class="lbl">Your Questions</span></div>
-    </div>
-    <div class="box xl"><span class="lbl">Notes</span></div>
-    <div class="pg-foot"><span>Korean History through Film</span><span>8 / 13</span></div>
-</div>
-
-<!-- 9 -->
+<!-- 7 -->
 <div class="page">
     <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/1iG84kJYvWZzo36Aax8rgDJCizl.jpg')"></div>
+    <div class="page-body">
     <div class="film-header"><h2>Madame Freedom <span class="kor">자유부인</span></h2><div class="meta">Han Hyongmo, 1956 &bull; Week 7</div></div>
     <div class="box lg"><span class="lbl">Main Characters</span></div>
     <div class="row2">
@@ -425,13 +420,16 @@
         <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
         <div class="box md"><span class="lbl">Your Questions</span></div>
     </div>
-    <div class="box xl"><span class="lbl">Notes</span></div>
-    <div class="pg-foot"><span>Korean History through Film</span><span>9 / 13</span></div>
+    <div class="box md"><span class="lbl">Thesis</span><p class="thesis-q">What is the thesis of this film?</p></div>
+    <div class="box fill"><span class="lbl">Notes</span></div>
+    </div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>7 / 10</span></div>
 </div>
 
-<!-- 10 -->
+<!-- 8 -->
 <div class="page">
     <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/kxwRQyOIHJZ0xy4Ob2IEWRrNbZw.jpg')"></div>
+    <div class="page-body">
     <div class="film-header"><h2>Spirit's Homecoming <span class="kor">귀향</span></h2><div class="meta">Cho Jung-rae, 2016 &bull; Week 8</div></div>
     <div class="box lg"><span class="lbl">Main Characters</span></div>
     <div class="row2">
@@ -446,13 +444,16 @@
         <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
         <div class="box md"><span class="lbl">Your Questions</span></div>
     </div>
-    <div class="box xl"><span class="lbl">Notes</span></div>
-    <div class="pg-foot"><span>Korean History through Film</span><span>10 / 13</span></div>
+    <div class="box md"><span class="lbl">Thesis</span><p class="thesis-q">What is the thesis of this film?</p></div>
+    <div class="box fill"><span class="lbl">Notes</span></div>
+    </div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>8 / 10</span></div>
 </div>
 
-<!-- 11 -->
+<!-- 9 -->
 <div class="page">
     <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/kbpIhVdyRs13yeEr5TliuqYjA60.jpg')"></div>
+    <div class="page-body">
     <div class="film-header"><h2>Loyal Citizens of Pyongyang <span class="kor">평양의 충신</span></h2><div class="meta">David Yun, 2018 &bull; Week 9</div></div>
     <div class="box lg"><span class="lbl">Main Characters</span></div>
     <div class="row2">
@@ -467,13 +468,16 @@
         <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
         <div class="box md"><span class="lbl">Your Questions</span></div>
     </div>
-    <div class="box xl"><span class="lbl">Notes</span></div>
-    <div class="pg-foot"><span>Korean History through Film</span><span>11 / 13</span></div>
+    <div class="box md"><span class="lbl">Thesis</span><p class="thesis-q">What is the thesis of this film?</p></div>
+    <div class="box fill"><span class="lbl">Notes</span></div>
+    </div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>9 / 10</span></div>
 </div>
 
-<!-- 12 -->
+<!-- 10 -->
 <div class="page">
     <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg')"></div>
+    <div class="page-body">
     <div class="film-header"><h2>Parasite <span class="kor">기생충</span></h2><div class="meta">Bong Joon-ho, 2019 &bull; Week 9</div></div>
     <div class="box lg"><span class="lbl">Main Characters</span></div>
     <div class="row2">
@@ -488,14 +492,17 @@
         <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
         <div class="box md"><span class="lbl">Your Questions</span></div>
     </div>
-    <div class="box xl"><span class="lbl">Notes</span></div>
-    <div class="pg-foot"><span>Korean History through Film</span><span>12 / 13</span></div>
+    <div class="box md"><span class="lbl">Thesis</span><p class="thesis-q">What is the thesis of this film?</p></div>
+    <div class="box fill"><span class="lbl">Notes</span></div>
+    </div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>10 / 10</span></div>
 </div>
 
-<!-- 13 -->
+<!-- OPT 1 -->
 <div class="page">
-    <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/pTgNyIsv0NMgBnqglTRtVdQcw5e.jpg')"></div>
-    <div class="film-header"><h2>A State of Mind <span class="kor">마음의 상태</span></h2><div class="meta">Daniel Gordon, 2004 &bull; Feature Film</div></div>
+    <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/xkUywIcVo88RL5Qt3fTnw37NQf0.jpg')"></div>
+    <div class="page-body">
+    <div class="film-header"><h2>A Dwarf Launches a Little Ball <span class="kor">난장이가 쏘아올린 작은 공</span></h2><div class="meta">Lee Won-se, 1981 &bull; Optional</div></div>
     <div class="box lg"><span class="lbl">Main Characters</span></div>
     <div class="row2">
         <div class="box sm"><span class="lbl">Setting</span></div>
@@ -509,8 +516,58 @@
         <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
         <div class="box md"><span class="lbl">Your Questions</span></div>
     </div>
-    <div class="box xl"><span class="lbl">Notes</span></div>
-    <div class="pg-foot"><span>Korean History through Film</span><span>13 / 13</span></div>
+    <div class="box md"><span class="lbl">Thesis</span><p class="thesis-q">What is the thesis of this film?</p></div>
+    <div class="box fill"><span class="lbl">Notes</span></div>
+    </div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>Optional 1 / 3</span></div>
+</div>
+
+<!-- OPT 2 -->
+<div class="page">
+    <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/frgkz9c6Kzn0en6tlwpR2C3vjkC.jpg')"></div>
+    <div class="page-body">
+    <div class="film-header"><h2>Peppermint Candy <span class="kor">박하사탕</span></h2><div class="meta">Lee Chang-dong, 1999 &bull; Optional</div></div>
+    <div class="box lg"><span class="lbl">Main Characters</span></div>
+    <div class="row2">
+        <div class="box sm"><span class="lbl">Setting</span></div>
+        <div class="box sm"><span class="lbl">Themes</span></div>
+    </div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Key Images</span></div>
+        <div class="box md"><span class="lbl">Key Moments</span></div>
+    </div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
+    <div class="box md"><span class="lbl">Thesis</span><p class="thesis-q">What is the thesis of this film?</p></div>
+    <div class="box fill"><span class="lbl">Notes</span></div>
+    </div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>Optional 2 / 3</span></div>
+</div>
+
+<!-- OPT 3 -->
+<div class="page">
+    <div class="film-strip" style="background-image:url('https://media.themoviedb.org/t/p/w1280/65vwocYaQrSjuaAL3UuNVc0YIoD.jpg')"></div>
+    <div class="page-body">
+    <div class="film-header"><h2>Take Care of My Cat <span class="kor">고양이를 부탁해</span></h2><div class="meta">Jeong Jae-eun, 2001 &bull; Optional</div></div>
+    <div class="box lg"><span class="lbl">Main Characters</span></div>
+    <div class="row2">
+        <div class="box sm"><span class="lbl">Setting</span></div>
+        <div class="box sm"><span class="lbl">Themes</span></div>
+    </div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Key Images</span></div>
+        <div class="box md"><span class="lbl">Key Moments</span></div>
+    </div>
+    <div class="row2">
+        <div class="box md"><span class="lbl">Historical Accuracy?</span></div>
+        <div class="box md"><span class="lbl">Your Questions</span></div>
+    </div>
+    <div class="box md"><span class="lbl">Thesis</span><p class="thesis-q">What is the thesis of this film?</p></div>
+    <div class="box fill"><span class="lbl">Notes</span></div>
+    </div>
+    <div class="pg-foot"><span>Korean History through Film</span><span>Optional 3 / 3</span></div>
 </div>
 
 </body>
