@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Readings — Korean History through Literature and Film</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Course Readings — Korean History through Literature and Film">
+    <meta property="og:description" content="HIST 498 / EAST 418 / FILM 419 — Spring 2026, Lawrence University. Literary texts by week.">
+    <meta property="og:url" content="https://omatty123.github.io/korean-film-dashboard/literature.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Course Readings — Korean History through Literature and Film">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-faint: #888;
+            --paper: #faf9f7;
+            --paper-warm: #f5f3ef;
+            --surface: #fff;
+            --accent: #8b2232;
+            --accent-light: #a83244;
+            --gold: #a67c00;
+            --border: #e0dcd5;
+            --shadow: rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            background: var(--paper-warm);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 2rem;
+        }
+
+        .breadcrumb a {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+            text-decoration: underline;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 3rem 2rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        header h1 {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 2.4rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-subtitle {
+            font-family: 'Newsreader', Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 0.5rem;
+        }
+
+        .header-korean {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .header-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+        /* MAIN LAYOUT */
+        .main-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* WEEK SECTION */
+        .week-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .section-header h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .section-header .subtitle {
+            font-size: 0.8rem;
+            color: var(--ink-faint);
+            margin-top: 0.25rem;
+        }
+
+        /* LITERATURE GRID */
+        .lit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* LITERATURE CARD */
+        .lit-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lit-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+
+        .card-accent-bar {
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .card-body {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            flex: 1;
+        }
+
+        .card-header-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .author-portrait {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+            border: 2px solid var(--border);
+        }
+
+        .author-portrait-placeholder {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .author-portrait-placeholder span {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .author-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .author-name {
+            font-family: 'Newsreader', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.2;
+        }
+
+        .author-korean {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 0.8rem;
+            color: var(--ink-faint);
+            margin-top: 0.1rem;
+        }
+
+        .work-title {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+
+        .work-year {
+            font-family: 'Outfit', sans-serif;
+            font-style: normal;
+            font-size: 0.8rem;
+            color: var(--ink-faint);
+            font-weight: 400;
+        }
+
+        .genre-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.15rem 0.55rem;
+            border-radius: 2px;
+            background: var(--paper-warm);
+            color: var(--ink-light);
+            border: 1px solid var(--border);
+            align-self: flex-start;
+        }
+
+        .card-description {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            line-height: 1.55;
+            flex: 1;
+        }
+
+        .deep-dive-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            margin-top: auto;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border);
+            transition: color 0.15s;
+            align-self: stretch;
+        }
+
+        .deep-dive-btn:hover {
+            color: var(--accent-light);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.5);
+            padding: 2rem;
+            font-size: 0.75rem;
+            text-align: left;
+        }
+
+        footer .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer a { color: var(--gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            header { padding: 2rem 1.5rem; }
+            header h1 { font-size: 1.8rem; }
+            .main-wrap { padding: 1.5rem; }
+            .lit-grid { grid-template-columns: 1fr; }
+            .header-meta { flex-direction: column; gap: 0.5rem; }
+            .breadcrumb { padding: 0.6rem 1.5rem; }
+            footer .footer-content { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="breadcrumb">
+    <a href="index.html">&#8592; Back to Film Dashboard</a>
+</div>
+
+<header>
+    <div class="header-content">
+        <div class="course-label">HIST 498 / EAST 418 / FILM 419 &mdash; Spring 2026</div>
+        <h1>Korean History through Literature and Film</h1>
+        <div class="header-subtitle">Course Readings</div>
+        <div class="header-korean">강독 자료</div>
+        <div class="header-meta">
+            <span>MWF 9:50&ndash;11:10 AM</span>
+            <span>March 30 &ndash; June 5, 2026</span>
+            <span>Lawrence University</span>
+        </div>
+    </div>
+</header>
+
+<div class="main-wrap">
+
+    <!-- WEEK 1 -->
+    <section class="week-section">
+        <div class="section-header">
+            <h2>Week 1: Foundation and Frameworks / Joseon Ends</h2>
+            <div class="subtitle">Setting the stage — court life, dynastic crisis, and the final decades of the Joseon dynasty</div>
+        </div>
+        <div class="lit-grid">
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/lady-hyegyeong.png" alt="Lady Hyegyeong" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>혜</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Lady Hyegyeong</div>
+                            <div class="author-korean">혜경궁 홍씨</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Hanjungnok <span class="work-year">(Memoirs)</span></div>
+                        <div class="work-year">1805</div>
+                    </div>
+                    <span class="genre-badge">Memoir</span>
+                    <div class="card-description">Portrait of court intrigue and tragedy from inside the Joseon palace — the Crown Princess's account of her husband Prince Sado's execution.</div>
+                    <a href="literature/hanjungnok.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WEEK 2 -->
+    <section class="week-section">
+        <div class="section-header">
+            <h2>Week 2: Joseon Ends, Colonialism Begins</h2>
+            <div class="subtitle">New Women, naturalist fiction, and modernist alienation under Japanese rule</div>
+        </div>
+        <div class="lit-grid">
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/na-hyeseok.png" alt="Na Hyesŏk" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>나</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Na Hyesŏk</div>
+                            <div class="author-korean">나혜석</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Kyŏnghŭi</div>
+                        <div class="work-year">1918</div>
+                    </div>
+                    <span class="genre-badge">Short Story</span>
+                    <div class="card-description">Korea's first feminist short story — a New Woman rejects Confucian gender roles in colonial Seoul.</div>
+                    <a href="literature/kyonghui.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/kim-wonju.png" alt="Kim Wonju" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>김</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Kim Wonju</div>
+                            <div class="author-korean">김원주</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Awakening</div>
+                        <div class="work-year">1926</div>
+                    </div>
+                    <span class="genre-badge">Short Story</span>
+                    <div class="card-description">A woman's awakening to feminist consciousness; companion text to <em>Kyŏnghŭi</em>.</div>
+                    <a href="literature/awakening.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/kim-tongin.png" alt="Kim Tongin" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>김</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Kim Tongin</div>
+                            <div class="author-korean">이동인</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Potatoes</div>
+                        <div class="work-year">1925</div>
+                    </div>
+                    <span class="genre-badge">Short Story</span>
+                    <div class="card-description">Naturalist portrait of colonial poverty — a young woman's descent in colonial Pyongyang.</div>
+                    <a href="literature/potatoes.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/yi-sang.png" alt="Yi Sang" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>이</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Yi Sang</div>
+                            <div class="author-korean">이상</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Meetings and Farewells</div>
+                        <div class="work-year">1936</div>
+                    </div>
+                    <span class="genre-badge">Short Story</span>
+                    <div class="card-description">Modernist stream-of-consciousness — alienation and desire in late colonial Seoul.</div>
+                    <a href="literature/meetings-farewells.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WEEK 3 -->
+    <section class="week-section">
+        <div class="section-header">
+            <h2>Week 3: Liberation, Occupation, Civil War</h2>
+            <div class="subtitle">The chaos of 1945 — liberation, collaboration, and the ideological battle for Korea's future</div>
+        </div>
+        <div class="lit-grid">
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/chae-mansik.png" alt="Chae Mansik" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>채</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Chae Mansik</div>
+                            <div class="author-korean">채만식</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Constable Maeng</div>
+                        <div class="work-year">1946</div>
+                    </div>
+                    <span class="genre-badge">Short Story</span>
+                    <div class="card-description">Biting satire of a colonial-era police collaborator trying to reinvent himself after liberation.</div>
+                    <a href="literature/constable-maeng.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/yi-taejun.png" alt="Yi Taejun" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>이</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Yi Taejun</div>
+                            <div class="author-korean">이태준</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Before and After Liberation</div>
+                        <div class="work-year">1946</div>
+                    </div>
+                    <span class="genre-badge">Short Story</span>
+                    <div class="card-description">An intellectual navigates the chaotic transition from Japanese rule to liberation in 1945.</div>
+                    <a href="literature/before-after-liberation.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/han-sorya.png" alt="Han Sorya" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>한</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Han Sorya</div>
+                            <div class="author-korean">한설야</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Jackals</div>
+                        <div class="work-year">1951</div>
+                    </div>
+                    <span class="genre-badge">Novella</span>
+                    <div class="card-description">North Korea's premier writer attacks American missionaries and Japanese colonizers in classic DPRK socialist realism.</div>
+                    <a href="literature/jackals.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WEEK 4 -->
+    <section class="week-section">
+        <div class="section-header">
+            <h2>Week 4: Liberation, Occupation, Civil War cont.</h2>
+            <div class="subtitle">The Korean War and its aftermath — division, displacement, and the literature of survival</div>
+        </div>
+        <div class="lit-grid">
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/hwang-sunwon.png" alt="Hwang Sunwon" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>황</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Hwang Sunwon</div>
+                            <div class="author-korean">황순원</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Cranes <span style="font-style:normal; font-size:0.8rem; color:var(--ink-faint);">(학)</span></div>
+                        <div class="work-year">1953</div>
+                    </div>
+                    <span class="genre-badge">Short Story</span>
+                    <div class="card-description">Two childhood friends on opposite sides of the Korean War — a masterpiece of division literature.</div>
+                    <a href="literature/cranes.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/pak-wanso.png" alt="Pak Wanso" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>박</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Pak Wanso</div>
+                            <div class="author-korean">박완서</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">A Pasque-Flower on That Bleak Day</div>
+                        <div class="work-year">1977</div>
+                    </div>
+                    <span class="genre-badge">Short Story</span>
+                    <div class="card-description">War memory and women's survival — one of Korea's most beloved writers on the Korean War's aftermath.</div>
+                    <a href="literature/pasque-flower.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/yi-beomseon.png" alt="Yi Beomseon" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>이</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Yi Beomseon</div>
+                            <div class="author-korean">이범선</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Obaltan / Stray Bullet</div>
+                        <div class="work-year">1959</div>
+                    </div>
+                    <span class="genre-badge">Short Story</span>
+                    <div class="card-description">Post-war despair in Seoul — the source for Yu Hyonmok's landmark 1961 film.</div>
+                    <a href="literature/stray-bullet.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WEEK 5 -->
+    <section class="week-section">
+        <div class="section-header">
+            <h2>Week 5: Division, Dictatorships, Democratization</h2>
+            <div class="subtitle">Park Chung-hee's Korea — rapid urbanization, women's domestic labor, and the costs of the economic miracle</div>
+        </div>
+        <div class="lit-grid">
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/pak-wanso.png" alt="Pak Wanso" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>박</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Pak Wanso</div>
+                            <div class="author-korean">박완서</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Identical Apartments</div>
+                        <div class="work-year">1974</div>
+                    </div>
+                    <span class="genre-badge">Short Story</span>
+                    <div class="card-description">Alienation and conformity in Seoul's rapid urbanization.</div>
+                    <a href="literature/identical-apartments.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/pak-wanso.png" alt="Pak Wanso" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>박</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Pak Wanso</div>
+                            <div class="author-korean">박완서</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">The Day My Housewatching Ended</div>
+                        <div class="work-year">1978</div>
+                    </div>
+                    <span class="genre-badge">Short Story</span>
+                    <div class="card-description">Domestic labor and women's invisible work under Korea's economic miracle.</div>
+                    <a href="literature/housewatching.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WEEK 6 -->
+    <section class="week-section">
+        <div class="section-header">
+            <h2>Week 6: Division, Dictatorships, Democratization cont.</h2>
+            <div class="subtitle">Dissident literature — pansori satire, labor politics, and the urban poor fighting Seoul's redevelopment machine</div>
+        </div>
+        <div class="lit-grid">
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/kim-jiha.png" alt="Kim Jiha" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>김</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Kim Jiha</div>
+                            <div class="author-korean">김지하</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Five Bandits <span style="font-style:normal; font-size:0.8rem; color:var(--ink-faint);">(오적)</span></div>
+                        <div class="work-year">1970</div>
+                    </div>
+                    <span class="genre-badge">Poem</span>
+                    <div class="card-description">Dissident poet's savage pansori-style satire of five corrupt classes — he was jailed for it under the Anti-Communist Law.</div>
+                    <a href="literature/five-bandits.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/cho-sehui.png" alt="Cho Sehui" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>조</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Cho Sehui</div>
+                            <div class="author-korean">조세희</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">A Dwarf Launches a Little Ball</div>
+                        <div class="work-year">1978</div>
+                    </div>
+                    <span class="genre-badge">Novel</span>
+                    <div class="card-description">The defining novel of Korea's industrial age — urban poor displaced by Seoul's redevelopment boom.</div>
+                    <a href="literature/dwarf-little-ball.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WEEK 7 -->
+    <section class="week-section">
+        <div class="section-header">
+            <h2>Week 7: Relations with Japan, China, United States</h2>
+            <div class="subtitle">Korean writers in the margins — socialist realism from Manchuria and Zainichi identity in postwar Japan</div>
+        </div>
+        <div class="lit-grid">
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/kang-gyeongae.png" alt="Kang Gyeongae" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>강</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Kang Gyeongae</div>
+                            <div class="author-korean">강경애</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Salt <span style="font-style:normal; font-size:0.8rem; color:var(--ink-faint);">(소금)</span></div>
+                        <div class="work-year">1934</div>
+                    </div>
+                    <span class="genre-badge">Short Story</span>
+                    <div class="card-description">Socialist realism from Manchuria — Korean workers' lives under colonial capitalism.</div>
+                    <a href="literature/salt.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+            <div class="lit-card">
+                <div class="card-accent-bar"></div>
+                <div class="card-body">
+                    <div class="card-header-row">
+                        <img src="images/authors/yu-miri.png" alt="Yū Miri" class="author-portrait"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-portrait-placeholder" style="display:none;"><span>유</span></div>
+                        <div class="author-info">
+                            <div class="author-name">Yū Miri</div>
+                            <div class="author-korean">유미리</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="work-title">Full House</div>
+                        <div class="work-year">1995</div>
+                    </div>
+                    <span class="genre-badge">Play</span>
+                    <div class="card-description">Zainichi Korean identity and belonging — from the anthology <em>Into the Light: Literature by Koreans in Japan</em>.</div>
+                    <a href="literature/full-house.html" class="deep-dive-btn">Deep Dive &#8594;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div>Korean History through Literature and Film &mdash; Spring 2026<br>Lawrence University</div>
+        <div style="display:flex; gap:1.5rem; align-items:flex-start;">
+            <a href="index.html">Film Dashboard</a>
+            <a href="https://docs.google.com/document/d/1HNEFiCmnfJIas4y0Vachgl8BxG1MKhpq-bi2_3mR604/edit">Full Syllabus</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
