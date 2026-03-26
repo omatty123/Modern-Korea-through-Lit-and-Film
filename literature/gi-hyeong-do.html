@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Gi Hyeong-do — Selected Poems">
+    <meta property="og:description" content="Korea's most celebrated tragic modernist poet — dark verse from a short life. Korean History through Literature.">
+    <title>Gi Hyeong-do | Korean History through Literature</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --ink: #1a1a1a; --ink-light: #4a4a4a; --ink-faint: #888; --paper: #faf9f7; --surface: #fff; --accent: #37474f; --accent-light: #546e7a; --gold: #a67c00; --border: #e0dcd5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
+        .breadcrumb { background: var(--ink); padding: 0.6rem 2rem; font-size: 0.75rem; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.4); }
+        .hero { background: linear-gradient(rgba(10,10,10,0.88), rgba(30,30,30,0.88)), url('../images/authors/yi-sang.png'); background-size: cover; background-position: center; padding: 3.5rem 2rem 3rem; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 0.75rem; }
+        .hero h1 { font-family: 'Newsreader', Georgia, serif; font-size: 2.6rem; font-weight: 500; color: #fff; line-height: 1.15; margin-bottom: 0.4rem; }
+        .hero-korean { font-family: 'Noto Serif KR', serif; font-size: 1.1rem; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+        .hero-meta { display: flex; gap: 2rem; font-size: 0.8rem; color: rgba(255,255,255,0.6); flex-wrap: wrap; }
+        .main-wrap { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .two-col { display: grid; grid-template-columns: 65% 35%; gap: 2.5rem; align-items: start; }
+        .section-title { font-family: 'Newsreader', serif; font-size: 1.4rem; font-weight: 500; color: var(--ink); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent); }
+        .doc-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 2px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+        .doc-card.gold-border { border-left-color: var(--gold); }
+        .doc-card.dark-border { border-left-color: var(--ink); }
+        .doc-card.light-border { border-left-color: var(--accent-light); }
+        .doc-card h3 { font-family: 'Newsreader', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--ink); }
+        .doc-card p { font-size: 0.88rem; color: var(--ink-light); margin-bottom: 0.75rem; }
+        .doc-card p:last-child { margin-bottom: 0; }
+        .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem; margin-bottom: 1.25rem; }
+        .sidebar-card h3 { font-family: 'Newsreader', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent); }
+        .sidebar-card.gold-header h3 { border-bottom-color: var(--gold); }
+        .fact-row { display: grid; grid-template-columns: 90px 1fr; gap: 0.5rem; font-size: 0.8rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
+        .fact-row:last-child { border-bottom: none; }
+        .fact-label { font-weight: 600; color: var(--ink); }
+        .fact-value { color: var(--ink-light); }
+        .concept-item { margin-bottom: 1rem; }
+        .concept-item:last-child { margin-bottom: 0; }
+        .concept-term { font-weight: 600; font-size: 0.85rem; color: var(--accent); }
+        .concept-def { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.15rem; }
+        .discussion-q { font-size: 0.82rem; color: var(--ink-light); padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .discussion-q:last-child { border-bottom: none; }
+        .discussion-q strong { color: var(--ink); font-weight: 600; }
+        .source-item { font-size: 0.78rem; color: var(--ink-light); padding: 0.35rem 0; border-bottom: 1px solid var(--border); }
+        .source-item:last-child { border-bottom: none; }
+        .source-type { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); display: block; }
+        footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 2rem; font-size: 0.75rem; }
+        footer .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; }
+        footer a { color: var(--gold); text-decoration: none; }
+        @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } .hero { padding: 2rem 1.5rem; } .hero h1 { font-size: 1.8rem; } .main-wrap { padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+<div class="breadcrumb">
+    <a href="../literature.html">← Back to Literature</a>
+    <span> / </span>
+    <span style="color:rgba(255,255,255,0.6);">Gi Hyeong-do</span>
+</div>
+
+<div class="hero">
+    <div class="hero-content">
+        <div class="hero-label">Week 8 &mdash; Sex and Gender Politics</div>
+        <h1>Gi Hyeong-do</h1>
+        <div class="hero-korean">기형도 &mdash; 입 속의 검은 잎</div>
+        <div class="hero-meta">
+            <span>1960–1989</span>
+            <span>Poetry</span>
+            <span>Collection: <em>Black Leaves in the Mouth</em> (1989)</span>
+        </div>
+    </div>
+</div>
+
+<div class="main-wrap">
+    <div class="two-col">
+        <div class="main-col">
+
+            <div class="doc-card gold-border">
+                <h3>The Poet</h3>
+                <p>Gi Hyeong-do (기형도) was born in 1960 in Gyeonggi Province and died in March 1989 at the age of 29 — found alone in the early hours of the morning in a 24-hour cinema in Seoul. He was a journalist at the <em>Chosun Ilbo</em> (조선일보) and had published poems in various literary journals, but had not yet released a collection.</p>
+                <p>His posthumous collection <em>입 속의 검은 잎</em> (<em>Black Leaves in the Mouth</em>, 1989), assembled by his friends and colleagues after his death, became one of the most influential poetry collections in modern Korean literature. It has never gone out of print.</p>
+                <p>The circumstances of his death — alone, in a cinema, at 29 — became inseparable from how readers receive his poetry. His work is haunted by images of darkness, empty spaces, childhood memory, and premature ending. Whether those images predicted his death or were retrospectively invested with that meaning is a question each reader navigates.</p>
+            </div>
+
+            <div class="doc-card">
+                <h3>The Poetry: Dark Modernity</h3>
+                <p>Gi Hyeong-do wrote during the late 1980s — the tail end of South Korea's authoritarian period, the years just before the democratic transition of 1987. His poetry is saturated with urban desolation: Seoul's grey winters, fluorescent-lit offices, empty streets at 3am, the fog that swallows everything. These are not metaphors imposed from outside — they are the sensory reality of a city still processing its rapid, violent modernization.</p>
+                <p>His most celebrated poems include "엄마 걱정" ("Mother's Worry"), "빈집" ("Empty House"), "안개" ("Fog"), "정거장에서의 충고" ("Advice at the Station"), and "질투는 나의 힘" ("Jealousy is My Strength"). They share a voice that is cold, precise, self-aware, and without consolation. The speaker observes his own alienation with clinical clarity.</p>
+                <p>Placing Gi Hyeong-do in Week 8 (Sex and Gender Politics) rather than Week 5 or 6 (dictatorships and democratization) is a deliberate interpretive choice. His darkness is not only political — it explores interiority, desire, the gendered body, and the cost of performing normalcy. His loneliness has a queer valence that readers have long noted, even if the biographical details remain opaque.</p>
+            </div>
+
+            <div class="doc-card light-border">
+                <h3>Historical Context: The 1980s Literary Generation</h3>
+                <p>Korean poets writing in the 1980s worked under the shadow of the Chun Doo-hwan dictatorship (1980–1988) and the Gwangju Uprising of May 1980 — a pro-democracy movement violently suppressed by the military, killing hundreds. The Gwangju massacre haunted Korean literary culture for decades.</p>
+                <p>Some poets responded with direct political engagement (the minjung poetry movement). Gi Hyeong-do's response was different: a turn inward, toward private grief and the texture of ordinary urban solitude. This was not apolitical — it was a different mode of registering what it cost to live under authoritarianism. The numb office worker, the fog-filled street, the cinema at 3am are all part of the same historical landscape as the minjung protests, seen from a different angle.</p>
+            </div>
+
+        </div>
+
+        <div class="sidebar">
+
+            <div class="sidebar-card gold-header">
+                <h3>Quick Facts</h3>
+                <div class="fact-row"><span class="fact-label">Born</span><span class="fact-value">1960, Gyeonggi Province</span></div>
+                <div class="fact-row"><span class="fact-label">Died</span><span class="fact-value">March 7, 1989, Seoul (age 29)</span></div>
+                <div class="fact-row"><span class="fact-label">Occupation</span><span class="fact-value">Poet, journalist (Chosun Ilbo)</span></div>
+                <div class="fact-row"><span class="fact-label">Collection</span><span class="fact-value"><em>Black Leaves in the Mouth</em> (1989, posthumous)</span></div>
+                <div class="fact-row"><span class="fact-label">Course week</span><span class="fact-value">Week 8 — Sex and Gender Politics</span></div>
+            </div>
+
+            <div class="sidebar-card">
+                <h3>Key Themes</h3>
+                <ul style="list-style:none; font-size:0.83rem; color:var(--ink-light);">
+                    <li style="padding:0.3rem 0; border-bottom:1px solid var(--border);">Urban alienation and the cold city</li>
+                    <li style="padding:0.3rem 0; border-bottom:1px solid var(--border);">Childhood memory and loss</li>
+                    <li style="padding:0.3rem 0; border-bottom:1px solid var(--border);">Darkness, fog, empty spaces</li>
+                    <li style="padding:0.3rem 0; border-bottom:1px solid var(--border);">Interiority under authoritarian modernity</li>
+                    <li style="padding:0.3rem 0; border-bottom:1px solid var(--border);">Premature death and posthumous legend</li>
+                    <li style="padding:0.3rem 0;">Queerness, desire, and the unsaid</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h3>Key Concepts</h3>
+                <div class="concept-item">
+                    <div class="concept-term">Minjung Poetry (민중시)</div>
+                    <div class="concept-def">Politically engaged poetry of the 1980s pro-democracy movement — poetry as weapon. Gi Hyeong-do worked in a different register: inward rather than outward, private grief rather than collective resistance.</div>
+                </div>
+                <div class="concept-item">
+                    <div class="concept-term">Gwangju Uprising (광주민주화운동, 1980)</div>
+                    <div class="concept-def">Pro-democracy uprising in Gwangju violently suppressed by the Chun Doo-hwan military regime; hundreds killed. The defining political trauma of the 1980s Korean literary generation.</div>
+                </div>
+                <div class="concept-item">
+                    <div class="concept-term">Posthumous canon</div>
+                    <div class="concept-def">Gi Hyeong-do published no collection during his lifetime. His entire literary legacy was assembled after his death at 29 — raising questions about how early death shapes literary reputation.</div>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <h3>Discussion Questions</h3>
+                <div class="discussion-q"><strong>1.</strong> Gi Hyeong-do's poetry is placed in Week 8 (Sex and Gender). What connects his work to queer themes — or is this pairing more about interiority and the hidden life than sexual identity specifically?</div>
+                <div class="discussion-q"><strong>2.</strong> His death at 29 in a cinema — alone, at night — became part of how readers receive his poetry. Is that fair to the poems? Should biography shape literary reading this way?</div>
+                <div class="discussion-q"><strong>3.</strong> Compare Gi Hyeong-do's "dark city" with Yi Sang's colonial Seoul in "Meetings and Farewells." Both poets write urban alienation across a half-century gap. What has changed, and what hasn't?</div>
+                <div class="discussion-q"><strong>4.</strong> How does Gi Hyeong-do's inward, private voice relate to the political climate of the late 1980s? Is his silence about the Gwangju massacre a political choice or an apolitical one?</div>
+                <div class="discussion-q"><strong>5.</strong> Read "질투는 나의 힘" ("Jealousy is My Strength"). What kind of strength does the speaker claim? Is this a poem about desire, about survival, or about something else?</div>
+            </div>
+
+            <div class="sidebar-card">
+                <h3>Further Reading</h3>
+                <div class="source-item">
+                    <span class="source-type">Collection</span>
+                    Gi Hyeong-do. <em>Black Leaves in the Mouth</em> (입 속의 검은 잎). 1989. Translated selections available in <em>Azalea: Journal of Korean Literature and Culture</em>.
+                </div>
+                <div class="source-item">
+                    <span class="source-type">Anthology</span>
+                    Brother Anthony of Taizé et al., eds. <em>The Columbia Anthology of Modern Korean Poetry</em>. Columbia University Press, 2004.
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div>Korean History through Literature and Film &mdash; Spring 2026</div>
+        <div><a href="../literature.html">Literature Dashboard</a> &nbsp;&bull;&nbsp; <a href="../index.html">Film Dashboard</a></div>
+    </div>
+</footer>
+
+</body>
+</html>
