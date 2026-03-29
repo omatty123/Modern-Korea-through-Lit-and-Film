@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Students — Modern Korean History through Literature and Film</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4f3f0;
+  --surface: #fff;
+  --border: #e5e2dc;
+  --ink: #1a1a1a;
+  --ink-muted: #6b6b6b;
+  --gold: #a67c00;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+.site-header {
+  background: #1a1a1a;
+  border-bottom: 1px solid #333;
+  padding: 0 1.5rem;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.course-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  font-weight: 600;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.site-link {
+  font-size: 11px;
+  color: #999;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  transition: all 0.15s;
+}
+.site-link:hover {
+  color: #fff;
+  border-color: #555;
+}
+.canvas-link {
+  color: var(--gold);
+  border-color: rgba(166,124,0,0.35);
+}
+.canvas-link:hover {
+  background: rgba(166,124,0,0.1);
+  border-color: var(--gold);
+}
+.hero {
+  background: linear-gradient(160deg, #1e2a35 0%, #2c3e50 50%, #1e2a35 100%);
+  padding: 2.25rem 2rem 2rem;
+}
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.eyebrow {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+}
+.hero h1 {
+  font-family: 'Newsreader', serif;
+  font-size: 2.1rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+.hero p {
+  color: rgba(255,255,255,0.58);
+  font-size: 0.9rem;
+  max-width: 680px;
+}
+.main-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.75rem 1.5rem 2.5rem;
+}
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+.student-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+}
+.student-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  background: #ece9e2;
+}
+.student-body {
+  padding: 0.95rem 1rem 1rem;
+}
+.student-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.student-pronouns {
+  margin-top: 0.28rem;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+@media (max-width: 640px) {
+  .hero h1 { font-size: 1.7rem; }
+  .site-header { padding: 0 0.9rem; }
+  .header-right { gap: 6px; }
+  .site-link { padding: 4px 6px; font-size: 10px; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="course-tag">EAST 418 / FILM 419</div>
+  <div class="header-right">
+    <a href="https://docs.google.com/document/d/1HNEFiCmnfJIas4y0Vachgl8BxG1MKhpq-bi2_3mR604" target="_blank" class="site-link">Syllabus</a>
+    <a href="https://lawrence.instructure.com/courses/12321" target="_blank" class="site-link canvas-link">Canvas</a>
+    <a href="dashboard.html" class="site-link">Dashboard</a>
+    <a href="index.html" class="site-link">Films</a>
+    <a href="literature.html" class="site-link">Literature</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Student Directory</div>
+    <h1>Faces for the seminar room</h1>
+    <p>A quick roster view for learning names before discussion, film days, and presentations.</p>
+  </div>
+</section>
+
+<main class="main-wrap">
+  <section class="student-grid">
+    <article class="student-card">
+      <img src="images/students/anya.jpg" alt="Anya" class="student-photo">
+      <div class="student-body">
+        <div class="student-name">Anya</div>
+        <div class="student-pronouns">Pronouns: She/Her/Hers</div>
+      </div>
+    </article>
+    <article class="student-card">
+      <img src="images/students/sophie.jpg" alt="Sophie" class="student-photo">
+      <div class="student-body">
+        <div class="student-name">Sophie</div>
+        <div class="student-pronouns">Pronouns: She/Her/Hers</div>
+      </div>
+    </article>
+    <article class="student-card">
+      <img src="images/students/jude.jpg" alt="Jude" class="student-photo">
+      <div class="student-body">
+        <div class="student-name">Jude</div>
+        <div class="student-pronouns">Pronouns: He/Him/His</div>
+      </div>
+    </article>
+    <article class="student-card">
+      <img src="images/students/qiaochuhan.jpg" alt="Qiaochuhan" class="student-photo">
+      <div class="student-body">
+        <div class="student-name">Qiaochuhan</div>
+        <div class="student-pronouns">Pronouns: She/Her/Hers</div>
+      </div>
+    </article>
+    <article class="student-card">
+      <img src="images/students/jack.jpg" alt="Jack" class="student-photo">
+      <div class="student-body">
+        <div class="student-name">Jack</div>
+        <div class="student-pronouns">Pronouns: He/Him/His</div>
+      </div>
+    </article>
+    <article class="student-card">
+      <img src="images/students/haeun.jpg" alt="Haeun" class="student-photo">
+      <div class="student-body">
+        <div class="student-name">Haeun</div>
+        <div class="student-pronouns">Pronouns: She/Her/Hers</div>
+      </div>
+    </article>
+    <article class="student-card">
+      <img src="images/students/hana.jpg" alt="Hana" class="student-photo">
+      <div class="student-body">
+        <div class="student-name">Hana</div>
+        <div class="student-pronouns">Pronouns: He/Him/His</div>
+      </div>
+    </article>
+  </section>
+</main>
+</body>
+</html>
