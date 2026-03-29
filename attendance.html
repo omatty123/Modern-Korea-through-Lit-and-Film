@@ -3,497 +3,527 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Attendance — Modern Korean in Literature and Film</title>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Attendance Tool — Modern Korean in Literature and Film</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f4f3f0;
-  --surface: #fff;
-  --surface-alt: #faf9f7;
-  --border: #e5e2dc;
-  --ink: #1a1a1a;
-  --ink-muted: #6b6b6b;
-  --ink-faint: #9a9a9a;
+  --bg: #efede8;
+  --surface: #ffffff;
+  --surface-soft: #f8f6f2;
+  --border: #ddd7cb;
+  --ink: #161616;
+  --muted: #66655f;
+  --faint: #8f8a80;
   --gold: #a67c00;
-  --gold-light: #fdf8ec;
-  --green: #1f7a46;
-  --green-light: #edf8f1;
-  --amber: #a56700;
-  --amber-light: #fff4df;
-  --red: #b83232;
-  --red-light: #fdf1f1;
-  --blue: #2d4f8a;
-  --blue-light: #eef2fa;
+  --green: #236b3d;
+  --green-soft: #edf7f0;
+  --amber: #9d6500;
+  --amber-soft: #fff5e5;
+  --red: #b33636;
+  --red-soft: #fdf1f1;
+  --blue: #29558f;
+  --blue-soft: #eef3fb;
+  --shadow: 0 8px 30px rgba(0,0,0,0.06);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--bg); color: var(--ink); }
-
-.site-header {
-  background: #1a1a1a;
-  border-bottom: 1px solid #333;
-  padding: 0 1.5rem;
-  height: 52px;
+body {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+.shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  gap: 1rem;
+  padding: 0.85rem 0 1rem;
 }
-.course-tag {
-  font-size: 0.7rem;
+.course-mark {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.course-code {
+  font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--gold);
+  font-weight: 700;
+}
+.course-title {
+  font-size: 1rem;
   font-weight: 600;
 }
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.site-link {
-  font-size: 11px;
-  color: #999;
-  text-decoration: none;
-  padding: 4px 8px;
-  border-radius: 4px;
-  border: 1px solid #333;
-  transition: all 0.15s;
-}
-.site-link:hover,
-.site-link.is-active {
-  color: #fff;
-  border-color: #555;
-}
-.canvas-link {
-  color: var(--gold);
-  border-color: rgba(166,124,0,0.35);
-}
-.canvas-link:hover {
-  background: rgba(166,124,0,0.1);
-  border-color: var(--gold);
-}
-
-.hero {
-  background: linear-gradient(160deg, #1e2a35 0%, #2c3e50 50%, #1e2a35 100%);
-  padding: 2rem 2rem 1.8rem;
-}
-.hero-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.hero-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 1rem;
-}
-.eyebrow {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--gold);
-  font-weight: 600;
-  margin-bottom: 0.45rem;
-}
-.hero h1 {
-  font-family: 'Newsreader', serif;
-  font-size: 2.1rem;
-  font-weight: 400;
-  color: #fff;
-  line-height: 1.1;
-}
-.hero p {
-  margin-top: 0.45rem;
-  color: rgba(255,255,255,0.6);
-  font-size: 0.92rem;
-  max-width: 720px;
-}
-.session-chip {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 10px;
-  padding: 0.75rem 0.95rem;
-  min-width: 260px;
-}
-.session-chip-label {
-  font-size: 0.62rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--gold);
-  margin-bottom: 0.25rem;
-}
-.session-chip-title {
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.92rem;
-  line-height: 1.25;
-}
-.session-chip-date {
-  margin-top: 0.2rem;
-  color: rgba(255,255,255,0.55);
+.teacher-note {
   font-size: 0.78rem;
+  color: var(--faint);
 }
-
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem;
-}
-
-.toolbar {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  display: grid;
-  grid-template-columns: 1.3fr auto auto;
-  gap: 1rem;
-  align-items: center;
-}
-.session-nav {
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-}
-.nav-btn, .action-btn, .mode-btn {
-  font: inherit;
-  border: 1px solid var(--border);
-  background: var(--surface-alt);
-  color: var(--ink);
-  border-radius: 8px;
-  cursor: pointer;
-}
-.nav-btn {
-  width: 34px;
-  height: 34px;
-  font-size: 0.95rem;
-}
-.nav-btn:hover, .action-btn:hover, .mode-btn:hover { background: #f0ede8; }
-.session-select {
-  flex: 1;
-  min-width: 280px;
-  height: 38px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: #fff;
-  padding: 0 0.8rem;
-  font: inherit;
-  color: var(--ink);
-}
-.mode-group, .action-group {
+.topbar-links {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
-.mode-btn, .action-btn {
-  padding: 0.6rem 0.8rem;
+.topbar-link,
+.toolbar-btn,
+.status-btn,
+.mini-btn {
+  font: inherit;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.topbar-link {
+  text-decoration: none;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+.topbar-link:hover,
+.toolbar-btn:hover,
+.status-btn:hover,
+.mini-btn:hover {
+  background: #f1eee8;
+}
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.toolbar {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) auto auto;
+  gap: 0.8rem;
+  align-items: center;
+}
+.session-nav {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 40px;
+  gap: 0.55rem;
+  align-items: center;
+}
+.nav-btn {
+  height: 40px;
+  font-size: 1rem;
+}
+.session-select {
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0 0.85rem;
+  background: var(--surface-soft);
+  color: var(--ink);
+  font: inherit;
+  min-width: 0;
+}
+.current-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 220px;
+}
+.current-date {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--faint);
+  font-weight: 700;
+}
+.current-topic {
+  font-size: 0.96rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+.action-row {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.toolbar-btn {
+  padding: 0.7rem 0.85rem;
   font-size: 0.76rem;
   font-weight: 600;
 }
-.mode-btn.is-active {
-  background: #1f2937;
+.toolbar-btn.primary {
+  background: #1e232b;
+  border-color: #1e232b;
   color: #fff;
-  border-color: #1f2937;
 }
-
-.summary-bar {
+.toolbar-btn.primary:hover {
+  background: #303743;
+}
+.summary-strip {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0.85rem;
-  margin-bottom: 1rem;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.9rem;
 }
-.summary-card {
+.summary-pill {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  padding: 0.8rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
 }
 .summary-label {
   font-size: 0.64rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--ink-faint);
-  margin-bottom: 0.3rem;
+  color: var(--faint);
+  font-weight: 700;
 }
 .summary-value {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 700;
 }
-.summary-card.present .summary-value { color: var(--green); }
-.summary-card.late .summary-value { color: var(--amber); }
-.summary-card.absent .summary-value { color: var(--red); }
-.summary-card.excused .summary-value { color: var(--blue); }
-
-.notes-panel {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+.summary-pill.present .summary-value { color: var(--green); }
+.summary-pill.late .summary-value { color: var(--amber); }
+.summary-pill.absent .summary-value { color: var(--red); }
+.summary-pill.excused .summary-value { color: var(--blue); }
+.summary-pill.sync .summary-value {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.2;
 }
-.notes-label {
-  font-size: 0.66rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--ink-faint);
-  margin-bottom: 0.55rem;
+.grid-panel {
+  margin-top: 0.9rem;
+  padding: 0.9rem;
 }
-#classNotes {
-  width: 100%;
-  min-height: 76px;
-  resize: vertical;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.8rem 0.9rem;
-  font: inherit;
-  background: var(--surface-alt);
-}
-
-.attendance-grid {
+.roster-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem;
 }
-.attendance-card {
-  background: var(--surface);
+.student-card {
   border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  background: var(--surface-soft);
+  padding: 0.7rem;
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
 }
-.attendance-photo {
-  width: 100%;
-  aspect-ratio: 4 / 4.5;
+.student-photo {
+  width: 72px;
+  height: 72px;
   object-fit: cover;
   object-position: center top;
+  border-radius: 12px;
+  background: #e4dfd6;
   display: block;
-  background: #ece9e2;
 }
-.attendance-body {
-  padding: 0.95rem 1rem 1rem;
+.student-meta {
+  min-width: 0;
 }
-.attendance-name {
+.student-name {
   font-size: 1rem;
   font-weight: 700;
+  line-height: 1.05;
 }
-.attendance-pronouns {
-  margin-top: 0.15rem;
+.student-pronouns {
   font-size: 0.74rem;
-  color: var(--ink-muted);
+  color: var(--muted);
+  margin-top: 0.15rem;
 }
 .status-row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.45rem;
-  margin-top: 0.9rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.38rem;
+  margin-top: 0.65rem;
 }
 .status-btn {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.55rem 0.45rem;
-  font: inherit;
-  font-size: 0.74rem;
-  font-weight: 600;
-  cursor: pointer;
-  background: var(--surface-alt);
-  color: var(--ink-muted);
+  padding: 0.5rem 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--muted);
+  background: #fff;
 }
-.status-btn.present.is-active { background: var(--green-light); color: var(--green); border-color: #b8dec5; }
-.status-btn.late.is-active { background: var(--amber-light); color: var(--amber); border-color: #e9cf9e; }
-.status-btn.absent.is-active { background: var(--red-light); color: var(--red); border-color: #edc1c1; }
-.status-btn.excused.is-active { background: var(--blue-light); color: var(--blue); border-color: #c4d3f0; }
-
-.rollcall-table-wrap {
+.status-btn.present.is-active {
+  color: var(--green);
+  background: var(--green-soft);
+  border-color: #bddcc8;
+}
+.status-btn.late.is-active {
+  color: var(--amber);
+  background: var(--amber-soft);
+  border-color: #ead3a5;
+}
+.status-btn.absent.is-active {
+  color: var(--red);
+  background: var(--red-soft);
+  border-color: #efc7c7;
+}
+.status-btn.excused.is-active {
+  color: var(--blue);
+  background: var(--blue-soft);
+  border-color: #cbdaee;
+}
+.notes-sync {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 0.9rem;
+}
+.subpanel {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 0.95rem;
 }
-.rollcall-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.rollcall-table th,
-.rollcall-table td {
-  border-bottom: 1px solid var(--border);
-  padding: 0.8rem 0.9rem;
-  text-align: left;
-  vertical-align: middle;
-}
-.rollcall-table th {
-  background: var(--surface-alt);
-  font-size: 0.68rem;
+.subpanel-label {
+  font-size: 0.66rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--ink-faint);
+  letter-spacing: 0.15em;
+  color: var(--faint);
+  font-weight: 700;
+  margin-bottom: 0.55rem;
 }
-.rollcall-photo {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  object-fit: cover;
+.notes-textarea,
+.sheet-url,
+.sheet-name {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-soft);
+  color: var(--ink);
+  font: inherit;
+}
+.notes-textarea {
+  min-height: 110px;
+  padding: 0.85rem;
+  resize: vertical;
+}
+.sync-fields {
+  display: grid;
+  gap: 0.65rem;
+}
+.sync-help {
+  font-size: 0.77rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.field-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.32rem;
   display: block;
 }
-.rollcall-name {
-  font-size: 0.92rem;
-  font-weight: 600;
+.sheet-url,
+.sheet-name {
+  padding: 0.72rem 0.8rem;
 }
-.rollcall-pronouns {
-  font-size: 0.72rem;
-  color: var(--ink-muted);
-}
-.rollcall-status {
-  min-width: 280px;
+.mini-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
 }
-
-.footer-note {
-  margin-top: 1rem;
-  color: var(--ink-muted);
+.mini-btn {
+  padding: 0.58rem 0.72rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+.sync-status {
+  margin-top: 0.6rem;
   font-size: 0.78rem;
+  color: var(--muted);
+  min-height: 1.2em;
 }
-
-@media (max-width: 960px) {
-  .toolbar {
+.template-box {
+  margin-top: 0.7rem;
+  border: 1px dashed var(--border);
+  background: #fbfaf8;
+  border-radius: 10px;
+  padding: 0.75rem;
+}
+.template-box summary {
+  cursor: pointer;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.template-box pre {
+  margin-top: 0.7rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.68rem;
+  color: #3c3a36;
+  line-height: 1.45;
+}
+.privacy-note {
+  margin-top: 0.85rem;
+  font-size: 0.74rem;
+  color: var(--faint);
+}
+@media (max-width: 980px) {
+  .toolbar,
+  .notes-sync {
     grid-template-columns: 1fr;
   }
-  .mode-group, .action-group {
+  .summary-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .action-row {
     justify-content: flex-start;
   }
-  .summary-bar {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 700px) {
+  .shell {
+    padding: 0.7rem;
   }
-  .hero-top {
+  .topbar {
     flex-direction: column;
     align-items: flex-start;
   }
-}
-@media (max-width: 640px) {
-  .site-header {
-    padding: 0 0.9rem;
+  .summary-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .header-right {
-    gap: 6px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+  .student-card {
+    grid-template-columns: 64px minmax(0, 1fr);
   }
-  .site-link {
-    font-size: 10px;
-    padding: 4px 6px;
-  }
-  .summary-bar {
-    grid-template-columns: 1fr;
+  .student-photo {
+    width: 64px;
+    height: 64px;
   }
 }
 </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="course-tag">EAST 418 / FILM 419</div>
-  <div class="header-right">
-    <a href="https://docs.google.com/document/d/1HNEFiCmnfJIas4y0Vachgl8BxG1MKhpq-bi2_3mR604" target="_blank" class="site-link">Syllabus</a>
-    <a href="https://lawrence.instructure.com/courses/12321" target="_blank" class="site-link canvas-link">Canvas</a>
-    <a href="dashboard.html" class="site-link">Dashboard</a>
-    <a href="students.html" class="site-link">Students</a>
-    <a href="attendance.html" class="site-link is-active">Attendance</a>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-top">
-      <div>
-        <div class="eyebrow">Attendance Tracker</div>
-        <h1>Modern Korean in Literature and Film</h1>
-        <p>Use the photo grid when you are still learning faces. Switch to compact roll call when the room gets familiar. Attendance and notes save locally in this browser.</p>
-      </div>
-      <div class="session-chip">
-        <div class="session-chip-label">Current Session</div>
-        <div class="session-chip-title" id="heroSessionTitle">Loading…</div>
-        <div class="session-chip-date" id="heroSessionDate"></div>
-      </div>
+<div class="shell">
+  <header class="topbar">
+    <div class="course-mark">
+      <div class="course-code">EAST 418 / FILM 419</div>
+      <div class="course-title">Modern Korean in Literature and Film</div>
+      <div class="teacher-note">Compact attendance tool. Unlisted in site navigation. Saves locally and can sync to Google Sheets.</div>
     </div>
-  </div>
-</section>
+    <div class="topbar-links">
+      <a class="topbar-link" href="dashboard.html">Dashboard</a>
+      <a class="topbar-link" href="students.html">Roster</a>
+      <a class="topbar-link" href="https://lawrence.instructure.com/courses/12321" target="_blank" rel="noreferrer">Canvas</a>
+    </div>
+  </header>
 
-<main>
-  <section class="toolbar">
+  <section class="panel toolbar">
     <div class="session-nav">
-      <button class="nav-btn" id="prevSessionBtn" type="button" aria-label="Previous class">←</button>
+      <button class="toolbar-btn nav-btn" id="prevSessionBtn" type="button" aria-label="Previous class">←</button>
       <select class="session-select" id="sessionSelect" aria-label="Select class meeting"></select>
-      <button class="nav-btn" id="nextSessionBtn" type="button" aria-label="Next class">→</button>
+      <button class="toolbar-btn nav-btn" id="nextSessionBtn" type="button" aria-label="Next class">→</button>
     </div>
-    <div class="mode-group">
-      <button class="mode-btn is-active" type="button" data-view="grid">Photo Grid</button>
-      <button class="mode-btn" type="button" data-view="list">Compact Roll Call</button>
+    <div class="current-meta">
+      <div class="current-date" id="currentDate">Loading…</div>
+      <div class="current-topic" id="currentTopic"></div>
     </div>
-    <div class="action-group">
-      <button class="action-btn" type="button" id="markAllPresentBtn">Mark All Present</button>
-      <button class="action-btn" type="button" id="clearSessionBtn">Clear</button>
-      <button class="action-btn" type="button" id="copySummaryBtn">Copy Summary</button>
+    <div class="action-row">
+      <button class="toolbar-btn" type="button" id="markAllPresentBtn">Mark All Present</button>
+      <button class="toolbar-btn" type="button" id="clearSessionBtn">Clear</button>
+      <button class="toolbar-btn" type="button" id="copySummaryBtn">Copy</button>
+      <button class="toolbar-btn primary" type="button" id="syncNowBtn">Sync Sheet</button>
     </div>
   </section>
 
-  <section class="summary-bar">
-    <article class="summary-card present">
+  <section class="summary-strip">
+    <article class="summary-pill present">
       <div class="summary-label">Present</div>
       <div class="summary-value" id="countPresent">0</div>
     </article>
-    <article class="summary-card late">
+    <article class="summary-pill late">
       <div class="summary-label">Late</div>
       <div class="summary-value" id="countLate">0</div>
     </article>
-    <article class="summary-card absent">
+    <article class="summary-pill absent">
       <div class="summary-label">Absent</div>
       <div class="summary-value" id="countAbsent">0</div>
     </article>
-    <article class="summary-card excused">
+    <article class="summary-pill excused">
       <div class="summary-label">Excused</div>
       <div class="summary-value" id="countExcused">0</div>
     </article>
-    <article class="summary-card">
+    <article class="summary-pill">
       <div class="summary-label">Unmarked</div>
       <div class="summary-value" id="countUnmarked">0</div>
     </article>
+    <article class="summary-pill sync">
+      <div class="summary-label">Last Sync</div>
+      <div class="summary-value" id="lastSyncDisplay">Not yet synced</div>
+    </article>
   </section>
 
-  <section class="notes-panel">
-    <div class="notes-label">Class Notes</div>
-    <textarea id="classNotes" placeholder="Quick note to self: seating quirks, repeated absences, discussion roles, late arrivals, or anything you want to remember."></textarea>
+  <section class="panel grid-panel">
+    <div class="roster-grid" id="rosterGrid"></div>
   </section>
 
-  <section id="gridView" class="attendance-grid"></section>
-  <section id="listView" class="rollcall-table-wrap" hidden>
-    <table class="rollcall-table">
-      <thead>
-        <tr>
-          <th>Photo</th>
-          <th>Student</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody id="rollcallBody"></tbody>
-    </table>
-  </section>
+  <section class="notes-sync">
+    <section class="subpanel">
+      <div class="subpanel-label">Class Notes</div>
+      <textarea id="classNotes" class="notes-textarea" placeholder="Short note to self: discussion leader, repeated lateness, seating changes, presentation reminders, or anything you need later."></textarea>
+    </section>
 
-  <p class="footer-note">Attendance is stored in your browser for this site only. If you want a synced export later, I can add CSV or Google Sheet export next.</p>
-</main>
+    <section class="subpanel">
+      <div class="subpanel-label">Google Sheets Sync</div>
+      <div class="sync-fields">
+        <div>
+          <label class="field-label" for="sheetWebhookUrl">Apps Script Web App URL</label>
+          <input id="sheetWebhookUrl" class="sheet-url" type="url" placeholder="Paste deployed Apps Script web app URL">
+        </div>
+        <div>
+          <label class="field-label" for="sheetTabName">Sheet Tab Name</label>
+          <input id="sheetTabName" class="sheet-name" type="text" placeholder="Attendance" value="Attendance">
+        </div>
+      </div>
+      <div class="mini-row">
+        <button class="mini-btn" id="saveSheetSettingsBtn" type="button">Save Settings</button>
+        <button class="mini-btn" id="testSyncBtn" type="button">Test Connection</button>
+        <button class="mini-btn" id="copyAppsScriptBtn" type="button">Copy Apps Script</button>
+      </div>
+      <div class="sync-status" id="syncStatus">No sheet connection configured yet.</div>
+      <p class="sync-help">This page posts one attendance bundle per class to a Google Apps Script web app. The script then replaces that class meeting in your sheet instead of duplicating rows every time.</p>
+      <details class="template-box">
+        <summary>View payload shape</summary>
+        <pre>{
+  "course": "EAST 418 / FILM 419",
+  "sessionId": "2026-03-30",
+  "sessionDate": "2026-03-30",
+  "sessionLabel": "Monday, March 30, 2026",
+  "topic": "The Joseon Court",
+  "sheetName": "Attendance",
+  "notes": "optional note",
+  "counts": { "present": 5, "late": 1, "absent": 1, "excused": 0, "unmarked": 0 },
+  "students": [
+    { "id": "jack", "name": "Jack", "status": "present" }
+  ]
+}</pre>
+      </details>
+      <p class="privacy-note">This makes the tool less public-facing, not private. The page is unlisted and marked noindex, but the repo and site are still public until you move it behind private hosting.</p>
+    </section>
+  </section>
+</div>
 
 <script>
 const STUDENTS = [
+  { id: 'jack', name: 'Jack', pronouns: 'He/Him/His', photo: 'images/students/jack.jpg' },
   { id: 'anya', name: 'Anya', pronouns: 'She/Her/Hers', photo: 'images/students/anya.jpg' },
   { id: 'sophie', name: 'Sophie', pronouns: 'She/Her/Hers', photo: 'images/students/sophie.jpg' },
+  { id: 'haeun', name: 'Haeun', pronouns: 'She/Her/Hers', photo: 'images/students/haeun.jpg' },
   { id: 'jude', name: 'Jude', pronouns: 'He/Him/His', photo: 'images/students/jude.jpg' },
   { id: 'qiaochuhan', name: 'Qiaochuhan', pronouns: 'She/Her/Hers', photo: 'images/students/qiaochuhan.jpg' },
-  { id: 'jack', name: 'Jack', pronouns: 'He/Him/His', photo: 'images/students/jack.jpg' },
-  { id: 'haeun', name: 'Haeun', pronouns: 'She/Her/Hers', photo: 'images/students/haeun.jpg' },
   { id: 'hana', name: 'Hana', pronouns: 'He/Him/His', photo: 'images/students/hana.jpg' }
 ];
 
@@ -524,16 +554,60 @@ const SESSIONS = [
 ];
 
 const STATUS_OPTIONS = [
-  { key: 'present', label: 'Present' },
+  { key: 'present', label: 'Here' },
   { key: 'late', label: 'Late' },
-  { key: 'absent', label: 'Absent' },
-  { key: 'excused', label: 'Excused' }
+  { key: 'absent', label: 'Away' },
+  { key: 'excused', label: 'Exc.' }
 ];
 
-const STORAGE_KEY = 'mkilf-attendance-v1';
+const STORAGE_KEY = 'mkilf-attendance-v2';
+const SETTINGS_KEY = 'mkilf-attendance-sheet-settings';
+const APPS_SCRIPT_TEMPLATE = `function doPost(e) {
+  var payload = JSON.parse(e.postData.contents || '{}');
+  var sheetName = payload.sheetName || 'Attendance';
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName(sheetName) || ss.insertSheet(sheetName);
+  var headers = ['course', 'sessionId', 'sessionDate', 'sessionLabel', 'topic', 'studentId', 'studentName', 'status', 'notes', 'syncedAt'];
+
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(headers);
+  }
+
+  var existing = sheet.getDataRange().getValues();
+  for (var i = existing.length; i >= 2; i--) {
+    if (existing[i - 1][0] === payload.course && existing[i - 1][1] === payload.sessionId) {
+      sheet.deleteRow(i);
+    }
+  }
+
+  var syncedAt = new Date();
+  var rows = (payload.students || []).map(function(student) {
+    return [
+      payload.course || '',
+      payload.sessionId || '',
+      payload.sessionDate || '',
+      payload.sessionLabel || '',
+      payload.topic || '',
+      student.id || '',
+      student.name || '',
+      student.status || '',
+      payload.notes || '',
+      syncedAt
+    ];
+  });
+
+  if (rows.length) {
+    sheet.getRange(sheet.getLastRow() + 1, 1, rows.length, headers.length).setValues(rows);
+  }
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ ok: true, rowsWritten: rows.length }))
+    .setMimeType(ContentService.MimeType.JSON);
+}`;
+
 let attendanceStore = loadStore();
-let currentView = 'grid';
 let currentSessionId = detectCurrentSessionId();
+let syncSettings = loadSettings();
 
 function loadStore() {
   try {
@@ -547,9 +621,21 @@ function saveStore() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(attendanceStore));
 }
 
+function loadSettings() {
+  try {
+    return JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
+  } catch (error) {
+    return {};
+  }
+}
+
+function saveSettings() {
+  localStorage.setItem(SETTINGS_KEY, JSON.stringify(syncSettings));
+}
+
 function getSessionRecord(sessionId) {
   if (!attendanceStore[sessionId]) {
-    attendanceStore[sessionId] = { notes: '', students: {} };
+    attendanceStore[sessionId] = { notes: '', students: {}, lastSync: '' };
   }
   return attendanceStore[sessionId];
 }
@@ -558,20 +644,40 @@ function detectCurrentSessionId() {
   const today = new Date();
   today.setHours(12, 0, 0, 0);
   for (const session of SESSIONS) {
-    const d = new Date(session.date + 'T12:00:00');
-    if (d >= today) return session.id;
+    const sessionDate = new Date(session.date + 'T12:00:00');
+    if (sessionDate >= today) return session.id;
   }
   return SESSIONS[SESSIONS.length - 1].id;
 }
 
 function formatFullDate(iso) {
-  const d = new Date(iso + 'T12:00:00');
-  return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  });
 }
 
 function formatShortDate(iso) {
-  const d = new Date(iso + 'T12:00:00');
-  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric'
+  });
+}
+
+function formatTimestamp(isoString) {
+  if (!isoString) return 'Not yet synced';
+  return new Date(isoString).toLocaleString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit'
+  });
+}
+
+function getCurrentSession() {
+  return SESSIONS.find((session) => session.id === currentSessionId) || SESSIONS[0];
 }
 
 function buildSessionSelect() {
@@ -582,143 +688,179 @@ function buildSessionSelect() {
   select.value = currentSessionId;
 }
 
-function getCurrentSession() {
-  return SESSIONS.find((session) => session.id === currentSessionId) || SESSIONS[0];
-}
-
-function setStatus(studentId, status) {
-  const session = getSessionRecord(currentSessionId);
-  if (session.students[studentId] === status) {
-    delete session.students[studentId];
-  } else {
-    session.students[studentId] = status;
-  }
-  saveStore();
-  renderAttendance();
-}
-
 function buildStatusButtons(studentId, currentStatus) {
   return STATUS_OPTIONS.map((option) =>
     `<button class="status-btn ${option.key}${currentStatus === option.key ? ' is-active' : ''}" type="button" data-student="${studentId}" data-status="${option.key}">${option.label}</button>`
   ).join('');
 }
 
-function renderGridView(record) {
-  const fallbackFor = (name) => 'data:image/svg+xml,' + encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#ddd"/><text x="50" y="65" text-anchor="middle" font-size="40" fill="#999">${name.charAt(0)}</text></svg>`
+function fallbackFor(name) {
+  return 'data:image/svg+xml,' + encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#ddd7cb"/><text x="50" y="58" text-anchor="middle" font-size="40" fill="#968f84">${name.charAt(0)}</text></svg>`
   );
-  document.getElementById('gridView').innerHTML = STUDENTS.map((student) => `
-    <article class="attendance-card">
-      <img src="${student.photo}" alt="${student.name}" class="attendance-photo" onerror="this.src='${fallbackFor(student.name)}'">
-      <div class="attendance-body">
-        <div class="attendance-name">${student.name}</div>
-        <div class="attendance-pronouns">${student.pronouns}</div>
+}
+
+function renderRoster() {
+  const record = getSessionRecord(currentSessionId);
+  document.getElementById('rosterGrid').innerHTML = STUDENTS.map((student) => `
+    <article class="student-card">
+      <img src="${student.photo}" alt="${student.name}" class="student-photo" onerror="this.src='${fallbackFor(student.name)}'">
+      <div class="student-meta">
+        <div class="student-name">${student.name}</div>
+        <div class="student-pronouns">${student.pronouns}</div>
         <div class="status-row">
           ${buildStatusButtons(student.id, record.students[student.id] || '')}
         </div>
       </div>
     </article>
   `).join('');
-}
-
-function renderListView(record) {
-  const fallbackFor = (name) => 'data:image/svg+xml,' + encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#ddd"/><text x="50" y="65" text-anchor="middle" font-size="40" fill="#999">${name.charAt(0)}</text></svg>`
-  );
-  document.getElementById('rollcallBody').innerHTML = STUDENTS.map((student) => `
-    <tr>
-      <td><img src="${student.photo}" alt="${student.name}" class="rollcall-photo" onerror="this.src='${fallbackFor(student.name)}'"></td>
-      <td>
-        <div class="rollcall-name">${student.name}</div>
-        <div class="rollcall-pronouns">${student.pronouns}</div>
-      </td>
-      <td>
-        <div class="rollcall-status">
-          ${buildStatusButtons(student.id, record.students[student.id] || '')}
-        </div>
-      </td>
-    </tr>
-  `).join('');
-}
-
-function renderSummary(record) {
-  const counts = { present: 0, late: 0, absent: 0, excused: 0, unmarked: 0 };
-  STUDENTS.forEach((student) => {
-    const status = record.students[student.id];
-    if (!status) counts.unmarked += 1;
-    else counts[status] += 1;
-  });
-  document.getElementById('countPresent').textContent = counts.present;
-  document.getElementById('countLate').textContent = counts.late;
-  document.getElementById('countAbsent').textContent = counts.absent;
-  document.getElementById('countExcused').textContent = counts.excused;
-  document.getElementById('countUnmarked').textContent = counts.unmarked;
-}
-
-function renderAttendance() {
-  const session = getCurrentSession();
-  const record = getSessionRecord(currentSessionId);
-  document.getElementById('heroSessionTitle').textContent = session.topic;
-  document.getElementById('heroSessionDate').textContent = formatFullDate(session.date);
-  document.getElementById('sessionSelect').value = currentSessionId;
-  document.getElementById('classNotes').value = record.notes || '';
-
-  renderSummary(record);
-  renderGridView(record);
-  renderListView(record);
-
-  document.getElementById('gridView').hidden = currentView !== 'grid';
-  document.getElementById('listView').hidden = currentView !== 'list';
-  document.querySelectorAll('.mode-btn').forEach((button) => {
-    button.classList.toggle('is-active', button.dataset.view === currentView);
-  });
-
-  const sessionIndex = SESSIONS.findIndex((item) => item.id === currentSessionId);
-  document.getElementById('prevSessionBtn').disabled = sessionIndex <= 0;
-  document.getElementById('nextSessionBtn').disabled = sessionIndex >= SESSIONS.length - 1;
 
   document.querySelectorAll('[data-student][data-status]').forEach((button) => {
     button.addEventListener('click', () => setStatus(button.dataset.student, button.dataset.status));
   });
 }
 
-function setSessionByOffset(delta) {
-  const index = SESSIONS.findIndex((item) => item.id === currentSessionId);
-  const next = SESSIONS[index + delta];
-  if (!next) return;
-  currentSessionId = next.id;
-  renderAttendance();
+function renderSummary() {
+  const record = getSessionRecord(currentSessionId);
+  const counts = { present: 0, late: 0, absent: 0, excused: 0, unmarked: 0 };
+  for (const student of STUDENTS) {
+    const status = record.students[student.id];
+    if (!status) counts.unmarked += 1;
+    else counts[status] += 1;
+  }
+  document.getElementById('countPresent').textContent = counts.present;
+  document.getElementById('countLate').textContent = counts.late;
+  document.getElementById('countAbsent').textContent = counts.absent;
+  document.getElementById('countExcused').textContent = counts.excused;
+  document.getElementById('countUnmarked').textContent = counts.unmarked;
+  document.getElementById('lastSyncDisplay').textContent = formatTimestamp(record.lastSync);
+  return counts;
 }
 
-document.getElementById('sessionSelect').addEventListener('change', (event) => {
-  currentSessionId = event.target.value;
-  renderAttendance();
-});
+function renderToolbar() {
+  const session = getCurrentSession();
+  document.getElementById('sessionSelect').value = currentSessionId;
+  document.getElementById('currentDate').textContent = formatFullDate(session.date);
+  document.getElementById('currentTopic').textContent = session.topic;
+  document.getElementById('classNotes').value = getSessionRecord(currentSessionId).notes || '';
 
-document.getElementById('prevSessionBtn').addEventListener('click', () => setSessionByOffset(-1));
-document.getElementById('nextSessionBtn').addEventListener('click', () => setSessionByOffset(1));
+  const index = SESSIONS.findIndex((sessionItem) => sessionItem.id === currentSessionId);
+  document.getElementById('prevSessionBtn').disabled = index <= 0;
+  document.getElementById('nextSessionBtn').disabled = index >= SESSIONS.length - 1;
+}
 
-document.querySelectorAll('.mode-btn').forEach((button) => {
-  button.addEventListener('click', () => {
-    currentView = button.dataset.view;
-    renderAttendance();
-  });
-});
+function renderSheetSettings() {
+  document.getElementById('sheetWebhookUrl').value = syncSettings.webhookUrl || '';
+  document.getElementById('sheetTabName').value = syncSettings.sheetName || 'Attendance';
+}
 
-document.getElementById('markAllPresentBtn').addEventListener('click', () => {
+function renderAll() {
+  renderToolbar();
+  renderSummary();
+  renderRoster();
+}
+
+function setStatus(studentId, status) {
   const record = getSessionRecord(currentSessionId);
-  STUDENTS.forEach((student) => { record.students[student.id] = 'present'; });
+  if (record.students[studentId] === status) delete record.students[studentId];
+  else record.students[studentId] = status;
   saveStore();
-  renderAttendance();
-});
+  renderAll();
+}
 
-document.getElementById('clearSessionBtn').addEventListener('click', () => {
-  attendanceStore[currentSessionId] = { notes: '', students: {} };
+function setSessionByOffset(offset) {
+  const index = SESSIONS.findIndex((session) => session.id === currentSessionId);
+  const next = SESSIONS[index + offset];
+  if (!next) return;
+  currentSessionId = next.id;
+  renderAll();
+}
+
+function markAllPresent() {
+  const record = getSessionRecord(currentSessionId);
+  for (const student of STUDENTS) record.students[student.id] = 'present';
   saveStore();
-  renderAttendance();
-});
+  renderAll();
+}
 
-document.getElementById('copySummaryBtn').addEventListener('click', async () => {
+function clearSession() {
+  attendanceStore[currentSessionId] = { notes: '', students: {}, lastSync: '' };
+  saveStore();
+  renderAll();
+}
+
+function buildSyncPayload() {
+  const session = getCurrentSession();
+  const record = getSessionRecord(currentSessionId);
+  return {
+    course: 'EAST 418 / FILM 419',
+    sessionId: session.id,
+    sessionDate: session.date,
+    sessionLabel: formatFullDate(session.date),
+    topic: session.topic,
+    sheetName: (syncSettings.sheetName || 'Attendance').trim() || 'Attendance',
+    notes: record.notes || '',
+    counts: renderSummary(),
+    students: STUDENTS.map((student) => ({
+      id: student.id,
+      name: student.name,
+      status: record.students[student.id] || ''
+    }))
+  };
+}
+
+async function syncToSheet(isTest) {
+  const webhookUrl = (syncSettings.webhookUrl || '').trim();
+  if (!webhookUrl) {
+    setSyncStatus('Add and save a web app URL first.', true);
+    return;
+  }
+
+  const payload = buildSyncPayload();
+  if (isTest) {
+    payload.test = true;
+  }
+
+  setSyncStatus(isTest ? 'Testing sheet connection…' : 'Syncing attendance…', false);
+
+  try {
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    let result = {};
+    try {
+      result = await response.json();
+    } catch (error) {
+      result = {};
+    }
+
+    if (!response.ok || result.ok === false) {
+      throw new Error(result.error || 'Sheet sync failed');
+    }
+
+    if (!isTest) {
+      const record = getSessionRecord(currentSessionId);
+      record.lastSync = new Date().toISOString();
+      saveStore();
+      renderAll();
+    }
+
+    setSyncStatus(isTest ? 'Connection worked.' : `Synced ${payload.students.length} students to Google Sheets.`, false);
+  } catch (error) {
+    setSyncStatus(error.message || 'Sync failed.', true);
+  }
+}
+
+function setSyncStatus(message, isError) {
+  const node = document.getElementById('syncStatus');
+  node.textContent = message;
+  node.style.color = isError ? 'var(--red)' : 'var(--muted)';
+}
+
+async function copySummary() {
   const session = getCurrentSession();
   const record = getSessionRecord(currentSessionId);
   const lines = [
@@ -727,16 +869,47 @@ document.getElementById('copySummaryBtn').addEventListener('click', async () => 
     '',
     `Notes: ${record.notes || ''}`
   ];
+
   try {
     await navigator.clipboard.writeText(lines.join('\n'));
-    document.getElementById('copySummaryBtn').textContent = 'Copied';
-    setTimeout(() => { document.getElementById('copySummaryBtn').textContent = 'Copy Summary'; }, 900);
+    setSyncStatus('Copied class summary to clipboard.', false);
   } catch (error) {
-    document.getElementById('copySummaryBtn').textContent = 'Copy Failed';
-    setTimeout(() => { document.getElementById('copySummaryBtn').textContent = 'Copy Summary'; }, 1200);
+    setSyncStatus('Clipboard copy failed.', true);
   }
-});
+}
 
+async function copyAppsScriptTemplate() {
+  try {
+    await navigator.clipboard.writeText(APPS_SCRIPT_TEMPLATE);
+    setSyncStatus('Copied Apps Script template.', false);
+  } catch (error) {
+    setSyncStatus('Could not copy Apps Script template.', true);
+  }
+}
+
+function saveSheetConfig() {
+  syncSettings = {
+    webhookUrl: document.getElementById('sheetWebhookUrl').value.trim(),
+    sheetName: document.getElementById('sheetTabName').value.trim() || 'Attendance'
+  };
+  saveSettings();
+  renderSheetSettings();
+  setSyncStatus(syncSettings.webhookUrl ? 'Sheet settings saved locally in this browser.' : 'Settings cleared.', false);
+}
+
+document.getElementById('sessionSelect').addEventListener('change', (event) => {
+  currentSessionId = event.target.value;
+  renderAll();
+});
+document.getElementById('prevSessionBtn').addEventListener('click', () => setSessionByOffset(-1));
+document.getElementById('nextSessionBtn').addEventListener('click', () => setSessionByOffset(1));
+document.getElementById('markAllPresentBtn').addEventListener('click', markAllPresent);
+document.getElementById('clearSessionBtn').addEventListener('click', clearSession);
+document.getElementById('copySummaryBtn').addEventListener('click', copySummary);
+document.getElementById('syncNowBtn').addEventListener('click', () => syncToSheet(false));
+document.getElementById('testSyncBtn').addEventListener('click', () => syncToSheet(true));
+document.getElementById('copyAppsScriptBtn').addEventListener('click', copyAppsScriptTemplate);
+document.getElementById('saveSheetSettingsBtn').addEventListener('click', saveSheetConfig);
 document.getElementById('classNotes').addEventListener('input', (event) => {
   const record = getSessionRecord(currentSessionId);
   record.notes = event.target.value;
@@ -744,7 +917,8 @@ document.getElementById('classNotes').addEventListener('input', (event) => {
 });
 
 buildSessionSelect();
-renderAttendance();
+renderSheetSettings();
+renderAll();
 </script>
 </body>
 </html>
