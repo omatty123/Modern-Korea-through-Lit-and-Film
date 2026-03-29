@@ -166,7 +166,7 @@ body {
 }
 .summary-strip {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.7rem;
   margin-top: 0.9rem;
 }
@@ -191,9 +191,7 @@ body {
   font-weight: 700;
 }
 .summary-pill.present .summary-value { color: var(--green); }
-.summary-pill.late .summary-value { color: var(--amber); }
 .summary-pill.absent .summary-value { color: var(--red); }
-.summary-pill.excused .summary-value { color: var(--blue); }
 .summary-pill.sync .summary-value {
   font-size: 0.86rem;
   font-weight: 600;
@@ -242,37 +240,26 @@ body {
   margin-top: 0.15rem;
 }
 .status-row {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.38rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-top: 0.65rem;
 }
 .status-btn {
-  padding: 0.5rem 0.35rem;
-  font-size: 0.68rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.74rem;
   font-weight: 700;
   color: var(--muted);
   background: #fff;
-}
-.status-btn.present.is-active {
-  color: var(--green);
-  background: var(--green-soft);
-  border-color: #bddcc8;
-}
-.status-btn.late.is-active {
-  color: var(--amber);
-  background: var(--amber-soft);
-  border-color: #ead3a5;
 }
 .status-btn.absent.is-active {
   color: var(--red);
   background: var(--red-soft);
   border-color: #efc7c7;
 }
-.status-btn.excused.is-active {
-  color: var(--blue);
-  background: var(--blue-soft);
-  border-color: #cbdaee;
+.status-hint {
+  font-size: 0.74rem;
+  color: var(--faint);
 }
 .notes-sync {
   margin-top: 0.9rem;
@@ -379,7 +366,7 @@ body {
     grid-template-columns: 1fr;
   }
   .summary-strip {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
   .action-row {
     justify-content: flex-start;
@@ -432,7 +419,7 @@ body {
       <div class="current-topic" id="currentTopic"></div>
     </div>
     <div class="action-row">
-      <button class="toolbar-btn" type="button" id="markAllPresentBtn">Mark All Present</button>
+      <button class="toolbar-btn" type="button" id="markAllPresentBtn">Clear Absences</button>
       <button class="toolbar-btn" type="button" id="clearSessionBtn">Clear</button>
       <button class="toolbar-btn" type="button" id="copySummaryBtn">Copy</button>
       <button class="toolbar-btn primary" type="button" id="syncNowBtn">Sync Sheet</button>
@@ -444,21 +431,9 @@ body {
       <div class="summary-label">Present</div>
       <div class="summary-value" id="countPresent">0</div>
     </article>
-    <article class="summary-pill late">
-      <div class="summary-label">Late</div>
-      <div class="summary-value" id="countLate">0</div>
-    </article>
     <article class="summary-pill absent">
       <div class="summary-label">Absent</div>
       <div class="summary-value" id="countAbsent">0</div>
-    </article>
-    <article class="summary-pill excused">
-      <div class="summary-label">Excused</div>
-      <div class="summary-value" id="countExcused">0</div>
-    </article>
-    <article class="summary-pill">
-      <div class="summary-label">Unmarked</div>
-      <div class="summary-value" id="countUnmarked">0</div>
     </article>
     <article class="summary-pill sync">
       <div class="summary-label">Last Sync</div>
@@ -484,8 +459,8 @@ body {
           <input id="sheetWebhookUrl" class="sheet-url" type="url" placeholder="Paste deployed Apps Script web app URL">
         </div>
         <div>
-          <label class="field-label" for="sheetTabName">Sheet Tab Name</label>
-          <input id="sheetTabName" class="sheet-name" type="text" placeholder="Attendance" value="Attendance">
+          <label class="field-label" for="sheetTabName">Matrix Tab Name</label>
+          <input id="sheetTabName" class="sheet-name" type="text" placeholder="Attendance Matrix" value="Attendance Matrix">
         </div>
       </div>
       <div class="mini-row">
@@ -494,7 +469,7 @@ body {
         <button class="mini-btn" id="copyAppsScriptBtn" type="button">Copy Apps Script</button>
       </div>
       <div class="sync-status" id="syncStatus">No sheet connection configured yet.</div>
-      <p class="sync-help">This page posts one attendance bundle per class to a Google Apps Script web app. The script then replaces that class meeting in your sheet instead of duplicating rows every time.</p>
+      <p class="sync-help">This page assumes everyone is present unless you mark them absent. The matrix sheet stays blank for present students and adds a visible absence bubble only where someone missed class. A companion notes tab keeps session notes and absence counts.</p>
       <details class="template-box">
         <summary>View payload shape</summary>
         <pre>{
@@ -503,11 +478,12 @@ body {
   "sessionDate": "2026-03-30",
   "sessionLabel": "Monday, March 30, 2026",
   "topic": "The Joseon Court",
-  "sheetName": "Attendance",
+  "sheetName": "Attendance Matrix",
   "notes": "optional note",
-  "counts": { "present": 5, "late": 1, "absent": 1, "excused": 0, "unmarked": 0 },
+  "counts": { "present": 6, "absent": 1 },
   "students": [
-    { "id": "jack", "name": "Jack", "status": "present" }
+    { "id": "jack", "name": "Jack", "status": "present" },
+    { "id": "anya", "name": "Anya", "status": "absent" }
   ]
 }</pre>
       </details>
@@ -558,12 +534,7 @@ const SESSIONS = [
   { id: '2026-05-29', date: '2026-05-29', topic: 'Film: Parasite' }
 ];
 
-const STATUS_OPTIONS = [
-  { key: 'present', label: 'Here' },
-  { key: 'late', label: 'Late' },
-  { key: 'absent', label: 'Away' },
-  { key: 'excused', label: 'Exc.' }
-];
+const ABSENT_STATUS = 'absent';
 
 const STORAGE_KEY = 'mkilf-attendance-v2';
 const SETTINGS_KEY = 'mkilf-attendance-sheet-settings';
@@ -576,10 +547,11 @@ const APPS_SCRIPT_TEMPLATE = `function doPost(e) {
   }
 
   var payload = JSON.parse(rawPayload || '{}');
-  var sheetName = payload.sheetName || 'Attendance';
+  var sheetName = payload.sheetName || 'Attendance Matrix';
+  var notesSheetName = payload.notesSheetName || (sheetName + ' Notes');
   var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName(sheetName) || ss.insertSheet(sheetName);
-  var headers = ['course', 'sessionId', 'sessionDate', 'sessionLabel', 'topic', 'studentId', 'studentName', 'status', 'notes', 'syncedAt'];
+  var matrixSheet = ss.getSheetByName(sheetName) || ss.insertSheet(sheetName);
+  var notesSheet = ss.getSheetByName(notesSheetName) || ss.insertSheet(notesSheetName);
 
   if (payload.test) {
     return ContentService
@@ -587,40 +559,134 @@ const APPS_SCRIPT_TEMPLATE = `function doPost(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow(headers);
+  ensureMatrixSheet(matrixSheet);
+  ensureNotesSheet(notesSheet);
+
+  var sessionDate = payload.sessionDate || payload.sessionId || '';
+  var sessionHeader = payload.sessionShortLabel || payload.sessionDate || payload.sessionLabel || payload.sessionId || 'Session';
+  var topic = payload.topic || '';
+  var students = payload.students || [];
+  var sessionColumn = ensureSessionColumn(matrixSheet, sessionDate, sessionHeader, topic);
+  var rowMap = ensureStudentRows(matrixSheet, students);
+
+  for (var i = 0; i < students.length; i++) {
+    var student = students[i];
+    var row = rowMap[student.name || student.id];
+    var cell = matrixSheet.getRange(row, sessionColumn);
+    cell.setValue(statusCode(student.status));
+    applyStatusFormat(cell, student.status);
   }
 
-  var existing = sheet.getDataRange().getValues();
-  for (var i = existing.length; i >= 2; i--) {
-    if (existing[i - 1][0] === payload.course && existing[i - 1][1] === payload.sessionId) {
-      sheet.deleteRow(i);
+  upsertNotesRow(notesSheet, payload);
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ ok: true, rowsWritten: students.length, sheet: sheetName }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function ensureMatrixSheet(sheet) {
+  if (sheet.getLastRow() === 0) {
+    sheet.getRange(1, 1).setValue('Student');
+  }
+  sheet.setFrozenRows(1);
+  sheet.setFrozenColumns(1);
+  sheet.getRange(1, 1).setFontWeight('bold');
+  sheet.getRange(1, 1, Math.max(sheet.getLastRow(), 1), Math.max(sheet.getLastColumn(), 1)).setVerticalAlignment('middle');
+  sheet.setColumnWidth(1, 180);
+}
+
+function ensureNotesSheet(sheet) {
+  var headers = ['sessionDate', 'topic', 'present', 'absent', 'notes', 'syncedAt'];
+  if (sheet.getLastRow() === 0) {
+    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
+  }
+  sheet.setFrozenRows(1);
+}
+
+function ensureSessionColumn(sheet, sessionDate, sessionHeader, topic) {
+  var lastCol = Math.max(sheet.getLastColumn(), 1);
+  var headerValues = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+  var match = headerValues.indexOf(sessionDate);
+  var column = match >= 0 ? match + 1 : lastCol + 1;
+
+  if (column === 1) {
+    column = 2;
+  }
+
+  sheet.getRange(1, column).setValue(sessionDate || sessionHeader);
+  sheet.getRange(1, column).setNote(topic);
+  sheet.getRange(1, column).setFontWeight('bold');
+  sheet.getRange(1, column).setHorizontalAlignment('center');
+  sheet.setColumnWidth(column, 84);
+  return column;
+}
+
+function ensureStudentRows(sheet, students) {
+  var lastRow = Math.max(sheet.getLastRow(), 1);
+  var ids = lastRow > 1 ? sheet.getRange(2, 1, lastRow - 1, 1).getValues().map(function(row) { return row[0]; }) : [];
+  var rowMap = {};
+
+  for (var i = 0; i < ids.length; i++) {
+    rowMap[ids[i]] = i + 2;
+  }
+
+  for (var j = 0; j < students.length; j++) {
+    var student = students[j];
+    var key = student.name || student.id;
+    if (!rowMap[key]) {
+      var newRow = sheet.getLastRow() + 1;
+      sheet.getRange(newRow, 1).setValue(key);
+      rowMap[key] = newRow;
     }
   }
 
-  var syncedAt = new Date();
-  var rows = (payload.students || []).map(function(student) {
-    return [
-      payload.course || '',
-      payload.sessionId || '',
-      payload.sessionDate || '',
-      payload.sessionLabel || '',
-      payload.topic || '',
-      student.id || '',
-      student.name || '',
-      student.status || '',
-      payload.notes || '',
-      syncedAt
-    ];
-  });
-
-  if (rows.length) {
-    sheet.getRange(sheet.getLastRow() + 1, 1, rows.length, headers.length).setValues(rows);
+  for (var k = 0; k < students.length; k++) {
+    var item = students[k];
+    var row = rowMap[item.name || item.id];
+    sheet.getRange(row, 1).setValue(item.name || item.id || '');
+    sheet.getRange(row, 1).setFontWeight('bold');
   }
 
-  return ContentService
-    .createTextOutput(JSON.stringify({ ok: true, rowsWritten: rows.length }))
-    .setMimeType(ContentService.MimeType.JSON);
+  return rowMap;
+}
+
+function statusCode(status) {
+  return status === 'absent' ? '●' : '';
+}
+
+function applyStatusFormat(cell, status) {
+  var backgrounds = {
+    absent: '#fbeaea'
+  };
+  var fonts = {
+    absent: '#b33636'
+  };
+
+  cell.setHorizontalAlignment('center');
+  cell.setFontWeight('bold');
+  cell.setBackground(backgrounds[status] || '#ffffff');
+  cell.setFontColor(fonts[status] || '#161616');
+}
+
+function upsertNotesRow(sheet, payload) {
+  var sessionDate = payload.sessionDate || payload.sessionId || '';
+  var counts = payload.counts || {};
+  var rowData = [
+    sessionDate,
+    payload.topic || '',
+    counts.present || 0,
+    counts.absent || 0,
+    payload.notes || '',
+    new Date()
+  ];
+
+  var lastRow = sheet.getLastRow();
+  var existingDates = lastRow > 1 ? sheet.getRange(2, 1, lastRow - 1, 1).getValues().map(function(row) { return row[0]; }) : [];
+  var existingIndex = existingDates.indexOf(sessionDate);
+  var targetRow = existingIndex >= 0 ? existingIndex + 2 : lastRow + 1;
+
+  sheet.getRange(targetRow, 1, 1, rowData.length).setValues([rowData]);
 }`;
 
 let attendanceStore = loadStore();
@@ -706,10 +772,13 @@ function buildSessionSelect() {
   select.value = currentSessionId;
 }
 
-function buildStatusButtons(studentId, currentStatus) {
-  return STATUS_OPTIONS.map((option) =>
-    `<button class="status-btn ${option.key}${currentStatus === option.key ? ' is-active' : ''}" type="button" data-student="${studentId}" data-status="${option.key}">${option.label}</button>`
-  ).join('');
+function buildAbsentToggle(studentId, isAbsent) {
+  return `
+    <button class="status-btn absent${isAbsent ? ' is-active' : ''}" type="button" data-student="${studentId}" aria-pressed="${isAbsent ? 'true' : 'false'}">
+      ${isAbsent ? 'Absent' : 'Mark Absent'}
+    </button>
+    <span class="status-hint">${isAbsent ? 'Will show as absent in the sheet' : 'Present is assumed by default'}</span>
+  `;
 }
 
 function fallbackFor(name) {
@@ -727,30 +796,27 @@ function renderRoster() {
         <div class="student-name">${student.name}</div>
         <div class="student-pronouns">${student.pronouns}</div>
         <div class="status-row">
-          ${buildStatusButtons(student.id, record.students[student.id] || '')}
+          ${buildAbsentToggle(student.id, record.students[student.id] === ABSENT_STATUS)}
         </div>
       </div>
     </article>
   `).join('');
 
-  document.querySelectorAll('[data-student][data-status]').forEach((button) => {
-    button.addEventListener('click', () => setStatus(button.dataset.student, button.dataset.status));
+  document.querySelectorAll('[data-student]').forEach((button) => {
+    button.addEventListener('click', () => toggleAbsent(button.dataset.student));
   });
 }
 
 function renderSummary() {
   const record = getSessionRecord(currentSessionId);
-  const counts = { present: 0, late: 0, absent: 0, excused: 0, unmarked: 0 };
+  const counts = { present: STUDENTS.length, absent: 0 };
   for (const student of STUDENTS) {
     const status = record.students[student.id];
-    if (!status) counts.unmarked += 1;
-    else counts[status] += 1;
+    if (status === ABSENT_STATUS) counts.absent += 1;
   }
+  counts.present = STUDENTS.length - counts.absent;
   document.getElementById('countPresent').textContent = counts.present;
-  document.getElementById('countLate').textContent = counts.late;
   document.getElementById('countAbsent').textContent = counts.absent;
-  document.getElementById('countExcused').textContent = counts.excused;
-  document.getElementById('countUnmarked').textContent = counts.unmarked;
   document.getElementById('lastSyncDisplay').textContent = formatTimestamp(record.lastSync);
   return counts;
 }
@@ -769,7 +835,7 @@ function renderToolbar() {
 
 function renderSheetSettings() {
   document.getElementById('sheetWebhookUrl').value = syncSettings.webhookUrl || '';
-  document.getElementById('sheetTabName').value = syncSettings.sheetName || 'Attendance';
+  document.getElementById('sheetTabName').value = syncSettings.sheetName || 'Attendance Matrix';
 }
 
 function renderAll() {
@@ -778,10 +844,10 @@ function renderAll() {
   renderRoster();
 }
 
-function setStatus(studentId, status) {
+function toggleAbsent(studentId) {
   const record = getSessionRecord(currentSessionId);
-  if (record.students[studentId] === status) delete record.students[studentId];
-  else record.students[studentId] = status;
+  if (record.students[studentId] === ABSENT_STATUS) delete record.students[studentId];
+  else record.students[studentId] = ABSENT_STATUS;
   saveStore();
   renderAll();
 }
@@ -796,7 +862,7 @@ function setSessionByOffset(offset) {
 
 function markAllPresent() {
   const record = getSessionRecord(currentSessionId);
-  for (const student of STUDENTS) record.students[student.id] = 'present';
+  record.students = {};
   saveStore();
   renderAll();
 }
@@ -816,13 +882,15 @@ function buildSyncPayload() {
     sessionDate: session.date,
     sessionLabel: formatFullDate(session.date),
     topic: session.topic,
-    sheetName: (syncSettings.sheetName || 'Attendance').trim() || 'Attendance',
+    sheetName: (syncSettings.sheetName || 'Attendance Matrix').trim() || 'Attendance Matrix',
+    notesSheetName: ((syncSettings.sheetName || 'Attendance Matrix').trim() || 'Attendance Matrix') + ' Notes',
     notes: record.notes || '',
     counts: renderSummary(),
+    sessionShortLabel: formatShortDate(session.date),
     students: STUDENTS.map((student) => ({
       id: student.id,
       name: student.name,
-      status: record.students[student.id] || ''
+      status: record.students[student.id] === ABSENT_STATUS ? ABSENT_STATUS : 'present'
     }))
   };
 }
@@ -875,7 +943,7 @@ async function copySummary() {
   const record = getSessionRecord(currentSessionId);
   const lines = [
     `${formatFullDate(session.date)} — ${session.topic}`,
-    ...STUDENTS.map((student) => `${student.name}: ${record.students[student.id] || 'unmarked'}`),
+    ...STUDENTS.map((student) => `${student.name}: ${record.students[student.id] === ABSENT_STATUS ? 'absent' : 'present'}`),
     '',
     `Notes: ${record.notes || ''}`
   ];
@@ -900,7 +968,7 @@ async function copyAppsScriptTemplate() {
 function saveSheetConfig() {
   syncSettings = {
     webhookUrl: document.getElementById('sheetWebhookUrl').value.trim(),
-    sheetName: document.getElementById('sheetTabName').value.trim() || 'Attendance'
+    sheetName: document.getElementById('sheetTabName').value.trim() || 'Attendance Matrix'
   };
   saveSettings();
   renderSheetSettings();
