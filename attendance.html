@@ -4,940 +4,597 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>Attendance Tool — Modern Korean in Literature and Film</title>
+<title>Attendance — Modern Korea in Literature and Film</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #efede8;
-  --surface: #ffffff;
-  --surface-soft: #f8f6f2;
+  --bg: #f4f3f0;
+  --surface: #fff;
   --border: #ddd7cb;
-  --ink: #161616;
+  --ink: #1a1a1a;
   --muted: #66655f;
-  --faint: #8f8a80;
+  --faint: #aaa;
   --gold: #a67c00;
-  --green: #236b3d;
-  --green-soft: #edf7f0;
-  --amber: #9d6500;
-  --amber-soft: #fff5e5;
   --red: #b33636;
-  --red-soft: #fdf1f1;
-  --blue: #29558f;
-  --blue-soft: #eef3fb;
-  --shadow: 0 8px 30px rgba(0,0,0,0.06);
+  --green: #1e6e3e;
+  --row-alt: #faf9f7;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-}
-.shell {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 1rem;
-}
+body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
+
+/* TOPBAR */
 .topbar {
+  background: #1a1a1a;
+  border-bottom: 1px solid #333;
+  padding: 0 1.5rem;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 0.85rem 0 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
-.course-mark {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-.course-code {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--gold);
-  font-weight: 700;
-}
-.course-title {
-  font-size: 1rem;
-  font-weight: 600;
-}
-.teacher-note {
-  font-size: 0.78rem;
-  color: var(--faint);
-}
-.topbar-links {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-.topbar-link,
-.toolbar-btn,
-.status-btn,
-.mini-btn {
-  font: inherit;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--ink);
-  border-radius: 8px;
-  cursor: pointer;
-}
-.topbar-link {
-  text-decoration: none;
-  padding: 0.45rem 0.7rem;
-  font-size: 0.76rem;
-  color: var(--muted);
-}
-.topbar-link:hover,
-.toolbar-btn:hover,
-.status-btn:hover,
-.mini-btn:hover {
-  background: #f1eee8;
-}
-.panel {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-}
-.toolbar {
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: minmax(0, 1.6fr) auto auto;
-  gap: 0.8rem;
-  align-items: center;
-}
-.session-nav {
-  display: grid;
-  grid-template-columns: 40px minmax(0, 1fr) 40px;
-  gap: 0.55rem;
-  align-items: center;
-}
-.nav-btn {
-  height: 40px;
-  font-size: 1rem;
-}
-.session-select {
-  height: 40px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0 0.85rem;
-  background: var(--surface-soft);
-  color: var(--ink);
-  font: inherit;
-  min-width: 0;
-}
-.current-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  min-width: 220px;
-}
-.current-date {
+.course-mark { display: flex; flex-direction: column; gap: 1px; }
+.course-code { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--gold); font-weight: 700; }
+.course-name { font-size: 0.9rem; font-weight: 600; color: #eee; }
+.topbar-right { display: flex; align-items: center; gap: 0.6rem; }
+.site-link { font-size: 0.74rem; color: #999; text-decoration: none; padding: 0.35rem 0.65rem; border: 1px solid #333; border-radius: 6px; transition: all 0.15s; }
+.site-link:hover { color: #fff; border-color: #555; }
+.sync-indicator {
   font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--faint);
-  font-weight: 700;
-}
-.current-topic {
-  font-size: 0.96rem;
-  font-weight: 600;
-  line-height: 1.15;
-}
-.action-row {
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid #333;
   display: flex;
-  gap: 0.45rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-.toolbar-btn {
-  padding: 0.7rem 0.85rem;
-  font-size: 0.76rem;
-  font-weight: 600;
-}
-.toolbar-btn.primary {
-  background: #1e232b;
-  border-color: #1e232b;
-  color: #fff;
-}
-.toolbar-btn.primary:hover {
-  background: #303743;
-}
-.summary-strip {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.7rem;
-  margin-top: 0.9rem;
-}
-.summary-pill {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.8rem 0.9rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.18rem;
-}
-.summary-label {
-  font-size: 0.64rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--faint);
-  font-weight: 700;
-}
-.summary-value {
-  font-size: 1.35rem;
-  font-weight: 700;
-}
-.summary-pill.present .summary-value { color: var(--green); }
-.summary-pill.absent .summary-value { color: var(--red); }
-.summary-pill.sync .summary-value {
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: var(--muted);
-  line-height: 1.2;
-}
-.grid-panel {
-  margin-top: 0.9rem;
-  padding: 0.9rem;
-}
-.roster-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 0.75rem;
-}
-.student-card {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--surface-soft);
-  padding: 0.7rem;
-  display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
-  gap: 0.75rem;
   align-items: center;
+  gap: 0.35rem;
+  color: #888;
+  min-width: 120px;
+  justify-content: center;
 }
-.student-photo {
-  width: 72px;
-  height: 72px;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 12px;
-  background: #e4dfd6;
+.sync-indicator.connected { color: #6fcf97; border-color: rgba(111,207,151,0.3); }
+.sync-indicator.saving    { color: var(--gold); border-color: rgba(166,124,0,0.3); }
+.sync-indicator.error     { color: #eb5757; border-color: rgba(235,87,87,0.3); }
+.sync-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+.topbar-btn { font: inherit; font-size: 0.74rem; font-weight: 600; padding: 0.36rem 0.72rem; border-radius: 6px; cursor: pointer; border: 1px solid #444; background: rgba(255,255,255,0.07); color: #ddd; transition: all 0.15s; }
+.topbar-btn:hover { background: rgba(255,255,255,0.14); color: #fff; }
+.topbar-btn.gold { background: rgba(166,124,0,0.2); border-color: rgba(166,124,0,0.4); color: #e5c96e; }
+.topbar-btn.gold:hover { background: rgba(166,124,0,0.32); }
+
+/* SHELL */
+.shell { max-width: 1300px; margin: 0 auto; padding: 1.25rem 1.25rem 2rem; }
+.page-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1rem; gap: 1rem; flex-wrap: wrap; }
+.page-title { font-size: 1rem; font-weight: 600; }
+.page-meta { font-size: 0.78rem; color: var(--muted); margin-top: 0.1rem; }
+.toolbar-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.page-btn { font: inherit; font-size: 0.74rem; font-weight: 600; padding: 0.42rem 0.8rem; border-radius: 8px; cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--ink); transition: background 0.12s; }
+.page-btn:hover { background: #ece9e2; }
+.page-btn.dark { background: #1e232b; border-color: #1e232b; color: #fff; }
+.page-btn.dark:hover { background: #2c3340; }
+
+/* TABLE */
+.table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(0,0,0,0.06); background: var(--surface); }
+.att-table { border-collapse: collapse; width: 100%; }
+.att-table thead th { background: var(--surface); border-bottom: 2px solid var(--border); font-weight: 600; white-space: nowrap; position: sticky; top: 0; z-index: 10; }
+.att-table thead th.corner { z-index: 20; left: 0; position: sticky; min-width: 180px; text-align: left; padding: 0.8rem 1rem; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--faint); border-right: 2px solid var(--border); background: var(--surface); }
+.att-table thead th.date-th { width: 38px; min-width: 38px; padding: 0 4px 6px; vertical-align: bottom; border-right: 1px solid var(--border); text-align: center; }
+.att-table thead th.date-th:last-of-type { border-right: none; }
+.att-table thead th.total-th { width: 60px; min-width: 60px; padding: 0.5rem; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--faint); text-align: center; border-left: 2px solid var(--border); background: var(--surface); }
+.date-label { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 0.68rem; font-weight: 600; color: var(--muted); line-height: 1; display: block; padding-bottom: 2px; }
+.date-label.today { color: var(--gold); }
+.att-table tbody tr { border-bottom: 1px solid var(--border); }
+.att-table tbody tr:last-child { border-bottom: none; }
+.att-table tbody tr:nth-child(even) td { background: var(--row-alt); }
+.att-table tbody tr:nth-child(even) td.student-cell { background: var(--row-alt); }
+.att-table td.student-cell { position: sticky; left: 0; z-index: 5; background: var(--surface); border-right: 2px solid var(--border); padding: 0.5rem 0.75rem; min-width: 180px; max-width: 180px; }
+.student-inner { display: flex; align-items: center; gap: 0.6rem; }
+.s-photo { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; object-position: center top; flex-shrink: 0; border: 1.5px solid var(--border); }
+.s-name { font-size: 0.85rem; font-weight: 600; line-height: 1.1; }
+.s-pronouns { font-size: 0.65rem; color: var(--muted); }
+.att-table td.att-cell { text-align: center; padding: 0; cursor: pointer; border-right: 1px solid var(--border); height: 48px; width: 38px; transition: background 0.08s; user-select: none; position: relative; }
+.att-table td.att-cell:last-of-type { border-right: none; }
+.att-table td.att-cell:hover { background: #f0ede7 !important; }
+.att-table td.att-cell.absent  { background: #1a1a1a !important; }
+.att-table td.att-cell.absent:hover  { background: #333 !important; }
+.att-table td.att-cell.tardy   { background: #fdf0f0 !important; }
+.att-table td.att-cell.tardy:hover   { background: #fce4e4 !important; }
+.att-table td.att-cell.tardy::after {
+  content: 'T';
   display: block;
-}
-.student-meta {
-  min-width: 0;
-}
-.student-name {
-  font-size: 1rem;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.72rem;
   font-weight: 700;
-  line-height: 1.05;
-}
-.student-pronouns {
-  font-size: 0.74rem;
-  color: var(--muted);
-  margin-top: 0.15rem;
-}
-.status-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.65rem;
-}
-.status-btn {
-  padding: 0.6rem 0.8rem;
-  font-size: 0.74rem;
-  font-weight: 700;
-  color: var(--muted);
-  background: #fff;
-}
-.status-btn.absent.is-active {
   color: var(--red);
-  background: var(--red-soft);
-  border-color: #efc7c7;
 }
-.status-hint {
-  font-size: 0.74rem;
-  color: var(--faint);
-}
-.notes-sync {
-  margin-top: 0.9rem;
-  display: grid;
-  grid-template-columns: 1.25fr 0.95fr;
-  gap: 0.9rem;
-}
-.subpanel {
+.att-table td.total-cell { text-align: center; font-size: 0.78rem; font-weight: 700; color: var(--muted); border-left: 2px solid var(--border); padding: 0 0.4rem; white-space: nowrap; }
+.att-table td.total-cell.has-mark { color: var(--red); }
+.att-table tfoot td { border-top: 2px solid var(--border); padding: 0.5rem; font-size: 0.7rem; text-align: center; color: var(--faint); font-weight: 600; background: #faf9f7; }
+.att-table tfoot td.footer-student { text-align: right; color: var(--muted); padding-right: 0.75rem; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.1em; border-right: 2px solid var(--border); position: sticky; left: 0; z-index: 5; background: #faf9f7; }
+.att-table tfoot td.col-total.nonzero { color: var(--red); font-weight: 700; }
+
+/* BOTTOM AREA */
+.bottom-area { margin-top: 1rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.legend { display: flex; align-items: center; gap: 1.25rem; }
+.legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: var(--muted); }
+.legend-swatch { width: 16px; height: 16px; border-radius: 3px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 700; }
+.legend-swatch.absent { background: #1a1a1a; border-color: #1a1a1a; }
+.legend-swatch.tardy  { background: #fdf0f0; border-color: #efc7c7; color: var(--red); }
+.legend-swatch.present { background: #fff; }
+
+/* SETTINGS PANEL */
+.settings-toggle { font: inherit; font-size: 0.72rem; color: var(--muted); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; padding: 0; }
+.settings-toggle:hover { color: var(--ink); }
+.settings-panel {
+  margin-top: 1rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-  padding: 0.95rem;
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
 }
-.subpanel-label {
-  font-size: 0.66rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--faint);
-  font-weight: 700;
-  margin-bottom: 0.55rem;
-}
-.notes-textarea,
-.sheet-url,
-.sheet-name {
-  width: 100%;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--surface-soft);
-  color: var(--ink);
-  font: inherit;
-}
-.notes-textarea {
-  min-height: 110px;
-  padding: 0.85rem;
-  resize: vertical;
-}
-.sync-fields {
-  display: grid;
-  gap: 0.65rem;
-}
-.sync-help {
-  font-size: 0.77rem;
-  color: var(--muted);
-  line-height: 1.4;
-}
-.field-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 0.32rem;
-  display: block;
-}
-.sheet-url,
-.sheet-name {
-  padding: 0.72rem 0.8rem;
-}
-.mini-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.7rem;
-}
-.mini-btn {
-  padding: 0.58rem 0.72rem;
-  font-size: 0.74rem;
-  font-weight: 600;
-}
-.sync-status {
-  margin-top: 0.6rem;
-  font-size: 0.78rem;
-  color: var(--muted);
-  min-height: 1.2em;
-}
-.template-box {
-  margin-top: 0.7rem;
-  border: 1px dashed var(--border);
-  background: #fbfaf8;
-  border-radius: 10px;
-  padding: 0.75rem;
-}
-.template-box summary {
-  cursor: pointer;
-  font-size: 0.76rem;
-  font-weight: 600;
-  color: var(--ink);
-}
-.template-box pre {
-  margin-top: 0.7rem;
-  white-space: pre-wrap;
-  word-break: break-word;
-  font-size: 0.68rem;
-  color: #3c3a36;
-  line-height: 1.45;
-}
-.privacy-note {
-  margin-top: 0.85rem;
-  font-size: 0.74rem;
-  color: var(--faint);
-}
-@media (max-width: 980px) {
-  .toolbar,
-  .notes-sync {
-    grid-template-columns: 1fr;
-  }
-  .summary-strip {
-    grid-template-columns: 1fr;
-  }
-  .action-row {
-    justify-content: flex-start;
-  }
-}
-@media (max-width: 700px) {
-  .shell {
-    padding: 0.7rem;
-  }
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .summary-strip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .student-card {
-    grid-template-columns: 64px minmax(0, 1fr);
-  }
-  .student-photo {
-    width: 64px;
-    height: 64px;
-  }
-}
+.settings-panel h3 { font-size: 0.78rem; font-weight: 700; margin-bottom: 0.2rem; }
+.settings-panel .s-desc { font-size: 0.74rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.45; }
+.s-field { margin-bottom: 0.8rem; }
+.s-label { display: block; font-size: 0.72rem; font-weight: 600; margin-bottom: 0.3rem; }
+.s-input { width: 100%; max-width: 520px; border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.75rem; font: inherit; font-size: 0.82rem; color: var(--ink); background: #faf9f7; }
+.s-input:focus { outline: 2px solid rgba(166,124,0,0.4); border-color: var(--gold); }
+.s-row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-top: 0.6rem; }
+.s-btn { font: inherit; font-size: 0.74rem; font-weight: 600; padding: 0.45rem 0.85rem; border-radius: 8px; cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--ink); transition: background 0.12s; }
+.s-btn:hover { background: #ece9e2; }
+.s-btn.primary { background: #1e232b; border-color: #1e232b; color: #fff; }
+.s-btn.primary:hover { background: #2c3340; }
+.s-status { font-size: 0.76rem; color: var(--muted); }
+.s-status.ok    { color: var(--green); }
+.s-status.error { color: var(--red); }
+.script-box { margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+.script-box summary { cursor: pointer; font-size: 0.76rem; font-weight: 600; color: var(--muted); user-select: none; }
+.script-box summary:hover { color: var(--ink); }
+.script-code { margin-top: 0.75rem; background: #f4f3f0; border: 1px solid var(--border); border-radius: 8px; padding: 0.85rem; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.7rem; line-height: 1.55; color: #3c3a36; white-space: pre; overflow-x: auto; max-height: 220px; }
+.script-copy-btn { margin-top: 0.5rem; font: inherit; font-size: 0.72rem; padding: 0.35rem 0.7rem; border-radius: 6px; cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--muted); }
+.script-copy-btn:hover { background: #ece9e2; color: var(--ink); }
 </style>
 </head>
 <body>
+
+<header class="topbar">
+  <div class="course-mark">
+    <div class="course-code">EAST 418 / FILM 419</div>
+    <div class="course-name">Modern Korea in Literature and Film</div>
+  </div>
+  <div class="topbar-right">
+    <div class="sync-indicator" id="syncIndicator">
+      <span class="sync-dot"></span>
+      <span id="syncLabel">No sheet</span>
+    </div>
+    <a class="site-link" href="dashboard.html">Dashboard</a>
+    <a class="site-link" href="students.html">Roster</a>
+    <button class="topbar-btn gold" id="topCopyBtn">Copy for Sheets</button>
+  </div>
+</header>
+
 <div class="shell">
-  <header class="topbar">
-    <div class="course-mark">
-      <div class="course-code">EAST 418 / FILM 419</div>
-      <div class="course-title">Modern Korean in Literature and Film</div>
-      <div class="teacher-note">Compact attendance tool. Unlisted in site navigation. Saves locally and can sync to Google Sheets.</div>
+  <div class="page-head">
+    <div>
+      <div class="page-title">Attendance — Spring 2026</div>
+      <div class="page-meta">Click: empty → absent (black) → tardy (red) → empty. Saves automatically.</div>
     </div>
-    <div class="topbar-links">
-      <a class="topbar-link" href="dashboard.html">Dashboard</a>
-      <a class="topbar-link" href="students.html">Roster</a>
-      <a class="topbar-link" href="https://lawrence.instructure.com/courses/12321" target="_blank" rel="noreferrer">Canvas</a>
+    <div class="toolbar-row">
+      <button class="page-btn" id="clearAllBtn">Clear All</button>
+      <button class="page-btn dark" id="copyBtn">Copy for Sheets</button>
     </div>
-  </header>
+  </div>
 
-  <section class="panel toolbar">
-    <div class="session-nav">
-      <button class="toolbar-btn nav-btn" id="prevSessionBtn" type="button" aria-label="Previous class">←</button>
-      <select class="session-select" id="sessionSelect" aria-label="Select class meeting"></select>
-      <button class="toolbar-btn nav-btn" id="nextSessionBtn" type="button" aria-label="Next class">→</button>
-    </div>
-    <div class="current-meta">
-      <div class="current-date" id="currentDate">Loading…</div>
-      <div class="current-topic" id="currentTopic"></div>
-    </div>
-    <div class="action-row">
-      <button class="toolbar-btn" type="button" id="markAllPresentBtn">Clear Absences</button>
-      <button class="toolbar-btn" type="button" id="clearSessionBtn">Clear</button>
-      <button class="toolbar-btn" type="button" id="copySummaryBtn">Copy</button>
-      <button class="toolbar-btn primary" type="button" id="syncNowBtn">Sync Sheet</button>
-    </div>
-  </section>
+  <div class="table-wrap">
+    <table class="att-table" id="attTable">
+      <thead><tr id="headerRow"></tr></thead>
+      <tbody id="tableBody"></tbody>
+      <tfoot><tr id="footerRow"></tr></tfoot>
+    </table>
+  </div>
 
-  <section class="summary-strip">
-    <article class="summary-pill present">
-      <div class="summary-label">Present</div>
-      <div class="summary-value" id="countPresent">0</div>
-    </article>
-    <article class="summary-pill absent">
-      <div class="summary-label">Absent</div>
-      <div class="summary-value" id="countAbsent">0</div>
-    </article>
-    <article class="summary-pill sync">
-      <div class="summary-label">Last Sync</div>
-      <div class="summary-value" id="lastSyncDisplay">Not yet synced</div>
-    </article>
-  </section>
-
-  <section class="panel grid-panel">
-    <div class="roster-grid" id="rosterGrid"></div>
-  </section>
-
-  <section class="notes-sync">
-    <section class="subpanel">
-      <div class="subpanel-label">Class Notes</div>
-      <textarea id="classNotes" class="notes-textarea" placeholder="Short note to self: discussion leader, repeated lateness, seating changes, presentation reminders, or anything you need later."></textarea>
-    </section>
-
-    <section class="subpanel">
-      <div class="subpanel-label">Google Sheets Sync</div>
-      <div class="sync-fields">
-        <div>
-          <label class="field-label" for="sheetWebhookUrl">Apps Script Web App URL</label>
-          <input id="sheetWebhookUrl" class="sheet-url" type="url" placeholder="Paste deployed Apps Script web app URL">
-        </div>
-        <div>
-          <label class="field-label" for="sheetTabName">Matrix Tab Name</label>
-          <input id="sheetTabName" class="sheet-name" type="text" placeholder="Attendance Matrix" value="Attendance Matrix">
-        </div>
+  <div class="bottom-area">
+    <div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-swatch absent"></div> Absent</div>
+        <div class="legend-item"><div class="legend-swatch tardy">T</div> Tardy</div>
+        <div class="legend-item"><div class="legend-swatch present"></div> Present</div>
       </div>
-      <div class="mini-row">
-        <button class="mini-btn" id="saveSheetSettingsBtn" type="button">Save Settings</button>
-        <button class="mini-btn" id="testSyncBtn" type="button">Test Connection</button>
-        <button class="mini-btn" id="copyAppsScriptBtn" type="button">Copy Apps Script</button>
-      </div>
-      <div class="sync-status" id="syncStatus">No sheet connection configured yet.</div>
-      <p class="sync-help">This page assumes everyone is present unless you mark them absent. The sheet gets one simple matrix: students down the left, meeting dates across the top, blank for present, <code>x</code> for absent.</p>
-      <details class="template-box">
-        <summary>View payload shape</summary>
-        <pre>{
-  "course": "EAST 418 / FILM 419",
-  "sessionId": "2026-03-30",
-  "sessionDate": "2026-03-30",
-  "sessionLabel": "Monday, March 30, 2026",
-  "topic": "The Joseon Court",
-  "sheetName": "Attendance Matrix",
-  "allSessions": ["3/30", "4/1", "4/3"],
-  "students": [
-    { "id": "jack", "name": "Jack", "status": "present" },
-    { "id": "anya", "name": "Anya", "status": "absent" }
-  ]
-}</pre>
-      </details>
-      <p class="privacy-note">This makes the tool less public-facing, not private. The page is unlisted and marked noindex, but the repo and site are still public until you move it behind private hosting.</p>
-    </section>
-  </section>
+    </div>
+    <button class="settings-toggle" id="settingsToggle">Sheets sync settings</button>
+  </div>
+
+  <div class="settings-panel" id="settingsPanel" style="display:none">
+    <h3>Google Sheets Sync</h3>
+    <p class="s-desc">Paste the URL of your deployed Apps Script below. The page will load attendance from the sheet on startup and save every change back automatically — works from any browser or device.</p>
+
+    <div class="s-field">
+      <label class="s-label" for="scriptUrlInput">Apps Script Web App URL</label>
+      <input id="scriptUrlInput" class="s-input" type="url" placeholder="https://script.google.com/macros/s/…/exec">
+    </div>
+    <div class="s-row">
+      <button class="s-btn primary" id="saveUrlBtn">Save &amp; Connect</button>
+      <button class="s-btn" id="testBtn">Test Connection</button>
+      <button class="s-btn" id="disconnectBtn">Disconnect</button>
+      <span class="s-status" id="settingsStatus"></span>
+    </div>
+
+    <details class="script-box">
+      <summary>Apps Script code (paste into Google Apps Script)</summary>
+      <pre class="script-code" id="scriptCodeBlock"></pre>
+      <button class="script-copy-btn" id="copyScriptBtn">Copy script</button>
+    </details>
+  </div>
 </div>
 
-<iframe name="attendanceSyncFrame" title="Attendance sync transport" hidden></iframe>
-<form id="attendanceSyncForm" method="POST" target="attendanceSyncFrame" hidden>
-  <input type="hidden" name="payload" id="attendanceSyncPayload">
-</form>
-
 <script>
+// ── DATA ───────────────────────────────────────────────────────────────────────
 const STUDENTS = [
-  { id: 'jack', name: 'Jack', pronouns: 'He/Him/His', photo: 'images/students/jack.jpg' },
-  { id: 'anya', name: 'Anya', pronouns: 'She/Her/Hers', photo: 'images/students/anya.jpg' },
-  { id: 'sophie', name: 'Sophie', pronouns: 'She/Her/Hers', photo: 'images/students/sophie.jpg' },
-  { id: 'haeun', name: 'Haeun', pronouns: 'She/Her/Hers', photo: 'images/students/haeun.jpg' },
-  { id: 'jude', name: 'Jude', pronouns: 'He/Him/His', photo: 'images/students/jude.jpg' },
-  { id: 'qiaochuhan', name: 'Qiaochuhan', pronouns: 'She/Her/Hers', photo: 'images/students/qiaochuhan.jpg' },
-  { id: 'hana', name: 'Hana', pronouns: 'He/Him/His', photo: 'images/students/hana.jpg' }
+  { id: 'jack',       name: 'Jack',       pronouns: 'He/Him',   photo: 'images/students/jack.jpg' },
+  { id: 'anya',       name: 'Anya',       pronouns: 'She/Her',  photo: 'images/students/anya.jpg' },
+  { id: 'sophie',     name: 'Sophie',     pronouns: 'She/Her',  photo: 'images/students/sophie.jpg' },
+  { id: 'haeun',      name: 'Haeun',      pronouns: 'She/Her',  photo: 'images/students/haeun.jpg' },
+  { id: 'jude',       name: 'Jude',       pronouns: 'He/Him',   photo: 'images/students/jude.jpg' },
+  { id: 'qiaochuhan', name: 'Qiaochuhan', pronouns: 'She/Her',  photo: 'images/students/qiaochuhan.jpg' },
+  { id: 'hana',       name: 'Hana',       pronouns: 'He/Him',   photo: 'images/students/hana.jpg' }
 ];
 
 const SESSIONS = [
-  { id: '2026-03-30', date: '2026-03-30', topic: 'Introduction to the Course' },
-  { id: '2026-04-01', date: '2026-04-01', topic: 'The Joseon Court' },
-  { id: '2026-04-03', date: '2026-04-03', topic: 'Film: The Throne' },
-  { id: '2026-04-06', date: '2026-04-06', topic: 'New Women' },
-  { id: '2026-04-08', date: '2026-04-08', topic: 'Colonial Modernism' },
-  { id: '2026-04-10', date: '2026-04-10', topic: 'Film: Sopyonje + Yi Sang' },
-  { id: '2026-04-13', date: '2026-04-13', topic: 'Liberation Literature' },
-  { id: '2026-04-15', date: '2026-04-15', topic: 'DPRK Literature of the War' },
-  { id: '2026-04-17', date: '2026-04-17', topic: 'Film: Taebaek Mountains' },
-  { id: '2026-04-20', date: '2026-04-20', topic: 'Division Literature: Cranes' },
-  { id: '2026-04-22', date: '2026-04-22', topic: "Pak Wanso: War's Aftermath" },
-  { id: '2026-04-24', date: '2026-04-24', topic: 'Film: Aimless Bullet + The Stray Bullet' },
-  { id: '2026-04-27', date: '2026-04-27', topic: 'The Apartment City' },
-  { id: '2026-04-29', date: '2026-04-29', topic: 'Film: The Flower Girl + Juche' },
-  { id: '2026-05-04', date: '2026-05-04', topic: 'The Pro-Democracy Movement' },
-  { id: '2026-05-06', date: '2026-05-06', topic: 'Film: A Single Spark + The Dwarf' },
-  { id: '2026-05-11', date: '2026-05-11', topic: 'Korean Manchuria: Salt' },
-  { id: '2026-05-13', date: '2026-05-13', topic: 'Zainichi: Full House' },
-  { id: '2026-05-15', date: '2026-05-15', topic: 'Film: Madame Freedom' },
-  { id: '2026-05-18', date: '2026-05-18', topic: 'Queer Literature + Gi Hyeong-do' },
-  { id: '2026-05-20', date: '2026-05-20', topic: "Film: Spirit's Homecoming" },
-  { id: '2026-05-27', date: '2026-05-27', topic: 'DPRK Fiction + Loyal Citizens' },
-  { id: '2026-05-29', date: '2026-05-29', topic: 'Film: Parasite' }
+  { id: '2026-03-30', label: '3/30',  topic: 'Introduction to the Course' },
+  { id: '2026-04-01', label: '4/1',   topic: 'The Joseon Court' },
+  { id: '2026-04-03', label: '4/3',   topic: 'Film: The Throne' },
+  { id: '2026-04-06', label: '4/6',   topic: 'New Women' },
+  { id: '2026-04-08', label: '4/8',   topic: 'Colonial Modernism' },
+  { id: '2026-04-10', label: '4/10',  topic: 'Film: Sopyonje + Yi Sang' },
+  { id: '2026-04-13', label: '4/13',  topic: 'Liberation Literature' },
+  { id: '2026-04-15', label: '4/15',  topic: 'DPRK Literature of the War' },
+  { id: '2026-04-17', label: '4/17',  topic: 'Film: Taebaek Mountains' },
+  { id: '2026-04-20', label: '4/20',  topic: 'Division Literature: Cranes' },
+  { id: '2026-04-22', label: '4/22',  topic: "Pak Wanso: War's Aftermath" },
+  { id: '2026-04-24', label: '4/24',  topic: 'Film: Aimless Bullet' },
+  { id: '2026-04-27', label: '4/27',  topic: 'The Apartment City' },
+  { id: '2026-04-29', label: '4/29',  topic: 'Film: The Flower Girl + Juche' },
+  { id: '2026-05-04', label: '5/4',   topic: 'The Pro-Democracy Movement' },
+  { id: '2026-05-06', label: '5/6',   topic: 'Film: A Single Spark' },
+  { id: '2026-05-11', label: '5/11',  topic: 'Korean Manchuria: Salt' },
+  { id: '2026-05-13', label: '5/13',  topic: 'Zainichi: Full House' },
+  { id: '2026-05-15', label: '5/15',  topic: 'Film: Madame Freedom' },
+  { id: '2026-05-18', label: '5/18',  topic: 'Queer Literature + Gi Hyeong-do' },
+  { id: '2026-05-20', label: '5/20',  topic: "Film: Spirit's Homecoming" },
+  { id: '2026-05-27', label: '5/27',  topic: 'DPRK Fiction + Loyal Citizens' },
+  { id: '2026-05-29', label: '5/29',  topic: 'Film: Parasite' }
 ];
 
-const ABSENT_STATUS = 'absent';
+// ── APPS SCRIPT TEMPLATE ───────────────────────────────────────────────────────
+const APPS_SCRIPT = `// Paste into Google Apps Script (Tools > Script Editor)
+// Deploy: Deploy > New Deployment > Web App
+//   Execute as: Me
+//   Who has access: Anyone
 
-const STORAGE_KEY = 'mkilf-attendance-v2';
-const SETTINGS_KEY = 'mkilf-attendance-sheet-settings';
-const APPS_SCRIPT_TEMPLATE = `function doPost(e) {
-  var rawPayload = '';
-  if (e && e.parameter && e.parameter.payload) {
-    rawPayload = e.parameter.payload;
-  } else if (e && e.postData && e.postData.contents) {
-    rawPayload = e.postData.contents;
-  }
-
-  var payload = JSON.parse(rawPayload || '{}');
-  var sheetName = payload.sheetName || 'Attendance Matrix';
+function doGet(e) {
+  var action = (e && e.parameter && e.parameter.action) || 'load';
   var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName(sheetName) || ss.insertSheet(sheetName);
 
-  if (payload.test) {
+  if (action === 'save') {
+    var data = (e.parameter && e.parameter.data) || '{}';
+    var stateSheet = ss.getSheetByName('_state') || ss.insertSheet('_state');
+    stateSheet.getRange('A1').setValue(data);
+    writeMatrix(ss, JSON.parse(data));
     return ContentService
-      .createTextOutput(JSON.stringify({ ok: true, test: true }))
+      .createTextOutput(JSON.stringify({ ok: true }))
       .setMimeType(ContentService.MimeType.JSON);
   }
 
-  ensureHeaderRow(sheet, payload.allSessions || []);
-  var students = payload.students || [];
-  var sessionColumn = findSessionColumn(sheet, payload.sessionShortLabel || payload.sessionDate || payload.sessionId || '');
-  var rowMap = ensureStudentRows(sheet, students);
-
-  for (var i = 0; i < students.length; i++) {
-    var student = students[i];
-    var row = rowMap[student.name || student.id];
-    var cell = sheet.getRange(row, sessionColumn);
-    var absent = student.status === 'absent';
-    cell.setValue(absent ? 'x' : '');
-    cell.setHorizontalAlignment('center');
-    cell.setFontWeight(absent ? 'bold' : 'normal');
-    cell.setFontColor(absent ? '#b33636' : '#161616');
-  }
-
+  // action === 'load'
+  var stateSheet = ss.getSheetByName('_state');
+  var raw = (stateSheet && stateSheet.getRange('A1').getValue()) || '{}';
   return ContentService
-    .createTextOutput(JSON.stringify({ ok: true, rowsWritten: students.length, sheet: sheetName, session: payload.sessionShortLabel || '' }))
+    .createTextOutput(raw || '{}')
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-function ensureHeaderRow(sheet, sessions) {
-  if (sheet.getLastRow() === 0) {
-    sheet.getRange(1, 1).setValue('Student');
-  }
+function writeMatrix(ss, store) {
+  var students = ${JSON.stringify(STUDENTS.map(s => s.name))};
+  var sessions = ${JSON.stringify(SESSIONS.map(s => ({ id: s.id, label: s.label })))};
+
+  var sheet = ss.getSheetByName('Attendance') || ss.insertSheet('Attendance');
+  var headers = ['Student'].concat(sessions.map(function(s) { return s.label; }));
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+  sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
   sheet.setFrozenRows(1);
   sheet.setFrozenColumns(1);
-  sheet.getRange(1, 1).setFontWeight('bold');
-  sheet.setColumnWidth(1, 180);
-  for (var i = 0; i < sessions.length; i++) {
-    var col = i + 2;
-    sheet.getRange(1, col).setValue(sessions[i]);
-    sheet.getRange(1, col).setFontWeight('bold');
-    sheet.getRange(1, col).setHorizontalAlignment('center');
-    sheet.setColumnWidth(col, 68);
-  }
-}
 
-function findSessionColumn(sheet, sessionLabel) {
-  var headers = sheet.getRange(1, 1, 1, Math.max(sheet.getLastColumn(), 1)).getValues()[0];
-  var idx = headers.indexOf(sessionLabel);
-  if (idx === -1) {
-    throw new Error('Session date not found in header row: ' + sessionLabel);
-  }
-  return idx + 1;
-}
+  students.forEach(function(name, r) {
+    var id = name.toLowerCase().replace(/[^a-z]/g, '');
+    var row = [name];
+    sessions.forEach(function(s) {
+      var status = (store[s.id] && store[s.id][id]) || '';
+      row.push(status);
+    });
+    var absences = row.slice(1).filter(function(v) { return v === 'A'; }).length;
+    var tardies  = row.slice(1).filter(function(v) { return v === 'T'; }).length;
+    row.push(absences || '', tardies || '');
+    sheet.getRange(r + 2, 1, 1, row.length).setValues([row]);
+  });
 
-function ensureStudentRows(sheet, students) {
-  var lastRow = Math.max(sheet.getLastRow(), 1);
-  var ids = lastRow > 1 ? sheet.getRange(2, 1, lastRow - 1, 1).getValues().map(function(row) { return row[0]; }) : [];
-  var rowMap = {};
-
-  for (var i = 0; i < ids.length; i++) {
-    rowMap[ids[i]] = i + 2;
-  }
-
-  for (var j = 0; j < students.length; j++) {
-    var student = students[j];
-    var key = student.name || student.id;
-    if (!rowMap[key]) {
-      var newRow = sheet.getLastRow() + 1;
-      sheet.getRange(newRow, 1).setValue(key);
-      rowMap[key] = newRow;
-    }
-  }
-
-  for (var k = 0; k < students.length; k++) {
-    var item = students[k];
-    var row = rowMap[item.name || item.id];
-    sheet.getRange(row, 1).setValue(item.name || item.id || '');
-    sheet.getRange(row, 1).setFontWeight('bold');
-  }
-
-  return rowMap;
+  // Color absent cells red
+  var dataRange = sheet.getRange(2, 2, students.length, sessions.length);
+  var values = dataRange.getValues();
+  values.forEach(function(row, r) {
+    row.forEach(function(val, c) {
+      var cell = sheet.getRange(r + 2, c + 2);
+      if (val === 'A') {
+        cell.setBackground('#fce8e8');
+        cell.setFontWeight('bold');
+        cell.setFontColor('#b33636');
+      } else if (val === 'T') {
+        cell.setBackground('#fff8e8');
+        cell.setFontWeight('bold');
+        cell.setFontColor('#a67c00');
+      } else {
+        cell.setBackground(null);
+        cell.setFontWeight('normal');
+        cell.setFontColor(null);
+      }
+    });
+  });
 }`;
 
-let attendanceStore = loadStore();
-let currentSessionId = detectCurrentSessionId();
-let syncSettings = loadSettings();
+document.getElementById('scriptCodeBlock').textContent = APPS_SCRIPT;
 
-function loadStore() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-  } catch (error) {
-    return {};
-  }
+// ── STORE ──────────────────────────────────────────────────────────────────────
+const STORAGE_KEY = 'mkilf-att-v4';
+const SETTINGS_KEY = 'mkilf-att-settings';
+
+let store = {};
+let scriptUrl = '';
+let saveTimer = null;
+
+function localLoad() {
+  try { store = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { store = {}; }
 }
-
-function saveStore() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(attendanceStore));
+function localSave() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(store)); } catch(e) {}
 }
-
 function loadSettings() {
   try {
-    return JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
-  } catch (error) {
-    return {};
-  }
+    const s = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
+    scriptUrl = s.url || '';
+    document.getElementById('scriptUrlInput').value = scriptUrl;
+  } catch(e) {}
 }
-
 function saveSettings() {
-  localStorage.setItem(SETTINGS_KEY, JSON.stringify(syncSettings));
+  try { localStorage.setItem(SETTINGS_KEY, JSON.stringify({ url: scriptUrl })); } catch(e) {}
 }
 
-function getSessionRecord(sessionId) {
-  if (!attendanceStore[sessionId]) {
-    attendanceStore[sessionId] = { notes: '', students: {}, lastSync: '' };
+// ── STATUS ─────────────────────────────────────────────────────────────────────
+function setSyncState(state, msg) {
+  const ind = document.getElementById('syncIndicator');
+  const lbl = document.getElementById('syncLabel');
+  ind.className = 'sync-indicator ' + (state || '');
+  lbl.textContent = msg;
+}
+
+// ── SHEET SYNC ─────────────────────────────────────────────────────────────────
+async function sheetLoad() {
+  if (!scriptUrl) return;
+  setSyncState('saving', 'Loading…');
+  try {
+    const res = await fetch(scriptUrl + '?action=load', { cache: 'no-store' });
+    const data = await res.json();
+    if (data && typeof data === 'object' && !data.error) {
+      store = data;
+      localSave();
+      setSyncState('connected', 'Synced');
+      buildTable();
+    } else {
+      setSyncState('error', 'Load error');
+    }
+  } catch(e) {
+    setSyncState('error', 'Unreachable');
   }
-  return attendanceStore[sessionId];
 }
 
-function detectCurrentSessionId() {
-  const today = new Date();
-  today.setHours(12, 0, 0, 0);
-  for (const session of SESSIONS) {
-    const sessionDate = new Date(session.date + 'T12:00:00');
-    if (sessionDate >= today) return session.id;
+function scheduleSave() {
+  clearTimeout(saveTimer);
+  setSyncState('saving', 'Saving…');
+  saveTimer = setTimeout(async () => {
+    if (!scriptUrl) { setSyncState('', 'No sheet'); return; }
+    try {
+      const url = scriptUrl + '?action=save&data=' + encodeURIComponent(JSON.stringify(store));
+      const res = await fetch(url, { cache: 'no-store' });
+      const result = await res.json();
+      setSyncState(result.ok ? 'connected' : 'error', result.ok ? 'Saved ✓' : 'Save error');
+    } catch(e) {
+      setSyncState('error', 'Save failed');
+    }
+  }, 900);
+}
+
+// ── STATUS VALUES: 'A' = absent, 'T' = tardy ──────────────────────────────────
+function getStatus(studentId, sessionId) {
+  return (store[sessionId] && store[sessionId][studentId]) || null;
+}
+
+function cycleStatus(studentId, sessionId) {
+  if (!store[sessionId]) store[sessionId] = {};
+  const cur = store[sessionId][studentId] || null;
+  const next = cur === null ? 'A' : cur === 'A' ? 'T' : null;
+  if (next === null) {
+    delete store[sessionId][studentId];
+    if (!Object.keys(store[sessionId]).length) delete store[sessionId];
+  } else {
+    store[sessionId][studentId] = next;
   }
-  return SESSIONS[SESSIONS.length - 1].id;
+  localSave();
+  if (scriptUrl) scheduleSave();
+  return next;
 }
 
-function formatFullDate(iso) {
-  return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', {
-    weekday: 'long',
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric'
-  });
-}
+function absCount(studentId) { return SESSIONS.filter(s => getStatus(studentId, s.id) === 'A').length; }
+function tardyCount(studentId) { return SESSIONS.filter(s => getStatus(studentId, s.id) === 'T').length; }
+function nonPresentCount(sessionId) { return STUDENTS.filter(s => getStatus(s.id, sessionId) !== null).length; }
 
-function formatShortDate(iso) {
-  return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric'
-  });
+// ── TABLE ──────────────────────────────────────────────────────────────────────
+function todayIso() {
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
 }
-
-function formatTimestamp(isoString) {
-  if (!isoString) return 'Not yet synced';
-  return new Date(isoString).toLocaleString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit'
-  });
-}
-
-function getCurrentSession() {
-  return SESSIONS.find((session) => session.id === currentSessionId) || SESSIONS[0];
-}
-
-function buildSessionSelect() {
-  const select = document.getElementById('sessionSelect');
-  select.innerHTML = SESSIONS.map((session) =>
-    `<option value="${session.id}">${formatShortDate(session.date)} · ${session.topic}</option>`
-  ).join('');
-  select.value = currentSessionId;
-}
-
-function buildAbsentToggle(studentId, isAbsent) {
-  return `
-    <button class="status-btn absent${isAbsent ? ' is-active' : ''}" type="button" data-student="${studentId}" aria-pressed="${isAbsent ? 'true' : 'false'}">
-      ${isAbsent ? 'Absent' : 'Mark Absent'}
-    </button>
-    <span class="status-hint">${isAbsent ? 'Will show as absent in the sheet' : 'Present is assumed by default'}</span>
-  `;
-}
-
-function fallbackFor(name) {
+function fallback(name) {
   return 'data:image/svg+xml,' + encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#ddd7cb"/><text x="50" y="58" text-anchor="middle" font-size="40" fill="#968f84">${name.charAt(0)}</text></svg>`
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#ddd7cb"/><text x="50" y="63" text-anchor="middle" font-size="42" fill="#968f84">${name.charAt(0)}</text></svg>`
   );
 }
 
-function renderRoster() {
-  const record = getSessionRecord(currentSessionId);
-  document.getElementById('rosterGrid').innerHTML = STUDENTS.map((student) => `
-    <article class="student-card">
-      <img src="${student.photo}" alt="${student.name}" class="student-photo" onerror="this.src='${fallbackFor(student.name)}'">
-      <div class="student-meta">
-        <div class="student-name">${student.name}</div>
-        <div class="student-pronouns">${student.pronouns}</div>
-        <div class="status-row">
-          ${buildAbsentToggle(student.id, record.students[student.id] === ABSENT_STATUS)}
-        </div>
-      </div>
-    </article>
-  `).join('');
+function buildTable() {
+  const today = todayIso();
 
-  document.querySelectorAll('[data-student]').forEach((button) => {
-    button.addEventListener('click', () => toggleAbsent(button.dataset.student));
+  // Header
+  let hHtml = '<th class="corner">Student</th>';
+  SESSIONS.forEach(s => {
+    hHtml += `<th class="date-th" title="${s.topic}"><span class="date-label${s.id === today ? ' today' : ''}">${s.label}</span></th>`;
   });
+  hHtml += '<th class="total-th">Abs / T</th>';
+  document.getElementById('headerRow').innerHTML = hHtml;
+
+  // Body
+  let bHtml = '';
+  STUDENTS.forEach(student => {
+    bHtml += `<tr><td class="student-cell"><div class="student-inner">
+      <img class="s-photo" src="${student.photo}" alt="${student.name}" onerror="this.src='${fallback(student.name)}'">
+      <div><div class="s-name">${student.name}</div><div class="s-pronouns">${student.pronouns}</div></div>
+    </div></td>`;
+    SESSIONS.forEach(s => {
+      const st = getStatus(student.id, s.id);
+      bHtml += `<td class="att-cell${st ? ' ' + (st === 'A' ? 'absent' : 'tardy') : ''}" data-student="${student.id}" data-session="${s.id}"></td>`;
+    });
+    const a = absCount(student.id), t = tardyCount(student.id);
+    const label = [a ? `${a}A` : '', t ? `${t}T` : ''].filter(Boolean).join(' ');
+    bHtml += `<td class="total-cell${(a || t) ? ' has-mark' : ''}" id="tot-${student.id}">${label}</td></tr>`;
+  });
+  document.getElementById('tableBody').innerHTML = bHtml;
+
+  // Footer
+  let fHtml = '<td class="footer-student">Per session</td>';
+  SESSIONS.forEach(s => {
+    const n = nonPresentCount(s.id);
+    fHtml += `<td class="col-total${n ? ' nonzero' : ''}" id="col-${s.id}">${n || ''}</td>`;
+  });
+  fHtml += '<td></td>';
+  document.getElementById('footerRow').innerHTML = fHtml;
+
+  // Click handler
+  document.getElementById('tableBody').addEventListener('click', e => {
+    const cell = e.target.closest('.att-cell');
+    if (!cell) return;
+    const { student, session } = cell.dataset;
+    const next = cycleStatus(student, session);
+    cell.className = 'att-cell' + (next ? ' ' + (next === 'A' ? 'absent' : 'tardy') : '');
+
+    const a = absCount(student), t = tardyCount(student);
+    const label = [a ? `${a}A` : '', t ? `${t}T` : ''].filter(Boolean).join(' ');
+    const totCell = document.getElementById('tot-' + student);
+    totCell.textContent = label;
+    totCell.classList.toggle('has-mark', !!(a || t));
+
+    const n = nonPresentCount(session);
+    const colCell = document.getElementById('col-' + session);
+    colCell.textContent = n || '';
+    colCell.classList.toggle('nonzero', n > 0);
+  }, { once: false });
 }
 
-function renderSummary() {
-  const record = getSessionRecord(currentSessionId);
-  const counts = { present: STUDENTS.length, absent: 0 };
-  for (const student of STUDENTS) {
-    const status = record.students[student.id];
-    if (status === ABSENT_STATUS) counts.absent += 1;
-  }
-  counts.present = STUDENTS.length - counts.absent;
-  document.getElementById('countPresent').textContent = counts.present;
-  document.getElementById('countAbsent').textContent = counts.absent;
-  document.getElementById('lastSyncDisplay').textContent = formatTimestamp(record.lastSync);
-  return counts;
+// ── COPY FOR SHEETS ────────────────────────────────────────────────────────────
+function copyForSheets() {
+  const header = ['Student', ...SESSIONS.map(s => s.label), 'Absences', 'Tardies'].join('\t');
+  const rows = STUDENTS.map(s => {
+    const cells = SESSIONS.map(sess => {
+      const st = getStatus(s.id, sess.id);
+      return st === 'A' ? 'A' : st === 'T' ? 'T' : '';
+    });
+    return [s.name, ...cells, absCount(s.id) || '', tardyCount(s.id) || ''].join('\t');
+  });
+  navigator.clipboard.writeText([header, ...rows].join('\n'))
+    .then(() => setSettingsStatus('Copied! Paste into Google Sheets.', false))
+    .catch(() => setSettingsStatus('Copy failed.', true));
 }
 
-function renderToolbar() {
-  const session = getCurrentSession();
-  document.getElementById('sessionSelect').value = currentSessionId;
-  document.getElementById('currentDate').textContent = formatFullDate(session.date);
-  document.getElementById('currentTopic').textContent = session.topic;
-  document.getElementById('classNotes').value = getSessionRecord(currentSessionId).notes || '';
-
-  const index = SESSIONS.findIndex((sessionItem) => sessionItem.id === currentSessionId);
-  document.getElementById('prevSessionBtn').disabled = index <= 0;
-  document.getElementById('nextSessionBtn').disabled = index >= SESSIONS.length - 1;
+// ── SETTINGS ───────────────────────────────────────────────────────────────────
+function setSettingsStatus(msg, isError) {
+  const el = document.getElementById('settingsStatus');
+  el.textContent = msg;
+  el.className = 's-status ' + (isError ? 'error' : 'ok');
+  setTimeout(() => { el.textContent = ''; el.className = 's-status'; }, 4000);
 }
 
-function renderSheetSettings() {
-  document.getElementById('sheetWebhookUrl').value = syncSettings.webhookUrl || '';
-  document.getElementById('sheetTabName').value = syncSettings.sheetName || 'Attendance Matrix';
-}
+document.getElementById('settingsToggle').addEventListener('click', () => {
+  const panel = document.getElementById('settingsPanel');
+  const shown = panel.style.display !== 'none';
+  panel.style.display = shown ? 'none' : 'block';
+});
 
-function renderAll() {
-  renderToolbar();
-  renderSummary();
-  renderRoster();
-}
-
-function toggleAbsent(studentId) {
-  const record = getSessionRecord(currentSessionId);
-  if (record.students[studentId] === ABSENT_STATUS) delete record.students[studentId];
-  else record.students[studentId] = ABSENT_STATUS;
-  saveStore();
-  renderAll();
-}
-
-function setSessionByOffset(offset) {
-  const index = SESSIONS.findIndex((session) => session.id === currentSessionId);
-  const next = SESSIONS[index + offset];
-  if (!next) return;
-  currentSessionId = next.id;
-  renderAll();
-}
-
-function markAllPresent() {
-  const record = getSessionRecord(currentSessionId);
-  record.students = {};
-  saveStore();
-  renderAll();
-}
-
-function clearSession() {
-  attendanceStore[currentSessionId] = { notes: '', students: {}, lastSync: '' };
-  saveStore();
-  renderAll();
-}
-
-function buildSyncPayload() {
-  const session = getCurrentSession();
-  const record = getSessionRecord(currentSessionId);
-  return {
-    course: 'EAST 418 / FILM 419',
-    sessionId: session.id,
-    sessionDate: session.date,
-    sessionLabel: formatFullDate(session.date),
-    topic: session.topic,
-    sheetName: (syncSettings.sheetName || 'Attendance Matrix').trim() || 'Attendance Matrix',
-    sessionShortLabel: formatShortDate(session.date),
-    allSessions: SESSIONS.map((item) => formatShortDate(item.date)),
-    students: STUDENTS.map((student) => ({
-      id: student.id,
-      name: student.name,
-      status: record.students[student.id] === ABSENT_STATUS ? ABSENT_STATUS : 'present'
-    }))
-  };
-}
-
-function syncToSheet(isTest) {
-  const webhookUrl = (syncSettings.webhookUrl || '').trim();
-  if (!webhookUrl) {
-    setSyncStatus('Add and save a web app URL first.', true);
-    return;
-  }
-
-  const payload = buildSyncPayload();
-  if (isTest) {
-    payload.test = true;
-  }
-
-  try {
-    const form = document.getElementById('attendanceSyncForm');
-    const payloadInput = document.getElementById('attendanceSyncPayload');
-    form.action = webhookUrl;
-    payloadInput.value = JSON.stringify(payload);
-    form.submit();
-
-    if (!isTest) {
-      const record = getSessionRecord(currentSessionId);
-      record.lastSync = new Date().toISOString();
-      saveStore();
-      renderAll();
-    }
-
-    setSyncStatus(
-      isTest
-        ? 'Test submitted. If the deployment is correct, the script accepted the request.'
-        : `Sync submitted for ${payload.students.length} students. Check the sheet in a few seconds.`,
-      false
-    );
-  } catch (error) {
-    setSyncStatus(error.message || 'Sync submission failed.', true);
-  }
-}
-
-function setSyncStatus(message, isError) {
-  const node = document.getElementById('syncStatus');
-  node.textContent = message;
-  node.style.color = isError ? 'var(--red)' : 'var(--muted)';
-}
-
-async function copySummary() {
-  const session = getCurrentSession();
-  const record = getSessionRecord(currentSessionId);
-  const lines = [
-    `${formatFullDate(session.date)} — ${session.topic}`,
-    ...STUDENTS.map((student) => `${student.name}: ${record.students[student.id] === ABSENT_STATUS ? 'absent' : 'present'}`),
-    '',
-    `Notes: ${record.notes || ''}`
-  ];
-
-  try {
-    await navigator.clipboard.writeText(lines.join('\n'));
-    setSyncStatus('Copied class summary to clipboard.', false);
-  } catch (error) {
-    setSyncStatus('Clipboard copy failed.', true);
-  }
-}
-
-async function copyAppsScriptTemplate() {
-  try {
-    await navigator.clipboard.writeText(APPS_SCRIPT_TEMPLATE);
-    setSyncStatus('Copied Apps Script template.', false);
-  } catch (error) {
-    setSyncStatus('Could not copy Apps Script template.', true);
-  }
-}
-
-function saveSheetConfig() {
-  syncSettings = {
-    webhookUrl: document.getElementById('sheetWebhookUrl').value.trim(),
-    sheetName: document.getElementById('sheetTabName').value.trim() || 'Attendance Matrix'
-  };
+document.getElementById('saveUrlBtn').addEventListener('click', async () => {
+  const val = document.getElementById('scriptUrlInput').value.trim();
+  if (!val) { setSettingsStatus('Enter a URL first.', true); return; }
+  scriptUrl = val;
   saveSettings();
-  renderSheetSettings();
-  setSyncStatus(syncSettings.webhookUrl ? 'Sheet settings saved locally in this browser.' : 'Settings cleared.', false);
+  setSettingsStatus('Saved. Loading attendance from sheet…', false);
+  await sheetLoad();
+  if (document.getElementById('syncLabel').textContent === 'Synced') {
+    setSettingsStatus('Connected! Attendance loaded from sheet.', false);
+  }
+});
+
+document.getElementById('testBtn').addEventListener('click', async () => {
+  const val = document.getElementById('scriptUrlInput').value.trim();
+  if (!val) { setSettingsStatus('Enter a URL first.', true); return; }
+  setSettingsStatus('Testing…', false);
+  try {
+    const res = await fetch(val + '?action=load', { cache: 'no-store' });
+    const data = await res.json();
+    setSettingsStatus(typeof data === 'object' ? 'Connection OK — script is responding.' : 'Got a response but unexpected format.', false);
+  } catch(e) {
+    setSettingsStatus('Could not reach that URL. Check the deployment settings.', true);
+  }
+});
+
+document.getElementById('disconnectBtn').addEventListener('click', () => {
+  scriptUrl = '';
+  saveSettings();
+  document.getElementById('scriptUrlInput').value = '';
+  setSyncState('', 'No sheet');
+  setSettingsStatus('Disconnected. Data still in localStorage.', false);
+});
+
+document.getElementById('copyBtn').addEventListener('click', copyForSheets);
+document.getElementById('topCopyBtn').addEventListener('click', copyForSheets);
+document.getElementById('copyScriptBtn').addEventListener('click', () => {
+  navigator.clipboard.writeText(APPS_SCRIPT)
+    .then(() => { document.getElementById('copyScriptBtn').textContent = 'Copied!'; setTimeout(() => { document.getElementById('copyScriptBtn').textContent = 'Copy script'; }, 2000); })
+    .catch(() => {});
+});
+
+document.getElementById('clearAllBtn').addEventListener('click', () => {
+  if (!confirm('Clear ALL attendance records for the entire term?')) return;
+  store = {};
+  localSave();
+  if (scriptUrl) scheduleSave();
+  buildTable();
+});
+
+// ── INIT ───────────────────────────────────────────────────────────────────────
+localLoad();
+loadSettings();
+buildTable();
+
+if (scriptUrl) {
+  setSyncState('saving', 'Loading…');
+  sheetLoad();
+} else {
+  setSyncState('', 'No sheet');
 }
-
-document.getElementById('sessionSelect').addEventListener('change', (event) => {
-  currentSessionId = event.target.value;
-  renderAll();
-});
-document.getElementById('prevSessionBtn').addEventListener('click', () => setSessionByOffset(-1));
-document.getElementById('nextSessionBtn').addEventListener('click', () => setSessionByOffset(1));
-document.getElementById('markAllPresentBtn').addEventListener('click', markAllPresent);
-document.getElementById('clearSessionBtn').addEventListener('click', clearSession);
-document.getElementById('copySummaryBtn').addEventListener('click', copySummary);
-document.getElementById('syncNowBtn').addEventListener('click', () => syncToSheet(false));
-document.getElementById('testSyncBtn').addEventListener('click', () => syncToSheet(true));
-document.getElementById('copyAppsScriptBtn').addEventListener('click', copyAppsScriptTemplate);
-document.getElementById('saveSheetSettingsBtn').addEventListener('click', saveSheetConfig);
-document.getElementById('classNotes').addEventListener('input', (event) => {
-  const record = getSessionRecord(currentSessionId);
-  record.notes = event.target.value;
-  saveStore();
-});
-
-buildSessionSelect();
-renderSheetSettings();
-renderAll();
 </script>
 </body>
 </html>
