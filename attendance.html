@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance — Modern Korean in Literature and Film</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4f3f0;
+  --surface: #fff;
+  --surface-alt: #faf9f7;
+  --border: #e5e2dc;
+  --ink: #1a1a1a;
+  --ink-muted: #6b6b6b;
+  --ink-faint: #9a9a9a;
+  --gold: #a67c00;
+  --gold-light: #fdf8ec;
+  --green: #1f7a46;
+  --green-light: #edf8f1;
+  --amber: #a56700;
+  --amber-light: #fff4df;
+  --red: #b83232;
+  --red-light: #fdf1f1;
+  --blue: #2d4f8a;
+  --blue-light: #eef2fa;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--bg); color: var(--ink); }
+
+.site-header {
+  background: #1a1a1a;
+  border-bottom: 1px solid #333;
+  padding: 0 1.5rem;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.course-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  font-weight: 600;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.site-link {
+  font-size: 11px;
+  color: #999;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  transition: all 0.15s;
+}
+.site-link:hover,
+.site-link.is-active {
+  color: #fff;
+  border-color: #555;
+}
+.canvas-link {
+  color: var(--gold);
+  border-color: rgba(166,124,0,0.35);
+}
+.canvas-link:hover {
+  background: rgba(166,124,0,0.1);
+  border-color: var(--gold);
+}
+
+.hero {
+  background: linear-gradient(160deg, #1e2a35 0%, #2c3e50 50%, #1e2a35 100%);
+  padding: 2rem 2rem 1.8rem;
+}
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+}
+.eyebrow {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+}
+.hero h1 {
+  font-family: 'Newsreader', serif;
+  font-size: 2.1rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.1;
+}
+.hero p {
+  margin-top: 0.45rem;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.92rem;
+  max-width: 720px;
+}
+.session-chip {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 0.75rem 0.95rem;
+  min-width: 260px;
+}
+.session-chip-label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  margin-bottom: 0.25rem;
+}
+.session-chip-title {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.92rem;
+  line-height: 1.25;
+}
+.session-chip-date {
+  margin-top: 0.2rem;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.78rem;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.toolbar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1.3fr auto auto;
+  gap: 1rem;
+  align-items: center;
+}
+.session-nav {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+.nav-btn, .action-btn, .mode-btn {
+  font: inherit;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  color: var(--ink);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.nav-btn {
+  width: 34px;
+  height: 34px;
+  font-size: 0.95rem;
+}
+.nav-btn:hover, .action-btn:hover, .mode-btn:hover { background: #f0ede8; }
+.session-select {
+  flex: 1;
+  min-width: 280px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: 0 0.8rem;
+  font: inherit;
+  color: var(--ink);
+}
+.mode-group, .action-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.mode-btn, .action-btn {
+  padding: 0.6rem 0.8rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+.mode-btn.is-active {
+  background: #1f2937;
+  color: #fff;
+  border-color: #1f2937;
+}
+
+.summary-bar {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+.summary-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+}
+.summary-label {
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+  margin-bottom: 0.3rem;
+}
+.summary-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.summary-card.present .summary-value { color: var(--green); }
+.summary-card.late .summary-value { color: var(--amber); }
+.summary-card.absent .summary-value { color: var(--red); }
+.summary-card.excused .summary-value { color: var(--blue); }
+
+.notes-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.notes-label {
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-faint);
+  margin-bottom: 0.55rem;
+}
+#classNotes {
+  width: 100%;
+  min-height: 76px;
+  resize: vertical;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem 0.9rem;
+  font: inherit;
+  background: var(--surface-alt);
+}
+
+.attendance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+.attendance-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+}
+.attendance-photo {
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  background: #ece9e2;
+}
+.attendance-body {
+  padding: 0.95rem 1rem 1rem;
+}
+.attendance-name {
+  font-size: 1rem;
+  font-weight: 700;
+}
+.attendance-pronouns {
+  margin-top: 0.15rem;
+  font-size: 0.74rem;
+  color: var(--ink-muted);
+}
+.status-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin-top: 0.9rem;
+}
+.status-btn {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.45rem;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--surface-alt);
+  color: var(--ink-muted);
+}
+.status-btn.present.is-active { background: var(--green-light); color: var(--green); border-color: #b8dec5; }
+.status-btn.late.is-active { background: var(--amber-light); color: var(--amber); border-color: #e9cf9e; }
+.status-btn.absent.is-active { background: var(--red-light); color: var(--red); border-color: #edc1c1; }
+.status-btn.excused.is-active { background: var(--blue-light); color: var(--blue); border-color: #c4d3f0; }
+
+.rollcall-table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.rollcall-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.rollcall-table th,
+.rollcall-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.8rem 0.9rem;
+  text-align: left;
+  vertical-align: middle;
+}
+.rollcall-table th {
+  background: var(--surface-alt);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+}
+.rollcall-photo {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+.rollcall-name {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.rollcall-pronouns {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+}
+.rollcall-status {
+  min-width: 280px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.footer-note {
+  margin-top: 1rem;
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+}
+
+@media (max-width: 960px) {
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+  .mode-group, .action-group {
+    justify-content: flex-start;
+  }
+  .summary-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 640px) {
+  .site-header {
+    padding: 0 0.9rem;
+  }
+  .header-right {
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .site-link {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+  .summary-bar {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="course-tag">EAST 418 / FILM 419</div>
+  <div class="header-right">
+    <a href="https://docs.google.com/document/d/1HNEFiCmnfJIas4y0Vachgl8BxG1MKhpq-bi2_3mR604" target="_blank" class="site-link">Syllabus</a>
+    <a href="https://lawrence.instructure.com/courses/12321" target="_blank" class="site-link canvas-link">Canvas</a>
+    <a href="dashboard.html" class="site-link">Dashboard</a>
+    <a href="students.html" class="site-link">Students</a>
+    <a href="attendance.html" class="site-link is-active">Attendance</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div>
+        <div class="eyebrow">Attendance Tracker</div>
+        <h1>Modern Korean in Literature and Film</h1>
+        <p>Use the photo grid when you are still learning faces. Switch to compact roll call when the room gets familiar. Attendance and notes save locally in this browser.</p>
+      </div>
+      <div class="session-chip">
+        <div class="session-chip-label">Current Session</div>
+        <div class="session-chip-title" id="heroSessionTitle">Loading…</div>
+        <div class="session-chip-date" id="heroSessionDate"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="toolbar">
+    <div class="session-nav">
+      <button class="nav-btn" id="prevSessionBtn" type="button" aria-label="Previous class">←</button>
+      <select class="session-select" id="sessionSelect" aria-label="Select class meeting"></select>
+      <button class="nav-btn" id="nextSessionBtn" type="button" aria-label="Next class">→</button>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn is-active" type="button" data-view="grid">Photo Grid</button>
+      <button class="mode-btn" type="button" data-view="list">Compact Roll Call</button>
+    </div>
+    <div class="action-group">
+      <button class="action-btn" type="button" id="markAllPresentBtn">Mark All Present</button>
+      <button class="action-btn" type="button" id="clearSessionBtn">Clear</button>
+      <button class="action-btn" type="button" id="copySummaryBtn">Copy Summary</button>
+    </div>
+  </section>
+
+  <section class="summary-bar">
+    <article class="summary-card present">
+      <div class="summary-label">Present</div>
+      <div class="summary-value" id="countPresent">0</div>
+    </article>
+    <article class="summary-card late">
+      <div class="summary-label">Late</div>
+      <div class="summary-value" id="countLate">0</div>
+    </article>
+    <article class="summary-card absent">
+      <div class="summary-label">Absent</div>
+      <div class="summary-value" id="countAbsent">0</div>
+    </article>
+    <article class="summary-card excused">
+      <div class="summary-label">Excused</div>
+      <div class="summary-value" id="countExcused">0</div>
+    </article>
+    <article class="summary-card">
+      <div class="summary-label">Unmarked</div>
+      <div class="summary-value" id="countUnmarked">0</div>
+    </article>
+  </section>
+
+  <section class="notes-panel">
+    <div class="notes-label">Class Notes</div>
+    <textarea id="classNotes" placeholder="Quick note to self: seating quirks, repeated absences, discussion roles, late arrivals, or anything you want to remember."></textarea>
+  </section>
+
+  <section id="gridView" class="attendance-grid"></section>
+  <section id="listView" class="rollcall-table-wrap" hidden>
+    <table class="rollcall-table">
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>Student</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="rollcallBody"></tbody>
+    </table>
+  </section>
+
+  <p class="footer-note">Attendance is stored in your browser for this site only. If you want a synced export later, I can add CSV or Google Sheet export next.</p>
+</main>
+
+<script>
+const STUDENTS = [
+  { id: 'anya', name: 'Anya', pronouns: 'She/Her/Hers', photo: 'images/students/anya.jpg' },
+  { id: 'sophie', name: 'Sophie', pronouns: 'She/Her/Hers', photo: 'images/students/sophie.jpg' },
+  { id: 'jude', name: 'Jude', pronouns: 'He/Him/His', photo: 'images/students/jude.jpg' },
+  { id: 'qiaochuhan', name: 'Qiaochuhan', pronouns: 'She/Her/Hers', photo: 'images/students/qiaochuhan.jpg' },
+  { id: 'jack', name: 'Jack', pronouns: 'He/Him/His', photo: 'images/students/jack.jpg' },
+  { id: 'haeun', name: 'Haeun', pronouns: 'She/Her/Hers', photo: 'images/students/haeun.jpg' },
+  { id: 'hana', name: 'Hana', pronouns: 'He/Him/His', photo: 'images/students/hana.jpg' }
+];
+
+const SESSIONS = [
+  { id: '2026-03-30', date: '2026-03-30', topic: 'Introduction to the Course' },
+  { id: '2026-04-01', date: '2026-04-01', topic: 'The Joseon Court' },
+  { id: '2026-04-03', date: '2026-04-03', topic: 'Film: The Throne' },
+  { id: '2026-04-06', date: '2026-04-06', topic: 'New Women' },
+  { id: '2026-04-08', date: '2026-04-08', topic: 'Colonial Modernism' },
+  { id: '2026-04-10', date: '2026-04-10', topic: 'Film: Sopyonje + Yi Sang' },
+  { id: '2026-04-13', date: '2026-04-13', topic: 'Liberation Literature' },
+  { id: '2026-04-15', date: '2026-04-15', topic: 'DPRK Literature of the War' },
+  { id: '2026-04-17', date: '2026-04-17', topic: 'Film: Taebaek Mountains' },
+  { id: '2026-04-20', date: '2026-04-20', topic: 'Division Literature: Cranes' },
+  { id: '2026-04-22', date: '2026-04-22', topic: "Pak Wanso: War's Aftermath" },
+  { id: '2026-04-24', date: '2026-04-24', topic: 'Film: Aimless Bullet + The Stray Bullet' },
+  { id: '2026-04-27', date: '2026-04-27', topic: 'The Apartment City' },
+  { id: '2026-04-29', date: '2026-04-29', topic: 'Film: The Flower Girl + Juche' },
+  { id: '2026-05-04', date: '2026-05-04', topic: 'The Pro-Democracy Movement' },
+  { id: '2026-05-06', date: '2026-05-06', topic: 'Film: A Single Spark + The Dwarf' },
+  { id: '2026-05-11', date: '2026-05-11', topic: 'Korean Manchuria: Salt' },
+  { id: '2026-05-13', date: '2026-05-13', topic: 'Zainichi: Full House' },
+  { id: '2026-05-15', date: '2026-05-15', topic: 'Film: Madame Freedom' },
+  { id: '2026-05-18', date: '2026-05-18', topic: 'Queer Literature + Gi Hyeong-do' },
+  { id: '2026-05-20', date: '2026-05-20', topic: "Film: Spirit's Homecoming" },
+  { id: '2026-05-27', date: '2026-05-27', topic: 'DPRK Fiction + Loyal Citizens' },
+  { id: '2026-05-29', date: '2026-05-29', topic: 'Film: Parasite' }
+];
+
+const STATUS_OPTIONS = [
+  { key: 'present', label: 'Present' },
+  { key: 'late', label: 'Late' },
+  { key: 'absent', label: 'Absent' },
+  { key: 'excused', label: 'Excused' }
+];
+
+const STORAGE_KEY = 'mkilf-attendance-v1';
+let attendanceStore = loadStore();
+let currentView = 'grid';
+let currentSessionId = detectCurrentSessionId();
+
+function loadStore() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  } catch (error) {
+    return {};
+  }
+}
+
+function saveStore() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(attendanceStore));
+}
+
+function getSessionRecord(sessionId) {
+  if (!attendanceStore[sessionId]) {
+    attendanceStore[sessionId] = { notes: '', students: {} };
+  }
+  return attendanceStore[sessionId];
+}
+
+function detectCurrentSessionId() {
+  const today = new Date();
+  today.setHours(12, 0, 0, 0);
+  for (const session of SESSIONS) {
+    const d = new Date(session.date + 'T12:00:00');
+    if (d >= today) return session.id;
+  }
+  return SESSIONS[SESSIONS.length - 1].id;
+}
+
+function formatFullDate(iso) {
+  const d = new Date(iso + 'T12:00:00');
+  return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+function formatShortDate(iso) {
+  const d = new Date(iso + 'T12:00:00');
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+function buildSessionSelect() {
+  const select = document.getElementById('sessionSelect');
+  select.innerHTML = SESSIONS.map((session) =>
+    `<option value="${session.id}">${formatShortDate(session.date)} · ${session.topic}</option>`
+  ).join('');
+  select.value = currentSessionId;
+}
+
+function getCurrentSession() {
+  return SESSIONS.find((session) => session.id === currentSessionId) || SESSIONS[0];
+}
+
+function setStatus(studentId, status) {
+  const session = getSessionRecord(currentSessionId);
+  if (session.students[studentId] === status) {
+    delete session.students[studentId];
+  } else {
+    session.students[studentId] = status;
+  }
+  saveStore();
+  renderAttendance();
+}
+
+function buildStatusButtons(studentId, currentStatus) {
+  return STATUS_OPTIONS.map((option) =>
+    `<button class="status-btn ${option.key}${currentStatus === option.key ? ' is-active' : ''}" type="button" data-student="${studentId}" data-status="${option.key}">${option.label}</button>`
+  ).join('');
+}
+
+function renderGridView(record) {
+  const fallbackFor = (name) => 'data:image/svg+xml,' + encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#ddd"/><text x="50" y="65" text-anchor="middle" font-size="40" fill="#999">${name.charAt(0)}</text></svg>`
+  );
+  document.getElementById('gridView').innerHTML = STUDENTS.map((student) => `
+    <article class="attendance-card">
+      <img src="${student.photo}" alt="${student.name}" class="attendance-photo" onerror="this.src='${fallbackFor(student.name)}'">
+      <div class="attendance-body">
+        <div class="attendance-name">${student.name}</div>
+        <div class="attendance-pronouns">${student.pronouns}</div>
+        <div class="status-row">
+          ${buildStatusButtons(student.id, record.students[student.id] || '')}
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+function renderListView(record) {
+  const fallbackFor = (name) => 'data:image/svg+xml,' + encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#ddd"/><text x="50" y="65" text-anchor="middle" font-size="40" fill="#999">${name.charAt(0)}</text></svg>`
+  );
+  document.getElementById('rollcallBody').innerHTML = STUDENTS.map((student) => `
+    <tr>
+      <td><img src="${student.photo}" alt="${student.name}" class="rollcall-photo" onerror="this.src='${fallbackFor(student.name)}'"></td>
+      <td>
+        <div class="rollcall-name">${student.name}</div>
+        <div class="rollcall-pronouns">${student.pronouns}</div>
+      </td>
+      <td>
+        <div class="rollcall-status">
+          ${buildStatusButtons(student.id, record.students[student.id] || '')}
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function renderSummary(record) {
+  const counts = { present: 0, late: 0, absent: 0, excused: 0, unmarked: 0 };
+  STUDENTS.forEach((student) => {
+    const status = record.students[student.id];
+    if (!status) counts.unmarked += 1;
+    else counts[status] += 1;
+  });
+  document.getElementById('countPresent').textContent = counts.present;
+  document.getElementById('countLate').textContent = counts.late;
+  document.getElementById('countAbsent').textContent = counts.absent;
+  document.getElementById('countExcused').textContent = counts.excused;
+  document.getElementById('countUnmarked').textContent = counts.unmarked;
+}
+
+function renderAttendance() {
+  const session = getCurrentSession();
+  const record = getSessionRecord(currentSessionId);
+  document.getElementById('heroSessionTitle').textContent = session.topic;
+  document.getElementById('heroSessionDate').textContent = formatFullDate(session.date);
+  document.getElementById('sessionSelect').value = currentSessionId;
+  document.getElementById('classNotes').value = record.notes || '';
+
+  renderSummary(record);
+  renderGridView(record);
+  renderListView(record);
+
+  document.getElementById('gridView').hidden = currentView !== 'grid';
+  document.getElementById('listView').hidden = currentView !== 'list';
+  document.querySelectorAll('.mode-btn').forEach((button) => {
+    button.classList.toggle('is-active', button.dataset.view === currentView);
+  });
+
+  const sessionIndex = SESSIONS.findIndex((item) => item.id === currentSessionId);
+  document.getElementById('prevSessionBtn').disabled = sessionIndex <= 0;
+  document.getElementById('nextSessionBtn').disabled = sessionIndex >= SESSIONS.length - 1;
+
+  document.querySelectorAll('[data-student][data-status]').forEach((button) => {
+    button.addEventListener('click', () => setStatus(button.dataset.student, button.dataset.status));
+  });
+}
+
+function setSessionByOffset(delta) {
+  const index = SESSIONS.findIndex((item) => item.id === currentSessionId);
+  const next = SESSIONS[index + delta];
+  if (!next) return;
+  currentSessionId = next.id;
+  renderAttendance();
+}
+
+document.getElementById('sessionSelect').addEventListener('change', (event) => {
+  currentSessionId = event.target.value;
+  renderAttendance();
+});
+
+document.getElementById('prevSessionBtn').addEventListener('click', () => setSessionByOffset(-1));
+document.getElementById('nextSessionBtn').addEventListener('click', () => setSessionByOffset(1));
+
+document.querySelectorAll('.mode-btn').forEach((button) => {
+  button.addEventListener('click', () => {
+    currentView = button.dataset.view;
+    renderAttendance();
+  });
+});
+
+document.getElementById('markAllPresentBtn').addEventListener('click', () => {
+  const record = getSessionRecord(currentSessionId);
+  STUDENTS.forEach((student) => { record.students[student.id] = 'present'; });
+  saveStore();
+  renderAttendance();
+});
+
+document.getElementById('clearSessionBtn').addEventListener('click', () => {
+  attendanceStore[currentSessionId] = { notes: '', students: {} };
+  saveStore();
+  renderAttendance();
+});
+
+document.getElementById('copySummaryBtn').addEventListener('click', async () => {
+  const session = getCurrentSession();
+  const record = getSessionRecord(currentSessionId);
+  const lines = [
+    `${formatFullDate(session.date)} — ${session.topic}`,
+    ...STUDENTS.map((student) => `${student.name}: ${record.students[student.id] || 'unmarked'}`),
+    '',
+    `Notes: ${record.notes || ''}`
+  ];
+  try {
+    await navigator.clipboard.writeText(lines.join('\n'));
+    document.getElementById('copySummaryBtn').textContent = 'Copied';
+    setTimeout(() => { document.getElementById('copySummaryBtn').textContent = 'Copy Summary'; }, 900);
+  } catch (error) {
+    document.getElementById('copySummaryBtn').textContent = 'Copy Failed';
+    setTimeout(() => { document.getElementById('copySummaryBtn').textContent = 'Copy Summary'; }, 1200);
+  }
+});
+
+document.getElementById('classNotes').addEventListener('input', (event) => {
+  const record = getSessionRecord(currentSessionId);
+  record.notes = event.target.value;
+  saveStore();
+});
+
+buildSessionSelect();
+renderAttendance();
+</script>
+</body>
+</html>
