@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Prep — Korean History through Literature and Film</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4f3f0;
+  --surface: #fff;
+  --surface-alt: #faf9f7;
+  --border: #e5e2dc;
+  --ink: #1a1a1a;
+  --ink-muted: #6b6b6b;
+  --ink-faint: #aaa;
+  --red: #b83232;
+  --red-light: #fdf1f1;
+  --gold: #a67c00;
+  --gold-light: #fdf8ec;
+  --teal: #1a6b5a;
+  --teal-light: #edf7f4;
+  --blue: #2d4f8a;
+  --blue-light: #eef2fa;
+  --sepia: #7a5c3a;
+  --sepia-light: #faf6f0;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--bg); color: var(--ink); }
+
+/* ── HEADER ── */
+.site-header {
+  background: #1a1a1a;
+  border-bottom: 1px solid #333;
+  padding: 0 1.5rem;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+.header-left { display: flex; align-items: center; gap: 1.25rem; }
+.course-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--gold); font-weight: 600; }
+.plate-nav { display: flex; align-items: center; gap: 6px; }
+.nav-btn {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  color: #ccc; width: 28px; height: 28px; border-radius: 4px;
+  cursor: pointer; font-size: 13px; display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.nav-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.nav-btn:disabled { opacity: 0.25; cursor: default; }
+.plate-selector { position: relative; }
+.plate-btn {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  color: #eee; padding: 0 12px; height: 28px; border-radius: 4px;
+  cursor: pointer; font-size: 12px; font-family: inherit; min-width: 160px;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.plate-btn:hover { background: rgba(255,255,255,0.1); }
+.plate-dropdown {
+  position: absolute; top: calc(100% + 6px); left: 0;
+  background: #222; border: 1px solid #444; border-radius: 8px;
+  min-width: 320px; max-height: 480px; overflow-y: auto;
+  display: none; z-index: 200; box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+.plate-dropdown.open { display: block; }
+.week-group-label {
+  padding: 8px 14px 4px;
+  font-size: 9px; text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--gold); font-weight: 600; border-top: 1px solid #333; margin-top: 4px;
+}
+.week-group-label:first-child { margin-top: 0; border-top: none; }
+.plate-option {
+  padding: 8px 14px; cursor: pointer; font-size: 12px; color: #ccc;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: background 0.1s;
+}
+.plate-option:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.plate-option.active { background: rgba(184,50,50,0.25); color: #fff; }
+.plate-option.no-class { color: #666; font-style: italic; }
+.plate-date-tag { font-size: 10px; color: #666; }
+
+.header-right { display: flex; align-items: center; gap: 10px; }
+.site-link { font-size: 11px; color: #999; text-decoration: none; padding: 4px 8px; border-radius: 4px; border: 1px solid #333; transition: all 0.15s; }
+.site-link:hover { color: #fff; border-color: #555; }
+.canvas-link { color: var(--gold); border-color: rgba(166,124,0,0.35); }
+.canvas-link:hover { background: rgba(166,124,0,0.1); border-color: var(--gold); }
+
+/* ── PLATE HEADER ── */
+.plate-header {
+  background: linear-gradient(160deg, #1e2a35 0%, #2c3e50 50%, #1e2a35 100%);
+  padding: 2rem 2rem 1.75rem;
+  position: relative; overflow: hidden;
+}
+.plate-header::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 60L60 0M-10 10L10 -10M50 70L70 50' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.plate-header-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+.week-eyebrow { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 0.4rem; font-weight: 600; }
+.plate-title { font-family: 'Newsreader', serif; font-size: 1.9rem; font-weight: 400; color: #fff; line-height: 1.15; margin-bottom: 0.3rem; }
+.plate-date-line { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+.no-class-banner {
+  background: linear-gradient(160deg, #2a1f1f 0%, #3a2828 100%);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.no-class-banner .banner-label {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em;
+  color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;
+}
+.no-class-banner .banner-title {
+  font-family: 'Newsreader', serif; font-size: 2rem; color: #fff; font-weight: 400;
+}
+.no-class-banner .banner-sub { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-top: 0.4rem; }
+
+/* ── MAIN LAYOUT ── */
+.main-wrap { max-width: 1100px; margin: 0 auto; padding: 1.5rem; display: grid; grid-template-columns: 1fr 300px; gap: 1.5rem; align-items: start; }
+
+/* ── SECTION LABELS ── */
+.section-label {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--ink-faint); font-weight: 600; margin-bottom: 0.75rem; margin-top: 1.25rem;
+}
+.section-label:first-child { margin-top: 0; }
+
+/* ── FILM CARD ── */
+.film-card {
+  border-radius: 6px; overflow: hidden;
+  border: 1px solid #2a2a2a;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.film-card-backdrop {
+  height: 120px;
+  background-size: cover; background-position: center 25%;
+  position: relative;
+}
+.film-card-backdrop::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+}
+.film-card-backdrop-label {
+  position: absolute; bottom: 10px; left: 14px; right: 14px; z-index: 1;
+}
+.film-badge {
+  display: inline-block; font-size: 0.6rem; text-transform: uppercase;
+  letter-spacing: 0.15em; background: var(--red); color: #fff;
+  padding: 2px 7px; border-radius: 2px; font-weight: 700; margin-bottom: 5px;
+}
+.film-card-backdrop-label h3 {
+  font-family: 'Newsreader', serif; font-size: 1.2rem; font-weight: 600;
+  color: #fff; line-height: 1.2;
+}
+.film-card-body {
+  background: #1e1e1e;
+  padding: 12px 14px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.film-meta { font-size: 0.75rem; color: #999; }
+.film-meta strong { color: #ccc; font-weight: 500; }
+.deep-dive-link {
+  font-size: 0.72rem; font-weight: 600; color: var(--gold);
+  text-decoration: none; letter-spacing: 0.03em;
+  border: 1px solid rgba(166,124,0,0.3); padding: 4px 10px; border-radius: 3px;
+  transition: all 0.15s; white-space: nowrap;
+}
+.deep-dive-link:hover { background: rgba(166,124,0,0.1); color: #c9a030; }
+.card-title-link { color: inherit; text-decoration: none; }
+.card-title-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.card-title-link-sepia { color: var(--sepia); text-decoration: none; font-style: italic; }
+.card-title-link-sepia:hover { text-decoration: underline; text-underline-offset: 3px; }
+.watch-link { color: #fff !important; border-color: rgba(255,255,255,0.3) !important; }
+.watch-link:hover { background: rgba(255,255,255,0.12) !important; }
+.doc-link { color: var(--blue); text-decoration: none; font-weight: 500; }
+.doc-link:hover { text-decoration: underline; text-underline-offset: 2px; }
+.sec-link { color: inherit; text-decoration: none; }
+.sec-link:hover { text-decoration: underline; text-underline-offset: 2px; color: var(--ink); }
+
+/* ── LITERATURE CARD ── */
+.lit-card {
+  background: var(--sepia-light);
+  border: 1px solid #d4c9b5;
+  border-radius: 4px;
+  padding: 12px 14px;
+  margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 12px;
+  box-shadow: 1px 2px 6px rgba(139,90,43,0.08);
+}
+.lit-portrait {
+  width: 48px; height: 48px; border-radius: 50%;
+  object-fit: cover; flex-shrink: 0;
+  border: 2px solid rgba(139,90,43,0.2);
+}
+.lit-portrait-placeholder {
+  width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+  background: #e8dfd0; border: 2px solid rgba(139,90,43,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif KR', serif; font-size: 1.1rem; color: var(--sepia);
+}
+.lit-card-content { flex: 1; min-width: 0; }
+.lit-author { font-size: 0.8rem; font-weight: 600; color: var(--sepia); }
+.lit-author-korean { font-family: 'Noto Serif KR', serif; font-size: 0.72rem; color: #a0876a; margin-left: 5px; }
+.lit-title { font-family: 'Newsreader', serif; font-size: 0.95rem; font-style: italic; color: var(--ink); margin-top: 2px; line-height: 1.3; }
+.lit-meta { font-size: 0.7rem; color: #a0876a; margin-top: 2px; }
+.lit-badge { display: inline-block; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.08em; background: #e8dfd0; color: var(--sepia); padding: 1px 6px; border-radius: 2px; margin-left: 5px; vertical-align: middle; }
+
+/* ── DOCUMENT CARD (political docs, no deep dive) ── */
+.doc-card {
+  background: var(--blue-light);
+  border: 1px solid #c5d0e8;
+  border-left: 3px solid var(--blue);
+  border-radius: 0 4px 4px 0;
+  padding: 10px 14px;
+  margin-bottom: 0.75rem;
+}
+.doc-card .doc-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--blue); font-weight: 700; margin-bottom: 3px; }
+.doc-card .doc-title { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+.doc-card .doc-meta { font-size: 0.72rem; color: #6a7fa0; margin-top: 2px; }
+
+/* ── SECONDARY READING CARD ── */
+.sec-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin-bottom: 0.6rem;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.sec-type-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px;
+}
+.sec-type-dot.cumings { background: #8b4513; }
+.sec-type-dot.article { background: var(--teal); }
+.sec-type-dot.optional { background: #bbb; }
+.sec-card-body { flex: 1; }
+.sec-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); font-weight: 600; margin-bottom: 2px; }
+.sec-title { font-size: 0.82rem; font-weight: 600; color: var(--ink); line-height: 1.35; }
+.sec-meta { font-size: 0.7rem; color: var(--ink-muted); margin-top: 2px; }
+
+/* ── SIDEBAR ── */
+.sidebar { display: flex; flex-direction: column; gap: 1rem; }
+.sb-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.sb-card-head {
+  background: var(--ink); color: #fff;
+  padding: 8px 14px;
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600;
+}
+.sb-card-head.gold { background: var(--gold); }
+.sb-card-head.red { background: var(--red); }
+.sb-card-head.teal { background: var(--teal); }
+.sb-card-body { padding: 12px 14px; }
+.week-desc { font-size: 0.8rem; color: var(--ink-muted); line-height: 1.6; }
+.cumings-ref {
+  background: #fdf6ed; border: 1px solid #e8d5b5; border-radius: 4px;
+  padding: 8px 12px; margin-top: 10px;
+}
+.cumings-ref .cr-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: #8b4513; font-weight: 700; margin-bottom: 2px; }
+.cumings-ref .cr-chapter { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+.cumings-ref .cr-pages { font-size: 0.72rem; color: #8b4513; }
+
+.quick-links { display: flex; flex-direction: column; gap: 6px; }
+.quick-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 7px 10px; border-radius: 4px; border: 1px solid var(--border);
+  text-decoration: none; font-size: 0.78rem; color: var(--ink);
+  background: var(--surface-alt); transition: all 0.15s;
+}
+.quick-link:hover { border-color: var(--red); color: var(--red); }
+.quick-link-arrow { font-size: 0.7rem; color: var(--ink-faint); }
+
+.upcoming-list { display: flex; flex-direction: column; gap: 8px; }
+.upcoming-item { padding: 8px 0; border-bottom: 1px solid var(--border); }
+.upcoming-item:last-child { border-bottom: none; padding-bottom: 0; }
+.upcoming-date { font-size: 0.68rem; font-weight: 600; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em; }
+.upcoming-topic { font-size: 0.8rem; color: var(--ink); margin-top: 2px; line-height: 1.3; }
+.upcoming-type-row { display: flex; gap: 4px; margin-top: 4px; flex-wrap: wrap; }
+.upcoming-pill {
+  font-size: 0.6rem; padding: 1px 6px; border-radius: 2px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.upcoming-pill.film { background: #2a1a1a; color: #e8a0a0; }
+.upcoming-pill.lit { background: #f5ede0; color: var(--sepia); }
+.upcoming-pill.noclass { background: #f0f0f0; color: #999; }
+
+@media (max-width: 768px) {
+  .main-wrap { grid-template-columns: 1fr; }
+  .plate-btn { min-width: 120px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-left">
+    <span class="course-tag">HIST 418 / FILM 419</span>
+    <div class="plate-nav">
+      <button class="nav-btn" id="prevBtn" onclick="navigate(-1)">&#8592;</button>
+      <div class="plate-selector">
+        <button class="plate-btn" onclick="toggleDropdown()">
+          <span id="plateBtnLabel">Loading...</span>
+          <span style="color:#666; font-size:10px;">&#9660;</span>
+        </button>
+        <div class="plate-dropdown" id="plateDropdown"></div>
+      </div>
+      <button class="nav-btn" id="nextBtn" onclick="navigate(1)">&#8594;</button>
+    </div>
+  </div>
+  <div class="header-right">
+    <a href="https://docs.google.com/document/d/1HNEFiCmnfJIas4y0Vachgl8BxG1MKhpq-bi2_3mR604" target="_blank" class="site-link">Syllabus</a>
+    <a href="https://lawrence.instructure.com/courses/12321" target="_blank" class="site-link canvas-link">Canvas</a>
+    <a href="index.html" class="site-link">Films</a>
+    <a href="literature.html" class="site-link">Literature</a>
+    <a href="workbook.html" class="site-link">Workbook</a>
+  </div>
+</header>
+
+<!-- PLATE HEADER -->
+<div id="plateHeader"></div>
+
+<!-- MAIN -->
+<div class="main-wrap" id="mainWrap"></div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+
+const TMDB = 'https://media.themoviedb.org/t/p/w1280/';
+const AUTH = 'images/authors/';
+
+const WEEKS = {
+  1: { label: 'Foundation and Frameworks / Joseon Ends',
+       desc: 'Orienting frameworks for Korean history. The Joseon dynasty under pressure — Confucian court politics, palace intrigue, and the first shocks of the modern world.' },
+  2: { label: 'Joseon Ends, Colonialism Begins cont.',
+       desc: 'The New Woman movement challenges Confucian gender norms. Colonial modernism registers the dislocation of life under Japanese rule in fiction, poetry, and film.' },
+  3: { label: 'Liberation, Occupation, Civil War',
+       desc: 'Liberation (해방) on August 15, 1945 brings euphoria and immediate fracture. The peninsula divides. Writers from North and South record the impossible choices of the liberation period and the horror of civil war.' },
+  4: { label: 'Liberation, Occupation, Civil War cont.',
+       desc: 'The long aftermath of war: partition, poverty, and displacement. Post-war Seoul as wasteland. The division\'s cost on ordinary lives — in fiction, short story, and film.' },
+  5: { label: 'Division, Dictatorships, Democratization',
+       desc: 'Industrialization under Park Chung-hee — the "economic miracle" and its costs. Urban alienation in Seoul\'s new apartment cities. North Korean ideology and the lived experience of a divided peninsula.' },
+  6: { label: 'Division, Dictatorships, Democratization cont.',
+       desc: 'The pro-democracy movement of the 1970s–80s. Dissident literature and film as political resistance. The labor movement and the voices it produced.' },
+  7: { label: 'Relations with Japan, China, United States',
+       desc: 'Korean writers at the margins: the Manchurian diaspora under Japanese colonialism, Zainichi Korean identity in postwar Japan, and American cultural influence in 1950s Seoul.' },
+  8: { label: 'Sex and Gender Politics',
+       desc: 'Contemporary queer voices and the politics of the body. Gi Hyeong-do\'s dark modernist poetry. Comfort women and historical sexual violence on film.' },
+  9: { label: 'Contemporary DPRK Fiction',
+       desc: 'The other half of Korean literature — reading North Korean fiction as literature. How does division shape what stories can be told on each side of the DMZ?' },
+};
+
+// Card types:
+// film: { type:'film', title, director, year, runtime, backdrop (hash), deepDive (slug) }
+// lit:  { type:'lit', author, authorKo, year, title, genre, portrait (slug), deepDive (slug) }
+// doc:  { type:'doc', label, title, meta }  ← primary source doc, no deep dive
+// cum:  { type:'cum', chapter, title, pages }  ← Cumings
+// art:  { type:'art', author, title, source, optional? }  ← journal article
+
+const PLATES = [
+  // ── WEEK 1 ──────────────────────────────────────────────────────────────────
+  { id:1, date:'2026-03-30', week:1, topic:'Introduction to the Course',
+    primary: [
+      { type:'doc', label:'Orientation', title:'Korean Language Pronunciation Primer', meta:'In-class handout — first day', url:'https://letslearnkoreanwithtracie.weebly.com/uploads/1/6/0/9/16090042/2060644_orig.gif?455' }
+    ],
+    secondary: []
+  },
+  { id:2, date:'2026-04-01', week:1, topic:'The Joseon Court',
+    primary: [
+      { type:'lit', author:'Lady Hyegyeong', authorKo:'헌경왕후', year:'1805', title:'Hanjungnok (Memoirs)', genre:'Memoir', portrait:'lady-hyegyeong', deepDive:'hanjungnok', url:'https://drive.google.com/file/d/1wH5ZqcDmzOVvY-Nkl_FbaM6JpQoRALFa/view?usp=sharing' }
+    ],
+    secondary: [
+      { type:'art', author:'Edward Schultz', title:'"Top Ten Things to Know About Korea in the 21st Century"', source:'Education About Asia, vol. 7, Winter 2002, pp. 7–10', url:'https://drive.google.com/file/d/1ckhbRSfxWcyw1cHd0xEOU52iCtjLT2ry/view?usp=sharing' },
+      { type:'art', author:'Gi-wook Shin', title:'"Paradox of Korean Globalization"', source:'APARC Working Paper, pp. 5–19 (skim for thesis and evidence)', optional:true, url:'https://drive.google.com/file/d/18Pzdsksej94Vd1nWMThYme3MwbZ1DxTS/view?usp=sharing' }
+    ]
+  },
+  { id:3, date:'2026-04-03', week:1, topic:'Film: The Throne',
+    primary: [
+      { type:'film', title:'The Throne', titleKo:'사도', director:'Lee Joon-ik', year:'2015', runtime:'125 min.', backdrop:'j8qDbfN7EwQsOpfEw96R3lbJyE1.jpg', deepDive:'the-throne', url:'https://lawrenceu-my.sharepoint.com/:v:/g/personal/wegehaum_lawrence_edu/IQD-qvgU6HreQY73xQihMTfbASiQTwdTqp7R9JPRwe0L4b0?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=6IxcKZ' }
+    ],
+    secondary: [
+      { type:'cum', chapter:'Chapter 1', title:'"The Virtues"', pages:'pp. 19–85', url:'https://drive.google.com/file/d/1T1echg3l9-7DT6E_w3JDHZHuosjAdGX5/view' }
+    ]
+  },
+
+  // ── WEEK 2 ──────────────────────────────────────────────────────────────────
+  { id:4, date:'2026-04-06', week:2, topic:'New Women',
+    primary: [
+      { type:'lit', author:'Na Hyesŏk', authorKo:'나혜석', year:'1918', title:'Kyŏnghŭi', genre:'Short Story', portrait:'na-hyeseok', deepDive:'kyonghui', url:'https://drive.google.com/file/d/1ko_6MM8sD6SeeFRQIJbAxLH7ywqWkc4d/view?usp=sharing' }
+    ],
+    secondary: [
+      { type:'cum', chapter:'Chapter 2', title:'"The Interests, 1860–1904"', pages:'pp. 86–138', url:'https://drive.google.com/file/d/1wgDnMwHzZN2t2ykaJ_1BeLehYnCwA6FJ/view' },
+      { type:'art', author:'Kim Yung-hee', title:'"Creating New Paradigms of Womanhood in Modern Korean Literature: Na Hye-sŏk\'s \'Kyŏnghŭi\'"', source:'Korean Studies, vol. 26, no. 1, 2002, pp. 1–50', optional:true, url:'https://drive.google.com/file/d/1ONjRf6KJC3F-gO6jDUTW6zCUp0TQvhOT/view?usp=sharing' }
+    ]
+  },
+  { id:5, date:'2026-04-08', week:2, topic:'Colonial Modernism',
+    primary: [
+      { type:'lit', author:'Kim Wonju', authorKo:'김원주', year:'1926', title:'Awakening', genre:'Short Story', portrait:'kim-wonju', deepDive:'awakening', url:'https://drive.google.com/file/d/1-8WWSg3rHLIAEpLTdHM7n3kUO0w0qPz3/view?usp=sharing' },
+      { type:'lit', author:'Kim Tongin', authorKo:'김동인', year:'1925', title:'Potatoes', genre:'Short Story', portrait:'kim-tongin', deepDive:'potatoes', url:'https://drive.google.com/file/d/1UM7_6z56PAcDinFhOKWP0N6Gp5t_n7Zk/view?usp=sharing' }
+    ],
+    secondary: [
+      { type:'cum', chapter:'Chapter 3', title:'"Eclipse, 1905–1945"', pages:'pp. 139–153 (read to "Rise of Korean Nationalism")', url:'https://drive.google.com/file/d/15eUPDNUW0QdmDFvgSME5NTHla-7yswLM/view' },
+      { type:'art', author:'Kim Yung-hee', title:'"From Subservience to Autonomy: Kim Wonju\'s \'Awakening\'"', source:'Korean Studies, vol. 21, 1997, pp. 1–22', optional:true, url:'https://drive.google.com/file/d/1YAZ5K1KIlki1TeXolhgyIa968fvlrx01/view?usp=sharing' }
+    ]
+  },
+  { id:6, date:'2026-04-10', week:2, topic:'Film: Sopyonje + Yi Sang',
+    primary: [
+      { type:'film', title:'Sopyonje', titleKo:'서편제', director:'Im Kwontaek', year:'1993', runtime:'113 min.', backdrop:'5Xar1vpdb7meEo5qZRsZbbDpfOu.jpg', deepDive:'sopyonje', url:'https://lawrenceu-my.sharepoint.com/:v:/g/personal/wegehaum_lawrence_edu/IQD4RqEUtDHxSIiUEjeU3hj7AV9Fh3G1cHbQEuesn-RnSH0?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=cWqBJN' },
+      { type:'lit', author:'Yi Sang', authorKo:'이상', year:'1936', title:'Meetings and Farewells', genre:'Short Story', portrait:'yi-sang', deepDive:'meetings-farewells', url:'https://drive.google.com/file/d/1QCx_nJ9CI2HOy4lvQO38Q2Cs-_SOenOO/view?usp=sharing' }
+    ],
+    secondary: [
+      { type:'cum', chapter:'Chapter 3 cont.', title:'"Eclipse, 1905–1945"', pages:'pp. 153–184', url:'https://drive.google.com/file/d/14_JgviXXGWtPeEpFdhOIJCX0T4H0hZD0/view' }
+    ]
+  },
+
+  // ── WEEK 3 ──────────────────────────────────────────────────────────────────
+  { id:7, date:'2026-04-13', week:3, topic:'Liberation Literature',
+    primary: [
+      { type:'lit', author:'Chae Mansik', authorKo:'채만식', year:'1946', title:'Constable Maeng', genre:'Short Story', portrait:'chae-mansik', deepDive:'constable-maeng', url:'https://drive.google.com/file/d/1MH49qDHYyoxxcvbu-QEUCpo3VVAomXid/view?usp=sharing' },
+      { type:'lit', author:'Yi Taejun', authorKo:'이태준', year:'1946', title:'Before and After Liberation', genre:'Short Story', portrait:'yi-taejun', deepDive:'before-after-liberation', url:'https://drive.google.com/file/d/1S7RezGeCwxs0HvwGvW3icCtbUM2lsN5v/view?usp=sharing' }
+    ],
+    secondary: [
+      { type:'cum', chapter:'Chapter 4', title:'"The Passions"', pages:'pp. 185–236', url:'https://drive.google.com/file/d/1BPcQDq9OhtaAkaFX-oTlrWyZp3hyBBP3/view' }
+    ]
+  },
+  { id:8, date:'2026-04-15', week:3, topic:'DPRK Literature of the War',
+    primary: [
+      { type:'lit', author:'Han Sorya', authorKo:'한설야', year:'1951', title:'Jackals', genre:'Novella', portrait:'han-sorya', deepDive:'jackals', url:'https://drive.google.com/file/d/1EoeSi8AYhKhXyXPnHGQKWMUrWcTcR87p/view?usp=sharing' }
+    ],
+    secondary: [
+      { type:'cum', chapter:'Chapter 5', title:'"Collision, 1948–1953"', pages:'pp. 237–273', url:'https://drive.google.com/file/d/1H8Rz9Xnon9VyMEljWXLQfWMb00gj80o3/view' }
+    ]
+  },
+  { id:9, date:'2026-04-17', week:3, topic:'Film: Taebaek Mountains',
+    primary: [
+      { type:'film', title:'Taebaek Mountains', titleKo:'태백산맥', director:'Im Kwontaek', year:'1994', runtime:'164 min.', backdrop:'2lZeVDR8ZSMSl691Beb2vV5RW5v.jpg', deepDive:'taebaek-mountains', url:'https://lawrenceu-my.sharepoint.com/:v:/g/personal/wegehaum_lawrence_edu/IQAWHFzw4Tg5QY3iq8DDy9QWAYw2kaxTUXO9HS-kRVnqjQI?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=qz2wVX' }
+    ],
+    secondary: []
+  },
+
+  // ── WEEK 4 ──────────────────────────────────────────────────────────────────
+  { id:10, date:'2026-04-20', week:4, topic:'Division Literature: Cranes',
+    primary: [
+      { type:'lit', author:'Hwang Sunwon', authorKo:'황순원', year:'1953', title:'Cranes (학)', genre:'Short Story', portrait:'hwang-sunwon', deepDive:'cranes', url:'https://drive.google.com/file/d/1UobGwY4ihnEXv2VlIcLg83_YfRRJgOnc/view?usp=sharing' }
+    ],
+    secondary: [
+      { type:'cum', chapter:'Chapter 5 cont.', title:'"Collision"', pages:'pp. 274–298', url:'https://drive.google.com/file/d/1i1MQYBQmTttNm5cGpQ1I6rZbscpCL3vC/view' }
+    ]
+  },
+  { id:11, date:'2026-04-22', week:4, topic:'Pak Wanso: War\'s Aftermath',
+    primary: [
+      { type:'lit', author:'Pak Wanso', authorKo:'박완서', year:'1977', title:'A Pasque-Flower on That Bleak Day', genre:'Short Story', portrait:'pak-wanso', deepDive:'pasque-flower', url:'https://drive.google.com/file/d/1u2WPTeiVg7vfaypLCUYK8Py6o7zGYr5W/view?usp=sharing' }
+    ],
+    secondary: [
+      { type:'art', author:'', title:'"Park Wan-suh: Portrait of the Artist as a Young Girl"', source:'Acta Koreana, vol. 12, no. 2, Dec. 2009, pp. 229–234', url:'https://drive.google.com/file/d/13NU5q_jAGB_6-rGKisVwqU3RxGWgSKeW/view?usp=sharing' },
+      { type:'art', author:'Kim Yung-hee', title:'"Introduction: Traditions in Modern Korean Women\'s Fiction Writing"', source:'in Questioning Minds: Short Stories by Modern Korean Women Writers', url:'https://drive.google.com/file/d/1_tqZPf4Y6vA7Z22YS3Inw5NHWyfUYMwu/view?usp=sharing' }
+    ]
+  },
+  { id:12, date:'2026-04-24', week:4, topic:'Film: Aimless Bullet + The Stray Bullet',
+    primary: [
+      { type:'lit', author:'Yi Beomseon', authorKo:'이범선', year:'1959', title:'A Stray Bullet (오발탄)', genre:'Short Story', portrait:'yi-beomseon', deepDive:'stray-bullet', url:'https://drive.google.com/file/d/141vs10BI6DzE4wnW9Ih1EAEKs65KGjeF/view?usp=sharing' },
+      { type:'film', title:'Aimless Bullet', titleKo:'오발탄', director:'Yu Hyonmok', year:'1961', runtime:'105 min.', backdrop:'f1d3HKb0maqs8Axluv86cHM6DMd.jpg', deepDive:'aimless-bullet', url:'https://lawrenceu-my.sharepoint.com/:v:/g/personal/wegehaum_lawrence_edu/IQD_WU-deE8OT5uYaGzKSRnGAcCL3EC15-OT5aYg_ITCDSY?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=9A9kKh' }
+    ],
+    secondary: [
+      { type:'cum', chapter:'Chapter 6', title:'"Korean Sun Rising: Industrialization"', pages:'pp. 299–317 (to "Normalization")', url:'https://drive.google.com/file/d/1fdHwOFmOACos7IGnxD9LHfK8lqlCIBAC/view' },
+      { type:'art', author:'Eunsun Cho', title:'"The Stray Bullet and the Crisis of Korean Masculinity"', source:'South Korean Golden Age Melodrama, pp. 99–116', optional:true, url:'https://drive.google.com/file/d/1aMa0n9VNroZVq3wk8zA4pwHu-XS1cE_9/view?usp=sharing' }
+    ]
+  },
+
+  // ── WEEK 5 ──────────────────────────────────────────────────────────────────
+  { id:13, date:'2026-04-27', week:5, topic:'The Apartment City',
+    primary: [
+      { type:'lit', author:'Pak Wanso', authorKo:'박완서', year:'1974', title:'Identical Apartments', genre:'Short Story', portrait:'pak-wanso', deepDive:'identical-apartments', url:'https://drive.google.com/file/d/1jm2YZRXrYkr-726QRclJrU6w3VPbKS_k/view?usp=sharing' },
+      { type:'lit', author:'Pak Wanso', authorKo:'박완서', year:'1978', title:'The Day My Housewatching Ended', genre:'Short Story', portrait:'pak-wanso', deepDive:'housewatching', url:'https://drive.google.com/file/d/1sUCsmgWAMQkX7FdK-SSdVfKt3jkBajQx/view?usp=sharing' }
+    ],
+    secondary: [
+      { type:'cum', chapter:'Chapter 6 cont.', title:'"Korean Sun Rising"', pages:'pp. 317–341', url:'https://drive.google.com/file/d/1RZMNZf92tgqJM8kyOFic7RSk1_BQij8h/view' }
+    ]
+  },
+  { id:14, date:'2026-04-29', week:5, topic:'Film: The Flower Girl + Juche',
+    primary: [
+      { type:'doc', label:'Political Document', title:'Kim Il-sung — "Juche Thought" (1955)', meta:'pp. 419–425 in Sources of Korean Tradition, vol. 2', url:'https://drive.google.com/file/d/1QIQzoDdvXE4JQRHmcCwGejXplouCqrd4/view?usp=sharing' },
+      { type:'film', title:'The Flower Girl', titleKo:'꽃파는 처녀', director:'Choe Ik-gyu & Pak Hak', year:'1972', runtime:'125 min.', backdrop:'kQtlDwGFi4rw97s7iHFFJsrJwVV.jpg', deepDive:'the-flower-girl', url:'https://lawrenceu-my.sharepoint.com/:v:/g/personal/wegehaum_lawrence_edu/IQDharqOt-ZWQZCcIAb6P_EwAYgF6yQzYdQ31-MXOEs2QIQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=BwAz0u' }
+    ],
+    secondary: [
+      { type:'cum', chapter:'Chapter 8', title:'"Nation of the Sun King: North Korea, 1953–1996"', pages:'pp. 404–447', url:'https://drive.google.com/file/d/1ZB0hZrAQ1G49WA5YnOPDxJzPAhCNTMUC/view' }
+    ]
+  },
+  { id:15, date:'2026-05-01', week:5, noClass:true, banner:{ type:'exam', title:'Midterm Oral Exam', sub:'20-minute individual exam — present your own analysis, then respond to instructor questions on core themes, stories, and events.' } },
+
+  // ── WEEK 6 ──────────────────────────────────────────────────────────────────
+  { id:16, date:'2026-05-04', week:6, topic:'The Pro-Democracy Movement',
+    primary: [
+      { type:'lit', author:'Kim Jiha', authorKo:'김지하', year:'1970', title:'Five Bandits (오적)', genre:'Poem', portrait:'kim-jiha', deepDive:'five-bandits', url:'https://drive.google.com/file/d/1jHxYqktRpbrot7VTTQrnHBezO_AZXy0Y/view?usp=sharing' },
+      { type:'doc', label:'Political Document', title:'Kim Daejung — "Prison Writings" (1980)', meta:'pp. 432–438 in Sources of Korean Tradition, vol. 2', url:'https://drive.google.com/file/d/1L66IOGjXTcGk2MR4IMpKil8ySk80GnYq/view?usp=sharing' },
+      { type:'doc', label:'Political Document', title:'Declaration of the SNU Students Association', meta:'한글판 available', url:'https://drive.google.com/file/d/1RRyZ-LDHF50nu03ehEX5bBYXDORQfSlc/view?usp=sharing' },
+      { type:'doc', label:'Political Document', title:'Park Chŏnghui — "To Build a Nation" (1971)', meta:'pp. 393–400 in Sources of Korean Tradition, vol. 2', url:'https://drive.google.com/file/d/1RRyZ-LDHF50nu03ehEX5bBYXDORQfSlc/view?usp=sharing' }
+    ],
+    secondary: [
+      { type:'cum', chapter:'Chapter 7', title:'"The Virtues, II"', pages:'pp. 342–403', url:'https://drive.google.com/file/d/1lhrAdBDF2qFCYZi7gAZ8V5oWEbjbsjr9/view' },
+      { type:'art', author:'Choi Chungmoo', title:'"The Minjung Culture Movement and the Construction of Popular Culture in Korea"', source:'in South Korea\'s Minjung Movement, pp. 105–118', optional:true, url:'https://drive.google.com/file/d/1old3-IWC2v1j1uDsuvy6XJ4yMlodZJWN/view?usp=sharing' }
+    ]
+  },
+  { id:17, date:'2026-05-06', week:6, topic:'Film: A Single Spark + The Dwarf',
+    primary: [
+      { type:'lit', author:'Cho Sehui', authorKo:'조세희', year:'1978', title:'A Dwarf Launches a Little Ball', genre:'Novel', portrait:'cho-sehui', deepDive:'dwarf-little-ball', url:'https://drive.google.com/file/d/1hcvnXdXUWblY9pW8vcCKREutB1HOrGZc/view?usp=sharing' },
+      { type:'film', title:'A Single Spark', titleKo:'아름다운 청년 전태일', director:'Park Kwang-su', year:'1995', runtime:'97 min.', backdrop:'eQA1BRlzjNZUtz4tFdBUu7lCkUk.jpg', deepDive:'a-single-spark', url:'https://lawrenceu-my.sharepoint.com/:v:/g/personal/wegehaum_lawrence_edu/IQDlQLa9OwPcSqJ1dLnZnA5RATffRSuzs-cESx8XfAa1zRk?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=RCqBI9' }
+    ],
+    secondary: [
+      { type:'art', author:'Hagen Koo', title:'"Workers and Students"', source:'Korean Workers: The Culture and Politics of Class Formation, Cornell UP, 2001, pp. 100–125', optional:true, url:'https://drive.google.com/file/d/1b3Jx-d0BSLvJqrSsd7UwzW11KV-NGg6f/view?usp=sharing' }
+    ]
+  },
+  { id:18, date:'2026-05-08', week:6, noClass:true, banner:{ type:'reading', title:'Midterm Reading Period', sub:'No class meeting — use this time to catch up on readings and prepare your midterm essay outline.' } },
+
+  // ── WEEK 7 ──────────────────────────────────────────────────────────────────
+  { id:19, date:'2026-05-11', week:7, topic:'Korean Manchuria: Salt',
+    primary: [
+      { type:'lit', author:'Kang Gyeongae', authorKo:'강경애', year:'1934', title:'Salt (소금)', genre:'Short Story', portrait:'kang-gyeongae', deepDive:'salt', url:'https://drive.google.com/file/d/1xvSn7W_uIBWTVmkgHo4QoABW4qwT6WDx/view?usp=sharing' }
+    ],
+    secondary: [
+      { type:'art', author:'Andre Schmid', title:'"The Universalizing Winds of Civilization" and "Decentering the Middle Kingdom"', source:'Korea Between Empires, 1895–1919, Columbia UP, 2002, Ch. 2', url:'https://drive.google.com/file/d/1H1rmquVmOY-VGq57hVKeHKqrYF02VZtu/view?usp=sharing' }
+    ]
+  },
+  { id:20, date:'2026-05-13', week:7, topic:'Zainichi: Full House',
+    primary: [
+      { type:'lit', author:'Yū Miri', authorKo:'유미리', year:'1995', title:'Full House', genre:'Play / Story', portrait:'yu-miri', deepDive:'full-house', url:'https://drive.google.com/file/d/1WqTOjjSHU_E71lU_eFBXeIXl8vaWbIka/view?usp=sharing' }
+    ],
+    secondary: [
+      { type:'art', author:'Soo-im Lee', title:'"The Cultural Exclusiveness of Ethnocentrism: Japan\'s Treatment of Foreign Residents"', source:'Japan\'s Diversity Dilemmas, iUniverse, 2006, pp. 100–124', url:'https://web.archive.org/web/20221023072109/https://www.biz.ryukoku.ac.jp/~lee/seminar/seminar2004/review/the_cultural_exclusiveness_of_ethnocentrism.htm' }
+    ]
+  },
+  { id:21, date:'2026-05-15', week:7, topic:'Film: Madame Freedom',
+    primary: [
+      { type:'film', title:'Madame Freedom', titleKo:'자유부인', director:'Han Hyŏngmo', year:'1956', runtime:'124 min.', backdrop:'1iG84kJYvWZzo36Aax8rgDJCizl.jpg', deepDive:'madame-freedom', url:'https://lawrenceu-my.sharepoint.com/:v:/g/personal/wegehaum_lawrence_edu/IQBX-8eH38uRRroYhjjsiizzAUmXxoXwdTdaTwN06x_PQ2A?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=3FdOjO' }
+    ],
+    secondary: [
+      { type:'art', author:'Yoo Sun-Young', title:'"Embodiment of American Modernity in Colonial Korea"', source:'Inter-Asia Cultural Studies, vol. 2, no. 3, 2001, pp. 423–441', url:'https://drive.google.com/file/d/1_PqSDBNpIAhj2f1xVDZrabbwICU1rtLq/view?usp=sharing' }
+    ]
+  },
+
+  // ── WEEK 8 ──────────────────────────────────────────────────────────────────
+  { id:22, date:'2026-05-18', week:8, topic:'Queer Literature + Gi Hyeong-do',
+    primary: [
+      { type:'lit', author:'Korean Literature Now', authorKo:'한국 문학 나우', year:'2019', title:'Queer Issue — Vol. 43', genre:'Anthology', portrait:null, portraitChar:'문', deepDive:'korean-lit-now-43', url:'https://drive.google.com/file/d/1PPYtfahTk2hFusNUsNIKDILvsR0k-Ot5/view?usp=share_link' },
+      { type:'lit', author:'Gi Hyeong-do', authorKo:'기형도', year:'1989', title:'Selected Poems', genre:'Poetry', portrait:null, portraitChar:'기', deepDive:'gi-hyeong-do', url:'http://thethreewisemonkeys.com/2010/05/17/gi-hyeong-do-a-misunderstood-modern-gay-korean-poet/' }
+    ],
+    secondary: [
+      { type:'art', author:'Seo Dong-Jin', title:'"Mapping the Vicissitudes of Homosexual Identities in South Korea"', source:'Journal of Homosexuality, vol. 40, no. 3, 2001, pp. 65–80', url:'https://drive.google.com/file/d/1SBxMWJV4-pvj9N8Rlq5Dr1y_C4HruwU4/view?usp=sharing' }
+    ]
+  },
+  { id:23, date:'2026-05-20', week:8, topic:'Film: Spirit\'s Homecoming',
+    primary: [
+      { type:'film', title:"Spirit's Homecoming", titleKo:'귀향', director:'Cho Jung-rae', year:'2016', runtime:'127 min.', backdrop:'kxwRQyOIHJZ0xy4Ob2IEWRrNbZw.jpg', deepDive:'spirits-homecoming', url:'https://lawrenceu-my.sharepoint.com/:v:/g/personal/wegehaum_lawrence_edu/IQDW4GKHnXO_RJvXf8fSGCIFAXwCBy2orq5HD9BGADatS3k?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=e0bUKo' }
+    ],
+    secondary: [
+      { type:'art', author:'Pyong Gap Min et al.', title:'"The \'Comfort Women\' Issue and the 28-Year Redress Movement"', source:'The Transnational Redress Movement for the Victims of Japanese Military Sexual Slavery', url:'https://drive.google.com/file/d/1fDURrOoChDxWc2wznCP087sfVx9meUl2/view?usp=share_link' }
+    ]
+  },
+  { id:24, date:'2026-05-22', week:8, noClass:true, banner:{ type:'research', title:'Research Day', sub:'No class meeting — individual research and writing time for final projects.' } },
+
+  // ── WEEK 9 ──────────────────────────────────────────────────────────────────
+  { id:25, date:'2026-05-25', week:9, noClass:true, banner:{ type:'holiday', title:'Memorial Day', sub:'No class — university holiday.' } },
+  { id:26, date:'2026-05-27', week:9, topic:'DPRK Fiction + Loyal Citizens',
+    primary: [
+      { type:'film', title:'Loyal Citizens of Pyongyang in Seoul', titleKo:'', director:'David Yun', year:'2018', runtime:'38 min.', backdrop:'kbpIhVdyRs13yeEr5TliuqYjA60.jpg', deepDive:'loyal-citizens', url:'https://lawrenceu-my.sharepoint.com/:v:/g/personal/wegehaum_lawrence_edu/IQCKfLnZSOmwRZX77kAgtwJ0AbgTY0W0sn5_e09tomDISX4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=hMIawM' },
+      { type:'lit', author:'Han Ung-bin', authorKo:'한웅빈', year:'1999', title:'"Second Encounter" & "Hopes for Good Fortune"', genre:'Short Stories', portrait:null, portraitChar:'한', deepDive:'han-ung-bin', url:'https://drive.google.com/file/d/13y94qdBiFRLUwVlkhl2I3LM2Huy0ZYje/view?usp=share_link', url2:'http://wordswithoutborders.org/article/from-hopes-for-good-fortune' }
+    ],
+    secondary: [
+      { type:'art', author:'Stephen Epstein', title:'"Encountering North Korean Fiction: The Origins of the Future"', source:'wordswithoutborders.org', url:'http://wordswithoutborders.org/article/encountering-north-korean-fiction-the-origins-of-the-future' }
+    ]
+  },
+  { id:27, date:'2026-05-29', week:9, topic:'Film: Parasite',
+    primary: [
+      { type:'film', title:'Parasite', titleKo:'기생충', director:'Bong Joon-ho', year:'2019', runtime:'132 min.', backdrop:'hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg', deepDive:'parasite', url:'https://archive.org/details/parasite-2019' }
+    ],
+    secondary: []
+  },
+];
+
+// ── RENDERING ─────────────────────────────────────────────────────────────────
+
+let currentId = 1;
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  return d.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' });
+}
+function formatDateShort(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  return d.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' });
+}
+
+function buildDropdown() {
+  const dd = document.getElementById('plateDropdown');
+  let html = '';
+  let lastWeek = null;
+  PLATES.forEach(p => {
+    if (p.week !== lastWeek) {
+      html += `<div class="week-group-label">Week ${p.week} — ${WEEKS[p.week].label}</div>`;
+      lastWeek = p.week;
+    }
+    const label = p.noClass ? p.banner.title : p.topic;
+    html += `<div class="plate-option${p.noClass ? ' no-class':''}" data-id="${p.id}" onclick="goTo(${p.id})">
+      <span>${label}</span>
+      <span class="plate-date-tag">${formatDateShort(p.date)}</span>
+    </div>`;
+  });
+  dd.innerHTML = html;
+}
+
+function updateDropdownActive() {
+  document.querySelectorAll('.plate-option').forEach(el => {
+    el.classList.toggle('active', parseInt(el.dataset.id) === currentId);
+  });
+}
+
+function toggleDropdown() {
+  document.getElementById('plateDropdown').classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.plate-selector')) {
+    document.getElementById('plateDropdown').classList.remove('open');
+  }
+});
+
+function navigate(dir) {
+  const idx = PLATES.findIndex(p => p.id === currentId);
+  const next = PLATES[idx + dir];
+  if (next) goTo(next.id);
+}
+
+function goTo(id) {
+  currentId = id;
+  render();
+  document.getElementById('plateDropdown').classList.remove('open');
+  updateDropdownActive();
+}
+
+function detectCurrentPlate() {
+  const today = new Date();
+  today.setHours(12,0,0,0);
+  // Find first plate on or after today
+  for (const p of PLATES) {
+    const d = new Date(p.date + 'T12:00:00');
+    if (d >= today) return p.id;
+  }
+  return PLATES[PLATES.length - 1].id;
+}
+
+function renderFilmCard(item) {
+  const titleHtml = item.deepDive
+    ? `<a href="films/${item.deepDive}.html" class="card-title-link">${item.title}${item.titleKo ? ` <span style="font-weight:300; font-size:0.85rem; opacity:0.7;">${item.titleKo}</span>` : ''}</a>`
+    : `${item.title}${item.titleKo ? ` <span style="font-weight:300; font-size:0.85rem; opacity:0.7;">${item.titleKo}</span>` : ''}`;
+  return `<div class="film-card">
+    <div class="film-card-backdrop" style="background-image:url('${TMDB}${item.backdrop}')">
+      <div class="film-card-backdrop-label">
+        <div class="film-badge">Film</div>
+        <h3>${titleHtml}</h3>
+      </div>
+    </div>
+    <div class="film-card-body">
+      <div class="film-meta"><strong>${item.director}</strong> &nbsp;·&nbsp; ${item.year} &nbsp;·&nbsp; ${item.runtime}</div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        ${item.url ? `<a href="${item.url}" target="_blank" class="deep-dive-link watch-link">Watch &#8594;</a>` : ''}
+        ${item.deepDive ? `<a href="films/${item.deepDive}.html" class="deep-dive-link">Background &#8594;</a>` : ''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderLitCard(item) {
+  const portrait = item.portrait
+    ? `<img src="${AUTH}${item.portrait}.png" alt="${item.author}" class="lit-portrait" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"><div class="lit-portrait-placeholder" style="display:none"><span>${item.portraitChar||item.author[0]}</span></div>`
+    : `<div class="lit-portrait-placeholder"><span>${item.portraitChar||item.author[0]}</span></div>`;
+  const titleHtml = item.url
+    ? `<a href="${item.url}" target="_blank" class="card-title-link-sepia">${item.title}</a>`
+    : (item.deepDive ? `<a href="literature/${item.deepDive}.html" class="card-title-link-sepia">${item.title}</a>` : item.title);
+  return `<div class="lit-card">
+    ${portrait}
+    <div class="lit-card-content">
+      <div><span class="lit-author">${item.author}</span><span class="lit-author-korean">${item.authorKo}</span></div>
+      <div class="lit-title">${titleHtml}</div>
+      <div class="lit-meta">${item.year}<span class="lit-badge">${item.genre}</span></div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:6px; align-self:center; flex-shrink:0; margin-left:8px;">
+      ${item.url2 ? `<a href="${item.url2}" target="_blank" class="deep-dive-link" style="font-size:0.68rem;">Read (2) &#8594;</a>` : ''}
+      ${item.deepDive ? `<a href="literature/${item.deepDive}.html" class="deep-dive-link">Background &#8594;</a>` : ''}
+    </div>
+  </div>`;
+}
+
+function renderDocCard(item) {
+  const titleHtml = item.url
+    ? `<a href="${item.url}" target="_blank" class="doc-link">${item.title}</a>`
+    : item.title;
+  return `<div class="doc-card">
+    <div class="doc-label">${item.label}</div>
+    <div class="doc-title">${titleHtml}</div>
+    <div class="doc-meta">${item.meta}</div>
+  </div>`;
+}
+
+function renderSecCard(item) {
+  const dotClass = item.type === 'cum' ? 'cumings' : item.optional ? 'optional' : 'article';
+  const label = item.type === 'cum' ? 'Cumings' : item.optional ? 'Optional' : 'Article';
+  const body = `${item.author ? `${item.author}, ` : ''}${item.title}${item.type==='cum' ? ` <span style="font-style:normal; font-weight:400; color:#aaa;">${item.pages}</span>` : ''}`;
+  const titleHtml = item.url ? `<a href="${item.url}" target="_blank" class="sec-link">${body}</a>` : body;
+  return `<div class="sec-card">
+    <div class="sec-type-dot ${dotClass}"></div>
+    <div class="sec-card-body">
+      <div class="sec-label">${label}</div>
+      <div class="sec-title">${titleHtml}</div>
+      ${item.type !== 'cum' ? `<div class="sec-meta">${item.source}</div>` : ''}
+    </div>
+  </div>`;
+}
+
+function render() {
+  const plate = PLATES.find(p => p.id === currentId);
+  const week = WEEKS[plate.week];
+  document.getElementById('prevBtn').disabled = plate.id === 1;
+  document.getElementById('nextBtn').disabled = plate.id === PLATES[PLATES.length-1].id;
+  document.getElementById('plateBtnLabel').textContent = formatDateShort(plate.date);
+
+  // Plate header
+  if (plate.noClass) {
+    const bannerColors = { exam:'#2a1f35', reading:'#1f2a2a', research:'#1f2535', holiday:'#1a2020' };
+    document.getElementById('plateHeader').innerHTML = `
+      <div class="no-class-banner" style="background: linear-gradient(160deg, ${bannerColors[plate.banner.type]||'#1a1a1a'} 0%, #2a2a2a 100%);">
+        <div class="banner-label">Week ${plate.week} &mdash; ${week.label}</div>
+        <div class="banner-title">${plate.banner.title}</div>
+        <div class="banner-sub">${plate.banner.sub}</div>
+      </div>`;
+    document.getElementById('mainWrap').innerHTML = '';
+    return;
+  }
+
+  document.getElementById('plateHeader').innerHTML = `
+    <div class="plate-header">
+      <div class="plate-header-inner">
+        <div class="week-eyebrow">Week ${plate.week} &mdash; ${week.label}</div>
+        <div class="plate-title">${plate.topic}</div>
+        <div class="plate-date-line">${formatDate(plate.date)}</div>
+      </div>
+    </div>`;
+
+  // Main column
+  let primaryHtml = '', secondaryHtml = '';
+  if (plate.primary && plate.primary.length) {
+    primaryHtml = `<div class="section-label">Primary Sources</div>`;
+    plate.primary.forEach(item => {
+      if (item.type === 'film') primaryHtml += renderFilmCard(item);
+      else if (item.type === 'lit') primaryHtml += renderLitCard(item);
+      else if (item.type === 'doc') primaryHtml += renderDocCard(item);
+    });
+  }
+  if (plate.secondary && plate.secondary.length) {
+    secondaryHtml = `<div class="section-label">Secondary Readings</div>`;
+    plate.secondary.forEach(item => { secondaryHtml += renderSecCard(item); });
+  }
+
+  // Sidebar
+  const cumings = (plate.secondary||[]).find(s => s.type==='cum');
+  const upcoming = PLATES.filter(p => p.id > plate.id && !p.noClass).slice(0,2);
+  const upcomingNoClass = PLATES.filter(p => p.id > plate.id && p.noClass).slice(0,1);
+  const nextFew = PLATES.filter(p => p.id > plate.id).slice(0,3);
+
+  let upcomingHtml = '';
+  nextFew.forEach(p => {
+    if (p.noClass) {
+      upcomingHtml += `<div class="upcoming-item">
+        <div class="upcoming-date">${formatDateShort(p.date)}</div>
+        <div class="upcoming-topic">${p.banner.title}</div>
+        <div class="upcoming-type-row"><span class="upcoming-pill noclass">No class</span></div>
+      </div>`;
+    } else {
+      const pills = (p.primary||[]).map(item => {
+        if (item.type==='film') return `<span class="upcoming-pill film">Film</span>`;
+        if (item.type==='lit') return `<span class="upcoming-pill lit">${item.author.split(' ').pop()}</span>`;
+        return '';
+      }).join('');
+      upcomingHtml += `<div class="upcoming-item">
+        <div class="upcoming-date">${formatDateShort(p.date)}</div>
+        <div class="upcoming-topic">${p.topic}</div>
+        <div class="upcoming-type-row">${pills}</div>
+      </div>`;
+    }
+  });
+
+  const sidebarHtml = `
+    <div class="sb-card">
+      <div class="sb-card-head">This Week</div>
+      <div class="sb-card-body">
+        <div class="week-desc">${week.desc}</div>
+        ${cumings ? `<div class="cumings-ref">
+          <div class="cr-label">Cumings</div>
+          <div class="cr-chapter">${cumings.chapter}: ${cumings.title}</div>
+          <div class="cr-pages">${cumings.pages}</div>
+        </div>` : ''}
+      </div>
+    </div>
+    <div class="sb-card">
+      <div class="sb-card-head red">Quick Links</div>
+      <div class="sb-card-body">
+        <div class="quick-links">
+          <a href="workbook.html" class="quick-link">Film Workbook <span class="quick-link-arrow">&#8594;</span></a>
+          <a href="index.html" class="quick-link">All Films <span class="quick-link-arrow">&#8594;</span></a>
+          <a href="literature.html" class="quick-link">All Literature <span class="quick-link-arrow">&#8594;</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="sb-card">
+      <div class="sb-card-head teal">Coming Up</div>
+      <div class="sb-card-body">
+        <div class="upcoming-list">${upcomingHtml || '<div style="font-size:0.78rem;color:var(--ink-faint);">End of semester</div>'}</div>
+      </div>
+    </div>`;
+
+  document.getElementById('mainWrap').innerHTML = `
+    <div class="main-col">${primaryHtml}${secondaryHtml}</div>
+    <div class="sidebar">${sidebarHtml}</div>`;
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+buildDropdown();
+currentId = detectCurrentPlate();
+updateDropdownActive();
+render();
+</script>
+</body>
+</html>

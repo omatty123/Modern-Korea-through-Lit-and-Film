@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Literature Reference Sheet | Korean History through Literature and Film</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        @page { size: letter; margin: 0.45in 0.5in; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+            color: #111;
+            background: #666;
+            font-size: 9pt;
+            line-height: 1.3;
+        }
+
+        .screen-nav {
+            width: 7.5in;
+            margin: 0.15in auto 0;
+            font-size: 8.5pt;
+        }
+        .screen-nav a { color: #ccc; text-decoration: none; }
+        .screen-nav a:hover { color: #fff; }
+
+        .page {
+            width: 7.5in;
+            min-height: 10.1in;
+            margin: 0.2in auto;
+            background: #fff;
+            box-shadow: 0 2px 14px rgba(0,0,0,0.35);
+            padding: 0.4in 0.5in 0.4in;
+            display: flex;
+            flex-direction: column;
+        }
+        .page:last-child { margin-bottom: 0.2in; }
+
+        @media print {
+            body { background: none; }
+            .page { margin: 0; width: auto; min-height: 0; box-shadow: none; padding: 0; page-break-after: always; }
+            .page:last-child { page-break-after: auto; }
+            .screen-nav { display: none; }
+        }
+
+        /* Page header */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-bottom: 0.1in;
+            border-bottom: 2pt solid #111;
+            margin-bottom: 0.15in;
+            flex-shrink: 0;
+        }
+        .page-header-left h1 {
+            font-size: 17pt;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+        .page-header-left .subtitle {
+            font-size: 8pt;
+            color: #666;
+            margin-top: 0.04in;
+        }
+        .page-header-right {
+            font-size: 8.5pt;
+            text-align: right;
+        }
+        .name-line .uline {
+            display: inline-block;
+            width: 1.8in;
+            border-bottom: 1px solid #555;
+            margin-left: 0.08in;
+            vertical-align: bottom;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            flex: 1;
+        }
+        thead th {
+            font-size: 7pt;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            color: #fff;
+            background: #1a1a1a;
+            padding: 0.055in 0.07in;
+            text-align: left;
+            vertical-align: bottom;
+        }
+        thead th.th-fill {
+            background: #37474f;
+        }
+
+        tbody tr { height: 0.88in; }
+        tbody tr:nth-child(even) td { background: #fafafa; }
+
+        td {
+            vertical-align: top;
+            padding: 0.055in 0.07in;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #e8e8e8;
+        }
+        td:last-child { border-right: none; }
+        tbody tr:last-child td { border-bottom: 2pt solid #111; }
+
+        /* Column widths */
+        .col-num   { display: none; }
+        .col-auth  { width: 0.95in; }
+        .col-year  { width: 0.42in; }
+        .col-title { width: 1.35in; }
+        .col-chars { width: 1.15in; }
+        .col-set   { width: 1.15in; }
+        .col-themes { /* remainder */ }
+
+        /* Cell content */
+        .num { font-size: 8pt; color: #bbb; font-weight: 700; padding-top: 2px; }
+        .auth-cell { display: flex; align-items: flex-start; gap: 0.06in; }
+        .auth-portrait {
+            width: 0.42in;
+            height: 0.42in;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .auth-placeholder {
+            width: 0.42in;
+            height: 0.42in;
+            border-radius: 50%;
+            background: #37474f;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9pt;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+            font-family: 'Noto Serif KR', 'Apple SD Gothic Neo', serif;
+        }
+        .auth-text { flex: 1; min-width: 0; }
+        .auth-en { font-size: 8pt; font-weight: 700; }
+        .auth-kr { font-size: 7pt; color: #888; margin-top: 2px; font-family: 'Noto Serif KR', 'Apple SD Gothic Neo', serif; }
+        .year-val { font-size: 8.5pt; color: #555; }
+        .title-en { font-size: 8pt; font-weight: 600; font-style: italic; }
+        .title-rom { font-size: 7pt; color: #888; margin-top: 2px; }
+        .title-kr { font-size: 7.5pt; color: #aaa; margin-top: 2px; font-family: 'Noto Serif KR', 'Apple SD Gothic Neo', serif; }
+
+        /* Fill-in lines */
+        .lines { display: flex; flex-direction: column; justify-content: flex-end; height: 0.73in; gap: 0; padding-top: 4px; }
+        .fill-line {
+            width: 100%;
+            border-bottom: 0.75px solid #c5c5c5;
+            flex: 1;
+        }
+
+        /* Page 2 continuation header */
+        .cont-header {
+            font-size: 8pt;
+            color: #888;
+            margin-bottom: 0.1in;
+            flex-shrink: 0;
+            padding-bottom: 0.06in;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Footer */
+        .page-footer {
+            font-size: 7pt;
+            color: #bbb;
+            text-align: right;
+            margin-top: 0.1in;
+            flex-shrink: 0;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="screen-nav"><a href="literature.html">← Back to Literature</a></div>
+
+<!-- PAGE 1 — Works 1–10 -->
+<div class="page">
+    <div class="page-header">
+        <div class="page-header-left">
+            <h1>Literature Reference Sheet</h1>
+            <div class="subtitle">Korean History through Literature and Film &nbsp;·&nbsp; HIST 498 / EAST 418 / FILM 419 &nbsp;·&nbsp; Spring 2026</div>
+        </div>
+        <div class="page-header-right">
+            <div class="name-line">Name: <span class="uline"></span></div>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th class="col-num">#</th>
+                <th class="col-auth">Author</th>
+                <th class="col-year">Year</th>
+                <th class="col-title">Title</th>
+                <th class="col-chars th-fill">Main Characters</th>
+                <th class="col-set th-fill">Setting</th>
+                <th class="col-themes th-fill">Themes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="col-num"><div class="num">1</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/lady-hyegyeong.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Lady Hyegyeong</div><div class="auth-kr">혜경궁 홍씨</div></div></div></td>
+                <td class="col-year"><div class="year-val">1795–1805</div></td>
+                <td class="col-title"><div class="title-en">Records Written in Silence</div><div class="title-rom">Hanjungnok</div><div class="title-kr">한중록</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">2</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/na-hyeseok.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Na Hyeseok</div><div class="auth-kr">나혜석</div></div></div></td>
+                <td class="col-year"><div class="year-val">1918</div></td>
+                <td class="col-title"><div class="title-en">Kyŏnghŭi</div><div class="title-rom">Gyeonghui</div><div class="title-kr">경희</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">3</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/kim-wonju.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Kim Wonju</div><div class="auth-kr">김원주</div></div></div></td>
+                <td class="col-year"><div class="year-val">1926</div></td>
+                <td class="col-title"><div class="title-en">Awakening</div><div class="title-rom">Jagak</div><div class="title-kr">자각</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">4</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/kim-tongin.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Kim Tongin</div><div class="auth-kr">김동인</div></div></div></td>
+                <td class="col-year"><div class="year-val">1925</div></td>
+                <td class="col-title"><div class="title-en">Potatoes</div><div class="title-rom">Gamja</div><div class="title-kr">감자</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">5</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/yi-sang.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Yi Sang</div><div class="auth-kr">이상</div></div></div></td>
+                <td class="col-year"><div class="year-val">1936</div></td>
+                <td class="col-title"><div class="title-en">Meetings and Farewells</div><div class="title-rom">Bongbyeolgi</div><div class="title-kr">봉별기</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">6</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/yi-taejun.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Yi Taejun</div><div class="auth-kr">이태준</div></div></div></td>
+                <td class="col-year"><div class="year-val">1946</div></td>
+                <td class="col-title"><div class="title-en">Before and After Liberation</div><div class="title-rom">Haebang Jeonhu</div><div class="title-kr">해방전후</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">7</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/chae-mansik.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Chae Mansik</div><div class="auth-kr">채만식</div></div></div></td>
+                <td class="col-year"><div class="year-val">1946</div></td>
+                <td class="col-title"><div class="title-en">Constable Maeng</div><div class="title-rom">Maeng Sunsa</div><div class="title-kr">맹순사</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">8</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/han-sorya.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Han Sorya</div><div class="auth-kr">한설야</div></div></div></td>
+                <td class="col-year"><div class="year-val">1951</div></td>
+                <td class="col-title"><div class="title-en">Jackals</div><div class="title-rom">Seungnyangi</div><div class="title-kr">승냥이</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">9</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/hwang-sunwon.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Hwang Sunwon</div><div class="auth-kr">황순원</div></div></div></td>
+                <td class="col-year"><div class="year-val">1953</div></td>
+                <td class="col-title"><div class="title-en">Cranes</div><div class="title-rom">Hak</div><div class="title-kr">학</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">10</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/pak-wanso.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Pak Wanso</div><div class="auth-kr">박완서</div></div></div></td>
+                <td class="col-year"><div class="year-val">1977</div></td>
+                <td class="col-title"><div class="title-en">A Pasque-Flower on That Bleak Day</div><div class="title-rom">Halmiggot</div><div class="title-kr">할미꽃</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="page-footer">Korean History through Literature and Film &nbsp;·&nbsp; Spring 2026 &nbsp;·&nbsp; 1 of 2</div>
+</div>
+
+<!-- PAGE 2 — Works 11–20 -->
+<div class="page">
+    <div class="cont-header">Literature Reference Sheet &nbsp;·&nbsp; Works 11–20</div>
+    <table>
+        <thead>
+            <tr>
+                <th class="col-num">#</th>
+                <th class="col-auth">Author</th>
+                <th class="col-year">Year</th>
+                <th class="col-title">Title</th>
+                <th class="col-chars th-fill">Main Characters</th>
+                <th class="col-set th-fill">Setting</th>
+                <th class="col-themes th-fill">Themes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="col-num"><div class="num">11</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/yi-beomseon.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Yi Beomseon</div><div class="auth-kr">이범선</div></div></div></td>
+                <td class="col-year"><div class="year-val">1959</div></td>
+                <td class="col-title"><div class="title-en">A Stray Bullet</div><div class="title-rom">Obaltan</div><div class="title-kr">오발탄</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">12</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/pak-wanso.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Pak Wanso</div><div class="auth-kr">박완서</div></div></div></td>
+                <td class="col-year"><div class="year-val">1974</div></td>
+                <td class="col-title"><div class="title-en">Identical Apartments</div><div class="title-rom">Apateu</div><div class="title-kr">아파트</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">13</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/pak-wanso.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Pak Wanso</div><div class="auth-kr">박완서</div></div></div></td>
+                <td class="col-year"><div class="year-val">1978</div></td>
+                <td class="col-title"><div class="title-en">The Day My Housewatching Ended</div><div class="title-rom">Jipbogineun Geu Eoryeopdeoni</div><div class="title-kr">집보기는 그 어렵더니</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">14</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/kim-jiha.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Kim Jiha</div><div class="auth-kr">김지하</div></div></div></td>
+                <td class="col-year"><div class="year-val">1970</div></td>
+                <td class="col-title"><div class="title-en">Five Bandits</div><div class="title-rom">Ojeok</div><div class="title-kr">오적</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">15</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/cho-sehui.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Cho Sehui</div><div class="auth-kr">조세희</div></div></div></td>
+                <td class="col-year"><div class="year-val">1978</div></td>
+                <td class="col-title"><div class="title-en">A Dwarf Launches a Little Ball</div><div class="title-rom">Nanjang-ga Ssoa Ollin Jageun Gong</div><div class="title-kr">난장이가 쏘아올린 작은 공</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">16</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/kang-gyeongae.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Kang Gyeongae</div><div class="auth-kr">강경애</div></div></div></td>
+                <td class="col-year"><div class="year-val">1934</div></td>
+                <td class="col-title"><div class="title-en">Salt</div><div class="title-rom">Sogeum</div><div class="title-kr">소금</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">17</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/yu-miri.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Yū Miri</div><div class="auth-kr">유미리</div></div></div></td>
+                <td class="col-year"><div class="year-val">1995</div></td>
+                <td class="col-title"><div class="title-en">Full House</div><div class="title-rom">Pul Hauseu</div><div class="title-kr">풀 하우스</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">18</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/korean-lit-now.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Korean Lit Now</div><div class="auth-kr">한국 문학 나우</div></div></div></td>
+                <td class="col-year"><div class="year-val">2019</div></td>
+                <td class="col-title"><div class="title-en">Korean Literature Now — Queer Issue</div><div class="title-rom">Han'guk Munhak Nau — Kwieo Teukjipho</div><div class="title-kr">한국 문학 나우 — 퀴어 특집호</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">19</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/gi-hyeong-do.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Gi Hyeong-do</div><div class="auth-kr">기형도</div></div></div></td>
+                <td class="col-year"><div class="year-val">1989</div></td>
+                <td class="col-title"><div class="title-en">Selected Poems</div><div class="title-rom">Ip Sogeui Geomeun Ip</div><div class="title-kr">입 속의 검은 잎</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+            <tr>
+                <td class="col-num"><div class="num">20</div></td>
+                <td class="col-auth"><div class="auth-cell"><img src="images/authors/han-ung-bin.png" class="auth-portrait" alt=""><div class="auth-text"><div class="auth-en">Han Ung-bin</div><div class="auth-kr">한웅빈</div></div></div></td>
+                <td class="col-year"><div class="year-val">1999</div></td>
+                <td class="col-title"><div class="title-en">"Second Encounter" &amp; "Hopes for Good Fortune"</div><div class="title-rom">Du Beonjjae Mannam &amp; Haengeuneul Bineun Maeum</div><div class="title-kr">두 번째 만남 &amp; 행운을 비는 마음</div></td>
+                <td class="col-chars"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-set"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+                <td class="col-themes"><div class="lines"><div class="fill-line"></div><div class="fill-line"></div><div class="fill-line"></div></div></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="page-footer">Korean History through Literature and Film &nbsp;·&nbsp; Spring 2026 &nbsp;·&nbsp; 2 of 2</div>
+</div>
+
+</body>
+</html>
