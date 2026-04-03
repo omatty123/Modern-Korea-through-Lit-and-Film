@@ -209,6 +209,18 @@
         .character-node.gold { border-top-color: var(--gold); }
         .character-node.dark { border-top-color: #333; }
 
+        .shape-king {
+            border-radius: 4px;
+        }
+
+        .shape-circle {
+            border-radius: 28px;
+        }
+
+        .shape-triangle {
+            border-radius: 4px;
+        }
+
         .character-photos {
             display: grid;
             grid-template-columns: minmax(0, 1fr) 120px;
@@ -227,6 +239,37 @@
         .character-photo.secondary {
             aspect-ratio: 1 / 1.18;
             align-self: end;
+        }
+
+        .shape-circle .single-photo-wrap,
+        .shape-circle .character-photos {
+            padding-top: 0.9rem;
+        }
+
+        .shape-circle .character-photo {
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            object-position: center top;
+        }
+
+        .shape-circle .character-photo.secondary {
+            aspect-ratio: 1 / 1;
+        }
+
+        .shape-circle .node-copy {
+            text-align: center;
+        }
+
+        .shape-triangle .character-photo,
+        .shape-triangle .character-photo.secondary {
+            border-radius: 0;
+            clip-path: polygon(50% 2%, 2% 98%, 98% 98%);
+            background: var(--paper-warm);
+        }
+
+        .shape-triangle .single-photo-wrap,
+        .shape-triangle .character-photos {
+            padding-top: 0.8rem;
         }
 
         .single-photo-wrap {
@@ -381,7 +424,7 @@
         <div class="tree-board">
             <div class="tree-level-label">Generation I</div>
             <div class="tree-level two">
-                <article class="character-node gold">
+                <article class="character-node gold shape-king">
                     <div class="single-photo-wrap">
                         <img class="character-photo" src="../images/films/the-throne-family/sukjong.png" alt="King Sukjong at the royal tomb">
                     </div>
@@ -393,7 +436,7 @@
                     </div>
                 </article>
 
-                <article class="character-node gold">
+                <article class="character-node gold shape-circle">
                     <div class="single-photo-wrap">
                         <img class="character-photo" src="../images/films/the-throne-family/queen-inwon.png" alt="Queen Inwon in palace robes">
                     </div>
@@ -410,7 +453,7 @@
 
             <div class="tree-level-label">Generation II</div>
             <div class="tree-level three">
-                <article class="character-node">
+                <article class="character-node shape-king">
                     <div class="single-photo-wrap">
                         <img class="character-photo" src="../images/films/the-throne-family/gyeongjong.png" alt="Gyeongjong shrine tablets">
                     </div>
@@ -422,7 +465,7 @@
                     </div>
                 </article>
 
-                <article class="character-node">
+                <article class="character-node shape-king">
                     <div class="single-photo-wrap">
                         <img class="character-photo" src="../images/films/the-throne-family/yeongjo.png" alt="King Yeongjo in red court robes">
                     </div>
@@ -434,7 +477,7 @@
                     </div>
                 </article>
 
-                <article class="character-node dark">
+                <article class="character-node dark shape-circle">
                     <div class="single-photo-wrap">
                         <img class="character-photo" src="../images/films/the-throne-family/seonhui.png" alt="Seonhui in palace dress">
                     </div>
@@ -451,7 +494,7 @@
 
             <div class="tree-level-label">Generation III</div>
             <div class="tree-level two">
-                <article class="character-node">
+                <article class="character-node shape-triangle">
                     <div class="character-photos">
                         <img class="character-photo" src="../images/films/the-throne-family/sado.png" alt="Crown Prince Sado in dark royal robes">
                         <img class="character-photo secondary" src="../images/films/the-throne-family/young-sado-final.png" alt="Young Sado">
@@ -464,7 +507,7 @@
                     </div>
                 </article>
 
-                <article class="character-node gold">
+                <article class="character-node gold shape-circle">
                     <div class="character-photos">
                         <img class="character-photo" src="../images/films/the-throne-family/hyegyeong.png" alt="Hyegyeong speaking urgently">
                         <img class="character-photo secondary" src="../images/films/the-throne-family/young-hyegyeong-final.png" alt="Young Hyegyeong">
@@ -482,7 +525,7 @@
 
             <div class="tree-level-label">Generation IV</div>
             <div class="tree-level one">
-                <article class="character-node">
+                <article class="character-node shape-king">
                     <div class="character-photos">
                         <img class="character-photo" src="../images/films/the-throne-family/old-jeongjo-correct.png" alt="Jeongjo as king">
                         <img class="character-photo secondary" src="../images/films/the-throne-family/young-jeongjo.png" alt="Young Jeongjo">
