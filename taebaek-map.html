@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taebaek Mountains Map | Modern Korean in Literature and Film</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Taebaek Mountains Map | Modern Korean in Literature and Film">
+    <meta property="og:description" content="A plot-geography map for The Taebaek Mountains: Beolgyo, Yeosu, Suncheon, Jeju, and the mountain refuges that structure the film's movement.">
+    <meta property="og:url" content="https://omatty123.github.io/Modern-Korea-through-Lit-and-Film/taebaek-map.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Taebaek Mountains Map">
+    <meta name="twitter:description" content="Plot geography for The Taebaek Mountains.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        :root {
+            --ink: #171513;
+            --ink-soft: #5e5650;
+            --ink-faint: #8d857d;
+            --paper: #f3ede4;
+            --surface: #fffaf4;
+            --line: #ddd1bf;
+            --shadow: rgba(24, 17, 10, 0.08);
+            --pine: #28594d;
+            --pine-soft: #dfeee9;
+            --clay: #8d3f33;
+            --clay-soft: #f4e6e2;
+            --slate: #395885;
+            --slate-soft: #e8eef7;
+            --gold: #a67c00;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Outfit", -apple-system, sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at top left, rgba(40, 89, 77, 0.11), transparent 24%),
+                radial-gradient(circle at 90% 12%, rgba(141, 63, 51, 0.10), transparent 20%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)),
+                var(--paper);
+            line-height: 1.6;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .topbar {
+            background: rgba(20, 18, 16, 0.96);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            backdrop-filter: blur(12px);
+        }
+
+        .topbar-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0.95rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .course-tag {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .topnav {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+        }
+
+        .topnav a {
+            padding: 0.42rem 0.78rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.78rem;
+            transition: all 0.15s ease;
+        }
+
+        .topnav a:hover,
+        .topnav a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.24);
+        }
+
+        .page {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 2.4rem 1.5rem 3rem;
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 320px;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-main,
+        .intro-side,
+        .map-shell,
+        .notes-shell {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: 0 18px 36px var(--shadow);
+        }
+
+        .intro-main { padding: 1.8rem; }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--pine);
+            font-weight: 700;
+            margin-bottom: 0.95rem;
+        }
+
+        h1, h2, h3 {
+            font-family: "Newsreader", Georgia, serif;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 7vw, 4.6rem);
+            line-height: 0.94;
+            margin-bottom: 0.8rem;
+        }
+
+        .intro-copy {
+            max-width: 58ch;
+            color: var(--ink-soft);
+            font-size: 1rem;
+        }
+
+        .intro-side {
+            padding: 1.3rem 1.35rem;
+            display: grid;
+            gap: 0.9rem;
+            align-content: start;
+        }
+
+        .mini-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--ink-faint);
+            font-weight: 700;
+        }
+
+        .mini-item {
+            padding-top: 0.85rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .mini-item:first-of-type {
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .mini-title {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-faint);
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+        }
+
+        .mini-copy {
+            font-size: 0.94rem;
+            color: var(--ink);
+        }
+
+        .map-shell {
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .map-head {
+            padding: 1.25rem 1.35rem 1rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .map-title {
+            font-size: 1.65rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .map-subtitle {
+            color: var(--ink-soft);
+            font-size: 0.92rem;
+        }
+
+        .filter-row {
+            padding: 0.95rem 1.35rem 0;
+            display: flex;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            appearance: none;
+            border: 1px solid var(--line);
+            background: #fff;
+            color: var(--ink-soft);
+            padding: 0.52rem 0.82rem;
+            border-radius: 999px;
+            font: inherit;
+            font-size: 0.83rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .filter-btn:hover { border-color: var(--pine); color: var(--ink); }
+        .filter-btn.active { background: var(--pine); border-color: var(--pine); color: #fff; }
+
+        #map {
+            height: 560px;
+            margin: 1rem 1.35rem 0;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .map-footer {
+            padding: 0.95rem 1.35rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .legend {
+            display: flex;
+            gap: 0.95rem;
+            flex-wrap: wrap;
+            color: var(--ink-soft);
+            font-size: 0.78rem;
+        }
+
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.42rem;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14);
+        }
+
+        .legend-dot.plot { background: var(--pine); }
+        .legend-dot.trigger { background: var(--clay); }
+        .legend-dot.terrain { background: var(--slate); }
+
+        .reset-btn {
+            appearance: none;
+            border: 1px solid var(--line);
+            background: transparent;
+            color: var(--ink-soft);
+            padding: 0.5rem 0.8rem;
+            border-radius: 999px;
+            font: inherit;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        .notes-shell {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            overflow: hidden;
+        }
+
+        .note-column {
+            padding: 1.2rem 1.25rem 1.35rem;
+            border-right: 1px solid var(--line);
+        }
+
+        .note-column:last-child { border-right: none; }
+
+        .note-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .note-title {
+            font-size: 1.25rem;
+        }
+
+        .note-badge {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-weight: 700;
+            padding: 0.32rem 0.52rem;
+            border-radius: 999px;
+        }
+
+        .note-badge.plot { background: var(--pine-soft); color: var(--pine); }
+        .note-badge.trigger { background: var(--clay-soft); color: var(--clay); }
+        .note-badge.terrain { background: var(--slate-soft); color: var(--slate); }
+
+        .place-list { display: grid; gap: 0.7rem; }
+
+        .place-card {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 0.95rem;
+            background: #fff;
+            cursor: pointer;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+        }
+
+        .place-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(25, 18, 10, 0.06);
+        }
+
+        .place-card.active {
+            border-color: var(--pine);
+            box-shadow: 0 14px 26px rgba(40, 89, 77, 0.1);
+        }
+
+        .place-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .place-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-faint);
+            margin-bottom: 0.35rem;
+            font-weight: 700;
+        }
+
+        .place-copy {
+            font-size: 0.86rem;
+            color: var(--ink-soft);
+        }
+
+        .footer-note {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem 2rem;
+            color: var(--ink-faint);
+            font-size: 0.78rem;
+        }
+
+        @media (max-width: 980px) {
+            .intro, .notes-shell { grid-template-columns: 1fr; }
+            .note-column { border-right: none; border-bottom: 1px solid var(--line); }
+            .note-column:last-child { border-bottom: none; }
+        }
+
+        @media (max-width: 680px) {
+            .topbar-inner,
+            .page,
+            .footer-note {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .intro-main,
+            .intro-side,
+            .map-shell,
+            .notes-shell {
+                border-radius: 18px;
+            }
+
+            .intro-main { padding: 1.4rem; }
+
+            #map {
+                height: 420px;
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .filter-row,
+            .map-head,
+            .map-footer {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="course-tag">EAST 418 / FILM 419</div>
+        <nav class="topnav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="films.html">Films</a>
+            <a href="films/taebaek-mountains.html">Taebaek Mountains</a>
+            <a href="taebaek-map.html" class="active">Taebaek Map</a>
+        </nav>
+    </div>
+</header>
+
+<main class="page">
+    <section class="intro">
+        <div class="intro-main">
+            <div class="eyebrow">Plot Geography</div>
+            <h1>Taebaek Mountains Map</h1>
+            <p class="intro-copy">
+                A compact map of the film's location logic: Beolgyo as the story center, Yeosu and Suncheon as the revolt corridor,
+                Jeju as the off-screen trigger, and Jogaesan, Yureo, and Jirisan as the inland retreat and partisan terrain.
+            </p>
+        </div>
+
+        <aside class="intro-side">
+            <div class="mini-label">Focus</div>
+            <div class="mini-item">
+                <div class="mini-title">Plot center</div>
+                <div class="mini-copy">Beolgyo, the village where the film keeps returning after every shift in power.</div>
+            </div>
+            <div class="mini-item">
+                <div class="mini-title">Trigger zone</div>
+                <div class="mini-copy">Yeosu and Suncheon, where the October 1948 mutiny and counterinsurgency begin.</div>
+            </div>
+            <div class="mini-item">
+                <div class="mini-title">Mountain refuge</div>
+                <div class="mini-copy">Jogaesan, Yureo, and Jirisan, the retreat spaces where the film turns ideology into guerrilla survival.</div>
+            </div>
+        </aside>
+    </section>
+
+    <section class="map-shell">
+        <div class="map-head">
+            <h2 class="map-title">Locations</h2>
+            <div class="map-subtitle">Filter the map by plot center, trigger event, or mountain terrain.</div>
+        </div>
+        <div class="filter-row" id="filters"></div>
+        <div id="map" aria-label="Taebaek Mountains location map"></div>
+        <div class="map-footer">
+            <div class="legend">
+                <span class="legend-item"><span class="legend-dot plot"></span>Plot center</span>
+                <span class="legend-item"><span class="legend-dot trigger"></span>Trigger event</span>
+                <span class="legend-item"><span class="legend-dot terrain"></span>Mountain terrain</span>
+            </div>
+            <button class="reset-btn" id="resetView" type="button">Reset view</button>
+        </div>
+    </section>
+
+    <section class="notes-shell">
+        <section class="note-column">
+            <div class="note-header">
+                <h3 class="note-title">Plot Center</h3>
+                <span class="note-badge plot">Inside the film</span>
+            </div>
+            <div class="place-list" id="plotList"></div>
+        </section>
+
+        <section class="note-column">
+            <div class="note-header">
+                <h3 class="note-title">Trigger Event</h3>
+                <span class="note-badge trigger">1948</span>
+            </div>
+            <div class="place-list" id="triggerList"></div>
+        </section>
+
+        <section class="note-column">
+            <div class="note-header">
+                <h3 class="note-title">Mountain Terrain</h3>
+                <span class="note-badge terrain">Retreat</span>
+            </div>
+            <div class="place-list" id="terrainList"></div>
+        </section>
+    </section>
+</main>
+
+<div class="footer-note">
+    This map keeps the geography at town and regional scale. Exact street-level routes are not recoverable from the film and should be treated as interpretive.
+</div>
+
+<script>
+const GROUPS = [
+    { id: "all", label: "All" },
+    { id: "plot", label: "Plot" },
+    { id: "trigger", label: "Trigger" },
+    { id: "terrain", label: "Terrain" }
+];
+
+const PLACES = [
+    {
+        id: "beolgyo",
+        group: "plot",
+        name: "Beolgyo",
+        label: "Story center",
+        note: "The film's main village setting. The story keeps returning here after each occupation, purge, and reversal.",
+        lat: 34.84,
+        lng: 127.34
+    },
+    {
+        id: "jogaesan",
+        group: "plot",
+        name: "Jogaesan",
+        label: "Retreat line",
+        note: "The partisan retreat in the film moves into the mountain forest around Jogaesan after Beolgyo changes hands.",
+        lat: 34.86,
+        lng: 127.29
+    },
+    {
+        id: "yeosu",
+        group: "trigger",
+        name: "Yeosu Port",
+        label: "Oct 19, 1948",
+        note: "The mutiny starts when the 14th Regiment refuses orders to leave Yeosu for Jeju on October 19, 1948.",
+        lat: 34.7378,
+        lng: 127.7428
+    },
+    {
+        id: "suncheon",
+        group: "trigger",
+        name: "Suncheon",
+        label: "Suppression corridor",
+        note: "The rebellion spreads into Suncheon and nearby towns before government forces retake the area by October 27, 1948.",
+        lat: 34.9507,
+        lng: 127.4872
+    },
+    {
+        id: "jeju",
+        group: "trigger",
+        name: "Jeju Island",
+        label: "Off-screen catalyst",
+        note: "The film's political trigger is the Jeju suppression campaign, which the Yeosu soldiers are ordered to support.",
+        lat: 33.4996,
+        lng: 126.5312
+    },
+    {
+        id: "yureo",
+        group: "terrain",
+        name: "Yureo",
+        label: "Liberated area",
+        note: "KOFA's synopsis explicitly identifies Yureo as the inland zone Yeom Sang-jin's group seizes and tries to hold before the army's counterattack.",
+        lat: 34.8682,
+        lng: 127.2011
+    },
+    {
+        id: "jirisan",
+        group: "terrain",
+        name: "Jirisan",
+        label: "Mountain refuge",
+        note: "The broader mountain landscape of the film points toward the southern partisan world associated with Jirisan.",
+        lat: 35.3135,
+        lng: 127.7314
+    }
+];
+
+const GROUP_META = {
+    plot: { color: "#28594d", fill: "#28594d", listId: "plotList" },
+    trigger: { color: "#8d3f33", fill: "#8d3f33", listId: "triggerList" },
+    terrain: { color: "#395885", fill: "#395885", listId: "terrainList" }
+};
+
+let activeGroup = "all";
+let activePlaceId = null;
+let map;
+let markersLayer;
+
+function visiblePlaces() {
+    const filtered = activeGroup === "all" ? PLACES : PLACES.filter((place) => place.group === activeGroup);
+    if (!activePlaceId) return filtered;
+    const chosen = filtered.find((place) => place.id === activePlaceId);
+    return chosen ? [chosen] : filtered;
+}
+
+function initMap() {
+    map = L.map("map", { scrollWheelZoom: false }).setView([34.95, 127.25], 8);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        attribution: "&copy; <a href=\"https://carto.com/attributions\">CARTO</a>",
+        maxZoom: 19
+    }).addTo(map);
+    markersLayer = L.layerGroup().addTo(map);
+}
+
+function markerOptions(place, highlight) {
+    const meta = GROUP_META[place.group];
+    return {
+        radius: highlight ? 10 : 8,
+        color: "#ffffff",
+        weight: 2,
+        fillColor: meta.fill,
+        fillOpacity: 0.95
+    };
+}
+
+function renderMap() {
+    markersLayer.clearLayers();
+    const points = visiblePlaces();
+    const bounds = [];
+
+    points.forEach((place) => {
+        const highlight = activePlaceId === place.id;
+        const marker = L.circleMarker([place.lat, place.lng], markerOptions(place, highlight))
+            .bindTooltip(`<strong>${place.name}</strong><br>${place.label}`, {
+                direction: "top",
+                offset: [0, -8]
+            })
+            .on("click", () => {
+                activePlaceId = place.id;
+                renderAll();
+            });
+
+        marker.addTo(markersLayer);
+        bounds.push([place.lat, place.lng]);
+
+        if (place.id === "beolgyo") {
+            L.circle([place.lat, place.lng], {
+                radius: 42000,
+                color: GROUP_META.plot.color,
+                weight: highlight ? 2 : 1.5,
+                opacity: 0.28,
+                fillOpacity: 0.03
+            }).addTo(markersLayer);
+        }
+    });
+
+    if (bounds.length) {
+        map.fitBounds(bounds, { padding: [34, 34], maxZoom: activePlaceId ? 10 : 8 });
+    } else {
+        map.setView([34.95, 127.25], 8);
+    }
+}
+
+function renderFilters() {
+    const host = document.getElementById("filters");
+    host.innerHTML = GROUPS.map((group) => `
+        <button class="filter-btn${group.id === activeGroup ? " active" : ""}" data-group="${group.id}" type="button">${group.label}</button>
+    `).join("");
+
+    host.querySelectorAll(".filter-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+            activeGroup = button.dataset.group;
+            const allowed = activeGroup === "all" ? PLACES : PLACES.filter((place) => place.group === activeGroup);
+            if (!allowed.some((place) => place.id === activePlaceId)) activePlaceId = null;
+            renderAll();
+        });
+    });
+}
+
+function renderPlaceList(group) {
+    const host = document.getElementById(GROUP_META[group].listId);
+    const places = PLACES.filter((place) => place.group === group);
+
+    host.innerHTML = places.map((place) => `
+        <article class="place-card${place.id === activePlaceId ? " active" : ""}" data-place="${place.id}">
+            <div class="place-label">${place.label}</div>
+            <div class="place-name">${place.name}</div>
+            <div class="place-copy">${place.note}</div>
+        </article>
+    `).join("");
+
+    host.querySelectorAll(".place-card").forEach((card) => {
+        card.addEventListener("click", () => {
+            activePlaceId = card.dataset.place;
+            renderAll();
+        });
+    });
+}
+
+function renderAll() {
+    renderFilters();
+    renderPlaceList("plot");
+    renderPlaceList("trigger");
+    renderPlaceList("terrain");
+    renderMap();
+}
+
+document.getElementById("resetView").addEventListener("click", () => {
+    activeGroup = "all";
+    activePlaceId = null;
+    renderAll();
+});
+
+initMap();
+renderAll();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literature Map Quiz | Modern Korean in Literature and Film</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Literature Map Quiz | Modern Korean in Literature and Film">
+    <meta property="og:description" content="An interactive map quiz covering the assigned texts so far.">
+    <meta property="og:url" content="https://omatty123.github.io/Modern-Korea-through-Lit-and-Film/literature-map-quiz.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Literature Map Quiz | Modern Korean in Literature and Film">
+    <meta name="twitter:description" content="Click the map to place each text in its main setting.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        :root {
+            --ink: #171512;
+            --ink-soft: #5a524a;
+            --ink-faint: #8a837b;
+            --paper: #f4efe7;
+            --surface: #fffdf9;
+            --line: #ddd3c4;
+            --shadow: rgba(25, 18, 10, 0.07);
+            --forest: #27594f;
+            --forest-soft: #deeee8;
+            --wine: #8a3140;
+            --wine-soft: #f6e7ea;
+            --slate: #355685;
+            --slate-soft: #e7edf7;
+            --gold: #9c6f17;
+            --gold-soft: #f3ead4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Outfit", -apple-system, sans-serif;
+            color: var(--ink);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)),
+                radial-gradient(circle at top left, rgba(39, 89, 79, 0.08), transparent 20%),
+                var(--paper);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            background: rgba(20, 18, 16, 0.96);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            backdrop-filter: blur(12px);
+        }
+
+        .topbar-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0.95rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .course-tag {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .topnav {
+            display: flex;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+        }
+
+        .topnav a {
+            padding: 0.42rem 0.78rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.78rem;
+            transition: all 0.15s ease;
+        }
+
+        .topnav a:hover,
+        .topnav a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.24);
+        }
+
+        .page {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 2.4rem 1.5rem 3rem;
+        }
+
+        .hero,
+        .quiz-shell,
+        .review-shell {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: 0 18px 36px var(--shadow);
+        }
+
+        .hero {
+            padding: 1.8rem 1.8rem 1.6rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--forest);
+            font-weight: 700;
+            margin-bottom: 0.95rem;
+        }
+
+        h1, h2, h3 {
+            font-family: "Newsreader", Georgia, serif;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 7vw, 4.5rem);
+            line-height: 0.95;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-copy {
+            max-width: 62ch;
+            color: var(--ink-soft);
+            font-size: 1rem;
+        }
+
+        .quiz-shell {
+            display: grid;
+            grid-template-columns: 360px minmax(0, 1fr);
+            gap: 1.2rem;
+            padding: 1.2rem;
+        }
+
+        .panel {
+            display: grid;
+            gap: 1rem;
+            align-content: start;
+        }
+
+        .card {
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 1rem 1rem 1.05rem;
+            background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,246,240,0.98));
+        }
+
+        .kicker {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--ink-faint);
+            font-weight: 700;
+            margin-bottom: 0.45rem;
+        }
+
+        .progress {
+            display: flex;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+            margin-top: 0.7rem;
+        }
+
+        .pill {
+            padding: 0.35rem 0.6rem;
+            border-radius: 999px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            font-size: 0.8rem;
+            color: var(--ink-soft);
+        }
+
+        .question-title {
+            font-size: 1.5rem;
+            line-height: 1.05;
+            margin-bottom: 0.4rem;
+        }
+
+        .question-meta {
+            color: var(--ink-soft);
+            font-size: 0.92rem;
+        }
+
+        .hint {
+            margin-top: 0.7rem;
+            padding: 0.75rem 0.8rem;
+            border-radius: 16px;
+            background: var(--gold-soft);
+            color: var(--ink);
+            font-size: 0.9rem;
+        }
+
+        .result {
+            min-height: 7rem;
+        }
+
+        .result.good {
+            background: var(--forest-soft);
+            border-color: rgba(39, 89, 79, 0.2);
+        }
+
+        .result.bad {
+            background: var(--wine-soft);
+            border-color: rgba(138, 49, 64, 0.18);
+        }
+
+        .result.neutral {
+            background: var(--slate-soft);
+            border-color: rgba(53, 86, 133, 0.15);
+        }
+
+        .result p {
+            color: var(--ink-soft);
+            font-size: 0.92rem;
+            margin-top: 0.35rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            appearance: none;
+            border: 1px solid var(--line);
+            background: #fff;
+            color: var(--ink-soft);
+            padding: 0.62rem 0.92rem;
+            border-radius: 999px;
+            font: inherit;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        button:hover:not(:disabled) {
+            border-color: var(--forest);
+            color: var(--ink);
+        }
+
+        button.primary {
+            background: var(--forest);
+            border-color: var(--forest);
+            color: #fff;
+        }
+
+        button.warn {
+            background: var(--wine);
+            border-color: var(--wine);
+            color: #fff;
+        }
+
+        button:disabled {
+            cursor: default;
+            opacity: 0.45;
+        }
+
+        .map-wrap {
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        #map {
+            height: 700px;
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+        }
+
+        .map-note {
+            color: var(--ink-faint);
+            font-size: 0.84rem;
+            padding: 0 0.15rem;
+        }
+
+        .review-shell {
+            padding: 1.2rem;
+            margin-top: 1.25rem;
+            display: none;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.9rem;
+            margin-top: 0.95rem;
+        }
+
+        .review-card {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 0.9rem;
+            background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,246,240,0.98));
+        }
+
+        .review-card.miss {
+            background: var(--wine-soft);
+        }
+
+        .review-card.hit {
+            background: var(--forest-soft);
+        }
+
+        .review-card h3 {
+            font-size: 1.12rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .review-card p {
+            font-size: 0.88rem;
+            color: var(--ink-soft);
+        }
+
+        .review-link {
+            display: inline-block;
+            margin-top: 0.45rem;
+            color: var(--forest);
+            font-weight: 600;
+            font-size: 0.84rem;
+        }
+
+        @media (max-width: 980px) {
+            .quiz-shell {
+                grid-template-columns: 1fr;
+            }
+
+            #map {
+                height: 540px;
+            }
+
+            .review-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="course-tag">Modern Korean in Literature and Film</div>
+        <nav class="topnav">
+            <a href="index.html">Film</a>
+            <a href="literature.html">Literature</a>
+            <a href="story-map.html">Sopyeonje Map</a>
+            <a href="literature-map-quiz.html" class="active">Map Quiz</a>
+        </nav>
+    </div>
+</div>
+
+<main class="page">
+    <section class="hero">
+        <div class="eyebrow">Interactive Review</div>
+        <h1>Literature Map Quiz</h1>
+        <p class="hero-copy">
+            Click the map to place each assigned text in its main story geography. This version is trimmed to the readings up through tomorrow's class, so it works as a focused review rather than a whole-semester sprawl.
+        </p>
+    </section>
+
+    <section class="quiz-shell">
+        <aside class="panel">
+            <div class="card">
+                <div class="kicker">Progress</div>
+                <div class="progress">
+                    <span class="pill" id="progressPill">1 / 20</span>
+                    <span class="pill" id="scorePill">Score: 0</span>
+                    <span class="pill" id="streakPill">Streak: 0</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="kicker">Question</div>
+                <h2 class="question-title" id="questionTitle">Loading...</h2>
+                <div class="question-meta" id="questionMeta"></div>
+                <div class="hint" id="questionHint"></div>
+            </div>
+
+            <div class="card result neutral" id="resultCard">
+                <div class="kicker">Result</div>
+                <div id="resultTitle">Choose a point on the map.</div>
+                <p id="resultCopy">You can move your pin before submitting. After each round, the correct anchor will appear on the map.</p>
+            </div>
+
+            <div class="controls">
+                <button class="primary" id="submitBtn">Submit Guess</button>
+                <button id="nextBtn" disabled>Next</button>
+                <button id="restartBtn">Restart</button>
+            </div>
+        </aside>
+
+        <div class="map-wrap">
+            <div id="map" aria-label="Literature map quiz"></div>
+            <div class="map-note">
+                Quiz mode uses generous regional tolerances. Some texts share Seoul or Pyongyang; the point is to remember the broad geography of the course, not fake precision.
+            </div>
+        </div>
+    </section>
+
+    <section class="review-shell" id="reviewShell">
+        <div class="kicker">Round Summary</div>
+        <h2 id="reviewTitle">Quiz complete</h2>
+        <div class="review-grid" id="reviewGrid"></div>
+    </section>
+</main>
+
+<script>
+const ALL_QUIZ_ITEMS = [
+    {
+        id: "hanjungnok",
+        title: "Hanjungnok",
+        author: "Lady Hyegyeong",
+        year: "1805",
+        hint: "Place it in the dynastic court world of Prince Sado and King Yeongjo.",
+        accepted: [{ lat: 37.5794, lng: 126.9910, label: "Changdeok Palace, Seoul" }],
+        toleranceKm: 18,
+        answer: "The memoir belongs to the Joseon court in Seoul, above all the palace world around Changdeokgung.",
+        link: "literature/hanjungnok.html"
+    },
+    {
+        id: "kyonghui",
+        title: "Kyŏnghŭi",
+        author: "Na Hyesŏk",
+        year: "1918",
+        hint: "Think New Woman modernity under colonial rule.",
+        accepted: [{ lat: 37.5665, lng: 126.9780, label: "Seoul" }],
+        toleranceKm: 22,
+        answer: "The story is anchored in colonial Seoul, even as its publication world also runs through Tokyo's Korean student networks.",
+        link: "literature/kyonghui.html"
+    },
+    {
+        id: "awakening",
+        title: "Awakening",
+        author: "Kim Wonju",
+        year: "1926",
+        hint: "Keep it with the New Woman and colonial urban public sphere.",
+        accepted: [{ lat: 37.5665, lng: 126.9780, label: "Seoul" }],
+        toleranceKm: 22,
+        answer: "This quiz keys the story to colonial Seoul and its feminist public sphere.",
+        link: "literature/awakening.html"
+    },
+    {
+        id: "potatoes",
+        title: "Potatoes",
+        author: "Kim Tongin",
+        year: "1925",
+        hint: "Naturalism in a northern colonial city.",
+        accepted: [{ lat: 39.0392, lng: 125.7625, label: "Pyongyang" }],
+        toleranceKm: 28,
+        answer: "The story is set in the slum districts on the outskirts of colonial Pyongyang.",
+        link: "literature/potatoes.html"
+    },
+    {
+        id: "meetings-farewells",
+        title: "Meetings and Farewells",
+        author: "Yi Sang",
+        year: "1936",
+        hint: "Late-colonial nightlife, cafés, money, illness, and Jongno.",
+        accepted: [{ lat: 37.5704, lng: 126.9849, label: "Jongno, Seoul" }],
+        toleranceKm: 18,
+        answer: "Yi Sang's story lives in colonial Seoul, especially the Jongno entertainment district.",
+        link: "literature/meetings-farewells.html"
+    },
+    {
+        id: "constable-maeng",
+        title: "Constable Maeng",
+        author: "Chae Mansik",
+        year: "1946",
+        hint: "Liberation, police collaboration, and post-1945 political scrambling.",
+        accepted: [{ lat: 37.5665, lng: 126.9780, label: "Seoul" }],
+        toleranceKm: 25,
+        answer: "The story is keyed here to liberation-era Seoul and its immediate political aftermath.",
+        link: "literature/constable-maeng.html"
+    },
+    {
+        id: "before-after-liberation",
+        title: "Before and After Liberation",
+        author: "Yi Taejun",
+        year: "1946",
+        hint: "This one ranges, but the quiz accepts both the urban and rural anchor.",
+        accepted: [
+            { lat: 37.5665, lng: 126.9780, label: "Seoul" },
+            { lat: 38.35877, lng: 126.81929, label: "Former Anhyŏp" },
+            { lat: 38.34639, lng: 126.905, label: "Historical Ch'ŏrwŏn-ŭp" }
+        ],
+        toleranceKm: 40,
+        answer: "The story moves among Seoul, the rural retreat at former Anhyŏp, and historical Ch'ŏrwŏn. Any of those broad anchors counts here.",
+        link: "literature/before-after-liberation.html"
+    },
+    {
+        id: "jackals",
+        title: "Jackals",
+        author: "Han Sorya",
+        year: "1951",
+        hint: "DPRK anti-imperialist fiction set in the colonial north.",
+        accepted: [{ lat: 39.0392, lng: 125.7625, label: "Pyongyang" }],
+        toleranceKm: 45,
+        answer: "For quiz purposes this novella is placed in the northern colonial/DPRK sphere around Pyongyang.",
+        link: "literature/jackals.html"
+    },
+    {
+        id: "cranes",
+        title: "Cranes",
+        author: "Hwang Sunwon",
+        year: "1953",
+        hint: "Think armistice-line countryside, not a big city.",
+        accepted: [{ lat: 37.95, lng: 126.75, label: "Western-central DMZ zone" }],
+        toleranceKm: 80,
+        answer: "The story belongs to a village landscape near the 38th parallel / DMZ zone rather than to Seoul or Pyongyang.",
+        link: "literature/cranes.html"
+    },
+    {
+        id: "pasque-flower",
+        title: "A Pasque-Flower on That Bleak Day",
+        author: "Pak Wanso",
+        year: "1977",
+        hint: "War memory surfacing in the postwar capital.",
+        accepted: [{ lat: 37.5665, lng: 126.9780, label: "Seoul" }],
+        toleranceKm: 24,
+        answer: "Pak Wanso's war-memory writing keeps returning to Seoul and its afterlife.",
+        link: "literature/pasque-flower.html"
+    },
+    {
+        id: "stray-bullet",
+        title: "Stray Bullet",
+        author: "Yi Beomseon",
+        year: "1959",
+        hint: "Postwar slum life, displacement, and exhaustion.",
+        accepted: [{ lat: 37.5665, lng: 126.9780, label: "Seoul" }],
+        toleranceKm: 26,
+        answer: "The story is anchored in postwar Seoul and its slum geographies.",
+        link: "literature/stray-bullet.html"
+    },
+    {
+        id: "identical-apartments",
+        title: "Identical Apartments",
+        author: "Pak Wanso",
+        year: "1974",
+        hint: "Apartment blocks, developmentalism, and the Miracle on the Han.",
+        accepted: [{ lat: 37.5665, lng: 126.9780, label: "Seoul" }],
+        toleranceKm: 26,
+        answer: "The story belongs to 1970s Seoul apartment culture.",
+        link: "literature/identical-apartments.html"
+    },
+    {
+        id: "housewatching",
+        title: "The Day My Housewatching Ended",
+        author: "Pak Wanso",
+        year: "1978",
+        hint: "Domestic labor under the same urban development regime.",
+        accepted: [{ lat: 37.5665, lng: 126.9780, label: "Seoul" }],
+        toleranceKm: 26,
+        answer: "This story sits in the same Seoul domestic-development world as Pak Wanso's other Week 5 text.",
+        link: "literature/housewatching.html"
+    },
+    {
+        id: "five-bandits",
+        title: "Five Bandits",
+        author: "Kim Jiha",
+        year: "1970",
+        hint: "Satire aimed at the power center of Park-era South Korea.",
+        accepted: [{ lat: 37.5665, lng: 126.9780, label: "Seoul" }],
+        toleranceKm: 28,
+        answer: "The poem attacks the political and economic order centered in Seoul.",
+        link: "literature/five-bandits.html"
+    },
+    {
+        id: "dwarf",
+        title: "A Dwarf Launches a Little Ball",
+        author: "Cho Sehui",
+        year: "1978",
+        hint: "Redevelopment, displacement, and the urban poor.",
+        accepted: [
+            { lat: 37.654, lng: 127.067, label: "Sanggye-dong, Seoul" },
+            { lat: 37.5665, lng: 126.9780, label: "Seoul" }
+        ],
+        toleranceKm: 32,
+        answer: "The novel belongs to redevelopment Seoul, especially the working-class neighborhoods displaced by apartment construction.",
+        link: "literature/dwarf-little-ball.html"
+    },
+    {
+        id: "salt",
+        title: "Salt",
+        author: "Kang Gyeongae",
+        year: "1934",
+        hint: "Colonial diaspora, not the peninsula proper.",
+        accepted: [{ lat: 42.9042, lng: 129.5078, label: "Jiandao / Yanbian, Manchuria" }],
+        toleranceKm: 90,
+        answer: "The story is set in the Korean diaspora world of Jiandao / Yanbian in Manchuria.",
+        link: "literature/salt.html"
+    },
+    {
+        id: "full-house",
+        title: "Full House",
+        author: "Yū Miri",
+        year: "1995",
+        hint: "Zainichi Korean writing in Japan, not Korea.",
+        accepted: [{ lat: 35.4437, lng: 139.6380, label: "Yokohama" }],
+        toleranceKm: 35,
+        answer: "The quiz places this play in Yokohama, tied to the Zainichi Korean experience in Japan.",
+        link: "literature/full-house.html"
+    },
+    {
+        id: "kln43",
+        title: "Korean Literature Now 43",
+        author: "Queer Issue",
+        year: "2019",
+        hint: "Think public queer visibility and the annual Seoul festival.",
+        accepted: [{ lat: 37.5663, lng: 126.9779, label: "Seoul City Hall Plaza" }],
+        toleranceKm: 18,
+        answer: "The anthology page is keyed here to contemporary queer literary culture in Seoul, especially around City Hall Plaza and the queer culture festival.",
+        link: "literature/korean-lit-now-43.html"
+    },
+    {
+        id: "gi-hyeong-do",
+        title: "Selected Poems",
+        author: "Gi Hyeong-do",
+        year: "1985–1989",
+        hint: "Dark urban lyricism in the late authoritarian capital.",
+        accepted: [{ lat: 37.5665, lng: 126.9780, label: "Seoul" }],
+        toleranceKm: 24,
+        answer: "Gi Hyeong-do's poetic city is Seoul.",
+        link: "literature/gi-hyeong-do.html"
+    },
+    {
+        id: "han-ung-bin",
+        title: "Second Encounter & Hopes for Good Fortune",
+        author: "Han Ung-bin",
+        year: "1999",
+        hint: "Contemporary DPRK everyday life from inside the system.",
+        accepted: [{ lat: 39.0392, lng: 125.7625, label: "Pyongyang" }],
+        toleranceKm: 45,
+        answer: "The quiz anchors these stories in Pyongyang as the broad reference point for contemporary DPRK literary life.",
+        link: "literature/han-ung-bin.html"
+    }
+];
+
+const QUIZ_ITEMS = ALL_QUIZ_ITEMS.filter((item) => [
+    "hanjungnok",
+    "kyonghui",
+    "awakening",
+    "potatoes",
+    "meetings-farewells",
+    "constable-maeng",
+    "before-after-liberation"
+].includes(item.id));
+
+let map;
+let guessMarker = null;
+let answerLayer = null;
+let guessLatLng = null;
+let currentIndex = 0;
+let score = 0;
+let streak = 0;
+let evaluated = false;
+let order = [];
+let results = [];
+
+function shuffle(array) {
+    const copy = [...array];
+    for (let i = copy.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+}
+
+function haversineKm(lat1, lng1, lat2, lng2) {
+    const R = 6371;
+    const toRad = (deg) => deg * Math.PI / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLng = toRad(lng2 - lng1);
+    const a = Math.sin(dLat / 2) ** 2 +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+        Math.sin(dLng / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(a));
+}
+
+function currentItem() {
+    return order[currentIndex];
+}
+
+function updateProgress() {
+    document.getElementById("progressPill").textContent = `${Math.min(currentIndex + 1, order.length)} / ${order.length}`;
+    document.getElementById("scorePill").textContent = `Score: ${score}`;
+    document.getElementById("streakPill").textContent = `Streak: ${streak}`;
+}
+
+function setResult(state, title, copy) {
+    const card = document.getElementById("resultCard");
+    card.className = `card result ${state}`;
+    document.getElementById("resultTitle").textContent = title;
+    document.getElementById("resultCopy").textContent = copy;
+}
+
+function clearAnswerLayer() {
+    if (answerLayer) {
+        map.removeLayer(answerLayer);
+        answerLayer = null;
+    }
+}
+
+function renderQuestion() {
+    const item = currentItem();
+    if (!item) {
+        finishQuiz();
+        return;
+    }
+
+    clearAnswerLayer();
+    evaluated = false;
+    guessLatLng = null;
+    if (guessMarker) {
+        map.removeLayer(guessMarker);
+        guessMarker = null;
+    }
+
+    document.getElementById("questionTitle").textContent = item.title;
+    document.getElementById("questionMeta").textContent = `${item.author} · ${item.year}`;
+    document.getElementById("questionHint").textContent = item.hint;
+    document.getElementById("submitBtn").disabled = false;
+    document.getElementById("nextBtn").disabled = true;
+    setResult("neutral", "Choose a point on the map.", "You can move your pin before submitting. After each round, the correct anchor will appear on the map.");
+    updateProgress();
+}
+
+function revealAnswer(item, matchedPoint) {
+    clearAnswerLayer();
+    answerLayer = L.layerGroup().addTo(map);
+    item.accepted.forEach((point) => {
+        const marker = L.circleMarker([point.lat, point.lng], {
+            radius: matchedPoint && point.label === matchedPoint.label ? 10 : 8,
+            color: "#ffffff",
+            weight: 2,
+            fillColor: matchedPoint && point.label === matchedPoint.label ? "#27594f" : "#8a3140",
+            fillOpacity: 0.92
+        });
+        marker.bindPopup(point.label);
+        marker.addTo(answerLayer);
+    });
+}
+
+function submitGuess() {
+    if (evaluated || !guessLatLng) {
+        if (!guessLatLng) {
+            setResult("bad", "No guess yet.", "Click the map first, then submit.");
+        }
+        return;
+    }
+
+    const item = currentItem();
+    let best = null;
+    item.accepted.forEach((point) => {
+        const distance = haversineKm(guessLatLng.lat, guessLatLng.lng, point.lat, point.lng);
+        if (!best || distance < best.distance) {
+            best = { point, distance };
+        }
+    });
+
+    const correct = best.distance <= item.toleranceKm;
+    evaluated = true;
+
+    if (correct) {
+        score += 1;
+        streak += 1;
+        setResult("good", "Correct.", `${item.answer} Your guess was about ${Math.round(best.distance)} km from ${best.point.label}.`);
+    } else {
+        streak = 0;
+        setResult("bad", "Not quite.", `${item.answer} Your guess was about ${Math.round(best.distance)} km from ${best.point.label}.`);
+    }
+
+    results.push({
+        id: item.id,
+        title: item.title,
+        author: item.author,
+        hit: correct,
+        answer: item.answer,
+        label: best.point.label,
+        distance: Math.round(best.distance),
+        link: item.link
+    });
+
+    revealAnswer(item, best.point);
+    updateProgress();
+    document.getElementById("submitBtn").disabled = true;
+    document.getElementById("nextBtn").disabled = false;
+}
+
+function nextQuestion() {
+    if (!evaluated) {
+        return;
+    }
+    currentIndex += 1;
+    if (currentIndex >= order.length) {
+        finishQuiz();
+        return;
+    }
+    renderQuestion();
+}
+
+function finishQuiz() {
+    document.getElementById("submitBtn").disabled = true;
+    document.getElementById("nextBtn").disabled = true;
+    const total = order.length;
+    const pct = Math.round((score / total) * 100);
+    setResult("good", "Quiz complete.", `You got ${score} out of ${total} correct (${pct}%). Review the round-by-round results below.`);
+
+    const reviewShell = document.getElementById("reviewShell");
+    const reviewGrid = document.getElementById("reviewGrid");
+    const reviewTitle = document.getElementById("reviewTitle");
+    reviewTitle.textContent = `Quiz complete: ${score} / ${total}`;
+    reviewGrid.innerHTML = results.map((item) => `
+        <article class="review-card ${item.hit ? "hit" : "miss"}">
+            <div class="kicker">${item.hit ? "Correct" : "Missed"}</div>
+            <h3>${item.title}</h3>
+            <p>${item.author}</p>
+            <p>${item.answer}</p>
+            <p>Anchor used: ${item.label} · Distance: ${item.distance} km</p>
+            <a class="review-link" href="${item.link}">Open course page</a>
+        </article>
+    `).join("");
+    reviewShell.style.display = "block";
+}
+
+function restartQuiz() {
+    order = shuffle(QUIZ_ITEMS);
+    currentIndex = 0;
+    score = 0;
+    streak = 0;
+    results = [];
+    document.getElementById("reviewShell").style.display = "none";
+    map.setView([37.9, 127.2], 5);
+    renderQuestion();
+}
+
+function initMap() {
+    map = L.map("map", {
+        zoomControl: true,
+        scrollWheelZoom: false
+    }).setView([37.9, 127.2], 5);
+
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        attribution: "&copy; <a href=\"https://carto.com/attributions\">CARTO</a>",
+        maxZoom: 19
+    }).addTo(map);
+
+    map.on("click", (event) => {
+        if (evaluated) {
+            return;
+        }
+        guessLatLng = event.latlng;
+        if (guessMarker) {
+            guessMarker.setLatLng(event.latlng);
+        } else {
+            guessMarker = L.circleMarker(event.latlng, {
+                radius: 9,
+                color: "#ffffff",
+                weight: 2,
+                fillColor: "#355685",
+                fillOpacity: 0.92
+            }).addTo(map);
+        }
+        setResult("neutral", "Pin placed.", "Submit when you want to lock in this guess.");
+    });
+}
+
+document.getElementById("submitBtn").addEventListener("click", submitGuess);
+document.getElementById("nextBtn").addEventListener("click", nextQuestion);
+document.getElementById("restartBtn").addEventListener("click", restartQuiz);
+
+initMap();
+restartQuiz();
+</script>
+
+</body>
+</html>

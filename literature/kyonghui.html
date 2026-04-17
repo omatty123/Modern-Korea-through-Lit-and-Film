@@ -5,224 +5,1157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Kyŏnghŭi — Na Hyesŏk">
-    <meta property="og:description" content="Korea's first feminist short story. Korean History through Literature.">
-    <title>Kyŏnghŭi (경희) | Korean History through Literature</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Kyonghui Character Map and Translation Glossary">
+    <meta property="og:description" content="A visual guide to the character network and key Korean-English translation choices in Na Hyesok's Kyonghui.">
+    <title>Kyŏnghŭi (경희) | Character Map and Translation Glossary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
     <style>
-        :root { --ink: #1a1a1a; --ink-light: #4a4a4a; --ink-faint: #888; --paper: #faf9f7; --paper-warm: #f5f3ef; --surface: #fff; --accent: #37474f; --accent-light: #546e7a; --gold: #a67c00; --border: #e0dcd5; --shadow: rgba(0,0,0,0.06); }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
-        .breadcrumb { background: var(--ink); padding: 0.6rem 2rem; font-size: 0.75rem; }
-        .breadcrumb a { color: var(--gold); text-decoration: none; }
-        .breadcrumb a:hover { text-decoration: underline; }
-        .breadcrumb span { color: rgba(255,255,255,0.4); }
-        .hero { background: linear-gradient(rgba(26,34,38,0.82), rgba(55,71,79,0.82)), url('../images/authors/na-hyeseok.png'); background-size: cover; background-position: center 20%; padding: 3.5rem 2rem 3rem; position: relative; }
-        .hero-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-        .hero-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 0.75rem; }
-        .hero h1 { font-family: 'Newsreader', Georgia, serif; font-size: 2.6rem; font-weight: 500; color: #fff; line-height: 1.15; margin-bottom: 0.4rem; }
-        .hero-korean { font-family: 'Noto Serif KR', serif; font-size: 1.1rem; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
-        .hero-meta { display: flex; gap: 2rem; font-size: 0.8rem; color: rgba(255,255,255,0.6); flex-wrap: wrap; }
-        .main-wrap { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .two-col { display: grid; grid-template-columns: 65% 35%; gap: 2.5rem; align-items: start; }
-        .section-title { font-family: 'Newsreader', serif; font-size: 1.4rem; font-weight: 500; color: var(--ink); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent); }
-        .doc-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 2px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
-        .doc-card.gold-border { border-left-color: var(--gold); }
-        .doc-card.dark-border { border-left-color: var(--ink); }
-        .doc-card.light-border { border-left-color: var(--accent-light); }
-        .doc-card h3 { font-family: 'Newsreader', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--ink); }
-        .doc-card p { font-size: 0.88rem; color: var(--ink-light); margin-bottom: 0.75rem; }
-        .doc-card p:last-child { margin-bottom: 0; }
-        .doc-card a, .source-item a { color: var(--accent); text-decoration: underline; text-underline-offset: 0.12em; }
-        .doc-card a:hover, .source-item a:hover { color: var(--accent-light); }
-        .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem; margin-bottom: 1.25rem; }
-        .sidebar-card h3 { font-family: 'Newsreader', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent); }
-        .sidebar-card.gold-header h3 { border-bottom-color: var(--gold); }
-        .sidebar-card.dark-header h3 { border-bottom-color: var(--ink); }
-        .author-portrait { width: 100%; border-radius: 2px; margin-bottom: 0.75rem; display: block; }
-        .fact-row { display: grid; grid-template-columns: 90px 1fr; gap: 0.5rem; font-size: 0.8rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
-        .fact-row:last-child { border-bottom: none; }
-        .fact-label { font-weight: 600; color: var(--ink); }
-        .fact-value { color: var(--ink-light); }
-        .concept-item { margin-bottom: 1rem; }
-        .concept-item:last-child { margin-bottom: 0; }
-        .concept-term { font-weight: 600; font-size: 0.85rem; color: var(--accent); }
-        .concept-def { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.15rem; }
-        .discussion-q { font-size: 0.82rem; color: var(--ink-light); padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
-        .discussion-q:last-child { border-bottom: none; }
-        .discussion-q strong { color: var(--ink); font-weight: 600; }
-        .source-item { font-size: 0.78rem; color: var(--ink-light); padding: 0.35rem 0; border-bottom: 1px solid var(--border); }
-        .source-item:last-child { border-bottom: none; }
-        .source-type { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); display: block; }
-        footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 2rem; font-size: 0.75rem; }
-        footer .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; }
-        footer a { color: var(--gold); text-decoration: none; }
-        @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } .hero { padding: 2rem 1.5rem; } .hero h1 { font-size: 1.8rem; } .main-wrap { padding: 1.5rem; } }
+        :root {
+            --bg: #f5efe6;
+            --bg-deep: #eadbc7;
+            --surface: rgba(255, 250, 244, 0.88);
+            --surface-strong: #fffaf3;
+            --ink: #1d1a17;
+            --ink-soft: #5e554d;
+            --muted: #85786c;
+            --line: rgba(69, 48, 29, 0.12);
+            --line-strong: rgba(69, 48, 29, 0.22);
+            --accent: #a55d34;
+            --accent-deep: #7a4022;
+            --sage: #596a57;
+            --gold: #c08b39;
+            --berry: #7a5364;
+            --shadow: 0 18px 48px rgba(58, 35, 18, 0.12);
+            --shadow-soft: 0 10px 24px rgba(58, 35, 18, 0.08);
+            --radius-xl: 30px;
+            --radius-lg: 22px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at top left, rgba(192, 139, 57, 0.18), transparent 28%),
+                radial-gradient(circle at top right, rgba(122, 83, 100, 0.12), transparent 24%),
+                linear-gradient(180deg, #f1e7da 0%, #f5efe6 28%, #f6f1ea 100%);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--accent-deep);
+        }
+
+        .breadcrumb {
+            background: rgba(19, 17, 15, 0.92);
+            padding: 0.78rem 2rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.02em;
+        }
+
+        .breadcrumb a {
+            color: #d7b06e;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--line);
+            background:
+                linear-gradient(135deg, rgba(23, 18, 14, 0.88), rgba(46, 31, 19, 0.7)),
+                url("../images/authors/na-hyeseok.png");
+            background-size: cover;
+            background-position: center 22%;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 16% 16%, rgba(192, 139, 57, 0.2), transparent 20%),
+                radial-gradient(circle at 82% 22%, rgba(122, 83, 100, 0.18), transparent 18%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 4.4rem 2rem 3.2rem;
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+            gap: 2rem;
+            align-items: end;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            margin-bottom: 1rem;
+            color: #d7b06e;
+            font-size: 0.78rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 2rem;
+            height: 1px;
+            background: currentColor;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Space Grotesk", sans-serif;
+            letter-spacing: -0.03em;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 5vw, 5.4rem);
+            line-height: 0.94;
+            color: #fff7ee;
+            max-width: 8ch;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero-korean {
+            font-family: "Noto Sans KR", sans-serif;
+            color: rgba(255, 247, 238, 0.74);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-copy {
+            max-width: 62ch;
+            color: rgba(255, 247, 238, 0.84);
+            font-size: 1rem;
+        }
+
+        .hero-panel {
+            backdrop-filter: blur(16px);
+            background: rgba(255, 250, 244, 0.1);
+            border: 1px solid rgba(255, 243, 228, 0.16);
+            border-radius: 24px;
+            padding: 1.25rem;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-panel-title {
+            color: #eed2a3;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 0.9rem;
+        }
+
+        .hero-chip-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+        }
+
+        .hero-chip {
+            border-top: 1px solid rgba(255, 247, 238, 0.16);
+            padding-top: 0.75rem;
+        }
+
+        .hero-chip.wide {
+            grid-column: 1 / -1;
+        }
+
+        .hero-chip-label {
+            color: rgba(255, 247, 238, 0.52);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.28rem;
+        }
+
+        .hero-chip-value {
+            color: #fff7ee;
+            font-size: 0.95rem;
+        }
+
+        .page {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: linear-gradient(180deg, rgba(255, 251, 246, 0.9), rgba(255, 248, 241, 0.82));
+            border: 1px solid var(--line);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            padding: 1.4rem 1.5rem 1rem;
+            border-bottom: 1px solid var(--line);
+            background:
+                linear-gradient(180deg, rgba(234, 219, 199, 0.62), rgba(255, 248, 241, 0));
+        }
+
+        .section-kicker {
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.45rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            line-height: 1.02;
+            margin-bottom: 0.55rem;
+        }
+
+        .section-dek {
+            max-width: 72ch;
+            color: var(--ink-soft);
+            font-size: 0.98rem;
+        }
+
+        .map-shell {
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .map-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: fit-content;
+            max-width: 100%;
+            padding: 0.72rem 0.95rem;
+            border-radius: 999px;
+            background: rgba(165, 93, 52, 0.08);
+            border: 1px solid rgba(165, 93, 52, 0.14);
+            color: var(--ink-soft);
+            font-size: 0.9rem;
+        }
+
+        .map-note strong {
+            color: var(--accent-deep);
+        }
+
+        .network {
+            position: relative;
+            display: grid;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 26px;
+            background:
+                radial-gradient(circle at center, rgba(192, 139, 57, 0.08), transparent 32%),
+                linear-gradient(180deg, rgba(255, 252, 247, 0.94), rgba(251, 246, 239, 0.78));
+            border: 1px solid var(--line);
+        }
+
+        .network::before {
+            content: "";
+            position: absolute;
+            inset: 18% 18%;
+            border: 1px dashed rgba(122, 64, 34, 0.12);
+            border-radius: 999px;
+            pointer-events: none;
+        }
+
+        .network-lines {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .network-line {
+            position: absolute;
+            background: linear-gradient(90deg, rgba(165, 93, 52, 0.2), rgba(89, 106, 87, 0.18));
+            border-radius: 999px;
+            box-shadow: 0 0 0 1px rgba(255, 250, 244, 0.18);
+        }
+
+        .network-line.vertical {
+            width: 2px;
+            background: linear-gradient(180deg, rgba(192, 139, 57, 0.22), rgba(122, 83, 100, 0.2));
+        }
+
+        .network-line.arrow::after {
+            content: "";
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid rgba(122, 64, 34, 0.22);
+            border-right: 2px solid rgba(122, 64, 34, 0.22);
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .network-line.down::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -6px;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid rgba(122, 64, 34, 0.22);
+            border-bottom: 2px solid rgba(122, 64, 34, 0.22);
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .core-row {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .middle-row {
+            display: grid;
+            grid-template-columns: minmax(240px, 1fr) minmax(260px, 1.15fr) minmax(240px, 1fr);
+            gap: 1rem;
+            align-items: stretch;
+            position: relative;
+            z-index: 1;
+        }
+
+        .outer-row {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .connector-tag {
+            justify-self: center;
+            padding: 0.45rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            background: rgba(255, 250, 244, 0.86);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .stack {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .node {
+            position: relative;
+            background: rgba(255, 252, 247, 0.96);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: 1rem 1rem 1rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .node::after {
+            content: "";
+            position: absolute;
+            inset: auto 1rem 0.9rem 1rem;
+            height: 3px;
+            border-radius: 999px;
+            background: rgba(69, 48, 29, 0.08);
+        }
+
+        .node.family::after { background: linear-gradient(90deg, #d6a157, #c08b39); }
+        .node.pressure::after { background: linear-gradient(90deg, #b86d42, #7a4022); }
+        .node.social::after { background: linear-gradient(90deg, #6f8570, #596a57); }
+        .node.center::after { background: linear-gradient(90deg, #c08b39, #7a5364); }
+
+        .node.center {
+            background:
+                radial-gradient(circle at top right, rgba(192, 139, 57, 0.12), transparent 24%),
+                linear-gradient(180deg, #fff9f1, #fffdf9);
+            border-color: rgba(165, 93, 52, 0.22);
+            box-shadow: 0 20px 40px rgba(122, 64, 34, 0.14);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .node-label {
+            display: inline-flex;
+            width: fit-content;
+            padding: 0.35rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.7rem;
+        }
+
+        .family .node-label {
+            background: rgba(192, 139, 57, 0.12);
+            color: #9d6a1d;
+        }
+
+        .pressure .node-label {
+            background: rgba(165, 93, 52, 0.12);
+            color: var(--accent-deep);
+        }
+
+        .social .node-label {
+            background: rgba(89, 106, 87, 0.12);
+            color: var(--sage);
+        }
+
+        .center .node-label {
+            background: rgba(122, 83, 100, 0.12);
+            color: var(--berry);
+        }
+
+        .node h3 {
+            font-size: 1.22rem;
+            line-height: 1.02;
+            margin-bottom: 0.3rem;
+        }
+
+        .node .ko {
+            font-family: "Noto Sans KR", sans-serif;
+            color: var(--ink-soft);
+            font-size: 0.94rem;
+            margin-bottom: 0.55rem;
+        }
+
+        .node p {
+            color: var(--ink-soft);
+            font-size: 0.92rem;
+        }
+
+        .center h3 {
+            font-size: 1.55rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .center .ko {
+            font-size: 1rem;
+        }
+
+        .microcopy {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .micro-card {
+            background: rgba(255, 252, 247, 0.8);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 0.95rem;
+        }
+
+        .micro-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.32rem;
+        }
+
+        .micro-card p {
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+        }
+
+        .glossary-shell {
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .term-card {
+            background: rgba(255, 252, 247, 0.92);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+        }
+
+        .term-card-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: baseline;
+            padding: 1rem 1rem 0.9rem;
+            border-bottom: 1px solid var(--line);
+            background: linear-gradient(180deg, rgba(234, 219, 199, 0.36), rgba(255, 252, 247, 0));
+        }
+
+        .term-card h3 {
+            font-size: 1.2rem;
+        }
+
+        .term-card .ko {
+            font-family: "Noto Sans KR", sans-serif;
+            font-size: 1rem;
+            color: var(--accent-deep);
+            font-weight: 700;
+        }
+
+        .term-chip {
+            flex-shrink: 0;
+            padding: 0.35rem 0.58rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: rgba(89, 106, 87, 0.12);
+            color: var(--sage);
+        }
+
+        .term-body {
+            padding: 1rem;
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .term-row {
+            display: grid;
+            gap: 0.2rem;
+        }
+
+        .term-label {
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .term-value {
+            color: var(--ink);
+            font-size: 0.95rem;
+        }
+
+        .term-note {
+            color: var(--ink-soft);
+            font-size: 0.92rem;
+        }
+
+        .example-block {
+            margin-top: 0.1rem;
+            padding: 0.9rem;
+            border-radius: 14px;
+            background: rgba(234, 219, 199, 0.28);
+            border: 1px solid var(--line);
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .example-line {
+            display: grid;
+            gap: 0.2rem;
+        }
+
+        .example-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .example-ko,
+        .example-en {
+            font-size: 0.92rem;
+        }
+
+        .example-ko {
+            font-family: "Noto Sans KR", sans-serif;
+            color: var(--ink);
+        }
+
+        .example-en {
+            color: var(--ink-soft);
+        }
+
+        .footer {
+            padding: 2.2rem 2rem 2.8rem;
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        @media (max-width: 1120px) {
+            .hero-inner,
+            .middle-row,
+            .microcopy,
+            .glossary-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .outer-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-chip-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .breadcrumb,
+            .page,
+            .footer {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .hero-inner {
+                padding: 3rem 1rem 2.4rem;
+                grid-template-columns: 1fr;
+            }
+
+            .section-header,
+            .map-shell,
+            .glossary-shell {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .core-row,
+            .outer-row {
+                grid-template-columns: 1fr;
+            }
+
+            .network-lines {
+                display: none;
+            }
+
+            .connector-tag {
+                justify-self: start;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
 
 <nav class="breadcrumb">
     <a href="../literature.html">&larr; Back to Literature</a>
-    <span> / Deep Dive</span>
+    <span> / Kyŏnghŭi Reference Page</span>
 </nav>
 
 <header class="hero">
-    <div class="hero-content">
-        <div class="hero-label">Deep Dive: Short Story &mdash; Week 2</div>
-        <h1>Kyŏnghŭi</h1>
-        <div class="hero-korean">경희 &nbsp;&middot;&nbsp; Na Hyesŏk</div>
-        <div class="hero-meta">
-            <span>Na Hyesŏk (나혜석, 1896&ndash;1948)</span>
-            <span>1918</span>
-            <span>Short Story</span>
-            <span>Colonial Korea</span>
+    <div class="hero-inner">
+        <div>
+            <div class="eyebrow">Deep Dive Reference</div>
+            <h1>Kyŏnghŭi</h1>
+            <div class="hero-korean">경희 · Na Hyesŏk · 1918</div>
+            <p class="hero-copy">
+                This page isolates two things students usually need fast: a readable network of who pressures Kyŏnghŭi, and a glossary of Korean words whose English renderings shape how we understand the story's feminism, social world, and argument about what it means to be a person.
+            </p>
         </div>
+
+        <aside class="hero-panel">
+            <div class="hero-panel-title">What This Page Does</div>
+            <div class="hero-chip-grid">
+                <div class="hero-chip">
+                    <div class="hero-chip-label">Map</div>
+                    <div class="hero-chip-value">Family, marriage, household, and rumor network</div>
+                </div>
+                <div class="hero-chip">
+                    <div class="hero-chip-label">Focus</div>
+                    <div class="hero-chip-value"><span class="ko">사람</span> as the story's core claim</div>
+                </div>
+                <div class="hero-chip">
+                    <div class="hero-chip-label">Translation Source</div>
+                    <div class="hero-chip-value"><em>Questioning Minds</em>, pp. 27-51</div>
+                </div>
+                <div class="hero-chip">
+                    <div class="hero-chip-label">Use</div>
+                    <div class="hero-chip-value">Built for lecture, discussion, and close reading</div>
+                </div>
+                <div class="hero-chip wide">
+                    <div class="hero-chip-label">First Published In</div>
+                    <div class="hero-chip-value"><em>Yeojagye</em> (여자계), issue 2 (March 1918), the magazine of the Korean women students' association in Tokyo</div>
+                </div>
+            </div>
+        </aside>
     </div>
 </header>
 
-<div class="main-wrap">
-<div class="two-col">
+<main class="page">
+    <section class="section">
+        <div class="section-header">
+            <div class="section-kicker">Part I</div>
+            <h2 class="section-title">Character and Pressure Map</h2>
+            <p class="section-dek">
+                This is not just a family tree. It is a social pressure diagram. The point of the story is that Kyŏnghŭi is surrounded by linked but distinct forces: parents, siblings, marriage connections, household labor, and rumor circulating from outside the home.
+            </p>
+        </div>
 
-<main>
+        <div class="map-shell">
+            <div class="map-note">
+                <strong>Reading tip:</strong> the unnamed figures matter precisely because they are often defined by role, not individuality.
+            </div>
 
-    <h2 class="section-title">About the Author</h2>
+            <div class="network">
+                <div class="network-lines" aria-hidden="true">
+                    <span class="network-line" style="left: 17%; top: 18%; width: 27%; height: 2px;"></span>
+                    <span class="network-line arrow" style="left: 56%; top: 18%; width: 27%; height: 2px;"></span>
+                    <span class="network-line vertical down" style="left: 49.9%; top: 19%; height: 22%;"></span>
+                    <span class="network-line" style="left: 30%; top: 49%; width: 18%; height: 2px;"></span>
+                    <span class="network-line arrow" style="left: 52%; top: 49%; width: 18%; height: 2px;"></span>
+                    <span class="network-line vertical down" style="left: 49.9%; top: 59%; height: 17%;"></span>
+                </div>
 
-    <div class="doc-card">
-        <h3>Korea's First Feminist</h3>
-        <p>Na Hyesŏk (나혜석) was born in 1896 into an elite family in Suwon and became one of the most consequential cultural figures of colonial Korea. She studied Western-style painting in Tokyo — among the first Korean women to receive such training — and returned to Korea to become not only a distinguished oil painter but also one of the most provocative writers of her generation.</p>
-        <p>She was a central figure in the "New Woman" (신여성, sin yŏsŏng) movement: women who embraced education, public life, and a critique of the Confucian gender order that had confined Korean women to the domestic sphere. Na Hyesŏk lived her critique as well as wrote it. She traveled to Europe with her husband, openly discussed her romantic attachments, and after a highly publicized divorce scandal that destroyed her reputation, she descended into poverty and obscurity. She died in a charity hospital in 1948. She is now recognized as a foundational feminist voice.</p>
-    </div>
+                <div class="core-row">
+                    <article class="node family">
+                        <div class="node-label">Parent</div>
+                        <h3>Yi Ch'ŏrwŏn</h3>
+                        <div class="ko">이철원</div>
+                        <p>Kyŏnghŭi's father. Drives the arranged marriage plot and treats education as acceptable only until it interferes with marriageability.</p>
+                    </article>
 
-    <div class="doc-card gold-border">
-        <h3>The New Woman (신여성)</h3>
-        <p>The "New Woman" of 1910s&ndash;20s colonial Korea was a figure simultaneously celebrated and feared. Educated at new schools — many established by Christian missionaries — and exposed to Western and Japanese ideas about individual rights, these women challenged arranged marriages, advocated for women's education, bobbed their hair, wore Western clothes, and wrote publicly about their inner lives. They were also targets: conservative Korean society (and much of the colonial press) portrayed them as morally dissolute, a threat to Korean families and cultural integrity.</p>
-        <p>The New Woman movement existed in tension with Korean nationalism. Some nationalists argued that women's liberation was a "Western" distraction from the anti-colonial struggle; others saw women's emancipation as inseparable from national liberation. Na Hyesŏk, Kim Wonju, and others refused this choice — insisting that women's rights were not separable from human rights.</p>
-    </div>
+                    <div class="connector-tag">Immediate family</div>
 
-    <h2 class="section-title">About the Text</h2>
+                    <article class="node family">
+                        <div class="node-label">Parent</div>
+                        <h3>Lady Kim</h3>
+                        <div class="ko">김 부인</div>
+                        <p>Kyŏnghŭi's mother. Proud of her daughter's education and skill, but still caught inside marriage expectations.</p>
+                    </article>
+                </div>
 
-    <div class="doc-card dark-border">
-        <h3>Korea's First Feminist Short Story</h3>
-        <p>Published in the journal <em>Hakjigwang</em> (학지광, "Light of Learning") in 1918, <em>Kyŏnghŭi</em> is widely considered Korea's first explicitly feminist short story. The story follows Kyŏnghŭi, a young educated woman who refuses an arranged marriage and insists on determining the course of her own life — radical claims in 1918 colonial Korea, where women's social roles were still largely defined by Confucian norms of domesticity and obedience.</p>
-        <p>The story's argument is made through character and situation rather than polemic. Kyŏnghŭi does not simply state that women should be free; she acts on that conviction and the story explores the social cost of doing so. This is what makes it literature rather than a pamphlet, and what gives it lasting analytical value.</p>
-    </div>
+                <div class="middle-row">
+                    <div class="stack">
+                        <article class="node family">
+                            <div class="node-label">Sibling</div>
+                            <h3>Older Brother</h3>
+                            <div class="ko">오라버니</div>
+                            <p>Present mostly through household detail. His existence anchors Kyŏnghŭi inside the family's gender hierarchy.</p>
+                        </article>
 
-    <div class="doc-card light-border">
-        <h3>Colonial Modernity's Double Bind</h3>
-        <p>Colonial modernity created a specific set of contradictions for Korean women. Japanese colonial rule brought new schools, new forms of labor, and exposure to modern ideas — including ideas about women's equality. But the colonial situation also generated intense pressure on Korean men to assert masculine authority as compensation for the emasculation of colonial subjugation. Korean women who claimed rights were thus navigating opposition from both sides: a colonial power that was indifferent to their freedom, and a Korean patriarchal order that felt threatened by women's independence at precisely the moment it felt most vulnerable.</p>
-        <p>Na Hyesŏk's story operates in this double bind. Kyŏnghŭi's resistance is not simply against arranged marriage as a Confucian institution; it is a refusal to have her life organized by others regardless of the source of that organization.</p>
-    </div>
+                        <article class="node family">
+                            <div class="node-label">In-house ally</div>
+                            <h3>Older Brother's Wife</h3>
+                            <div class="ko">오라버니댁</div>
+                            <p>Kyŏnghŭi's sister-in-law. Listens to her, laughs with her, and provides one of the story's warmest domestic spaces.</p>
+                        </article>
 
-    <h2 class="section-title">The Author's Life as Text</h2>
+                        <article class="node family">
+                            <div class="node-label">Sibling pressure</div>
+                            <h3>Younger Sister</h3>
+                            <div class="ko">동생 / 아우</div>
+                            <p>Already married by section 3. Her earlier marriage intensifies the urgency around Kyŏnghŭi's own fate.</p>
+                        </article>
+                    </div>
 
-    <div class="doc-card gold-border">
-        <h3>When Biography Mirrors Fiction</h3>
-        <p>Na Hyesŏk's own biography tracks Kyŏnghŭi's trajectory with painful precision. She married, had children, traveled the world, fell in love outside her marriage, and was destroyed when she refused to pretend otherwise. Her 1934 essay <a href="https://db.history.go.kr/modern/level.do?levelId=ma_016_0420_0130" target="_blank" rel="noopener noreferrer">"Confession" (이혼 고백서, "Divorce Confession")</a> is a remarkable document in which she names the sexual double standard that ruined her reputation — the same forces her character Kyŏnghŭi confronts sixteen years earlier in fiction.</p>
-        <p>Students should resist reading the story purely through Na Hyesŏk's biography, however. Kyŏnghŭi is not Na Hyesŏk, and fiction is not autobiography. The story asks to be read on its own terms, as an argument about what women deserve — an argument that remains coherent regardless of what happened to its author.</p>
-    </div>
+                    <article class="node center">
+                        <div class="node-label">Center</div>
+                        <h3>Kyŏnghŭi</h3>
+                        <div class="ko">경희</div>
+                        <p>
+                            Educated in Japan, capable in both study and household labor, and increasingly committed to living first as a
+                            <strong>human being</strong> rather than only as a daughter, prospective bride, or obedient woman.
+                        </p>
+                    </article>
 
+                    <div class="stack">
+                        <article class="node pressure">
+                            <div class="node-label">Marriage network</div>
+                            <h3>Sŏmunan Lady-in-law</h3>
+                            <div class="ko">서문안 사돈 마님</div>
+                            <p>Connected through marriage ties. She voices conservative suspicion toward women's education and pushes marriage as common sense.</p>
+                        </article>
+
+                        <article class="node pressure">
+                            <div class="node-label">Marriage pressure</div>
+                            <h3>Judge Kim's Family</h3>
+                            <div class="ko">김 판사 집</div>
+                            <p>The wealthy proposed match. This family matters less as individuals than as the future already chosen for Kyŏnghŭi by others.</p>
+                        </article>
+
+                        <article class="node pressure">
+                            <div class="node-label">Social doctrine</div>
+                            <h3>Older Women in the Kin Network</h3>
+                            <div class="ko">할머니 · 이모님 · 큰어머니</div>
+                            <p>The repeated refrain is the same: education is excessive, marriage is urgent, and a woman's life should stay within inherited limits.</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="outer-row">
+                    <article class="node social">
+                        <div class="node-label">Household labor</div>
+                        <h3>Siwŏl</h3>
+                        <div class="ko">시월이</div>
+                        <p>Maid in the Yi household. Her bond with Kyŏnghŭi reveals a model of everyday reciprocity rather than command alone.</p>
+                    </article>
+
+                    <article class="node social">
+                        <div class="node-label">Public rumor</div>
+                        <h3>Rice-cake Peddler</h3>
+                        <div class="ko">떡장수</div>
+                        <p>Essential figure. She carries gossip about girl students into the home and shows how public opinion disciplines women across class lines.</p>
+                    </article>
+
+                    <article class="node social">
+                        <div class="node-label">Warning case</div>
+                        <h3>Sunam's Mother</h3>
+                        <div class="ko">수남 어머니</div>
+                        <p>Her grief over her daughter-in-law turns domestic life into an argument about what kind of household Kyŏnghŭi refuses to reproduce.</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="microcopy">
+                <article class="micro-card">
+                    <h4>Family is not the whole story</h4>
+                    <p>The page centers Kyŏnghŭi, but the pressure system extends beyond blood ties into marriage alliances and neighborhood talk.</p>
+                </article>
+
+                <article class="micro-card">
+                    <h4>The peddler really matters</h4>
+                    <p>The <span class="ko">떡장수</span> is a mechanism for rumor. She is how the story stages public surveillance of educated women.</p>
+                </article>
+
+                <article class="micro-card">
+                    <h4>Unnamed roles are meaningful</h4>
+                    <p>Many women appear as social positions first. That is part of the story's critique, not an accident of thin characterization.</p>
+                </article>
+
+                <article class="micro-card">
+                    <h4>Marriage is structural</h4>
+                    <p>Judge Kim's family is less a romance plot than an institutional demand: wealth, status, lineage, and submission bundled together.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <div class="section-kicker">Part II</div>
+            <h2 class="section-title">Key Korean Terms and Their English Equivalents</h2>
+            <p class="section-dek">
+                These are the terms that carry the most interpretive weight in the passage and in the assigned English version. The point is not just dictionary meaning, but what each translation choice gains, smooths over, or sharpens.
+            </p>
+        </div>
+
+        <div class="glossary-shell">
+            <article class="term-card">
+                <div class="term-card-head">
+                    <div>
+                        <div class="ko">사람</div>
+                        <h3>Person / Human</h3>
+                    </div>
+                    <div class="term-chip">Core term</div>
+                </div>
+                <div class="term-body">
+                    <div class="term-row">
+                        <div class="term-label">Translation</div>
+                        <div class="term-value">human being</div>
+                    </div>
+                    <p class="term-note">The crucial choice in the translation. It preserves the philosophical force of Kyŏnghŭi's claim that she is a full human subject before being only a woman.</p>
+                    <div class="example-block">
+                        <div class="example-line">
+                            <div class="example-label">Korean example</div>
+                            <div class="example-ko">먹고만 살다 죽으면 그것은 사람이 아니라 금수이지요.</div>
+                        </div>
+                        <div class="example-line">
+                            <div class="example-label">English rendering</div>
+                            <div class="example-en">If we live only for food, we are dumb animals, not human beings.</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="term-card">
+                <div class="term-card-head">
+                    <div>
+                        <div class="ko">여학생</div>
+                        <h3>Girl Student</h3>
+                    </div>
+                    <div class="term-chip">Social category</div>
+                </div>
+                <div class="term-body">
+                    <div class="term-row">
+                        <div class="term-label">Translation</div>
+                        <div class="term-value">girl student</div>
+                    </div>
+                    <p class="term-note">A strong period choice. More historical than "schoolgirl" and less flattened than "female student."</p>
+                    <div class="example-block">
+                        <div class="example-line">
+                            <div class="example-label">Korean example</div>
+                            <div class="example-ko">여학생들 손은 비단결 같다는데 네 손은 왜 이러냐.</div>
+                        </div>
+                        <div class="example-line">
+                            <div class="example-label">English rendering</div>
+                            <div class="example-en">I've heard that girl students have silky-smooth hands, but whatever happened to yours?</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="term-card">
+                <div class="term-card-head">
+                    <div>
+                        <div class="ko">사돈 마님</div>
+                        <h3>Affinal Lady</h3>
+                    </div>
+                    <div class="term-chip">Kinship</div>
+                </div>
+                <div class="term-body">
+                    <div class="term-row">
+                        <div class="term-label">Translation</div>
+                        <div class="term-value">lady-in-law</div>
+                    </div>
+                    <p class="term-note">Odd in everyday English, but useful. It signals a marriage-linked social relation rather than a blood relative.</p>
+                </div>
+            </article>
+
+            <article class="term-card">
+                <div class="term-card-head">
+                    <div>
+                        <div class="ko">시집 / 시집가다</div>
+                        <h3>Marriage into Husband's House</h3>
+                    </div>
+                    <div class="term-chip">Gendered structure</div>
+                </div>
+                <div class="term-body">
+                    <div class="term-row">
+                        <div class="term-label">Translation</div>
+                        <div class="term-value">marriage / get married</div>
+                    </div>
+                    <p class="term-note">Readable, but thinner than the Korean. The original implies entry into the husband's family system, not only a wedding event.</p>
+                    <div class="example-block">
+                        <div class="example-line">
+                            <div class="example-label">Korean example</div>
+                            <div class="example-ko">어서 시집을 가거라. 공부는 해서 무엇하니.</div>
+                        </div>
+                        <div class="example-line">
+                            <div class="example-label">English rendering</div>
+                            <div class="example-en">Hurry up and get married, and be done with this nonsense about education.</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="term-card">
+                <div class="term-card-head">
+                    <div>
+                        <div class="ko">시집살이</div>
+                        <h3>Life under In-laws</h3>
+                    </div>
+                    <div class="term-chip">Domestic burden</div>
+                </div>
+                <div class="term-body">
+                    <div class="term-row">
+                        <div class="term-label">Translation</div>
+                        <div class="term-value">living with tough in-laws</div>
+                    </div>
+                    <p class="term-note">Interpretive rather than literal, but effective. It conveys the labor and hardship compressed into the Korean phrase.</p>
+                    <div class="example-block">
+                        <div class="example-line">
+                            <div class="example-label">Korean example</div>
+                            <div class="example-ko">똑 시집살이한 손 같구나.</div>
+                        </div>
+                        <div class="example-line">
+                            <div class="example-label">English rendering</div>
+                            <div class="example-en">Your hands feel as if you were living with tough in-laws.</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="term-card">
+                <div class="term-card-head">
+                    <div>
+                        <div class="ko">재미</div>
+                        <h3>Interest / Delight</h3>
+                    </div>
+                    <div class="term-chip">Repetition</div>
+                </div>
+                <div class="term-body">
+                    <div class="term-row">
+                        <div class="term-label">Translation</div>
+                        <div class="term-value">interesting / fun / pleased / killing time</div>
+                    </div>
+                    <p class="term-note">The translator varies the English naturally, but the Korean repetition matters. It turns work, curiosity, and self-making into one continuous field.</p>
+                    <div class="example-block">
+                        <div class="example-line">
+                            <div class="example-label">Korean example</div>
+                            <div class="example-ko">재미도 스럽다.</div>
+                        </div>
+                        <div class="example-line">
+                            <div class="example-label">English rendering</div>
+                            <div class="example-en">Isn't this interesting!</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="term-card">
+                <div class="term-card-head">
+                    <div>
+                        <div class="ko">공부</div>
+                        <h3>Study / Learning</h3>
+                    </div>
+                    <div class="term-chip">Education</div>
+                </div>
+                <div class="term-body">
+                    <div class="term-row">
+                        <div class="term-label">Translation</div>
+                        <div class="term-value">study / education</div>
+                    </div>
+                    <p class="term-note">English separates these more than Korean does. In the story, personal study and social uplift constantly bleed into each other.</p>
+                </div>
+            </article>
+
+            <article class="term-card">
+                <div class="term-card-head">
+                    <div>
+                        <div class="ko">금수</div>
+                        <h3>Beast / Animal</h3>
+                    </div>
+                    <div class="term-chip">Contrast term</div>
+                </div>
+                <div class="term-body">
+                    <div class="term-row">
+                        <div class="term-label">Translation</div>
+                        <div class="term-value">animal / beast / dumb animal</div>
+                    </div>
+                    <p class="term-note">The English becomes more varied and polished than the Korean. The original's blunt repetition makes the ethical contrast harsher.</p>
+                </div>
+            </article>
+
+            <article class="term-card">
+                <div class="term-card-head">
+                    <div>
+                        <div class="ko">사람 노릇</div>
+                        <h3>Doing the Work of Being Human</h3>
+                    </div>
+                    <div class="term-chip">Ethical claim</div>
+                </div>
+                <div class="term-body">
+                    <div class="term-row">
+                        <div class="term-label">Translation</div>
+                        <div class="term-value">live like a human being</div>
+                    </div>
+                    <p class="term-note">One of the translation's best decisions. It preserves the sense that personhood is active, moral, and lived.</p>
+                    <div class="example-block">
+                        <div class="example-line">
+                            <div class="example-label">Korean example</div>
+                            <div class="example-ko">그래야 남에게 존대를 받을 뿐 아니라 저도 사람 노릇을 할 것 같아요.</div>
+                        </div>
+                        <div class="example-line">
+                            <div class="example-label">English rendering</div>
+                            <div class="example-en">Then people will treat me with respect, and I'll be also able to live like a human being.</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="term-card">
+                <div class="term-card-head">
+                    <div>
+                        <div class="ko">삼종지도</div>
+                        <h3>Three Obediences</h3>
+                    </div>
+                    <div class="term-chip">Doctrine</div>
+                </div>
+                <div class="term-body">
+                    <div class="term-row">
+                        <div class="term-label">Translation</div>
+                        <div class="term-value">Three Rules of Obedience</div>
+                    </div>
+                    <p class="term-note">A clear and defensible rendering. It keeps the didactic and prescriptive force of the original Confucian phrase.</p>
+                    <div class="example-block">
+                        <div class="example-line">
+                            <div class="example-label">Korean example</div>
+                            <div class="example-ko">여자의 생명은 삼종지도라는 가정의 교육이다.</div>
+                        </div>
+                        <div class="example-line">
+                            <div class="example-label">English rendering</div>
+                            <div class="example-en">The Korean family teaches that a woman's life consists in following the "Three Rules of Obedience."</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="term-card">
+                <div class="term-card-head">
+                    <div>
+                        <div class="ko">활동사진</div>
+                        <h3>Moving Picture</h3>
+                    </div>
+                    <div class="term-chip">Modern media</div>
+                </div>
+                <div class="term-body">
+                    <div class="term-row">
+                        <div class="term-label">Translation</div>
+                        <div class="term-value">movie</div>
+                    </div>
+                    <p class="term-note">Smooth and modern, but less period-textured than the original phrase for early cinema.</p>
+                </div>
+            </article>
+
+            <article class="term-card">
+                <div class="term-card-head">
+                    <div>
+                        <div class="ko">동서남북도 몰라야 복이 많다</div>
+                        <h3>Fortune through Ignorance</h3>
+                    </div>
+                    <div class="term-chip">Free rendering</div>
+                </div>
+                <div class="term-body">
+                    <div class="term-row">
+                        <div class="term-label">Translation</div>
+                        <div class="term-value">Women are better off when they don't know their right hand from left</div>
+                    </div>
+                    <p class="term-note">A free idiomatic move. The literal east-west-south-north disappears, but the misogynistic praise of female ignorance stays intact.</p>
+                </div>
+            </article>
+        </div>
+    </section>
 </main>
 
-<aside>
-
-    <div class="sidebar-card">
-        <img src="../images/authors/na-hyeseok.png" alt="Na Hyesŏk" class="author-portrait">
-        <div class="fact-row">
-            <span class="fact-label">Author</span>
-            <span class="fact-value">Na Hyesŏk (나혜석)</span>
-        </div>
-        <div class="fact-row">
-            <span class="fact-label">Dates</span>
-            <span class="fact-value">1896&ndash;1948</span>
-        </div>
-        <div class="fact-row">
-            <span class="fact-label">Title</span>
-            <span class="fact-value">Kyŏnghŭi (경희)</span>
-        </div>
-        <div class="fact-row">
-            <span class="fact-label">Published</span>
-            <span class="fact-value">1918</span>
-        </div>
-        <div class="fact-row">
-            <span class="fact-label">Genre</span>
-            <span class="fact-value">Short story</span>
-        </div>
-        <div class="fact-row">
-            <span class="fact-label">Published in</span>
-            <span class="fact-value">Hakjigwang (학지광)</span>
-        </div>
-        <div class="fact-row">
-            <span class="fact-label">Week</span>
-            <span class="fact-value">Week 2 — Joseon Ends, Colonialism Begins</span>
-        </div>
-    </div>
-
-    <div class="sidebar-card gold-header">
-        <h3>Key Themes</h3>
-        <ul style="margin-left:1.2rem;font-size:0.83rem;color:var(--ink-light);">
-            <li>New Woman / sin yŏsŏng (신여성)</li>
-            <li>Colonial modernity and gender</li>
-            <li>Arranged marriage and resistance</li>
-            <li>Women's education and autonomy</li>
-            <li>Confucian gender roles and their critique</li>
-            <li>The double bind of colonial liberation</li>
-        </ul>
-    </div>
-
-    <div class="sidebar-card dark-header">
-        <h3>Key Concepts</h3>
-        <div class="concept-item">
-            <div class="concept-term">Sin yŏsŏng (신여성, "New Woman")</div>
-            <div class="concept-def">Educated Korean women of the 1910s–30s who challenged Confucian gender norms. Associated with Western-style education, public life, and claims to individual self-determination. The category was both celebrated and attacked in the colonial press.</div>
-        </div>
-        <div class="concept-item">
-            <div class="concept-term">Arranged marriage (중매결혼)</div>
-            <div class="concept-def">The dominant form of marriage in Joseon and early colonial Korea, organized by families with little or no input from the bride. New Woman writers attacked it as incompatible with women's dignity and self-determination.</div>
-        </div>
-        <div class="concept-item">
-            <div class="concept-term">Hakjigwang (학지광)</div>
-            <div class="concept-def">"Light of Learning" — a journal published by Korean students in Tokyo, 1914–1930. A key venue for new literary and intellectual work in the early colonial period. Publishing there positioned a writer within a network of educated reform-minded Koreans.</div>
-        </div>
-    </div>
-
-    <div class="sidebar-card dark-header">
-        <h3>Discussion Questions</h3>
-        <div class="discussion-q"><strong>1.</strong> What specific freedoms does Kyŏnghŭi seek, and what obstacles does she face? How do these reflect the constraints facing Korean women in 1918?</div>
-        <div class="discussion-q"><strong>2.</strong> How does Na Hyesŏk use Kyŏnghŭi's character to argue for women's rights without making the argument didactic?</div>
-        <div class="discussion-q"><strong>3.</strong> Compare Na Hyesŏk's own biography with Kyŏnghŭi's story. How do they mirror and diverge? What are the risks of reading fiction through biography?</div>
-        <div class="discussion-q"><strong>4.</strong> How does colonial modernity create both new possibilities and new pressures for women in this text?</div>
-        <div class="discussion-q"><strong>5.</strong> Read alongside Kim Wonju's "Awakening." How do the two texts construct the "New Woman" differently?</div>
-    </div>
-
-    <div class="sidebar-card">
-        <h3>Further Reading</h3>
-        <div class="source-item">
-            <span class="source-type">Translation and scholarship</span>
-            Translated in: Choi Kyeong-hee, ed. <em>A Ready-Made Life: Early Masters of Modern Korean Fiction</em>. University of Hawai'i Press, 1998.
-        </div>
-        <div class="source-item">
-            <span class="source-type">Scholarly context</span>
-            Insook Kwon. "The 'New Woman' in Early Colonial Korea." <em>Gender and History</em>, 2004.
-        </div>
-        <div class="source-item">
-            <span class="source-type">Scholarly context</span>
-            Theodore Jun Yoo. <em>The Politics of Gender in Colonial Korea: Education, Labor, and Health, 1910&ndash;1945</em>. University of California Press, 2008.
-        </div>
-        <div class="source-item">
-            <span class="source-type">Primary source companion</span>
-            Na Hyesŏk. <a href="https://db.history.go.kr/modern/level.do?levelId=ma_016_0420_0130" target="_blank" rel="noopener noreferrer">"Divorce Confession" (이혼 고백서, 1934)</a> — her autobiographical essay on the sexual double standard.
-        </div>
-    </div>
-
-</aside>
-
-</div>
-</div>
-
-<footer>
-    <div class="footer-content">
-        <div>Korean History through Literature &middot; Spring 2026<br>Lawrence University</div>
+<footer class="footer">
+    <div class="footer-inner">
+        <div>Korean History through Literature · Spring 2026 · Lawrence University</div>
         <div><a href="../literature.html">Literature Index</a></div>
     </div>
 </footer>

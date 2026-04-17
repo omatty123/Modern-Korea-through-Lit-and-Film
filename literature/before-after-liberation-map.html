@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Before and After Liberation Map | Korean History through Literature</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Before and After Liberation Map">
+    <meta property="og:description" content="A precise place map for Yi Taejun's Before and After Liberation: direct settings, inferred geography, and allusive world references.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        :root {
+            --ink: #171512;
+            --ink-soft: #585149;
+            --ink-faint: #8a837b;
+            --paper: #f4efe7;
+            --surface: #fffdf9;
+            --line: #ddd3c4;
+            --shadow: rgba(25, 18, 10, 0.07);
+            --forest: #27594f;
+            --forest-soft: #deeee8;
+            --gold: #9c6f17;
+            --gold-soft: #f3ead4;
+            --wine: #8a3140;
+            --wine-soft: #f6e7ea;
+            --slate: #355685;
+            --slate-soft: #e7edf7;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Outfit", -apple-system, sans-serif;
+            color: var(--ink);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)),
+                radial-gradient(circle at top left, rgba(39, 89, 79, 0.08), transparent 20%),
+                var(--paper);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            background: rgba(20, 18, 16, 0.96);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            backdrop-filter: blur(12px);
+        }
+
+        .topbar-inner {
+            max-width: 1220px;
+            margin: 0 auto;
+            padding: 0.95rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .course-tag {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .topnav {
+            display: flex;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+        }
+
+        .topnav a {
+            padding: 0.42rem 0.78rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.78rem;
+            transition: all 0.15s ease;
+        }
+
+        .topnav a:hover,
+        .topnav a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.24);
+        }
+
+        .page {
+            max-width: 1220px;
+            margin: 0 auto;
+            padding: 2.4rem 1.5rem 3rem;
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 340px;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-main,
+        .intro-side,
+        .map-shell,
+        .notes-shell,
+        .unmapped-shell {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: 0 18px 36px var(--shadow);
+        }
+
+        .intro-main {
+            padding: 1.8rem 1.8rem 1.7rem;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--forest);
+            font-weight: 700;
+            margin-bottom: 0.95rem;
+        }
+
+        h1, h2, h3 {
+            font-family: "Newsreader", Georgia, serif;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 7vw, 4.4rem);
+            line-height: 0.95;
+            margin-bottom: 0.8rem;
+        }
+
+        .intro-copy {
+            max-width: 58ch;
+            color: var(--ink-soft);
+            font-size: 1rem;
+        }
+
+        .intro-side {
+            padding: 1.3rem 1.35rem;
+            display: grid;
+            gap: 0.9rem;
+            align-content: start;
+        }
+
+        .mini-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--ink-faint);
+            font-weight: 700;
+        }
+
+        .mini-item {
+            padding-top: 0.85rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .mini-item:first-of-type {
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .mini-title {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-faint);
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+        }
+
+        .mini-copy {
+            font-size: 0.94rem;
+            color: var(--ink);
+        }
+
+        .map-shell {
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .map-head {
+            padding: 1.25rem 1.35rem 1rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .map-title {
+            font-size: 1.65rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .map-subtitle {
+            color: var(--ink-soft);
+            font-size: 0.92rem;
+            max-width: 72ch;
+        }
+
+        .filter-row {
+            padding: 0.95rem 1.35rem 0;
+            display: flex;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            appearance: none;
+            border: 1px solid var(--line);
+            background: #fff;
+            color: var(--ink-soft);
+            padding: 0.52rem 0.82rem;
+            border-radius: 999px;
+            font: inherit;
+            font-size: 0.83rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--forest);
+            color: var(--ink);
+        }
+
+        .filter-btn.active {
+            background: var(--forest);
+            border-color: var(--forest);
+            color: #fff;
+        }
+
+        #map {
+            height: 600px;
+            margin: 1rem 1.35rem 0;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .map-footer {
+            padding: 0.95rem 1.35rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .legend {
+            display: flex;
+            gap: 0.95rem;
+            flex-wrap: wrap;
+            color: var(--ink-soft);
+            font-size: 0.78rem;
+        }
+
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.42rem;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14);
+        }
+
+        .legend-dot.direct { background: var(--forest); }
+        .legend-dot.inferred { background: var(--gold); }
+        .legend-dot.horizon { background: var(--wine); }
+        .legend-dot.allusion { background: var(--slate); }
+
+        .reset-btn {
+            appearance: none;
+            border: 1px solid var(--line);
+            background: transparent;
+            color: var(--ink-soft);
+            padding: 0.5rem 0.8rem;
+            border-radius: 999px;
+            font: inherit;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        .notes-shell {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .note-column {
+            padding: 1.2rem 1.25rem 1.35rem;
+            border-right: 1px solid var(--line);
+        }
+
+        .note-column:last-child {
+            border-right: none;
+        }
+
+        .note-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .note-title {
+            font-size: 1.25rem;
+        }
+
+        .note-badge {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-weight: 700;
+            padding: 0.32rem 0.52rem;
+            border-radius: 999px;
+        }
+
+        .note-badge.direct {
+            background: var(--forest-soft);
+            color: var(--forest);
+        }
+
+        .note-badge.inferred {
+            background: var(--gold-soft);
+            color: var(--gold);
+        }
+
+        .note-badge.allusion {
+            background: var(--slate-soft);
+            color: var(--slate);
+        }
+
+        .place-list {
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .place-card {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 0.95rem;
+            background: #fff;
+            cursor: pointer;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+        }
+
+        .place-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(25, 18, 10, 0.06);
+        }
+
+        .place-card.active {
+            border-color: var(--forest);
+            box-shadow: 0 14px 26px rgba(39, 89, 79, 0.1);
+        }
+
+        .place-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .place-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-faint);
+            margin-bottom: 0.35rem;
+            font-weight: 700;
+        }
+
+        .place-copy {
+            font-size: 0.86rem;
+            color: var(--ink-soft);
+        }
+
+        .place-source {
+            margin-top: 0.45rem;
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+        }
+
+        .unmapped-shell {
+            padding: 1.2rem 1.25rem 1.35rem;
+        }
+
+        .unmapped-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .unmapped-copy {
+            color: var(--ink-soft);
+            font-size: 0.92rem;
+            max-width: 72ch;
+            margin-bottom: 0.9rem;
+        }
+
+        .unmapped-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+        }
+
+        .unmapped-card {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 0.95rem;
+            background: #fff;
+        }
+
+        .unmapped-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .unmapped-card p {
+            color: var(--ink-soft);
+            font-size: 0.86rem;
+        }
+
+        .footer-note {
+            max-width: 1220px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem 2rem;
+            color: var(--ink-faint);
+            font-size: 0.78rem;
+        }
+
+        @media (max-width: 980px) {
+            .intro,
+            .notes-shell,
+            .unmapped-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .note-column {
+                border-right: none;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .note-column:last-child {
+                border-bottom: none;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .topbar-inner,
+            .page,
+            .footer-note {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .intro-main,
+            .intro-side,
+            .map-shell,
+            .notes-shell,
+            .unmapped-shell {
+                border-radius: 18px;
+            }
+
+            .intro-main {
+                padding: 1.4rem;
+            }
+
+            #map {
+                height: 420px;
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .filter-row,
+            .map-head,
+            .map-footer {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="course-tag">Week 3 Geography</div>
+        <nav class="topnav">
+            <a href="../dashboard.html">Dashboard</a>
+            <a href="../literature.html">Literature</a>
+            <a href="before-after-liberation.html">Before and After Liberation</a>
+            <a href="before-after-liberation-map.html" class="active">Map</a>
+        </nav>
+    </div>
+</header>
+
+<main class="page">
+    <section class="intro">
+        <div class="intro-main">
+            <div class="eyebrow">One Story, Many Geographies</div>
+            <h1>Before and After Liberation Map</h1>
+            <p class="intro-copy">
+                This map separates the story's geography into three layers: places Hyŏn directly inhabits, places the text strongly implies but does not name precisely, and places that matter because Hyŏn thinks through them. That distinction matters here. <em>해방전후</em> is not only a Seoul story or a liberation story. It is also a rural retreat story, a border story, and a world-historical argument carried by place references.
+            </p>
+        </div>
+
+        <aside class="intro-side">
+            <div class="mini-label">Map Logic</div>
+            <div class="mini-item">
+                <div class="mini-title">Direct</div>
+                <div class="mini-copy">Named settings or institutions directly traversed in the plot.</div>
+            </div>
+            <div class="mini-item">
+                <div class="mini-title">Inferred</div>
+                <div class="mini-copy">Settings the story locates strongly enough to map approximately. Here the best-supported rural setting is former Anhyŏp (안협), not just a generic mountain town.</div>
+            </div>
+            <div class="mini-item">
+                <div class="mini-title">Allusive</div>
+                <div class="mini-copy">External places invoked to frame liberation, loyalty, retreat, and world history.</div>
+            </div>
+        </aside>
+    </section>
+
+    <section class="map-shell">
+        <div class="map-head">
+            <h2 class="map-title">Story Geography</h2>
+            <div class="map-subtitle">
+                The page treats precision honestly. Exact locations are marked as such. Approximate settings are labeled inferred. For the rural retreat, the strongest identification is former Anhyŏp (안협): Yi Taejun is documented as having withdrawn there in 1943, and the story's clues match the upper Imjin basin better than Ch'ŏlwŏn town itself. Long-distance travel is shown through place markers rather than a single straight line, because the story does not specify an exact road.
+            </div>
+        </div>
+        <div class="filter-row" id="filters"></div>
+        <div id="map" aria-label="Before and After Liberation map"></div>
+        <div class="map-footer">
+            <div class="legend">
+                <span class="legend-item"><span class="legend-dot direct"></span>Direct setting</span>
+                <span class="legend-item"><span class="legend-dot inferred"></span>Inferred setting</span>
+                <span class="legend-item"><span class="legend-dot horizon"></span>Political horizon</span>
+                <span class="legend-item"><span class="legend-dot allusion"></span>Historical allusion</span>
+            </div>
+            <button class="reset-btn" id="resetView" type="button">Reset view</button>
+        </div>
+    </section>
+
+    <section class="notes-shell">
+        <section class="note-column">
+            <div class="note-header">
+                <h3 class="note-title">Direct Sites</h3>
+                <span class="note-badge direct">Action</span>
+            </div>
+            <div class="place-list" id="directList"></div>
+        </section>
+
+        <section class="note-column">
+            <div class="note-header">
+                <h3 class="note-title">Inferred Sites</h3>
+                <span class="note-badge inferred">Approximation</span>
+            </div>
+            <div class="place-list" id="inferredList"></div>
+        </section>
+
+        <section class="note-column">
+            <div class="note-header">
+                <h3 class="note-title">World References</h3>
+                <span class="note-badge allusion">Allusion</span>
+            </div>
+            <div class="place-list" id="allusionList"></div>
+        </section>
+    </section>
+
+    <section class="unmapped-shell">
+        <h2 class="unmapped-title">Important But Unmappable</h2>
+        <p class="unmapped-copy">
+            Two of the story's most important geographies are intentionally not plot points on a real map. They are moral fantasies used to test whether retreat is still possible in the twentieth century.
+        </p>
+        <div class="unmapped-grid">
+            <article class="unmapped-card">
+                <h3>Yao-and-Shun village</h3>
+                <p>
+                    Hyŏn asks where, under a Japanese sky, one could still find the age of sage-kings. This is not a destination. It is a measure of impossibility.
+                </p>
+            </article>
+            <article class="unmapped-card">
+                <h3>Peach Blossom Spring</h3>
+                <p>
+                    The story invokes the old utopian valley only to deny its availability. The allusion matters because it marks the death of classical withdrawal as a serious option.
+                </p>
+            </article>
+        </div>
+    </section>
+</main>
+
+<div class="footer-note">
+    Source base: the course PDF <em>YiTaejun_BeforeandAfter.pdf</em>; the introductory note runs on PDF pp. 1-2 and the story itself on PDF pp. 3-39. Publication detail <em>Munhak</em>, July 1946 remains verified from an earlier translation colophon.
+</div>
+
+<script>
+const GROUPS = [
+    { id: "all", label: "All" },
+    { id: "direct", label: "Direct" },
+    { id: "inferred", label: "Inferred" },
+    { id: "horizon", label: "Political horizon" },
+    { id: "allusion", label: "Allusion" }
+];
+
+const PLACES = [
+    {
+        id: "seoul",
+        group: "direct",
+        name: "Seoul / Keijō",
+        label: "Primary urban setting",
+        note: "Hyŏn begins here under surveillance, returns here at liberation, and then re-enters literary politics through Seoul's cultural institutions.",
+        source: "Course PDF pp. 3-7, 24-31",
+        lat: 37.5665,
+        lng: 126.9780
+    },
+    {
+        id: "tongdaemun-police",
+        group: "direct",
+        name: "Tongdaemun Police Station area",
+        label: "Colonial surveillance site",
+        note: "The text places Hyŏn's interrogations at Tongdaemun Station under Detective Tsuruda. This marker stands for the police-station area, not a railway stop.",
+        source: "Course PDF pp. 5-6",
+        lat: 37.5710,
+        lng: 127.0090
+    },
+    {
+        id: "gov-general",
+        group: "direct",
+        name: "Government-General site",
+        label: "Colonial state center",
+        note: "After August 15, Hyŏn returns to Seoul and finds the Japanese state still visibly intact. The Government-General remains one of the story's key symbols of incomplete liberation.",
+        source: "Course PDF pp. 24-25",
+        lat: 37.5796,
+        lng: 126.9770
+    },
+    {
+        id: "culture-council",
+        group: "direct",
+        name: "Central Council for the Building of Korean Culture",
+        label: "Liberation-era cultural politics",
+        note: "The exact building is not specified, but the action is clearly downtown Seoul. This is where Hyŏn enters the postliberation united-front experiment and where the red-flag conflict erupts.",
+        source: "Course PDF pp. 25-31, 38-39",
+        lat: 37.5704,
+        lng: 126.9856
+    },
+    {
+        id: "cheorwon",
+        group: "direct",
+        name: "Ch'ŏrwŏn-ŭp / historical Ch'ŏlwŏn",
+        label: "Liberation bus stop and reading point",
+        note: "This marker is the historical northern Ch'ŏrwŏn-ŭp, not the modern South Korean Cheorwon county seat. In the story, Hyŏn hears on the bus that Japan has fallen, then confirms the news once he reaches Ch'ŏlwŏn and reads the paper there.",
+        source: "Course PDF pp. 22-24; Mindat / GeoNames entry for Ch'ŏrwŏn-ŭp, North Korea",
+        lat: 38.34639,
+        lng: 126.905
+    },
+    {
+        id: "anhyop",
+        group: "inferred",
+        name: "Former Anhyŏp (안협)",
+        label: "Best-supported rural setting",
+        note: "The story never names the retreat town outright, but the strongest identification is former Anhyŏp. Yi Taejun is documented as having withdrawn to Anhyŏp in 1943 and remained there until liberation, and the story's clues fit: a mountain town in Kangwŏn, about eighty ri in from the railway, with the upper Imjin nearby. The later Taesan allusion also points here: Hyŏn sees a monument to Kang Jin, whose pen name was Taesan, and Kang Jin served as magistrate of Anhyŏp.",
+        source: "Course PDF pp. 7-8, 15-16; AKS entry on Kang Jin; Weekly Kyunghyang, Apr. 21, 2009; Mapcarta / GeoNames locality for 안협",
+        lat: 38.35877,
+        lng: 126.81929
+    },
+    {
+        id: "upper-imjin",
+        group: "inferred",
+        name: "Upper Imjin River",
+        label: "Fishing and waiting geography",
+        note: "Hyŏn chooses the countryside partly because he can wait out events while fishing the upper reaches of the Imjin. This marker stands for the upper-Imjin corridor associated with former Anhyŏp, not for a single certified fishing spot.",
+        source: "Course PDF pp. 7-9, 15-17; AKS Imjin River entry",
+        lat: 38.3100,
+        lng: 126.9300
+    },
+    {
+        id: "thirty-eighth",
+        group: "horizon",
+        name: "Thirty-eighth parallel near Cheorwon",
+        label: "Division line",
+        note: "The ending imagines Kim as having braved the thirty-eighth parallel to come to Hanyang. The line is not just a border. It is the story's final compression of liberation into division.",
+        source: "Course PDF pp. 31, 38-39",
+        lat: 38.0000,
+        lng: 127.3000
+    },
+    {
+        id: "rabaul",
+        group: "horizon",
+        name: "Rabaul",
+        label: "Pacific war horizon",
+        note: "Rabaul appears in Hyŏn's wartime calculations before liberation. The story's interior life is constantly crossed by external war geography.",
+        source: "Course PDF p. 7",
+        lat: -4.2010,
+        lng: 152.1770
+    },
+    {
+        id: "shanghai",
+        group: "allusion",
+        name: "Shanghai",
+        label: "Wang Guowei after the Qing",
+        note: "Hyŏn's final meditation on loyalty and historical truth runs through Wang Guowei's postdynastic wandering. Shanghai is part of that remembered route.",
+        source: "Course PDF p. 38",
+        lat: 31.2304,
+        lng: 121.4737
+    },
+    {
+        id: "beijing-kunming",
+        group: "allusion",
+        name: "Beijing / Kunming Lake, Summer Palace",
+        label: "Terminal loyalty allusion",
+        note: "The Wang Guowei allusion culminates here. Hyŏn reads Kim through Wang: loyalty to a dead order becomes tragic, moving, and historically inadequate all at once.",
+        source: "Course PDF pp. 38-39",
+        lat: 39.9999,
+        lng: 116.2755
+    }
+];
+
+const ROUTES = [
+    {
+        id: "imjin-route",
+        group: "inferred",
+        label: "Village to river",
+        coords: [
+            [38.35877, 126.81929],
+            [38.3100, 126.9300]
+        ]
+    }
+];
+
+const GROUP_META = {
+    direct: { color: "#27594f", fill: "#27594f", radius: 8, listId: "directList" },
+    inferred: { color: "#9c6f17", fill: "#9c6f17", radius: 8, listId: "inferredList" },
+    horizon: { color: "#8a3140", fill: "#8a3140", radius: 8, listId: "allusionList" },
+    allusion: { color: "#355685", fill: "#355685", radius: 8, listId: "allusionList" }
+};
+
+const map = L.map("map", {
+    zoomControl: true,
+    scrollWheelZoom: false
+}).setView([37.9, 126.9], 6);
+
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+    maxZoom: 19,
+    attribution: "&copy; <a href=\"https://carto.com/attributions\">CARTO</a>"
+}).addTo(map);
+
+const routeLayers = {};
+const markerLayers = {};
+const cardRefs = {};
+let activeGroup = "all";
+
+const bounds = L.latLngBounds([]);
+
+ROUTES.forEach((route) => {
+    const meta = GROUP_META[route.group];
+    const dashArray = route.group === "inferred" ? "6, 8" : null;
+    const line = L.polyline(route.coords, {
+        color: meta.color,
+        weight: 3,
+        opacity: 0.75,
+        dashArray
+    }).addTo(map);
+    routeLayers[route.id] = { line, group: route.group };
+    route.coords.forEach((coord) => bounds.extend(coord));
+});
+
+const divideLine = L.polyline([[38.0, 124.8], [38.0, 131.0]], {
+    color: GROUP_META.horizon.color,
+    weight: 2,
+    opacity: 0.6,
+    dashArray: "10, 8"
+}).addTo(map);
+routeLayers.divideLine = { line: divideLine, group: "horizon" };
+bounds.extend([38.0, 124.8]);
+bounds.extend([38.0, 131.0]);
+
+function popupHtml(place) {
+    return `
+        <strong>${place.name}</strong><br>
+        <span style="color:#6b6259;">${place.label}</span><br><br>
+        ${place.note}<br><br>
+        <span style="color:#8a837b;">${place.source}</span>
+    `;
+}
+
+PLACES.forEach((place) => {
+    const meta = GROUP_META[place.group];
+    const marker = L.circleMarker([place.lat, place.lng], {
+        radius: meta.radius,
+        color: "#ffffff",
+        weight: 2,
+        fillColor: meta.fill,
+        fillOpacity: 0.95
+    }).addTo(map);
+
+    marker.bindPopup(popupHtml(place));
+    marker.on("click", () => activatePlace(place.id, true));
+    markerLayers[place.id] = { marker, group: place.group };
+    bounds.extend([place.lat, place.lng]);
+});
+
+map.fitBounds(bounds, { padding: [36, 36] });
+
+function createCard(place) {
+    const card = document.createElement("article");
+    card.className = "place-card";
+    card.dataset.placeId = place.id;
+    card.innerHTML = `
+        <div class="place-name">${place.name}</div>
+        <div class="place-label">${place.label}</div>
+        <div class="place-copy">${place.note}</div>
+        <div class="place-source">${place.source}</div>
+    `;
+    card.addEventListener("click", () => activatePlace(place.id, true));
+    return card;
+}
+
+PLACES.forEach((place) => {
+    const list = document.getElementById(GROUP_META[place.group].listId);
+    const card = createCard(place);
+    list.appendChild(card);
+    cardRefs[place.id] = card;
+});
+
+function setGroupVisibility(groupId) {
+    activeGroup = groupId;
+
+    Object.values(markerLayers).forEach(({ marker, group }) => {
+        const visible = groupId === "all" || group === groupId;
+        if (visible) {
+            marker.addTo(map);
+        } else {
+            map.removeLayer(marker);
+        }
+    });
+
+    Object.values(routeLayers).forEach(({ line, group }) => {
+        const visible = groupId === "all" || group === groupId;
+        if (visible) {
+            line.addTo(map);
+        } else {
+            map.removeLayer(line);
+        }
+    });
+
+    document.querySelectorAll(".place-card").forEach((card) => {
+        const place = PLACES.find((item) => item.id === card.dataset.placeId);
+        const visible = groupId === "all" || place.group === groupId;
+        card.style.display = visible ? "" : "none";
+    });
+
+    const visibleCoords = [];
+    PLACES.forEach((place) => {
+        if (groupId === "all" || place.group === groupId) {
+            visibleCoords.push([place.lat, place.lng]);
+        }
+    });
+    if (groupId === "horizon") {
+        visibleCoords.push([38.0, 124.8], [38.0, 131.0]);
+    }
+    if (visibleCoords.length) {
+        map.fitBounds(L.latLngBounds(visibleCoords), { padding: [36, 36] });
+    }
+}
+
+function activatePlace(placeId, openPopup) {
+    Object.values(cardRefs).forEach((card) => card.classList.remove("active"));
+    const card = cardRefs[placeId];
+    if (!card) {
+        return;
+    }
+    card.classList.add("active");
+    const place = PLACES.find((item) => item.id === placeId);
+    const markerEntry = markerLayers[placeId];
+    if (!place || !markerEntry) {
+        return;
+    }
+    map.setView([place.lat, place.lng], Math.max(map.getZoom(), 7), { animate: true });
+    if (openPopup) {
+        markerEntry.marker.openPopup();
+    }
+}
+
+const filters = document.getElementById("filters");
+GROUPS.forEach((group, index) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "filter-btn" + (index === 0 ? " active" : "");
+    btn.textContent = group.label;
+    btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter-btn").forEach((node) => node.classList.remove("active"));
+        btn.classList.add("active");
+        setGroupVisibility(group.id);
+    });
+    filters.appendChild(btn);
+});
+
+document.getElementById("resetView").addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach((node, index) => {
+        node.classList.toggle("active", index === 0);
+    });
+    setGroupVisibility("all");
+    Object.values(cardRefs).forEach((card) => card.classList.remove("active"));
+});
+</script>
+
+</body>
+</html>
