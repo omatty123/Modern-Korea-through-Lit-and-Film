@@ -471,7 +471,7 @@
                 </div>
                 <div class="mini-item">
                     <div class="mini-label">Method</div>
-                    <div class="mini-copy">Exact when named, approximate when the story suppresses names as S Hospital and X Police Station.</div>
+                    <div class="mini-copy">Exact when named, identified when the initial points clearly to a Seoul institution, and approximate when the story suppresses names as X Police Station.</div>
                 </div>
             </aside>
         </section>
@@ -505,7 +505,7 @@
 
             <aside class="notes-shell">
                 <h2 class="section-title">Places and Sources</h2>
-                <p class="section-copy">The map keeps the story's uncertainty legible: named Seoul sites are pinned directly, while S Hospital, X Police Station, the office, and the dental clinics are placed along the downtown corridor the text describes.</p>
+                <p class="section-copy">The map keeps the story's uncertainty legible: named Seoul sites are pinned directly, S Hospital is keyed to Seoul National University Medical School/Hospital, and X Police Station, the office, and the dental clinics remain approximate downtown points.</p>
 
                 <div class="place-grid" id="placeGrid"></div>
 
@@ -593,12 +593,12 @@ const PLACES = [
         group: "inferred",
         final: true,
         step: 4,
-        name: "S Hospital",
-        label: "Wife's death",
-        note: "The hospital is anonymized as S Hospital. This central-Seoul marker is approximate, used to show its narrative role rather than an exact building.",
-        source: "Story final day: wife is taken to S Hospital",
-        lat: 37.5792,
-        lng: 126.9991
+        name: "Seoul National University Medical School",
+        label: "S Hospital / wife's death",
+        note: "S Hospital is mapped here as Seoul National University Medical School/Hospital in downtown Seoul, the institution implied by the initial.",
+        source: "Story final day: wife is taken to S Hospital; course correction identifies it with Seoul National University Medical School",
+        lat: 37.5797,
+        lng: 126.9990
     },
     {
         id: "tram-road",
@@ -727,7 +727,7 @@ const ROUTES = [
             [37.5656, 126.9835],
             [37.5639, 126.9978],
             [37.5427, 126.9872],
-            [37.5792, 126.9991],
+            [37.5797, 126.9990],
             [37.5707, 126.9941],
             [37.5639, 126.9978],
             [37.5617, 126.9796],
@@ -737,7 +737,7 @@ const ROUTES = [
             [37.5558, 126.9721],
             [37.5576, 126.9736],
             [37.5427, 126.9872],
-            [37.5792, 126.9991],
+            [37.5797, 126.9990],
             [37.5639, 126.9978],
             [37.5608, 126.9816]
         ]
